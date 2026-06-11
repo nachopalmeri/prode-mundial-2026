@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+  command = "echo 'Static HTML deployment'"
+
+[[redirects]]
+  from = "/*"
+  to = "/prode-mundial-2026.html"
+  status = 200
