@@ -70,6 +70,13 @@ header .sub{font-size:.85rem;opacity:.85;margin-top:2px;position:relative}
 .score-value{font-size:1.2rem;font-weight:800;color:var(--accent)}
 .score-item.consensus .score-value{color:var(--gold)}
 .score-item.played .score-value{color:var(--text)}
+.save-item{flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:80px}
+.save-btn{background:var(--accent);color:#fff;border:none;padding:5px 12px;border-radius:8px;font-weight:700;font-size:.75rem;cursor:pointer;transition:opacity .2s,transform .15s;white-space:nowrap}
+.save-btn:hover{opacity:.85;transform:translateY(-1px)}
+.save-btn:disabled{opacity:.4;cursor:default;transform:none}
+.save-feedback{font-size:.62rem;margin-top:3px;font-weight:600;white-space:nowrap}
+.save-feedback.success{color:var(--green)}
+.save-feedback.error{color:var(--red)}
 
 /* Tabs */
 .tabs{display:flex;gap:6px;justify-content:center;margin:16px 0;flex-wrap:wrap}
@@ -282,6 +289,7 @@ tr:hover td{background:var(--card2)}
 <div class="score-item"><div class="score-label">Polymarket</div><div class="score-value" id="pts-polymarket">0</div></div>
 <div class="score-item consensus"><div class="score-label">★ Consenso</div><div class="score-value" id="pts-consensus">0</div></div>
 <div class="score-item played"><div class="score-label">Jugados</div><div class="score-value" id="pts-played">0/72</div></div>
+<div class="save-item"><button class="save-btn" id="btn-save" onclick="saveResultsToServer()">Guardar</button><div class="save-feedback" id="save-feedback"></div></div>
 </div>
 
 <div class="container">
@@ -613,6 +621,21 @@ function updateScores(){
   saveRealScores();
 }
 
+async function saveResultsToServer(){
+  const btn=document.getElementById('btn-save');
+  const fb=document.getElementById('save-feedback');
+  btn.disabled=true;btn.textContent='Guardando...';fb.textContent='';fb.className='save-feedback';
+  const results={};
+  matches.forEach(x=>{const el=document.getElementById('real-'+x.id);if(el&&el.value)results[x.id]=el.value});
+  if(Object.keys(results).length===0){fb.textContent='Sin resultados';fb.className='save-feedback error';btn.disabled=false;btn.textContent='Guardar';return}
+  try{
+    const r=await fetch('/api/submit-result',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({results})});
+    const d=await r.json();
+    if(d.success){fb.textContent='✔ '+Object.keys(results).length+' resultado(s)';fb.className='save-feedback success'}else{fb.textContent='✘ Error';fb.className='save-feedback error'}
+  }catch(e){fb.textContent='✘ Sin conexión';fb.className='save-feedback error'}
+  btn.disabled=false;btn.textContent='Guardar';
+  setTimeout(()=>{fb.textContent=''},5000);
+}
 function syncMobileScore(el){
   const id=parseInt(el.dataset.match);
   if(!id)return;
