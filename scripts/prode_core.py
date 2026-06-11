@@ -55,7 +55,7 @@ def outcome(score: str) -> str:
 
 
 def extract_raw_match_objects(html: str) -> list[str]:
-    return re.findall(r"\{id:\d+,[^\n]+\}", html)
+    return re.findall(r"\{id:\d+,gr:\"[A-Z]\",[^\n]+\}", html)
 
 
 def extract_key_values(raw_match: str) -> list[tuple[str, str]]:
