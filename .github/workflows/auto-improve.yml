@@ -60,6 +60,7 @@ jobs:
         run: |
           echo "=== Actualizando Dashboard ==="
           python scripts/update_html.py || echo "HTML up to date"
+          python scripts/embed_results.py || echo "No results to embed"
           python scripts/embed_accuracy.py || echo "No accuracy data to embed"
         continue-on-error: true
       
