@@ -66,9 +66,9 @@ def load_current_weights():
     """Cargar pesos actuales del HTML"""
     # Pesos por defecto
     return {
-        "c": 1.0, "g": 1.0, "m": 1.0,
+        "c": 1.0, "g": 1.0, "f": 1.0,
         "fs": 0.8, "esp": 1.3, "yh": 0.8,
-        "t": 1.5, "e": 1.5, "cup": 1.4
+        "tips": 1.5, "e": 1.5, "cup": 1.4, "pm": 1.6
     }
 
 def load_historical():

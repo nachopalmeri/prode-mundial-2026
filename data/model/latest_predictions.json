@@ -1,0 +1,5847 @@
+{
+  "metadata": {
+    "model_version": "dynamic-prode-v1",
+    "generated_at": "2026-06-11T17:19:20.059945+00:00",
+    "match_count": 72,
+    "source_count": 10,
+    "strategy": "dynamic_top3_market_rating_consensus",
+    "runtime_results_count": 0,
+    "dynamic_context": "group_standings_and_round_motivation"
+  },
+  "standings": {
+    "A": {
+      "Mexico": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "South Africa": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "South Korea": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Czechia": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "B": {
+      "Canada": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Bosnia and Herzegovina": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Qatar": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Switzerland": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "D": {
+      "USA": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Paraguay": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Australia": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Turkiye": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "C": {
+      "Brazil": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Morocco": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Haiti": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Scotland": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "E": {
+      "Germany": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Curacao": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Ivory Coast": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Ecuador": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "F": {
+      "Netherlands": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Japan": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Sweden": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Tunisia": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "H": {
+      "Spain": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Cape Verde": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Saudi Arabia": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Uruguay": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "G": {
+      "Belgium": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Egypt": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Iran": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "New Zealand": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "I": {
+      "France": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Senegal": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Iraq": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Norway": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "J": {
+      "Argentina": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Algeria": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Austria": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Jordan": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "K": {
+      "Portugal": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "DR Congo": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Uzbekistan": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Colombia": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    },
+    "L": {
+      "England": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Croatia": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Ghana": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      },
+      "Panama": {
+        "played": 0,
+        "points": 0,
+        "gf": 0,
+        "ga": 0,
+        "gd": 0
+      }
+    }
+  },
+  "matches": [
+    {
+      "id": 1,
+      "group": "A",
+      "date": "Jue 11/6",
+      "time": "15:00",
+      "home": "Mexico",
+      "away": "South Africa",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 24.6
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 21.5
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 14.3
+        }
+      ],
+      "one_x_two": {
+        "home": 87.1,
+        "draw": 11.0,
+        "away": 1.9
+      },
+      "expected_goals": {
+        "home": 2.06,
+        "away": 0.2
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 2,
+      "group": "A",
+      "date": "Jue 11/6",
+      "time": "23:00",
+      "home": "South Korea",
+      "away": "Czechia",
+      "best_pick": "0-0",
+      "top_scores": [
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 16.0
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 15.7
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 15.4
+        }
+      ],
+      "one_x_two": {
+        "home": 32.9,
+        "draw": 42.0,
+        "away": 25.1
+      },
+      "expected_goals": {
+        "home": 0.96,
+        "away": 0.87
+      },
+      "confidence": "high",
+      "source_consensus": "1-1",
+      "source_agreement": 60.5,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 60.5,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 3,
+      "group": "B",
+      "date": "Vie 12/6",
+      "time": "16:00",
+      "home": "Canada",
+      "away": "Bosnia and Herzegovina",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 21.2
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 19.4
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 12.9
+        }
+      ],
+      "one_x_two": {
+        "home": 73.7,
+        "draw": 20.6,
+        "away": 5.8
+      },
+      "expected_goals": {
+        "home": 1.64,
+        "away": 0.4
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 4,
+      "group": "D",
+      "date": "Vie 12/6",
+      "time": "22:00",
+      "home": "USA",
+      "away": "Paraguay",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 21.2
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 16.6
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 13.6
+        }
+      ],
+      "one_x_two": {
+        "home": 71.5,
+        "draw": 17.8,
+        "away": 10.7
+      },
+      "expected_goals": {
+        "home": 1.56,
+        "away": 0.44
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 87.4,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 87.4,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 5,
+      "group": "B",
+      "date": "Sab 13/6",
+      "time": "16:00",
+      "home": "Qatar",
+      "away": "Switzerland",
+      "best_pick": "0-2",
+      "top_scores": [
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 23.5
+        },
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 19.9
+        },
+        {
+          "score": "0-3",
+          "home_goals": 0,
+          "away_goals": 3,
+          "probability": 13.3
+        }
+      ],
+      "one_x_two": {
+        "home": 2.6,
+        "draw": 16.0,
+        "away": 81.4
+      },
+      "expected_goals": {
+        "home": 0.26,
+        "away": 2.01
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 6,
+      "group": "C",
+      "date": "Sab 13/6",
+      "time": "19:00",
+      "home": "Brazil",
+      "away": "Morocco",
+      "best_pick": "0-0",
+      "top_scores": [
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 19.5
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 17.7
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.7
+        }
+      ],
+      "one_x_two": {
+        "home": 43.8,
+        "draw": 30.2,
+        "away": 26.0
+      },
+      "expected_goals": {
+        "home": 1.02,
+        "away": 0.68
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 47.9,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 47.9,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 7,
+      "group": "C",
+      "date": "Sab 13/6",
+      "time": "22:00",
+      "home": "Haiti",
+      "away": "Scotland",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 18.6
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 16.4
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 13.2
+        }
+      ],
+      "one_x_two": {
+        "home": 13.1,
+        "draw": 18.8,
+        "away": 68.1
+      },
+      "expected_goals": {
+        "home": 0.54,
+        "away": 1.5
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 8,
+      "group": "D",
+      "date": "Dom 14/6",
+      "time": "01:00",
+      "home": "Australia",
+      "away": "Turkiye",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 19.1
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 15.1
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 15.0
+        }
+      ],
+      "one_x_two": {
+        "home": 14.5,
+        "draw": 32.2,
+        "away": 53.3
+      },
+      "expected_goals": {
+        "home": 0.56,
+        "away": 1.35
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 47.1,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 47.1,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 9,
+      "group": "E",
+      "date": "Dom 14/6",
+      "time": "14:00",
+      "home": "Germany",
+      "away": "Curacao",
+      "best_pick": "4-0",
+      "top_scores": [
+        {
+          "score": "4-0",
+          "home_goals": 4,
+          "away_goals": 0,
+          "probability": 19.8
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 18.7
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 14.8
+        }
+      ],
+      "one_x_two": {
+        "home": 93.1,
+        "draw": 6.5,
+        "away": 0.4
+      },
+      "expected_goals": {
+        "home": 3.8,
+        "away": 0.18
+      },
+      "confidence": "high",
+      "source_consensus": "4-0",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 10,
+      "group": "F",
+      "date": "Dom 14/6",
+      "time": "17:00",
+      "home": "Netherlands",
+      "away": "Japan",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 12.9
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.2
+        },
+        {
+          "score": "2-1",
+          "home_goals": 2,
+          "away_goals": 1,
+          "probability": 10.7
+        }
+      ],
+      "one_x_two": {
+        "home": 60.1,
+        "draw": 18.6,
+        "away": 21.4
+      },
+      "expected_goals": {
+        "home": 1.57,
+        "away": 0.95
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 80.7,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 80.7,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 11,
+      "group": "E",
+      "date": "Dom 14/6",
+      "time": "20:00",
+      "home": "Ivory Coast",
+      "away": "Ecuador",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 21.0
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 17.9
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 12.3
+        }
+      ],
+      "one_x_two": {
+        "home": 5.6,
+        "draw": 16.0,
+        "away": 78.4
+      },
+      "expected_goals": {
+        "home": 0.4,
+        "away": 1.71
+      },
+      "confidence": "high",
+      "source_consensus": "1-2",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 12,
+      "group": "F",
+      "date": "Dom 14/6",
+      "time": "23:00",
+      "home": "Sweden",
+      "away": "Tunisia",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 22.0
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 18.1
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 13.6
+        }
+      ],
+      "one_x_two": {
+        "home": 84.8,
+        "draw": 11.9,
+        "away": 3.2
+      },
+      "expected_goals": {
+        "home": 2.06,
+        "away": 0.32
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 13,
+      "group": "H",
+      "date": "Lun 15/6",
+      "time": "13:00",
+      "home": "Spain",
+      "away": "Cape Verde",
+      "best_pick": "3-0",
+      "top_scores": [
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 20.9
+        },
+        {
+          "score": "4-0",
+          "home_goals": 4,
+          "away_goals": 0,
+          "probability": 19.1
+        },
+        {
+          "score": "5-0",
+          "home_goals": 5,
+          "away_goals": 0,
+          "probability": 17.5
+        }
+      ],
+      "one_x_two": {
+        "home": 98.3,
+        "draw": 1.6,
+        "away": 0.2
+      },
+      "expected_goals": {
+        "home": 4.32,
+        "away": 0.12
+      },
+      "confidence": "high",
+      "source_consensus": "3-0",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 14,
+      "group": "G",
+      "date": "Lun 15/6",
+      "time": "19:00",
+      "home": "Belgium",
+      "away": "Egypt",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 14.7
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 14.7
+        },
+        {
+          "score": "2-1",
+          "home_goals": 2,
+          "away_goals": 1,
+          "probability": 10.2
+        }
+      ],
+      "one_x_two": {
+        "home": 72.7,
+        "draw": 15.3,
+        "away": 12.0
+      },
+      "expected_goals": {
+        "home": 1.89,
+        "away": 0.63
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 15,
+      "group": "H",
+      "date": "Lun 15/6",
+      "time": "19:00",
+      "home": "Saudi Arabia",
+      "away": "Uruguay",
+      "best_pick": "0-2",
+      "top_scores": [
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 22.5
+        },
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 19.7
+        },
+        {
+          "score": "0-3",
+          "home_goals": 0,
+          "away_goals": 3,
+          "probability": 12.3
+        }
+      ],
+      "one_x_two": {
+        "home": 7.3,
+        "draw": 13.1,
+        "away": 79.7
+      },
+      "expected_goals": {
+        "home": 0.3,
+        "away": 1.93
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 16,
+      "group": "G",
+      "date": "Lun 15/6",
+      "time": "22:00",
+      "home": "Iran",
+      "away": "New Zealand",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 22.0
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 16.5
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 16.4
+        }
+      ],
+      "one_x_two": {
+        "home": 61.4,
+        "draw": 30.0,
+        "away": 8.6
+      },
+      "expected_goals": {
+        "home": 1.33,
+        "away": 0.46
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 67.2,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 67.2,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 17,
+      "group": "I",
+      "date": "Mar 16/6",
+      "time": "16:00",
+      "home": "France",
+      "away": "Senegal",
+      "best_pick": "3-0",
+      "top_scores": [
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 11.6
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 10.7
+        },
+        {
+          "score": "4-0",
+          "home_goals": 4,
+          "away_goals": 0,
+          "probability": 9.0
+        }
+      ],
+      "one_x_two": {
+        "home": 89.2,
+        "draw": 7.3,
+        "away": 3.5
+      },
+      "expected_goals": {
+        "home": 3.26,
+        "away": 0.71
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 18,
+      "group": "I",
+      "date": "Mar 16/6",
+      "time": "19:00",
+      "home": "Iraq",
+      "away": "Norway",
+      "best_pick": "0-3",
+      "top_scores": [
+        {
+          "score": "0-3",
+          "home_goals": 0,
+          "away_goals": 3,
+          "probability": 17.8
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 16.5
+        },
+        {
+          "score": "0-4",
+          "home_goals": 0,
+          "away_goals": 4,
+          "probability": 10.9
+        }
+      ],
+      "one_x_two": {
+        "home": 1.9,
+        "draw": 10.8,
+        "away": 87.3
+      },
+      "expected_goals": {
+        "home": 0.37,
+        "away": 2.9
+      },
+      "confidence": "high",
+      "source_consensus": "0-3",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 19,
+      "group": "J",
+      "date": "Mar 16/6",
+      "time": "22:00",
+      "home": "Argentina",
+      "away": "Algeria",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 30.2
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 23.2
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 15.9
+        }
+      ],
+      "one_x_two": {
+        "home": 84.6,
+        "draw": 13.9,
+        "away": 1.5
+      },
+      "expected_goals": {
+        "home": 1.71,
+        "away": 0.12
+      },
+      "confidence": "high",
+      "source_consensus": "1-0",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 20,
+      "group": "J",
+      "date": "Mie 17/6",
+      "time": "01:00",
+      "home": "Austria",
+      "away": "Jordan",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 17.6
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 16.7
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 13.8
+        }
+      ],
+      "one_x_two": {
+        "home": 79.6,
+        "draw": 16.2,
+        "away": 4.2
+      },
+      "expected_goals": {
+        "home": 2.11,
+        "away": 0.43
+      },
+      "confidence": "high",
+      "source_consensus": "3-0",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 21,
+      "group": "K",
+      "date": "Mie 17/6",
+      "time": "14:00",
+      "home": "Portugal",
+      "away": "DR Congo",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 16.2
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 11.6
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 11.4
+        }
+      ],
+      "one_x_two": {
+        "home": 74.1,
+        "draw": 15.2,
+        "away": 10.7
+      },
+      "expected_goals": {
+        "home": 2.4,
+        "away": 0.61
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 67.2,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 67.2,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 22,
+      "group": "L",
+      "date": "Mie 17/6",
+      "time": "17:00",
+      "home": "England",
+      "away": "Croatia",
+      "best_pick": "1-1",
+      "top_scores": [
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 15.2
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 15.1
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 11.9
+        }
+      ],
+      "one_x_two": {
+        "home": 42.3,
+        "draw": 33.2,
+        "away": 24.5
+      },
+      "expected_goals": {
+        "home": 1.27,
+        "away": 0.85
+      },
+      "confidence": "high",
+      "source_consensus": "1-1",
+      "source_agreement": 38.7,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 38.7,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 23,
+      "group": "L",
+      "date": "Mie 17/6",
+      "time": "20:00",
+      "home": "Ghana",
+      "away": "Panama",
+      "best_pick": "1-1",
+      "top_scores": [
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.8
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 11.5
+        },
+        {
+          "score": "2-1",
+          "home_goals": 2,
+          "away_goals": 1,
+          "probability": 10.0
+        }
+      ],
+      "one_x_two": {
+        "home": 49.2,
+        "draw": 19.4,
+        "away": 31.4
+      },
+      "expected_goals": {
+        "home": 1.41,
+        "away": 1.11
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 61.3,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 61.3,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 24,
+      "group": "K",
+      "date": "Mie 17/6",
+      "time": "23:00",
+      "home": "Uzbekistan",
+      "away": "Colombia",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 16.5
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 16.1
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 11.0
+        }
+      ],
+      "one_x_two": {
+        "home": 6.9,
+        "draw": 29.1,
+        "away": 64.0
+      },
+      "expected_goals": {
+        "home": 0.53,
+        "away": 1.83
+      },
+      "confidence": "high",
+      "source_consensus": "1-1",
+      "source_agreement": 55.5,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 1,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 55.5,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 25,
+      "group": "A",
+      "date": "Jue 18/6",
+      "time": "13:00",
+      "home": "Czechia",
+      "away": "South Africa",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 25.6
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 21.1
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 17.3
+        }
+      ],
+      "one_x_two": {
+        "home": 61.6,
+        "draw": 27.5,
+        "away": 10.9
+      },
+      "expected_goals": {
+        "home": 1.21,
+        "away": 0.33
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 68.1,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 68.1,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 26,
+      "group": "B",
+      "date": "Jue 18/6",
+      "time": "16:00",
+      "home": "Switzerland",
+      "away": "Bosnia and Herzegovina",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 22.6
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 19.8
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 13.8
+        }
+      ],
+      "one_x_two": {
+        "home": 85.5,
+        "draw": 11.6,
+        "away": 2.8
+      },
+      "expected_goals": {
+        "home": 2.05,
+        "away": 0.28
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 27,
+      "group": "B",
+      "date": "Jue 18/6",
+      "time": "19:00",
+      "home": "Canada",
+      "away": "Qatar",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 22.2
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 20.3
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 13.5
+        }
+      ],
+      "one_x_two": {
+        "home": 74.8,
+        "draw": 16.3,
+        "away": 8.9
+      },
+      "expected_goals": {
+        "home": 1.64,
+        "away": 0.36
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 28,
+      "group": "A",
+      "date": "Jue 18/6",
+      "time": "22:00",
+      "home": "Mexico",
+      "away": "South Korea",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 14.0
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 13.5
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.3
+        }
+      ],
+      "one_x_two": {
+        "home": 60.9,
+        "draw": 29.5,
+        "away": 9.6
+      },
+      "expected_goals": {
+        "home": 1.82,
+        "away": 0.7
+      },
+      "confidence": "high",
+      "source_consensus": "1-1",
+      "source_agreement": 57.1,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 57.1,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 29,
+      "group": "D",
+      "date": "Vie 19/6",
+      "time": "16:00",
+      "home": "USA",
+      "away": "Australia",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 20.1
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 20.0
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 12.5
+        }
+      ],
+      "one_x_two": {
+        "home": 69.6,
+        "draw": 25.0,
+        "away": 5.4
+      },
+      "expected_goals": {
+        "home": 1.7,
+        "away": 0.39
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 68.9,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 68.9,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 30,
+      "group": "C",
+      "date": "Vie 19/6",
+      "time": "19:00",
+      "home": "Scotland",
+      "away": "Morocco",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 26.0
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 23.3
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 17.1
+        }
+      ],
+      "one_x_two": {
+        "home": 10.2,
+        "draw": 28.5,
+        "away": 61.3
+      },
+      "expected_goals": {
+        "home": 0.31,
+        "away": 1.18
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 68.1,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 68.1,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 31,
+      "group": "C",
+      "date": "Vie 19/6",
+      "time": "22:00",
+      "home": "Brazil",
+      "away": "Haiti",
+      "best_pick": "3-0",
+      "top_scores": [
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 20.6
+        },
+        {
+          "score": "4-0",
+          "home_goals": 4,
+          "away_goals": 0,
+          "probability": 17.5
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 13.9
+        }
+      ],
+      "one_x_two": {
+        "home": 96.6,
+        "draw": 2.9,
+        "away": 0.5
+      },
+      "expected_goals": {
+        "home": 3.78,
+        "away": 0.21
+      },
+      "confidence": "high",
+      "source_consensus": "3-0",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 32,
+      "group": "D",
+      "date": "Sab 20/6",
+      "time": "01:00",
+      "home": "Turkiye",
+      "away": "Paraguay",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 17.4
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 13.8
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 11.0
+        }
+      ],
+      "one_x_two": {
+        "home": 66.5,
+        "draw": 18.0,
+        "away": 15.5
+      },
+      "expected_goals": {
+        "home": 1.59,
+        "away": 0.63
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 80.7,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 80.7,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 33,
+      "group": "F",
+      "date": "Sab 20/6",
+      "time": "14:00",
+      "home": "Netherlands",
+      "away": "Sweden",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 12.6
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.1
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 11.4
+        }
+      ],
+      "one_x_two": {
+        "home": 61.3,
+        "draw": 20.2,
+        "away": 18.4
+      },
+      "expected_goals": {
+        "home": 1.7,
+        "away": 0.85
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 72.3,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 72.3,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 34,
+      "group": "E",
+      "date": "Sab 20/6",
+      "time": "17:00",
+      "home": "Germany",
+      "away": "Ivory Coast",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 13.8
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 11.6
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 9.7
+        }
+      ],
+      "one_x_two": {
+        "home": 85.8,
+        "draw": 9.7,
+        "away": 4.5
+      },
+      "expected_goals": {
+        "home": 2.68,
+        "away": 0.63
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 35,
+      "group": "E",
+      "date": "Sab 20/6",
+      "time": "20:00",
+      "home": "Ecuador",
+      "away": "Curacao",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 21.7
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 16.9
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 14.2
+        }
+      ],
+      "one_x_two": {
+        "home": 78.6,
+        "draw": 14.6,
+        "away": 6.8
+      },
+      "expected_goals": {
+        "home": 2.18,
+        "away": 0.33
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 74.8,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 74.8,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 36,
+      "group": "F",
+      "date": "Dom 21/6",
+      "time": "01:00",
+      "home": "Tunisia",
+      "away": "Japan",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 27.3
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 17.6
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 17.1
+        }
+      ],
+      "one_x_two": {
+        "home": 5.2,
+        "draw": 22.6,
+        "away": 72.2
+      },
+      "expected_goals": {
+        "home": 0.31,
+        "away": 1.44
+      },
+      "confidence": "high",
+      "source_consensus": "0-1",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 37,
+      "group": "H",
+      "date": "Dom 21/6",
+      "time": "13:00",
+      "home": "Spain",
+      "away": "Saudi Arabia",
+      "best_pick": "3-0",
+      "top_scores": [
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 21.2
+        },
+        {
+          "score": "4-0",
+          "home_goals": 4,
+          "away_goals": 0,
+          "probability": 18.0
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 15.1
+        }
+      ],
+      "one_x_two": {
+        "home": 93.1,
+        "draw": 6.5,
+        "away": 0.4
+      },
+      "expected_goals": {
+        "home": 3.78,
+        "away": 0.17
+      },
+      "confidence": "high",
+      "source_consensus": "3-0",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 38,
+      "group": "G",
+      "date": "Dom 21/6",
+      "time": "16:00",
+      "home": "Belgium",
+      "away": "Iran",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 19.1
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 16.4
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 11.1
+        }
+      ],
+      "one_x_two": {
+        "home": 71.3,
+        "draw": 22.0,
+        "away": 6.8
+      },
+      "expected_goals": {
+        "home": 1.72,
+        "away": 0.49
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 80.7,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 80.7,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 39,
+      "group": "H",
+      "date": "Dom 21/6",
+      "time": "19:00",
+      "home": "Uruguay",
+      "away": "Cape Verde",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 17.7
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 14.2
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 13.9
+        }
+      ],
+      "one_x_two": {
+        "home": 82.6,
+        "draw": 14.1,
+        "away": 3.3
+      },
+      "expected_goals": {
+        "home": 2.4,
+        "away": 0.41
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 40,
+      "group": "G",
+      "date": "Dom 21/6",
+      "time": "22:00",
+      "home": "New Zealand",
+      "away": "Egypt",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 14.2
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.9
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 11.9
+        }
+      ],
+      "one_x_two": {
+        "home": 20.1,
+        "draw": 28.6,
+        "away": 51.3
+      },
+      "expected_goals": {
+        "home": 0.85,
+        "away": 1.51
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 47.9,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 47.9,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 41,
+      "group": "J",
+      "date": "Lun 22/6",
+      "time": "14:00",
+      "home": "Argentina",
+      "away": "Austria",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 19.1
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 18.4
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 10.0
+        }
+      ],
+      "one_x_two": {
+        "home": 74.3,
+        "draw": 20.0,
+        "away": 5.6
+      },
+      "expected_goals": {
+        "home": 1.86,
+        "away": 0.46
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 80.7,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 80.7,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 42,
+      "group": "I",
+      "date": "Lun 22/6",
+      "time": "18:00",
+      "home": "France",
+      "away": "Iraq",
+      "best_pick": "4-0",
+      "top_scores": [
+        {
+          "score": "4-0",
+          "home_goals": 4,
+          "away_goals": 0,
+          "probability": 19.3
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 18.6
+        },
+        {
+          "score": "5-0",
+          "home_goals": 5,
+          "away_goals": 0,
+          "probability": 16.8
+        }
+      ],
+      "one_x_two": {
+        "home": 94.5,
+        "draw": 5.3,
+        "away": 0.2
+      },
+      "expected_goals": {
+        "home": 4.61,
+        "away": 0.18
+      },
+      "confidence": "high",
+      "source_consensus": "3-0",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 43,
+      "group": "I",
+      "date": "Lun 22/6",
+      "time": "21:00",
+      "home": "Norway",
+      "away": "Senegal",
+      "best_pick": "2-1",
+      "top_scores": [
+        {
+          "score": "2-1",
+          "home_goals": 2,
+          "away_goals": 1,
+          "probability": 10.8
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 10.5
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 7.1
+        }
+      ],
+      "one_x_two": {
+        "home": 50.5,
+        "draw": 24.3,
+        "away": 25.2
+      },
+      "expected_goals": {
+        "home": 1.95,
+        "away": 1.32
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 47.1,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 47.1,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 44,
+      "group": "J",
+      "date": "Mar 23/6",
+      "time": "00:00",
+      "home": "Jordan",
+      "away": "Algeria",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 19.7
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 15.7
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.4
+        }
+      ],
+      "one_x_two": {
+        "home": 16.1,
+        "draw": 27.4,
+        "away": 56.5
+      },
+      "expected_goals": {
+        "home": 0.59,
+        "away": 1.25
+      },
+      "confidence": "high",
+      "source_consensus": "1-2",
+      "source_agreement": 67.2,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 67.2,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 45,
+      "group": "K",
+      "date": "Mar 23/6",
+      "time": "14:00",
+      "home": "Portugal",
+      "away": "Uzbekistan",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 17.8
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 16.8
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 13.2
+        }
+      ],
+      "one_x_two": {
+        "home": 82.9,
+        "draw": 14.4,
+        "away": 2.6
+      },
+      "expected_goals": {
+        "home": 2.54,
+        "away": 0.38
+      },
+      "confidence": "high",
+      "source_consensus": "3-0",
+      "source_agreement": 80.7,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 80.7,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 46,
+      "group": "L",
+      "date": "Mar 23/6",
+      "time": "17:00",
+      "home": "England",
+      "away": "Ghana",
+      "best_pick": "3-0",
+      "top_scores": [
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 17.7
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 16.2
+        },
+        {
+          "score": "4-0",
+          "home_goals": 4,
+          "away_goals": 0,
+          "probability": 11.1
+        }
+      ],
+      "one_x_two": {
+        "home": 87.5,
+        "draw": 10.6,
+        "away": 1.9
+      },
+      "expected_goals": {
+        "home": 2.95,
+        "away": 0.38
+      },
+      "confidence": "high",
+      "source_consensus": "3-0",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 47,
+      "group": "L",
+      "date": "Mar 23/6",
+      "time": "20:00",
+      "home": "Panama",
+      "away": "Croatia",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 12.9
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.3
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 10.5
+        }
+      ],
+      "one_x_two": {
+        "home": 24.8,
+        "draw": 18.8,
+        "away": 56.5
+      },
+      "expected_goals": {
+        "home": 0.9,
+        "away": 1.54
+      },
+      "confidence": "high",
+      "source_consensus": "1-2",
+      "source_agreement": 67.2,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 67.2,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 48,
+      "group": "K",
+      "date": "Mar 23/6",
+      "time": "23:00",
+      "home": "Colombia",
+      "away": "DR Congo",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 20.7
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 17.4
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 12.5
+        }
+      ],
+      "one_x_two": {
+        "home": 81.0,
+        "draw": 11.6,
+        "away": 7.4
+      },
+      "expected_goals": {
+        "home": 2.14,
+        "away": 0.37
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 86.6,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 2,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 86.6,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 49,
+      "group": "B",
+      "date": "Mie 24/6",
+      "time": "16:00",
+      "home": "Switzerland",
+      "away": "Canada",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 14.0
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.8
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 10.8
+        }
+      ],
+      "one_x_two": {
+        "home": 55.9,
+        "draw": 27.0,
+        "away": 17.0
+      },
+      "expected_goals": {
+        "home": 1.54,
+        "away": 0.81
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 60.5,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 60.5,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 50,
+      "group": "B",
+      "date": "Mie 24/6",
+      "time": "16:00",
+      "home": "Bosnia and Herzegovina",
+      "away": "Qatar",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 21.7
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 19.7
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 13.3
+        }
+      ],
+      "one_x_two": {
+        "home": 55.6,
+        "draw": 23.5,
+        "away": 20.9
+      },
+      "expected_goals": {
+        "home": 1.1,
+        "away": 0.52
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 68.9,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 68.9,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 51,
+      "group": "C",
+      "date": "Mie 24/6",
+      "time": "19:00",
+      "home": "Scotland",
+      "away": "Brazil",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 21.4
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 20.6
+        },
+        {
+          "score": "0-3",
+          "home_goals": 0,
+          "away_goals": 3,
+          "probability": 14.7
+        }
+      ],
+      "one_x_two": {
+        "home": 4.9,
+        "draw": 16.3,
+        "away": 78.8
+      },
+      "expected_goals": {
+        "home": 0.27,
+        "away": 1.93
+      },
+      "confidence": "high",
+      "source_consensus": "0-3",
+      "source_agreement": 81.5,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 81.5,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 52,
+      "group": "C",
+      "date": "Mie 24/6",
+      "time": "19:00",
+      "home": "Morocco",
+      "away": "Haiti",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 23.7
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 21.4
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 14.1
+        }
+      ],
+      "one_x_two": {
+        "home": 82.4,
+        "draw": 11.8,
+        "away": 5.7
+      },
+      "expected_goals": {
+        "home": 1.99,
+        "away": 0.24
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 88.2,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 88.2,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 53,
+      "group": "A",
+      "date": "Mie 24/6",
+      "time": "22:00",
+      "home": "Czechia",
+      "away": "Mexico",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 17.2
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 13.2
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 12.9
+        }
+      ],
+      "one_x_two": {
+        "home": 17.4,
+        "draw": 26.8,
+        "away": 55.7
+      },
+      "expected_goals": {
+        "home": 0.72,
+        "away": 1.33
+      },
+      "confidence": "high",
+      "source_consensus": "1-2",
+      "source_agreement": 68.1,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 68.1,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 54,
+      "group": "A",
+      "date": "Mie 24/6",
+      "time": "22:00",
+      "home": "South Africa",
+      "away": "South Korea",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 15.0
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 12.5
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.4
+        }
+      ],
+      "one_x_two": {
+        "home": 21.9,
+        "draw": 19.9,
+        "away": 58.2
+      },
+      "expected_goals": {
+        "home": 0.78,
+        "away": 1.41
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 73.9,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 73.9,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 55,
+      "group": "E",
+      "date": "Jue 25/6",
+      "time": "17:00",
+      "home": "Ecuador",
+      "away": "Germany",
+      "best_pick": "1-1",
+      "top_scores": [
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 15.6
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 14.6
+        },
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 14.6
+        }
+      ],
+      "one_x_two": {
+        "home": 22.8,
+        "draw": 38.7,
+        "away": 38.5
+      },
+      "expected_goals": {
+        "home": 0.86,
+        "away": 1.12
+      },
+      "confidence": "high",
+      "source_consensus": "1-1",
+      "source_agreement": 51.3,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 51.3,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 56,
+      "group": "E",
+      "date": "Jue 25/6",
+      "time": "17:00",
+      "home": "Curacao",
+      "away": "Ivory Coast",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 15.1
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 14.5
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 11.8
+        }
+      ],
+      "one_x_two": {
+        "home": 14.8,
+        "draw": 21.7,
+        "away": 63.4
+      },
+      "expected_goals": {
+        "home": 0.7,
+        "away": 1.62
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 73.9,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 73.9,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 57,
+      "group": "F",
+      "date": "Jue 25/6",
+      "time": "19:00",
+      "home": "Japan",
+      "away": "Sweden",
+      "best_pick": "1-1",
+      "top_scores": [
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 15.6
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 15.3
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 14.9
+        }
+      ],
+      "one_x_two": {
+        "home": 40.0,
+        "draw": 35.8,
+        "away": 24.2
+      },
+      "expected_goals": {
+        "home": 1.09,
+        "away": 0.82
+      },
+      "confidence": "high",
+      "source_consensus": "1-1",
+      "source_agreement": 41.2,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 41.2,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 58,
+      "group": "F",
+      "date": "Jue 25/6",
+      "time": "19:00",
+      "home": "Tunisia",
+      "away": "Netherlands",
+      "best_pick": "0-2",
+      "top_scores": [
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 11.1
+        },
+        {
+          "score": "0-3",
+          "home_goals": 0,
+          "away_goals": 3,
+          "probability": 9.7
+        },
+        {
+          "score": "1-2",
+          "home_goals": 1,
+          "away_goals": 2,
+          "probability": 9.4
+        }
+      ],
+      "one_x_two": {
+        "home": 17.6,
+        "draw": 17.2,
+        "away": 65.2
+      },
+      "expected_goals": {
+        "home": 0.89,
+        "away": 2.35
+      },
+      "confidence": "high",
+      "source_consensus": "0-3",
+      "source_agreement": 55.5,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 55.5,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 59,
+      "group": "D",
+      "date": "Jue 25/6",
+      "time": "22:00",
+      "home": "Turkiye",
+      "away": "USA",
+      "best_pick": "1-1",
+      "top_scores": [
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 14.3
+        },
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 12.9
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 12.6
+        }
+      ],
+      "one_x_two": {
+        "home": 37.0,
+        "draw": 26.4,
+        "away": 36.5
+      },
+      "expected_goals": {
+        "home": 1.05,
+        "away": 1.07
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 43.7,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 43.7,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 60,
+      "group": "D",
+      "date": "Jue 25/6",
+      "time": "22:00",
+      "home": "Paraguay",
+      "away": "Australia",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 22.6
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 21.5
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.8
+        }
+      ],
+      "one_x_two": {
+        "home": 49.7,
+        "draw": 36.3,
+        "away": 14.0
+      },
+      "expected_goals": {
+        "home": 1.05,
+        "away": 0.48
+      },
+      "confidence": "high",
+      "source_consensus": "1-1",
+      "source_agreement": 53.8,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 53.8,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 61,
+      "group": "I",
+      "date": "Vie 26/6",
+      "time": "16:00",
+      "home": "Norway",
+      "away": "France",
+      "best_pick": "0-2",
+      "top_scores": [
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 11.4
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 10.9
+        },
+        {
+          "score": "1-2",
+          "home_goals": 1,
+          "away_goals": 2,
+          "probability": 10.1
+        }
+      ],
+      "one_x_two": {
+        "home": 18.2,
+        "draw": 25.3,
+        "away": 56.5
+      },
+      "expected_goals": {
+        "home": 1.0,
+        "away": 1.98
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 47.9,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 47.9,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 62,
+      "group": "I",
+      "date": "Vie 26/6",
+      "time": "16:00",
+      "home": "Senegal",
+      "away": "Iraq",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 16.1
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 11.9
+        },
+        {
+          "score": "3-0",
+          "home_goals": 3,
+          "away_goals": 0,
+          "probability": 11.1
+        }
+      ],
+      "one_x_two": {
+        "home": 74.9,
+        "draw": 12.0,
+        "away": 13.1
+      },
+      "expected_goals": {
+        "home": 2.3,
+        "away": 0.62
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 74.8,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 74.8,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 63,
+      "group": "H",
+      "date": "Vie 26/6",
+      "time": "20:00",
+      "home": "Cape Verde",
+      "away": "Saudi Arabia",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 18.0
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 14.4
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 13.9
+        }
+      ],
+      "one_x_two": {
+        "home": 53.0,
+        "draw": 33.6,
+        "away": 13.3
+      },
+      "expected_goals": {
+        "home": 1.29,
+        "away": 0.68
+      },
+      "confidence": "high",
+      "source_consensus": "1-1",
+      "source_agreement": 60.5,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 60.5,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 64,
+      "group": "H",
+      "date": "Vie 26/6",
+      "time": "21:00",
+      "home": "Uruguay",
+      "away": "Spain",
+      "best_pick": "1-2",
+      "top_scores": [
+        {
+          "score": "1-2",
+          "home_goals": 1,
+          "away_goals": 2,
+          "probability": 11.2
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 11.0
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 10.9
+        }
+      ],
+      "one_x_two": {
+        "home": 15.1,
+        "draw": 18.3,
+        "away": 66.6
+      },
+      "expected_goals": {
+        "home": 0.91,
+        "away": 1.96
+      },
+      "confidence": "high",
+      "source_consensus": "1-2",
+      "source_agreement": 79.8,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 79.8,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 65,
+      "group": "G",
+      "date": "Vie 26/6",
+      "time": "23:00",
+      "home": "Egypt",
+      "away": "Iran",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 26.4
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 24.5
+        },
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 11.5
+        }
+      ],
+      "one_x_two": {
+        "home": 53.3,
+        "draw": 33.4,
+        "away": 13.3
+      },
+      "expected_goals": {
+        "home": 1.03,
+        "away": 0.42
+      },
+      "confidence": "high",
+      "source_consensus": "1-0",
+      "source_agreement": 60.5,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 60.5,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 66,
+      "group": "G",
+      "date": "Vie 26/6",
+      "time": "23:00",
+      "home": "New Zealand",
+      "away": "Belgium",
+      "best_pick": "0-2",
+      "top_scores": [
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 12.7
+        },
+        {
+          "score": "0-3",
+          "home_goals": 0,
+          "away_goals": 3,
+          "probability": 12.1
+        },
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 10.5
+        }
+      ],
+      "one_x_two": {
+        "home": 13.3,
+        "draw": 11.6,
+        "away": 75.2
+      },
+      "expected_goals": {
+        "home": 0.69,
+        "away": 2.43
+      },
+      "confidence": "high",
+      "source_consensus": "0-3",
+      "source_agreement": 74.8,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 74.8,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 67,
+      "group": "L",
+      "date": "Sab 27/6",
+      "time": "18:00",
+      "home": "Panama",
+      "away": "England",
+      "best_pick": "0-2",
+      "top_scores": [
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 22.4
+        },
+        {
+          "score": "0-3",
+          "home_goals": 0,
+          "away_goals": 3,
+          "probability": 17.2
+        },
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 14.8
+        }
+      ],
+      "one_x_two": {
+        "home": 1.6,
+        "draw": 7.7,
+        "away": 90.7
+      },
+      "expected_goals": {
+        "home": 0.25,
+        "away": 2.56
+      },
+      "confidence": "high",
+      "source_consensus": "0-2",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 68,
+      "group": "L",
+      "date": "Sab 27/6",
+      "time": "18:00",
+      "home": "Croatia",
+      "away": "Ghana",
+      "best_pick": "2-0",
+      "top_scores": [
+        {
+          "score": "2-0",
+          "home_goals": 2,
+          "away_goals": 0,
+          "probability": 13.1
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 11.9
+        },
+        {
+          "score": "2-1",
+          "home_goals": 2,
+          "away_goals": 1,
+          "probability": 10.8
+        }
+      ],
+      "one_x_two": {
+        "home": 71.9,
+        "draw": 14.1,
+        "away": 13.9
+      },
+      "expected_goals": {
+        "home": 2.09,
+        "away": 0.74
+      },
+      "confidence": "high",
+      "source_consensus": "2-1",
+      "source_agreement": 80.7,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 80.7,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 69,
+      "group": "K",
+      "date": "Sab 27/6",
+      "time": "20:30",
+      "home": "Colombia",
+      "away": "Portugal",
+      "best_pick": "1-1",
+      "top_scores": [
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.5
+        },
+        {
+          "score": "2-1",
+          "home_goals": 2,
+          "away_goals": 1,
+          "probability": 8.8
+        },
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 8.6
+        }
+      ],
+      "one_x_two": {
+        "home": 39.7,
+        "draw": 27.4,
+        "away": 32.9
+      },
+      "expected_goals": {
+        "home": 1.57,
+        "away": 1.29
+      },
+      "confidence": "high",
+      "source_consensus": "1-2",
+      "source_agreement": 36.1,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 36.1,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 70,
+      "group": "K",
+      "date": "Sab 27/6",
+      "time": "20:30",
+      "home": "DR Congo",
+      "away": "Uzbekistan",
+      "best_pick": "1-0",
+      "top_scores": [
+        {
+          "score": "1-0",
+          "home_goals": 1,
+          "away_goals": 0,
+          "probability": 18.0
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 14.9
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 12.5
+        }
+      ],
+      "one_x_two": {
+        "home": 52.6,
+        "draw": 21.7,
+        "away": 25.7
+      },
+      "expected_goals": {
+        "home": 1.22,
+        "away": 0.69
+      },
+      "confidence": "high",
+      "source_consensus": "2-0",
+      "source_agreement": 61.3,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 61.3,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 71,
+      "group": "J",
+      "date": "Sab 27/6",
+      "time": "22:00",
+      "home": "Algeria",
+      "away": "Austria",
+      "best_pick": "0-1",
+      "top_scores": [
+        {
+          "score": "0-1",
+          "home_goals": 0,
+          "away_goals": 1,
+          "probability": 17.9
+        },
+        {
+          "score": "0-0",
+          "home_goals": 0,
+          "away_goals": 0,
+          "probability": 17.3
+        },
+        {
+          "score": "1-1",
+          "home_goals": 1,
+          "away_goals": 1,
+          "probability": 14.9
+        }
+      ],
+      "one_x_two": {
+        "home": 19.1,
+        "draw": 39.1,
+        "away": 41.8
+      },
+      "expected_goals": {
+        "home": 0.67,
+        "away": 1.1
+      },
+      "confidence": "high",
+      "source_consensus": "1-1",
+      "source_agreement": 50.4,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 50.4,
+        "model_version": "dynamic-prode-v1"
+      }
+    },
+    {
+      "id": 72,
+      "group": "J",
+      "date": "Sab 27/6",
+      "time": "22:00",
+      "home": "Jordan",
+      "away": "Argentina",
+      "best_pick": "0-3",
+      "top_scores": [
+        {
+          "score": "0-3",
+          "home_goals": 0,
+          "away_goals": 3,
+          "probability": 23.0
+        },
+        {
+          "score": "0-2",
+          "home_goals": 0,
+          "away_goals": 2,
+          "probability": 19.2
+        },
+        {
+          "score": "0-4",
+          "home_goals": 0,
+          "away_goals": 4,
+          "probability": 16.6
+        }
+      ],
+      "one_x_two": {
+        "home": 0.4,
+        "draw": 3.8,
+        "away": 95.8
+      },
+      "expected_goals": {
+        "home": 0.12,
+        "away": 3.22
+      },
+      "confidence": "high",
+      "source_consensus": "0-3",
+      "source_agreement": 100.0,
+      "freeze": {
+        "frozen": false,
+        "reason": "open_until_match_lock"
+      },
+      "played": false,
+      "played_result": null,
+      "motivation": {
+        "round": 3,
+        "home": "base",
+        "away": "base"
+      },
+      "standings_snapshot": {
+        "home": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        },
+        "away": {
+          "played": 0,
+          "points": 0,
+          "gf": 0,
+          "ga": 0,
+          "gd": 0
+        }
+      },
+      "movement": {
+        "direction": "flat",
+        "delta": 0.0
+      },
+      "signals": {
+        "market_source_proxy": 100.0,
+        "model_version": "dynamic-prode-v1"
+      }
+    }
+  ]
+}

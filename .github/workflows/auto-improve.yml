@@ -2,7 +2,7 @@ name: Auto Improve Prode Mundial 2026
 
 on:
   schedule:
-    - cron: '0 */12 * * *'  # Cada 12 horas
+    - cron: '0 */6 * * *'   # Cada 6 horas
   workflow_dispatch:         # También manual
 
 jobs:
@@ -53,6 +53,12 @@ jobs:
           echo "=== Agente UI-UX ==="
           python scripts/update_html.py || echo "HTML up to date"
         continue-on-error: true
+
+      - name: Run Dynamic Prediction Engine
+        run: |
+          echo "=== Motor Dinamico Top 3 ==="
+          python scripts/predictive_engine.py
+          python scripts/update_dynamic_dashboard.py
       
       - name: Validate HTML
         run: |
