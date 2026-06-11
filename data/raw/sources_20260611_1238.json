@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-06-11T12:38:00.522466",
+  "sources": {
+    "football_data": {
+      "status": "placeholder",
+      "matches": []
+    },
+    "injuries": {
+      "status": "placeholder",
+      "injuries": []
+    },
+    "mock": {
+      "status": "mock",
+      "note": "Using existing consensus"
+    }
+  }
+}

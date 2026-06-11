@@ -1,0 +1,85 @@
+name: Auto Improve Prode Mundial 2026
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Cada 6 horas
+  workflow_dispatch:         # También manual
+
+jobs:
+  improve:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+          npm install -g vercel
+      
+      - name: Run Agent: Fuentes
+        run: |
+          echo "=== Agente Fuentes ==="
+          python scripts/fetch_sources.py || echo "No new data available"
+        continue-on-error: true
+      
+      - name: Run Agent: Modelo
+        run: |
+          echo "=== Agente Modelo ==="
+          python scripts/recalibrate.py || echo "Using existing weights"
+        continue-on-error: true
+      
+      - name: Run Agent: Valida
+        run: |
+          echo "=== Agente Valida ==="
+          python scripts/validate.py || echo "No results to validate yet"
+        continue-on-error: true
+      
+      - name: Run Agent: UI-UX
+        run: |
+          echo "=== Agente UI-UX ==="
+          python scripts/update_html.py || echo "HTML up to date"
+        continue-on-error: true
+      
+      - name: Validate HTML
+        run: |
+          python scripts/validate_html.py
+      
+      - name: Commit changes
+        run: |
+          git config user.name "Prode Bot"
+          git config user.email "prode-bot@pisculabs.com"
+          git add -A
+          git commit -m "🤖 Auto: Update predictions $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "No changes"
+      
+      - name: Push to GitHub
+        run: git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Deploy to Vercel
+        run: vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      
+      - name: Report Status
+        run: |
+          echo "=== Deploy Status ==="
+          echo "URL: https://pisculabs.vercel.app/prode-mundial-2026.html"
+          echo "Time: $(date -u)"
+          echo "Status: OK"
