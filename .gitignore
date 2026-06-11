@@ -6,6 +6,9 @@ node_modules/
 __pycache__/
 *.pyc
 .superpowers/
+tmp_*.py
+.tmp-*.py
+data/raw/*.json
 
 .vercel
 .env*.local

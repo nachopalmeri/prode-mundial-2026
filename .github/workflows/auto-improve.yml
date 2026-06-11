@@ -2,8 +2,8 @@ name: Auto Improve Prode Mundial 2026
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # Cada 6 horas
-  workflow_dispatch:         # También manual
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   improve:
@@ -15,11 +15,6 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -27,13 +22,11 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4
+          pip install requests beautifulsoup4 lxml
           npm install -g vercel
       
-      - name: Run Agent: Fuentes
-        run: |
-          echo "=== Agente Fuentes ==="
-          python scripts/fetch_sources.py || echo "No new data available"
+      - name: Web Search Agents
+        run: python scripts/run_web_search.py || echo "Partial results - continuing"
         continue-on-error: true
       
       - name: Run Agent: Modelo
@@ -54,22 +47,31 @@ jobs:
           python scripts/update_html.py || echo "HTML up to date"
         continue-on-error: true
 
-      - name: Run Dynamic Prediction Engine
+      - name: Run Fixture-Aware Source Agents
         run: |
-          echo "=== Motor Dinamico Top 3 ==="
+          echo "=== Agentes de Fuentes Fixture-Aware ==="
+          python scripts/agent_rankings.py || true
+          python scripts/agent_injuries.py || true
+          python scripts/agent_h2h.py || true
+          python scripts/agent_polymarket.py || true
+          python scripts/agent_predictions.py || true
+          python scripts/agent_integrator.py "$(date -u '+%Y%m%d_%H%M')"
+
+      - name: Dynamic Prediction Engine
+        run: |
+          echo "=== Motor Dinamico ==="
           python scripts/predictive_engine.py
           python scripts/update_dynamic_dashboard.py
       
       - name: Validate HTML
-        run: |
-          python scripts/validate_html.py
+        run: python scripts/validate_html.py
       
       - name: Commit changes
         run: |
-          git config user.name "Prode Bot"
-          git config user.email "prode-bot@pisculabs.com"
+          git config user.name "nachopalmeri"
+          git config user.email "ipalmeri@uade.edu.ar"
           git add -A
-          git commit -m "🤖 Auto: Update predictions $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "No changes"
+          git commit -m "Auto: Update predictions $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "No changes"
       
       - name: Push to GitHub
         run: git push

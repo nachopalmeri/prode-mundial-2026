@@ -64,6 +64,20 @@ def weighted_outcomes(match: Match) -> dict[str, float]:
     return {key: value / TOTAL_WEIGHT for key, value in totals.items()}
 
 
+def _form_to_float(form_val: Any) -> float:
+    if isinstance(form_val, (int, float)):
+        return float(form_val)
+    if isinstance(form_val, list):
+        if not form_val:
+            return 0.0
+        scores = []
+        for m in form_val:
+            r = m.get("r", "D")
+            scores.append({"W": 1.0, "D": 0.5, "L": 0.0}.get(r, 0.5))
+        return sum(scores) / len(scores)
+    return 0.0
+
+
 def team_prior(team: str, priors: dict[str, Any]) -> dict[str, float]:
     teams = priors.get("teams", {})
     if team not in teams:
@@ -77,8 +91,21 @@ def team_prior(team: str, priors: dict[str, Any]) -> dict[str, float]:
             "form": 0.0,
             "style_tempo": 1.0,
             "injury_penalty": 0.0,
+            "h2h_bonus": 0.0,
         }
-    return {key: float(value) for key, value in teams[team].items()}
+    raw = teams[team]
+    return {
+        "elo": float(raw.get("elo", 1500)),
+        "fifa_rank": float(raw.get("fifa_rank", 48)),
+        "market_value_m": float(raw.get("market_value_m", 150)),
+        "home_boost": float(raw.get("home_boost", 0.0)),
+        "attack": float(raw.get("attack", 1.0)),
+        "defense": float(raw.get("defense", 1.0)),
+        "form": _form_to_float(raw.get("form", 0.0)),
+        "style_tempo": float(raw.get("style_tempo", 1.0)),
+        "injury_penalty": float(raw.get("injury_penalty", 0.0)),
+        "h2h_bonus": float(raw.get("h2h_bonus", 0.0)),
+    }
 
 
 def get_match_round(match_id: int) -> int:
@@ -170,7 +197,7 @@ def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[
     elo_delta = (home["elo"] - away["elo"]) / 400.0
     market_delta = math.log((home["market_value_m"] + 40.0) / (away["market_value_m"] + 40.0))
     rank_delta = (away["fifa_rank"] - home["fifa_rank"]) / 48.0
-    context_delta = home["home_boost"] - away["home_boost"] + home["form"] - away["form"]
+    context_delta = home["home_boost"] - away["home_boost"] + home["form"] - away["form"] + home["h2h_bonus"] - away["h2h_bonus"]
     injury_delta = away["injury_penalty"] - home["injury_penalty"]
 
     strength_delta = 0.34 * elo_delta + 0.14 * market_delta + 0.12 * rank_delta + 0.16 * context_delta + 0.18 * injury_delta

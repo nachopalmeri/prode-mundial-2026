@@ -86,6 +86,10 @@ def load_matches(html_path: Path = HTML_PATH) -> list[Match]:
     return [parse_match(raw_match) for raw_match in extract_raw_match_objects(html)]
 
 
+def load_teams(html_path: Path = HTML_PATH) -> list[str]:
+    return sorted({team for match in load_matches(html_path) for team in (match.home, match.away)})
+
+
 def consensus_score(predictions: dict[str, str]) -> str:
     score_weights: dict[str, float] = {}
     for key, score in predictions.items():
