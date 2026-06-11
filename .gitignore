@@ -14,3 +14,6 @@ data/raw/*.json
 .env*.local
 
 .vercel
+
+.zed/
+scripts/generate_source_predictions.py
