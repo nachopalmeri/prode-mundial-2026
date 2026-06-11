@@ -621,20 +621,18 @@ function updateScores(){
   saveRealScores();
 }
 
-async function saveResultsToServer(){
+function saveResultsToServer(){
   const btn=document.getElementById('btn-save');
   const fb=document.getElementById('save-feedback');
-  btn.disabled=true;btn.textContent='Guardando...';fb.textContent='';fb.className='save-feedback';
+  btn.disabled=true;fb.textContent='';fb.className='save-feedback';
   const results={};
   matches.forEach(x=>{const el=document.getElementById('real-'+x.id);if(el&&el.value)results[x.id]=el.value});
   if(Object.keys(results).length===0){fb.textContent='Sin resultados';fb.className='save-feedback error';btn.disabled=false;btn.textContent='Guardar';return}
-  try{
-    const r=await fetch('/api/submit-result',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({results})});
-    const d=await r.json();
-    if(d.success){fb.textContent='✔ '+Object.keys(results).length+' resultado(s)';fb.className='save-feedback success'}else{fb.textContent='✘ Error';fb.className='save-feedback error'}
-  }catch(e){fb.textContent='✘ Sin conexión';fb.className='save-feedback error'}
-  btn.disabled=false;btn.textContent='Guardar';
-  setTimeout(()=>{fb.textContent=''},5000);
+  const json=JSON.stringify(results);
+  const title='Resultados';
+  const url='https://github.com/nachopalmeri/prode-mundial-2026/issues/new?title='+encodeURIComponent(title)+'&body='+encodeURIComponent(json);
+  setTimeout(()=>{fb.textContent='✔ Abriendo GitHub...';btn.disabled=false;btn.textContent='Guardar';},500);
+  window.open(url,'_blank');
 }
 function syncMobileScore(el){
   const id=parseInt(el.dataset.match);
