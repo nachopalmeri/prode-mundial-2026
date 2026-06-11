@@ -7,11 +7,11 @@ import json
 import re
 
 # Leer predicciones de 1960tips
-with open('predictions_1960tips.json', 'r') as f:
+with open('../predictions_1960tips.json', 'r') as f:
     predictions_1960tips = json.load(f)
 
 # Leer el HTML actual
-with open('prode-mundial-2026.html', 'r', encoding='utf-8') as f:
+with open('../prode-mundial-2026.html', 'r', encoding='utf-8') as f:
     html = f.read()
 
 # Actualizar los datos de los partidos para incluir 1960tips (campo 't')
@@ -125,7 +125,7 @@ html = html.replace(
 )
 
 # Guardar HTML actualizado
-with open('prode-mundial-2026.html', 'w', encoding='utf-8') as f:
+with open('../prode-mundial-2026.html', 'w', encoding='utf-8') as f:
     f.write(html)
 
 print("HTML actualizado con 1960tips.com como fuente #7")

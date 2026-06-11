@@ -6,11 +6,11 @@ al HTML del Prode Mundial 2026.
 
 import json
 import re
+import os
 
 # Leer predicciones de Cup26
-import os
 script_dir = os.path.dirname(os.path.abspath(__file__))
-with open(os.path.join(script_dir, 'cup26-model', 'predictions_cup26.json'), 'r') as f:
+with open(os.path.join(script_dir, '..', 'cup26-model', 'predictions_cup26.json'), 'r') as f:
     predictions_cup26 = json.load(f)
 
 # Completar partidos faltantes basados en consenso de otras fuentes
@@ -22,7 +22,7 @@ missing = {
 predictions_cup26.update(missing)
 
 # Leer el HTML actual
-html_path = os.path.join(script_dir, 'prode-mundial-2026.html')
+html_path = os.path.join(script_dir, '..', 'prode-mundial-2026.html')
 with open(html_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
