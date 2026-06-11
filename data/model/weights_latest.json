@@ -1,0 +1,118 @@
+{
+  "weights": {
+    "c": 1.0,
+    "g": 1.0,
+    "f": 1.0,
+    "fs": 0.8,
+    "esp": 1.3,
+    "yh": 0.8,
+    "tips": 1.5,
+    "e": 1.5,
+    "cup": 1.4,
+    "pm": 1.6
+  },
+  "accuracies": {
+    "c": {
+      "label": "Cup26",
+      "exact_accuracy": 100.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 5.0,
+      "samples": 1,
+      "exact_hits": 1,
+      "winner_hits": 1,
+      "current_weight": 1.0
+    },
+    "g": {
+      "label": "Gamble",
+      "exact_accuracy": 100.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 5.0,
+      "samples": 1,
+      "exact_hits": 1,
+      "winner_hits": 1,
+      "current_weight": 1.0
+    },
+    "f": {
+      "label": "Futbolist",
+      "exact_accuracy": 100.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 5.0,
+      "samples": 1,
+      "exact_hits": 1,
+      "winner_hits": 1,
+      "current_weight": 1.0
+    },
+    "fs": {
+      "label": "F Score",
+      "exact_accuracy": 100.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 5.0,
+      "samples": 1,
+      "exact_hits": 1,
+      "winner_hits": 1,
+      "current_weight": 0.8
+    },
+    "esp": {
+      "label": "ESPN",
+      "exact_accuracy": 100.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 5.0,
+      "samples": 1,
+      "exact_hits": 1,
+      "winner_hits": 1,
+      "current_weight": 1.3
+    },
+    "yh": {
+      "label": "Yahoo",
+      "exact_accuracy": 0.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 3.5,
+      "samples": 1,
+      "exact_hits": 0,
+      "winner_hits": 1,
+      "current_weight": 0.8
+    },
+    "tips": {
+      "label": "1960 Tips",
+      "exact_accuracy": 100.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 5.0,
+      "samples": 1,
+      "exact_hits": 1,
+      "winner_hits": 1,
+      "current_weight": 1.5
+    },
+    "e": {
+      "label": "Elo",
+      "exact_accuracy": 100.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 5.0,
+      "samples": 1,
+      "exact_hits": 1,
+      "winner_hits": 1,
+      "current_weight": 1.5
+    },
+    "cup": {
+      "label": "Cup Predictor",
+      "exact_accuracy": 0.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 3.5,
+      "samples": 1,
+      "exact_hits": 0,
+      "winner_hits": 1,
+      "current_weight": 1.4
+    },
+    "pm": {
+      "label": "Polymarket",
+      "exact_accuracy": 0.0,
+      "winner_accuracy": 100.0,
+      "confidence_index": 3.5,
+      "samples": 1,
+      "exact_hits": 0,
+      "winner_hits": 1,
+      "current_weight": 1.6
+    }
+  },
+  "timestamp": "20260611_222308",
+  "generated_by": "recalibrate.py"
+}

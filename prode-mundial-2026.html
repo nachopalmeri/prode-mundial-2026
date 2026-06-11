@@ -293,6 +293,7 @@ tr:hover td{background:var(--card2)}
 <button class="tab-btn" onclick="showTab('final')">Predicción Final</button>
 <button class="tab-btn" onclick="showTab('prode')">Mi Prode</button>
 <button class="tab-btn" onclick="showTab('noticias')">Noticias y Lesiones</button>
+<button class="tab-btn" onclick="showTab('accuracy');renderAccuracy()">Accuracy IA</button>
 </div>
 
 <!-- TAB: DINAMICO -->
@@ -405,6 +406,41 @@ tr:hover td{background:var(--card2)}
 </div>
 </div>
 
+</div>
+
+<!-- TAB: ACCURACY -->
+<div id="tab-accuracy" class="section">
+<div class="card">
+<div class="card-header"><div><div class="card-title">Accuracy por Fuente IA</div><div class="card-sub">Aciertos exactos y de ganador vs resultados reales · Confianza = (0.3×Exacta + 0.7×Ganador) × factor de muestra</div></div></div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Fuente</th><th style="text-align:center">Exacta</th><th style="text-align:center">Ganador</th><th style="text-align:center">Confianza</th><th style="text-align:center">Muestras</th><th style="text-align:center">Peso Actual</th><th style="text-align:center">Estado</th>
+</tr>
+</thead>
+<tbody id="accuracy-tbody">
+<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text3)">Cargando datos de accuracy…</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="card" id="accuracy-summary-card" style="display:none">
+<div class="card-header"><div><div class="card-title">Resumen</div></div></div>
+<div style="padding:16px" id="accuracy-summary"></div>
+</div>
+
+<div class="card" id="accuracy-consensus-card" style="display:none">
+<div class="card-header"><div><div class="card-title">Consenso vs Fuentes</div></div></div>
+<div style="padding:16px" id="accuracy-consensus"></div>
+</div>
+
+<div style="padding:10px 0;font-size:.78rem;color:var(--text3);text-align:center">
+Los datos se actualizan cada 6h via CI/CD · Ingresá resultados con <code>python scripts/fetch_results.py</code>
+</div>
+</div>
+
 </div><!-- /container -->
 
 <script>
@@ -417,6 +453,62 @@ const TOTAL_WEIGHT = 11.9;
 const SOURCE_LABELS = {c:'Cascade',g:'ChatGPT',f:'Gemini',fs:'Fansided',esp:'ESPN',yh:'Yahoo',tips:'1960Tips',e:'ELO',cup:'Cup26',pm:'Polymarket'};
 const SOURCE_COLORS = {c:'pred-cascade',g:'pred-chatgpt',f:'pred-gemini',fs:'pred-fansided',esp:'pred-espn',yh:'pred-yahoo',tips:'pred-1960tips',e:'pred-elo',cup:'pred-cup26',pm:'pred-polymarket'};
 const SOURCE_KEYS = ['c','g','f','fs','esp','yh','tips','e','cup','pm'];
+/* BEGIN_ACCURACY_DATA */
+const ACCURACY_DATA = {"timestamp": "20260611_222308", "matches_analyzed": 1, "sources": {"c": {"label": "Cup26", "exact_accuracy": 100.0, "winner_accuracy": 100.0, "confidence_index": 5.0, "samples": 1, "exact_hits": 1, "winner_hits": 1, "current_weight": 1.0}, "g": {"label": "Gamble", "exact_accuracy": 100.0, "winner_accuracy": 100.0, "confidence_index": 5.0, "samples": 1, "exact_hits": 1, "winner_hits": 1, "current_weight": 1.0}, "f": {"label": "Futbolist", "exact_accuracy": 100.0, "winner_accuracy": 100.0, "confidence_index": 5.0, "samples": 1, "exact_hits": 1, "winner_hits": 1, "current_weight": 1.0}, "fs": {"label": "F Score", "exact_accuracy": 100.0, "winner_accuracy": 100.0, "confidence_index": 5.0, "samples": 1, "exact_hits": 1, "winner_hits": 1, "current_weight": 0.8}, "esp": {"label": "ESPN", "exact_accuracy": 100.0, "winner_accuracy": 100.0, "confidence_index": 5.0, "samples": 1, "exact_hits": 1, "winner_hits": 1, "current_weight": 1.3}, "yh": {"label": "Yahoo", "exact_accuracy": 0.0, "winner_accuracy": 100.0, "confidence_index": 3.5, "samples": 1, "exact_hits": 0, "winner_hits": 1, "current_weight": 0.8}, "tips": {"label": "1960 Tips", "exact_accuracy": 100.0, "winner_accuracy": 100.0, "confidence_index": 5.0, "samples": 1, "exact_hits": 1, "winner_hits": 1, "current_weight": 1.5}, "e": {"label": "Elo", "exact_accuracy": 100.0, "winner_accuracy": 100.0, "confidence_index": 5.0, "samples": 1, "exact_hits": 1, "winner_hits": 1, "current_weight": 1.5}, "cup": {"label": "Cup Predictor", "exact_accuracy": 0.0, "winner_accuracy": 100.0, "confidence_index": 3.5, "samples": 1, "exact_hits": 0, "winner_hits": 1, "current_weight": 1.4}, "pm": {"label": "Polymarket", "exact_accuracy": 0.0, "winner_accuracy": 100.0, "confidence_index": 3.5, "samples": 1, "exact_hits": 0, "winner_hits": 1, "current_weight": 1.6}}, "weights_before": {"c": 1.0, "g": 1.0, "f": 1.0, "fs": 0.8, "esp": 1.3, "yh": 0.8, "tips": 1.5, "e": 1.5, "cup": 1.4, "pm": 1.6}, "weights_after": {"c": 1.0, "g": 1.0, "f": 1.0, "fs": 0.8, "esp": 1.3, "yh": 0.8, "tips": 1.5, "e": 1.5, "cup": 1.4, "pm": 1.6}};
+/* END_ACCURACY_DATA */
+
+function renderAccuracy(){
+  const tbody = document.getElementById('accuracy-tbody');
+  const summaryCard = document.getElementById('accuracy-summary-card');
+  const consensusCard = document.getElementById('accuracy-consensus-card');
+  const summary = document.getElementById('accuracy-summary');
+  const consensusEl = document.getElementById('accuracy-consensus');
+
+  if(!ACCURACY_DATA || !ACCURACY_DATA.sources){
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text3)">Aún no hay datos de accuracy. Ingresá resultados con <code>python scripts/fetch_results.py</code> y corré <code>python scripts/recalibrate.py</code>.</td></tr>';
+    return;
+  }
+
+  const src = ACCURACY_DATA.sources;
+  let html = '';
+  for(const key of SOURCE_KEYS){
+    const s = src[key];
+    if(!s || s.samples === 0){
+      html += `<tr><td>${SOURCE_LABELS[key]||key}</td><td colspan="6" style="text-align:center;color:var(--text3)">Sin datos</td></tr>`;
+      continue;
+    }
+    const ci = s.confidence_index || 0;
+    let status, statusClass;
+    if(ci >= 30){ status = 'Buena'; statusClass = 'conf-high'; }
+    else if(ci >= 15){ status = 'Media'; statusClass = 'conf-medium'; }
+    else { status = 'Baja'; statusClass = 'conf-badge'; }
+    html += `<tr>
+      <td><strong>${s.label || SOURCE_LABELS[key]}</strong></td>
+      <td style="text-align:center">${s.exact_accuracy.toFixed(1)}%</td>
+      <td style="text-align:center">${s.winner_accuracy.toFixed(1)}%</td>
+      <td style="text-align:center">${ci.toFixed(1)}</td>
+      <td style="text-align:center">${s.samples}</td>
+      <td style="text-align:center">${(s.current_weight||1.0).toFixed(2)}</td>
+      <td style="text-align:center"><span class="conf-badge ${statusClass}">${status}</span></td>
+    </tr>`;
+  }
+  tbody.innerHTML = html;
+
+  // Summary
+  if(ACCURACY_DATA.matches_analyzed > 0){
+    summaryCard.style.display = 'block';
+    summary.innerHTML = `
+      <p>Partidos analizados: <strong>${ACCURACY_DATA.matches_analyzed}</strong></p>
+      <p style="margin-top:6px;color:var(--text2);font-size:.85rem">Última actualización: ${new Date(ACCURACY_DATA.timestamp).toLocaleString()}</p>`;
+  }
+
+  // Consensus comparison (if available from validation report)
+  if(ACCURACY_DATA.consensus){
+    consensusCard.style.display = 'block';
+    consensusEl.innerHTML = `
+      <p>Exacto: <strong>${ACCURACY_DATA.consensus.exact_accuracy}%</strong> · Ganador: <strong>${ACCURACY_DATA.consensus.winner_accuracy}%</strong></p>`;
+  }
+}
 
 function toggleTheme(){
   const html=document.documentElement;

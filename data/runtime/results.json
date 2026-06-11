@@ -1,6 +1,8 @@
 {
   "last_updated": "2026-06-11",
-  "results": {},
+  "results": {
+    "1": "2-0"
+  },
   "seasons": {
     "accuracy_tracking": {
       "current_season": 1,
@@ -30,8 +32,12 @@
     "result_entry": {
       "score": "home_goals-away_goals",
       "scorers": {
-        "home": ["player_name, ..."],
-        "away": ["player_name, ..."]
+        "home": [
+          "player_name, ..."
+        ],
+        "away": [
+          "player_name, ..."
+        ]
       },
       "status": "scheduled | live | finished",
       "minute": null,

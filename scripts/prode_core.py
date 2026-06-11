@@ -8,11 +8,15 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
+import json
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = PROJECT_ROOT / "prode-mundial-2026.html"
+WEIGHTS_PATH = PROJECT_ROOT / "data" / "model" / "weights_latest.json"
 
 SOURCE_KEYS = ("c", "g", "f", "fs", "esp", "yh", "tips", "e", "cup", "pm")
-SOURCE_WEIGHTS = {
+
+_DEFAULT_WEIGHTS = {
     "c": 1.0,
     "g": 1.0,
     "f": 1.0,
@@ -24,6 +28,18 @@ SOURCE_WEIGHTS = {
     "cup": 1.4,
     "pm": 1.6,
 }
+
+def load_weights() -> dict[str, float]:
+    if WEIGHTS_PATH.exists():
+        try:
+            data = json.loads(WEIGHTS_PATH.read_text(encoding="utf-8"))
+            weights = data.get("weights", data)
+            return {k: float(v) for k, v in weights.items() if k in SOURCE_KEYS}
+        except (json.JSONDecodeError, KeyError, ValueError):
+            pass
+    return dict(_DEFAULT_WEIGHTS)
+
+SOURCE_WEIGHTS = load_weights()
 TOTAL_WEIGHT = sum(SOURCE_WEIGHTS.values())
 SCORE_RE = re.compile(r"^\d+\s*-\s*\d+$")
 
