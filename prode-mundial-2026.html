@@ -29,7 +29,7 @@ h1{font-size:1.6rem;font-weight:800;letter-spacing:-0.02em}
 .card-title{font-size:1rem;font-weight:700;color:var(--text)}
 .card-sub{font-size:0.8rem;color:var(--text2)}
 .table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:0.82rem;min-width:2100px}
+table{width:100%;border-collapse:collapse;font-size:0.82rem;min-width:2300px}
 th{background:#f8fafc;padding:10px 8px;text-align:left;font-weight:700;color:var(--text2);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.03em;border-bottom:2px solid var(--border);white-space:nowrap}
 td{padding:10px 8px;border-bottom:1px solid var(--border);vertical-align:middle;white-space:nowrap}
 tr:hover td{background:#f8fafc}
@@ -111,6 +111,7 @@ tr:hover td{background:#f8fafc}
 <div class="score-item"><div class="score-label">1960Tips</div><div class="score-value" id="pts-1960tips">0</div></div>
 <div class="score-item"><div class="score-label">ELO Model</div><div class="score-value" id="pts-elo">0</div></div>
 <div class="score-item"><div class="score-label">Cup26 AI</div><div class="score-value" id="pts-cup26">0</div></div>
+<div class="score-item"><div class="score-label">Polymarket</div><div class="score-value" id="pts-polymarket">0</div></div>
 <div class="score-item"><div class="score-label">Consenso</div><div class="score-value" id="pts-consensus">0</div></div>
 <div class="score-item"><div class="score-label">Partidos</div><div class="score-value" id="pts-played">0/72</div></div>
 </div>
@@ -118,7 +119,7 @@ tr:hover td{background:#f8fafc}
 <div class="container">
 
 <div class="tabs">
-<button class="tab-btn active" onclick="showTab('comparativa')">Comparativa 9 IA</button>
+<button class="tab-btn active" onclick="showTab('comparativa')">Comparativa 10 IA</button>
 <button class="tab-btn" onclick="showTab('dashboard')">Dashboard</button>
 <button class="tab-btn" onclick="showTab('final')">Predicción Final</button>
 <button class="tab-btn" onclick="showTab('prode')">Mi Prode</button>
@@ -150,10 +151,11 @@ tr:hover td{background:#f8fafc}
 <th style="text-align:center">1960Tips</th>
 <th style="text-align:center">ELO Model</th>
 <th style="text-align:center">Cup26 AI</th>
+<th style="text-align:center">Polymarket</th>
 <th style="text-align:center">Consenso</th>
 <th style="text-align:center">Acuerdo</th>
 <th style="text-align:center">Real</th>
-<th style="text-align:center">Cas</th><th style="text-align:center">GPT</th><th style="text-align:center">Gem</th><th style="text-align:center">Fan</th><th style="text-align:center">Esp</th><th style="text-align:center">Yah</th><th style="text-align:center">1960</th><th style="text-align:center">ELO</th><th style="text-align:center">Cup26</th><th style="text-align:center">Con</th>
+<th style="text-align:center">Cas</th><th style="text-align:center">GPT</th><th style="text-align:center">Gem</th><th style="text-align:center">Fan</th><th style="text-align:center">Esp</th><th style="text-align:center">Yah</th><th style="text-align:center">1960</th><th style="text-align:center">ELO</th><th style="text-align:center">Cup26</th><th style="text-align:center">Polym</th><th style="text-align:center">Con</th>
 </tr>
 </thead>
 <tbody id="tbody-comparativa"></tbody>
@@ -166,7 +168,7 @@ tr:hover td{background:#f8fafc}
 <div class="dashboard-stats">
 <div class="stat-card"><div class="stat-value" id="stat-total">72</div><div class="stat-label">Partidos Totales</div></div>
 <div class="stat-card"><div class="stat-value" id="stat-played">0</div><div class="stat-label">Partidos Jugados</div></div>
-<div class="stat-card"><div class="stat-value" id="stat-sources">9</div><div class="stat-label">Fuentes IA</div></div>
+<div class="stat-card"><div class="stat-value" id="stat-sources">10</div><div class="stat-label">Fuentes IA</div></div>
 <div class="stat-card"><div class="stat-value" id="stat-confidence">—</div><div class="stat-label">Confianza Promedio</div></div>
 </div>
 <div class="chart-grid">
@@ -287,12 +289,12 @@ function evaluate(real,pred){
   const ro=outcome(r.ga,r.gb),po=outcome(p.ga,p.gb);
   return ro===po?'winner':'wrong';
 }
-const SOURCE_WEIGHTS={c:1.0,g:1.0,m:1.0,fs:0.8,esp:1.3,yh:0.8,t:1.5,e:1.5,cup:1.4};
-const TOTAL_WEIGHT=10.3;
+const SOURCE_WEIGHTS={c:1.0,g:1.0,m:1.0,fs:0.8,esp:1.3,yh:0.8,t:1.5,e:1.5,cup:1.4,pm:1.6};
+const TOTAL_WEIGHT=11.9;
 
-function getConsensus(c,g,m,fs,esp,yh,t,e,cup){
-  const scores=[c,g,m,fs,esp,yh,t,e,cup];
-  const keys=['c','g','m','fs','esp','yh','t','e','cup'];
+function getConsensus(c,g,m,fs,esp,yh,t,e,cup,pm){
+  const scores=[c,g,m,fs,esp,yh,t,e,cup,pm];
+  const keys=['c','g','m','fs','esp','yh','t','e','cup','pm'];
   const parsed=scores.map(parseScore);
 
   // 1. Verificar marcador exacto con mayoría ponderada
@@ -302,8 +304,8 @@ function getConsensus(c,g,m,fs,esp,yh,t,e,cup){
   Object.keys(scoreWeights).forEach(s=>{
     if(scoreWeights[s]>bestWeight){bestWeight=scoreWeights[s];bestScore=s;}
   });
-  if(bestWeight>=TOTAL_WEIGHT*0.40)return{score:bestScore,agree:Math.round(bestWeight),confidence:'high'};
-  if(bestWeight>=TOTAL_WEIGHT*0.25)return{score:bestScore,agree:Math.round(bestWeight),confidence:'medium'};
+  if(bestWeight>=TOTAL_WEIGHT*0.38)return{score:bestScore,agree:Math.round(bestWeight),confidence:'high'};
+  if(bestWeight>=TOTAL_WEIGHT*0.22)return{score:bestScore,agree:Math.round(bestWeight),confidence:'medium'};
 
   // 2. Promedio ponderado de goles
   let sumA=0,sumB=0;
@@ -329,19 +331,19 @@ function getMatchPoints(id,source){
   if(!real)return 0;
   const m=matches.find(x=>x.id===id);
   if(!m)return 0;
-  const pred=source==='c'?m.c:source==='g'?m.g:source==='m'?m.f:source==='fs'?m.fs:source==='esp'?m.esp:source==='yh'?m.yh:source==='t'?m.t:source==='e'?m.e:source==='cup'?m.cup:getConsensus(m.c,m.g,m.f,m.fs,m.esp,m.yh,m.t,m.e,m.cup).score;
+  const pred=source==='c'?m.c:source==='g'?m.g:source==='m'?m.f:source==='fs'?m.fs:source==='esp'?m.esp:source==='yh'?m.yh:source==='t'?m.t:source==='e'?m.e:source==='cup'?m.cup:source==='pm'?m.pm:getConsensus(m.c,m.g,m.f,m.fs,m.esp,m.yh,m.t,m.e,m.cup,m.pm).score;
   const e=evaluate(real,pred);
   return e==='exact'?3:e==='winner'?1:0;
 }
 function updateScores(){
-  let c=0,g=0,m=0,fs=0,esp=0,yh=0,t=0,e=0,cup=0,f=0,played=0;
+  let c=0,g=0,m=0,fs=0,esp=0,yh=0,t=0,e=0,cup=0,pm=0,f=0,played=0;
   matches.forEach(x=>{
     const real=document.getElementById('real-'+x.id)?.value;
     if(real){played++;
-      const pc=getMatchPoints(x.id,'c'),pg=getMatchPoints(x.id,'g'),pm=getMatchPoints(x.id,'m'),pfs=getMatchPoints(x.id,'fs'),pesp=getMatchPoints(x.id,'esp'),pyh=getMatchPoints(x.id,'yh'),pt=getMatchPoints(x.id,'t'),pe=getMatchPoints(x.id,'e'),pcup=getMatchPoints(x.id,'cup'),pf=getMatchPoints(x.id,'f');
-      c+=pc; g+=pg; m+=pm; fs+=pfs; esp+=pesp; yh+=pyh; t+=pt; e+=pe; cup+=pcup; f+=pf;
+      const pc=getMatchPoints(x.id,'c'),pg=getMatchPoints(x.id,'g'),pmatch=getMatchPoints(x.id,'m'),pfs=getMatchPoints(x.id,'fs'),pesp=getMatchPoints(x.id,'esp'),pyh=getMatchPoints(x.id,'yh'),pt=getMatchPoints(x.id,'t'),pe=getMatchPoints(x.id,'e'),pcup=getMatchPoints(x.id,'cup'),ppm=getMatchPoints(x.id,'pm'),pf=getMatchPoints(x.id,'f');
+      c+=pc; g+=pg; m+=pmatch; fs+=pfs; esp+=pesp; yh+=pyh; t+=pt; e+=pe; cup+=pcup; pm+=ppm; f+=pf;
       const setPts=(id,v)=>{const e=document.getElementById(id);if(!e)return;const cls=v===3?'pts-exact':v===1?'pts-winner':'pts-wrong';e.innerHTML='<span class="pts '+cls+'">'+(v||'—')+'</span>';};
-      setPts('pts-c-'+x.id,pc);setPts('pts-g-'+x.id,pg);setPts('pts-m-'+x.id,pm);setPts('pts-fs-'+x.id,pfs);setPts('pts-esp-'+x.id,pesp);setPts('pts-yh-'+x.id,pyh);setPts('pts-t-'+x.id,pt);setPts('pts-e-'+x.id,pe);setPts('pts-cup-'+x.id,pcup);setPts('pts-f-'+x.id,pf);
+      setPts('pts-c-'+x.id,pc);setPts('pts-g-'+x.id,pg);setPts('pts-m-'+x.id,pmatch);setPts('pts-fs-'+x.id,pfs);setPts('pts-esp-'+x.id,pesp);setPts('pts-yh-'+x.id,pyh);setPts('pts-t-'+x.id,pt);setPts('pts-e-'+x.id,pe);setPts('pts-cup-'+x.id,pcup);setPts('pts-pm-'+x.id,ppm);setPts('pts-f-'+x.id,pf);
     }
   });
   document.getElementById('pts-cascade').textContent=c;
@@ -353,13 +355,14 @@ function updateScores(){
   document.getElementById('pts-1960tips').textContent=t;
   document.getElementById('pts-elo').textContent=e;
   document.getElementById('pts-cup26').textContent=cup;
+  document.getElementById('pts-polymarket').textContent=pm;
   document.getElementById('pts-consensus').textContent=f;
   document.getElementById('pts-played').textContent=played+'/72';
   saveRealScores();
 }
 function saveRealScores(){const d={};matches.forEach(x=>{const v=document.getElementById('real-'+x.id)?.value;if(v)d[x.id]=v});localStorage.setItem('prode2026_real',JSON.stringify(d))}
 function loadRealScores(){try{const d=JSON.parse(localStorage.getItem('prode2026_real')||'{}');Object.keys(d).forEach(id=>{const el=document.getElementById('real-'+id);if(el){el.value=d[id];updateInputStyle(el,id)}});updateScores()}catch(e){}}
-function updateInputStyle(el,id){const m=matches.find(x=>x.id===id);if(!m||!el.value)return;const e=evaluate(el.value,getConsensus(m.c,m.g,m.f,m.fs,m.esp,m.yh,m.t,m.e,m.cup).score);el.className='input-real '+(e==='exact'?'correct-exact':e==='winner'?'correct-winner':'wrong');}
+function updateInputStyle(el,id){const m=matches.find(x=>x.id===id);if(!m||!el.value)return;const e=evaluate(el.value,getConsensus(m.c,m.g,m.f,m.fs,m.esp,m.yh,m.t,m.e,m.cup,m.pm).score);el.className='input-real '+(e==='exact'?'correct-exact':e==='winner'?'correct-winner':'wrong');}
 
 function getFecha(id){return id<=24?1:id<=48?2:3}
 function getFechaClass(id){const f=getFecha(id);return f===1?'fecha-1-row':f===2?'fecha-2-row':'fecha-3-row'}
@@ -376,7 +379,7 @@ function filterFecha(f){
 function renderComparativa(){
   const tb=document.getElementById('tbody-comparativa');
   matches.forEach(x=>{
-    const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup);
+    const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup,x.pm);
     const agreeClass=con.agree>=6?'agree-3':con.agree>=4?'agree-2':'agree-1';
     const confColor=getConfidenceColor(con.confidence);
     const confLabel=getConfidenceLabel(con.confidence);
@@ -394,7 +397,7 @@ function renderComparativa(){
     <td style="text-align:center"><span class="pred pred-cascade" style="background:#f3e8ff;color:#7c3aed">${x.t}</span></td>
     <td style="text-align:center"><span class="pred pred-chatgpt" style="background:#ccfbf1;color:#0f766e">${x.e}</span></td>
     <td style="text-align:center"><span class="pred pred-consensus">${con.score}</span><br><span style="font-size:0.65rem;color:${confColor};font-weight:700">${confLabel}</span></td>
-    <td style="text-align:center" class="${agreeClass}">${con.agree}/9</td>
+    <td style="text-align:center" class="${agreeClass}">${con.agree}/10</td>
     <td style="text-align:center"><input type="text" class="input-real" id="real-${x.id}" placeholder="X-Y" maxlength="5" oninput="updateInputStyle(this,${x.id});updateScores()"></td>
     <td style="text-align:center" id="pts-c-${x.id}"></td>
     <td style="text-align:center" id="pts-g-${x.id}"></td>
@@ -405,19 +408,20 @@ function renderComparativa(){
     <td style="text-align:center" id="pts-t-${x.id}"></td>
     <td style="text-align:center" id="pts-e-${x.id}"></td>
     <td style="text-align:center" id="pts-cup-${x.id}"></td>
+    <td style="text-align:center" id="pts-pm-${x.id}"></td>
     <td style="text-align:center" id="pts-f-${x.id}"></td>`;
     tb.appendChild(tr);
   });
 }
 function renderFinal(){
   const tb=document.getElementById('tbody-final');
-  matches.forEach(x=>{const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup);const tr=document.createElement('tr');tr.innerHTML=`<td>${x.d}</td><td>${x.t}</td><td><strong>${x.a}</strong> <span class="vs">vs</span> <strong>${x.b}</strong></td><td><span class="pred pred-consensus">${con.score}</span></td><td class="date-cell">${x.ch}</td>`;tb.appendChild(tr);});
+  matches.forEach(x=>{const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup,x.pm);const tr=document.createElement('tr');tr.innerHTML=`<td>${x.d}</td><td>${x.t}</td><td><strong>${x.a}</strong> <span class="vs">vs</span> <strong>${x.b}</strong></td><td><span class="pred pred-consensus">${con.score}</span></td><td class="date-cell">${x.ch}</td>`;tb.appendChild(tr);});
 }
 function renderProde(){
   const tb=document.getElementById('tbody-prode');
-  matches.forEach(x=>{const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup);const tr=document.createElement('tr');tr.innerHTML=`<td>${x.id}</td><td class="date-cell">${x.d}</td><td class="date-cell">${x.t}</td><td class="match-cell">${x.a} <span class="vs">vs</span> ${x.b}</td><td><span class="pred pred-consensus">${con.score}</span></td><td><input type="text" class="input-real" id="real-p-${x.id}" placeholder="X-Y" maxlength="5" oninput="updateProde(this,${x.id})"></td><td id="pts-p-${x.id}"><span class="pts">—</span></td>`;tb.appendChild(tr);});
+  matches.forEach(x=>{const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup,x.pm);const tr=document.createElement('tr');tr.innerHTML=`<td>${x.id}</td><td class="date-cell">${x.d}</td><td class="date-cell">${x.t}</td><td class="match-cell">${x.a} <span class="vs">vs</span> ${x.b}</td><td><span class="pred pred-consensus">${con.score}</span></td><td><input type="text" class="input-real" id="real-p-${x.id}" placeholder="X-Y" maxlength="5" oninput="updateProde(this,${x.id})"></td><td id="pts-p-${x.id}"><span class="pts">—</span></td>`;tb.appendChild(tr);});
 }
-function updateProde(el,id){const m=matches.find(x=>x.id===id);if(!m||!el.value){document.getElementById('pts-p-'+id).innerHTML='<span class="pts">—</span>';saveProde();return;}const e=evaluate(el.value,getConsensus(m.c,m.g,m.f,m.fs,m.esp,m.yh,m.t,m.e,m.cup).score);const pts=e==='exact'?3:e==='winner'?1:0;const cls=e==='exact'?'pts-exact':e==='winner'?'pts-winner':'pts-wrong';document.getElementById('pts-p-'+id).innerHTML='<span class="pts '+cls+'">'+pts+'</span>';el.className='input-real '+(e==='exact'?'correct-exact':e==='winner'?'correct-winner':'wrong');saveProde();}
+function updateProde(el,id){const m=matches.find(x=>x.id===id);if(!m||!el.value){document.getElementById('pts-p-'+id).innerHTML='<span class="pts">—</span>';saveProde();return;}const e=evaluate(el.value,getConsensus(m.c,m.g,m.f,m.fs,m.esp,m.yh,m.t,m.e,m.cup,m.pm).score);const pts=e==='exact'?3:e==='winner'?1:0;const cls=e==='exact'?'pts-exact':e==='winner'?'pts-winner':'pts-wrong';document.getElementById('pts-p-'+id).innerHTML='<span class="pts '+cls+'">'+pts+'</span>';el.className='input-real '+(e==='exact'?'correct-exact':e==='winner'?'correct-winner':'wrong');saveProde();}
 function saveProde(){const d={};matches.forEach(x=>{const v=document.getElementById('real-p-'+x.id)?.value;if(v)d[x.id]=v});localStorage.setItem('prode2026_prode',JSON.stringify(d));}
 function loadProde(){try{const d=JSON.parse(localStorage.getItem('prode2026_prode')||'{}');Object.keys(d).forEach(id=>{const el=document.getElementById('real-p-'+id);if(el){el.value=d[id];updateProde(el,parseInt(id))}})}catch(e){}}
 
@@ -427,22 +431,22 @@ function renderDashboard(){
   const groupGoals=groups.map(gr=>{
     const m=matches.filter(x=>x.gr===gr);
     let sum=0;
-    m.forEach(x=>{const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup);const p=parseScore(con.score);sum+=p.ga+p.gb;});
+    m.forEach(x=>{const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup,x.pm);const p=parseScore(con.score);sum+=p.ga+p.gb;});
     return m.length?Math.round((sum/m.length)*10)/10:0;
   });
   new Chart(document.getElementById('chart-groups'),{type:'bar',data:{labels:groups,datasets:[{label:'Goles esperados por partido',data:groupGoals,backgroundColor:'#2563eb',borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
 
   // 2. Distribución de confianza
   const confDist={high:0,medium:0,low:0};
-  matches.forEach(x=>{const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup);confDist[con.confidence]++});
+  matches.forEach(x=>{const con=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup,x.pm);confDist[con.confidence]++});
   new Chart(document.getElementById('chart-confidence'),{type:'doughnut',data:{labels:['Alta','Media','Baja'],datasets:[{data:[confDist.high,confDist.medium,confDist.low],backgroundColor:['#16a34a','#ca8a04','#dc2626'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}});
 
   // 3. Pesos de fuentes
-  new Chart(document.getElementById('chart-weights'),{type:'bar',data:{labels:['Cascade','ChatGPT','Gemini','Fansided','ESPN','Yahoo','1960Tips','ELO','Cup26'],datasets:[{label:'Peso en consenso',data:[1.0,1.0,1.0,0.8,1.3,0.8,1.5,1.5,1.4],backgroundColor:['#dbeafe','#f3e8ff','#d1fae5','#fef3c7','#fce7f3','#e0e7ff','#f3e8ff','#ccfbf1','#ffedd5'],borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
+  new Chart(document.getElementById('chart-weights'),{type:'bar',data:{labels:['Cascade','ChatGPT','Gemini','Fansided','ESPN','Yahoo','1960Tips','ELO','Cup26','Polymkt'],datasets:[{label:'Peso en consenso',data:[1.0,1.0,1.0,0.8,1.3,0.8,1.5,1.5,1.4,1.6],backgroundColor:['#dbeafe','#f3e8ff','#d1fae5','#fef3c7','#fce7f3','#e0e7ff','#f3e8ff','#ccfbf1','#ffedd5','#dbeafe'],borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
 
   // 4. Top 10 partidos de alta confianza
   const tb=document.getElementById('tbody-top-confidence');
-  const sorted=matches.map(x=>({...x,con:getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup)})).sort((a,b)=>b.con.agree-a.con.agree).slice(0,10);
+  const sorted=matches.map(x=>({...x,con:getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup,x.pm)})).sort((a,b)=>b.con.agree-a.con.agree).slice(0,10);
   sorted.forEach((x,i)=>{
     const tr=document.createElement('tr');
     tr.innerHTML=`<td>${i+1}</td><td>${x.a} vs ${x.b}</td><td><span class="pred pred-consensus">${x.con.score}</span></td><td style="color:${getConfidenceColor(x.con.confidence)};font-weight:700">${getConfidenceLabel(x.con.confidence)}</td><td>${x.con.agree}/8</td>`;
@@ -450,83 +454,83 @@ function renderDashboard(){
   });
 
   // 5. Confianza promedio
-  const avgConf=Math.round((matches.reduce((a,x)=>{const c=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup);return a+(c.confidence==='high'?3:c.confidence==='medium'?2:1)},0)/matches.length)*10)/10;
+  const avgConf=Math.round((matches.reduce((a,x)=>{const c=getConsensus(x.c,x.g,x.f,x.fs,x.esp,x.yh,x.t,x.e,x.cup,x.pm);return a+(c.confidence==='high'?3:c.confidence==='medium'?2:1)},0)/matches.length)*10)/10;
   document.getElementById('stat-confidence').textContent=avgConf+'/3';
 }
 
 matches.push(
-{id:1,gr:"A",d:"Jue 11/6",t:"15:00",a:"Mexico",b:"South Africa",c:"2-0",g:"2-0",f:"2-0",fs:"2-0",esp:"2-0",yh:"2-1",t:"2-0",e:"2-0",cup:"2-1",ch:"FOX / Tubi"},
-{id:2,gr:"A",d:"Jue 11/6",t:"23:00",a:"South Korea",b:"Czechia",c:"2-1",g:"1-1",f:"1-1",fs:"1-1",esp:"1-1",yh:"1-0",t:"0-1",e:"1-1",cup:"2-1",ch:"FS1"},
-{id:3,gr:"B",d:"Vie 12/6",t:"16:00",a:"Canada",b:"Bosnia and Herzegovina",c:"2-0",g:"2-1",f:"1-0",fs:"2-0",esp:"2-1",yh:"1-0",t:"2-0",e:"2-0",cup:"2-1",ch:"FOX"},
-{id:4,gr:"D",d:"Vie 12/6",t:"22:00",a:"USA",b:"Paraguay",c:"2-1",g:"2-0",f:"2-0",fs:"2-1",esp:"2-0",yh:"2-0",t:"0-1",e:"2-1",cup:"2-1",ch:"FOX / Tubi"},
-{id:5,gr:"B",d:"Sab 13/6",t:"16:00",a:"Qatar",b:"Switzerland",c:"0-2",g:"0-2",f:"0-2",fs:"0-2",esp:"0-2",yh:"0-2",t:"0-2",e:"0-2",cup:"1-2",ch:"FOX"},
-{id:6,gr:"C",d:"Sab 13/6",t:"19:00",a:"Brazil",b:"Morocco",c:"2-0",g:"0-1",f:"2-1",fs:"2-0",esp:"0-1",yh:"0-0",t:"0-0",e:"2-1",cup:"2-1",ch:"FOX"},
-{id:7,gr:"C",d:"Sab 13/6",t:"22:00",a:"Haiti",b:"Scotland",c:"0-2",g:"1-2",f:"0-2",fs:"0-2",esp:"1-2",yh:"1-3",t:"0-2",e:"0-2",cup:"1-2",ch:"FOX"},
-{id:8,gr:"D",d:"Dom 14/6",t:"01:00",a:"Australia",b:"Turkiye",c:"0-2",g:"1-1",f:"1-1",fs:"0-2",esp:"1-1",yh:"0-2",t:"0-2",e:"0-2",cup:"1-1",ch:"FOX"},
-{id:9,gr:"E",d:"Dom 14/6",t:"14:00",a:"Germany",b:"Curacao",c:"4-0",g:"5-0",f:"3-0",fs:"4-0",esp:"5-0",yh:"3-0",t:"2-0",e:"4-0",cup:"3-0",ch:"FOX"},
-{id:10,gr:"F",d:"Dom 14/6",t:"17:00",a:"Netherlands",b:"Japan",c:"2-1",g:"2-1",f:"2-1",fs:"2-1",esp:"2-1",yh:"1-2",t:"1-2",e:"2-1",cup:"2-1",ch:"FOX"},
-{id:11,gr:"E",d:"Dom 14/6",t:"20:00",a:"Ivory Coast",b:"Ecuador",c:"1-2",g:"0-1",f:"0-2",fs:"1-2",esp:"0-1",yh:"0-1",t:"0-2",e:"1-2",cup:"1-2",ch:"FS1"},
-{id:12,gr:"F",d:"Dom 14/6",t:"23:00",a:"Sweden",b:"Tunisia",c:"2-0",g:"2-1",f:"2-0",fs:"2-0",esp:"2-1",yh:"2-1",t:"2-0",e:"2-0",cup:"2-0",ch:"FS1"},
-{id:13,gr:"H",d:"Lun 15/6",t:"13:00",a:"Spain",b:"Cape Verde",c:"3-0",g:"5-0",f:"3-0",fs:"3-0",esp:"5-0",yh:"5-0",t:"5-0",e:"3-0",cup:"3-0",ch:"FOX"},
-{id:14,gr:"G",d:"Lun 15/6",t:"19:00",a:"Belgium",b:"Egypt",c:"2-1",g:"2-1",f:"2-0",fs:"2-1",esp:"2-1",yh:"3-0",t:"3-0",e:"2-1",cup:"2-1",ch:"FOX"},
-{id:15,gr:"H",d:"Lun 15/6",t:"19:00",a:"Saudi Arabia",b:"Uruguay",c:"0-2",g:"0-2",f:"0-2",fs:"0-2",esp:"0-2",yh:"0-2",t:"0-2",e:"0-2",cup:"1-2",ch:"FS1"},
-{id:16,gr:"G",d:"Lun 15/6",t:"22:00",a:"Iran",b:"New Zealand",c:"2-0",g:"1-1",f:"2-0",fs:"2-0",esp:"1-1",yh:"1-0",t:"1-0",e:"2-0",cup:"2-1",ch:"FS1"},
-{id:17,gr:"I",d:"Mar 16/6",t:"16:00",a:"France",b:"Senegal",c:"3-1",g:"2-1",f:"2-0",fs:"3-1",esp:"2-1",yh:"4-1",t:"2-1",e:"3-1",cup:"2-1",ch:"FOX"},
-{id:18,gr:"I",d:"Mar 16/6",t:"19:00",a:"Iraq",b:"Norway",c:"0-3",g:"0-2",f:"0-2",fs:"0-3",esp:"0-2",yh:"0-5",t:"0-5",e:"0-3",cup:"1-2",ch:"FOX"},
-{id:19,gr:"J",d:"Mar 16/6",t:"22:00",a:"Argentina",b:"Algeria",c:"2-0",g:"1-0",f:"2-0",fs:"2-0",esp:"1-0",yh:"1-0",t:"1-0",e:"2-0",cup:"2-0",ch:"FOX"},
-{id:20,gr:"J",d:"Mie 17/6",t:"01:00",a:"Austria",b:"Jordan",c:"3-0",g:"3-1",f:"2-0",fs:"3-0",esp:"3-1",yh:"1-0",t:"1-0",e:"3-0",cup:"2-1",ch:"FS1"},
-{id:21,gr:"K",d:"Mie 17/6",t:"14:00",a:"Portugal",b:"DR Congo",c:"3-0",g:"1-2",f:"3-0",fs:"3-0",esp:"1-2",yh:"3-1",t:"3-1",e:"2-0",cup:"2-0",ch:"FOX"},
-{id:22,gr:"L",d:"Mie 17/6",t:"17:00",a:"England",b:"Croatia",c:"2-1",g:"1-1",f:"1-0",fs:"2-1",esp:"1-1",yh:"1-1",t:"1-1",e:"2-1",cup:"0-2",ch:"FOX"},
-{id:23,gr:"L",d:"Mie 17/6",t:"20:00",a:"Ghana",b:"Panama",c:"2-1",g:"1-2",f:"2-0",fs:"2-1",esp:"1-2",yh:"1-2",t:"1-2",e:"2-1",cup:"2-1",ch:"FS1"},
-{id:24,gr:"K",d:"Mie 17/6",t:"23:00",a:"Uzbekistan",b:"Colombia",c:"0-2",g:"1-2",f:"0-2",fs:"0-2",esp:"1-2",yh:"1-1",t:"1-1",e:"0-2",cup:"1-1",ch:"FS1"},
-{id:25,gr:"A",d:"Jue 18/6",t:"13:00",a:"Czechia",b:"South Africa",c:"2-0",g:"1-0",f:"2-0",fs:"2-0",esp:"1-0",yh:"1-1",t:"1-0",e:"2-0",cup:"1-1",ch:"FOX"},
-{id:26,gr:"B",d:"Jue 18/6",t:"16:00",a:"Switzerland",b:"Bosnia and Herzegovina",c:"2-0",g:"2-1",f:"2-0",fs:"2-0",esp:"2-1",yh:"1-0",t:"1-0",e:"2-0",cup:"2-1",ch:"FOX"},
-{id:27,gr:"B",d:"Jue 18/6",t:"19:00",a:"Canada",b:"Qatar",c:"2-0",g:"1-0",f:"2-0",fs:"2-0",esp:"1-0",yh:"2-0",t:"2-0",e:"2-0",cup:"2-1",ch:"FS1"},
-{id:28,gr:"A",d:"Jue 18/6",t:"22:00",a:"Mexico",b:"South Korea",c:"1-1",g:"1-1",f:"1-1",fs:"1-1",esp:"1-1",yh:"2-1",t:"2-0",e:"2-1",cup:"2-1",ch:"FOX"},
-{id:29,gr:"D",d:"Vie 19/6",t:"16:00",a:"USA",b:"Australia",c:"2-0",g:"1-1",f:"2-1",fs:"2-0",esp:"1-1",yh:"2-1",t:"2-0",e:"2-0",cup:"1-1",ch:"FOX"},
-{id:30,gr:"C",d:"Vie 19/6",t:"19:00",a:"Scotland",b:"Morocco",c:"0-2",g:"0-0",f:"0-1",fs:"0-2",esp:"0-0",yh:"1-2",t:"1-0",e:"0-2",cup:"1-2",ch:"FOX"},
-{id:31,gr:"C",d:"Vie 19/6",t:"22:00",a:"Brazil",b:"Haiti",c:"3-0",g:"3-0",f:"4-0",fs:"3-0",esp:"3-0",yh:"5-1",t:"5-1",e:"3-0",cup:"3-0",ch:"FOX"},
-{id:32,gr:"D",d:"Sab 20/6",t:"01:00",a:"Turkiye",b:"Paraguay",c:"2-1",g:"1-2",f:"1-0",fs:"2-1",esp:"1-2",yh:"2-0",t:"2-0",e:"2-1",cup:"2-1",ch:"FS1"},
-{id:33,gr:"F",d:"Sab 20/6",t:"14:00",a:"Netherlands",b:"Sweden",c:"2-1",g:"2-0",f:"1-1",fs:"2-1",esp:"2-0",yh:"1-2",t:"1-2",e:"2-1",cup:"2-1",ch:"FOX"},
-{id:34,gr:"E",d:"Sab 20/6",t:"17:00",a:"Germany",b:"Ivory Coast",c:"2-1",g:"3-1",f:"2-0",fs:"2-1",esp:"3-1",yh:"2-1",t:"2-1",e:"2-1",cup:"2-1",ch:"FOX"},
-{id:35,gr:"E",d:"Sab 20/6",t:"20:00",a:"Ecuador",b:"Curacao",c:"3-0",g:"2-0",f:"2-0",fs:"3-0",esp:"2-0",yh:"2-0",t:"2-0",e:"3-0",cup:"1-1",ch:"FS1"},
-{id:36,gr:"F",d:"Dom 21/6",t:"01:00",a:"Tunisia",b:"Japan",c:"0-2",g:"0-1",f:"0-1",fs:"0-2",esp:"0-1",yh:"0-1",t:"0-1",e:"0-2",cup:"1-2",ch:"FS1"},
-{id:37,gr:"H",d:"Dom 21/6",t:"13:00",a:"Spain",b:"Saudi Arabia",c:"3-0",g:"3-0",f:"3-0",fs:"3-0",esp:"3-0",yh:"4-0",t:"4-0",e:"3-0",cup:"2-0",ch:"FOX"},
-{id:38,gr:"G",d:"Dom 21/6",t:"16:00",a:"Belgium",b:"Iran",c:"2-0",g:"1-1",f:"2-1",fs:"2-0",esp:"1-1",yh:"2-1",t:"2-1",e:"2-0",cup:"2-1",ch:"FS1"},
-{id:39,gr:"H",d:"Dom 21/6",t:"19:00",a:"Uruguay",b:"Cape Verde",c:"2-0",g:"3-0",f:"3-0",fs:"2-0",esp:"3-0",yh:"2-1",t:"2-1",e:"2-0",cup:"2-1",ch:"FS1"},
-{id:40,gr:"G",d:"Dom 21/6",t:"22:00",a:"New Zealand",b:"Egypt",c:"0-2",g:"2-1",f:"0-1",fs:"0-2",esp:"2-1",yh:"2-2",t:"2-2",e:"0-2",cup:"1-2",ch:"FS1"},
-{id:41,gr:"J",d:"Lun 22/6",t:"14:00",a:"Argentina",b:"Austria",c:"2-0",g:"2-2",f:"2-1",fs:"2-0",esp:"2-2",yh:"2-0",t:"2-0",e:"2-0",cup:"2-0",ch:"FOX"},
-{id:42,gr:"I",d:"Lun 22/6",t:"18:00",a:"France",b:"Iraq",c:"4-0",g:"3-0",f:"3-0",fs:"4-0",esp:"3-0",yh:"6-0",t:"6-0",e:"4-0",cup:"3-0",ch:"FOX"},
-{id:43,gr:"I",d:"Lun 22/6",t:"21:00",a:"Norway",b:"Senegal",c:"2-1",g:"1-1",f:"1-1",fs:"2-1",esp:"1-1",yh:"3-2",t:"3-2",e:"2-1",cup:"1-2",ch:"FOX"},
-{id:44,gr:"J",d:"Mar 23/6",t:"00:00",a:"Jordan",b:"Algeria",c:"0-2",g:"1-1",f:"0-1",fs:"0-2",esp:"1-1",yh:"1-2",t:"1-2",e:"0-2",cup:"1-2",ch:"FS1"},
-{id:45,gr:"K",d:"Mar 23/6",t:"14:00",a:"Portugal",b:"Uzbekistan",c:"3-0",g:"2-1",f:"3-0",fs:"3-0",esp:"2-1",yh:"1-1",t:"1-1",e:"3-0",cup:"2-0",ch:"FOX"},
-{id:46,gr:"L",d:"Mar 23/6",t:"17:00",a:"England",b:"Ghana",c:"3-1",g:"3-0",f:"2-0",fs:"3-1",esp:"3-0",yh:"3-0",t:"3-0",e:"3-1",cup:"2-0",ch:"FOX"},
-{id:47,gr:"L",d:"Mar 23/6",t:"20:00",a:"Panama",b:"Croatia",c:"1-2",g:"1-2",f:"0-2",fs:"1-2",esp:"1-2",yh:"2-0",t:"2-0",e:"1-2",cup:"1-2",ch:"FS1"},
-{id:48,gr:"K",d:"Mar 23/6",t:"23:00",a:"Colombia",b:"DR Congo",c:"2-0",g:"1-0",f:"2-0",fs:"2-0",esp:"1-0",yh:"4-0",t:"4-0",e:"2-0",cup:"2-1",ch:"FS1"},
-{id:49,gr:"B",d:"Mie 24/6",t:"16:00",a:"Switzerland",b:"Canada",c:"2-1",g:"1-1",f:"1-1",fs:"2-1",esp:"1-1",yh:"2-1",t:"2-1",e:"2-1",cup:"1-2",ch:"FOX"},
-{id:50,gr:"B",d:"Mie 24/6",t:"16:00",a:"Bosnia and Herzegovina",b:"Qatar",c:"2-0",g:"0-1",f:"1-0",fs:"2-0",esp:"0-1",yh:"2-1",t:"2-0",e:"2-0",cup:"1-2",ch:"FS1"},
-{id:51,gr:"C",d:"Mie 24/6",t:"19:00",a:"Scotland",b:"Brazil",c:"0-3",g:"0-1",f:"0-2",fs:"0-3",esp:"0-1",yh:"2-1",t:"0-3",e:"0-3",cup:"1-1",ch:"FOX"},
-{id:52,gr:"C",d:"Mie 24/6",t:"19:00",a:"Morocco",b:"Haiti",c:"2-0",g:"2-0",f:"3-0",fs:"2-0",esp:"2-0",yh:"2-0",t:"2-0",e:"2-0",cup:"1-2",ch:"FS1"},
-{id:53,gr:"A",d:"Mie 24/6",t:"22:00",a:"Czechia",b:"Mexico",c:"1-2",g:"1-2",f:"0-1",fs:"1-2",esp:"1-2",yh:"1-1",t:"0-1",e:"1-2",cup:"2-1",ch:"FOX"},
-{id:54,gr:"A",d:"Mie 24/6",t:"22:00",a:"South Africa",b:"South Korea",c:"0-2",g:"1-2",f:"0-2",fs:"0-2",esp:"1-2",yh:"1-3",t:"1-0",e:"0-2",cup:"1-2",ch:"FS1"},
-{id:55,gr:"E",d:"Jue 25/6",t:"17:00",a:"Ecuador",b:"Germany",c:"1-2",g:"1-1",f:"1-2",fs:"1-2",esp:"1-1",yh:"0-0",t:"1-0",e:"1-2",cup:"1-1",ch:"FOX"},
-{id:56,gr:"E",d:"Jue 25/6",t:"17:00",a:"Curacao",b:"Ivory Coast",c:"0-2",g:"1-3",f:"0-2",fs:"0-2",esp:"1-3",yh:"1-2",t:"1-1",e:"0-2",cup:"1-2",ch:"FS1"},
-{id:57,gr:"F",d:"Jue 25/6",t:"19:00",a:"Japan",b:"Sweden",c:"2-1",g:"1-1",f:"1-1",fs:"2-1",esp:"1-1",yh:"0-1",t:"0-1",e:"2-1",cup:"2-0",ch:"FS1"},
-{id:58,gr:"F",d:"Jue 25/6",t:"19:00",a:"Tunisia",b:"Netherlands",c:"0-3",g:"0-3",f:"0-2",fs:"0-3",esp:"0-3",yh:"4-2",t:"4-2",e:"0-3",cup:"2-0",ch:"FOX"},
-{id:59,gr:"D",d:"Jue 25/6",t:"22:00",a:"Turkiye",b:"USA",c:"1-2",g:"2-1",f:"1-1",fs:"1-2",esp:"2-1",yh:"2-2",t:"1-0",e:"1-2",cup:"2-1",ch:"FOX"},
-{id:60,gr:"D",d:"Jue 25/6",t:"22:00",a:"Paraguay",b:"Australia",c:"2-0",g:"1-1",f:"0-1",fs:"2-0",esp:"1-1",yh:"1-1",t:"1-0",e:"2-0",cup:"1-1",ch:"FS1"},
-{id:61,gr:"I",d:"Vie 26/6",t:"16:00",a:"Norway",b:"France",c:"0-2",g:"1-1",f:"0-2",fs:"0-2",esp:"1-1",yh:"3-2",t:"3-2",e:"0-2",cup:"1-2",ch:"FOX"},
-{id:62,gr:"I",d:"Vie 26/6",t:"16:00",a:"Senegal",b:"Iraq",c:"2-0",g:"3-1",f:"2-0",fs:"2-0",esp:"3-1",yh:"3-0",t:"3-0",e:"2-0",cup:"1-2",ch:"FS1"},
-{id:63,gr:"H",d:"Vie 26/6",t:"20:00",a:"Cape Verde",b:"Saudi Arabia",c:"1-0",g:"2-1",f:"1-1",fs:"1-0",esp:"2-1",yh:"1-1",t:"1-1",e:"1-0",cup:"1-1",ch:"FS1"},
-{id:64,gr:"H",d:"Vie 26/6",t:"21:00",a:"Uruguay",b:"Spain",c:"1-2",g:"1-2",f:"1-1",fs:"1-2",esp:"1-2",yh:"1-3",t:"1-3",e:"1-2",cup:"2-1",ch:"FOX"},
-{id:65,gr:"G",d:"Vie 26/6",t:"23:00",a:"Egypt",b:"Iran",c:"1-0",g:"0-0",f:"0-0",fs:"1-0",esp:"0-0",yh:"1-0",t:"1-0",e:"1-0",cup:"1-2",ch:"FS1"},
-{id:66,gr:"G",d:"Vie 26/6",t:"23:00",a:"New Zealand",b:"Belgium",c:"0-3",g:"1-2",f:"0-3",fs:"0-3",esp:"1-2",yh:"1-3",t:"1-3",e:"0-3",cup:"2-1",ch:"FOX"},
-{id:67,gr:"L",d:"Sab 27/6",t:"18:00",a:"Panama",b:"England",c:"0-3",g:"0-2",f:"0-3",fs:"0-3",esp:"0-2",yh:"1-2",t:"1-2",e:"0-3",cup:"0-2",ch:"FOX"},
-{id:68,gr:"L",d:"Sab 27/6",t:"18:00",a:"Croatia",b:"Ghana",c:"2-1",g:"2-0",f:"2-1",fs:"2-1",esp:"2-0",yh:"1-2",t:"1-2",e:"2-1",cup:"2-1",ch:"FS1"},
-{id:69,gr:"K",d:"Sab 27/6",t:"20:30",a:"Colombia",b:"Portugal",c:"1-2",g:"2-0",f:"1-2",fs:"1-2",esp:"2-0",yh:"3-3",t:"3-3",e:"1-2",cup:"1-1",ch:"FOX"},
-{id:70,gr:"K",d:"Sab 27/6",t:"20:30",a:"DR Congo",b:"Uzbekistan",c:"2-0",g:"1-2",f:"1-0",fs:"2-0",esp:"1-2",yh:"0-1",t:"0-1",e:"2-0",cup:"2-1",ch:"FS1"},
-{id:71,gr:"J",d:"Sab 27/6",t:"22:00",a:"Algeria",b:"Austria",c:"0-2",g:"1-1",f:"0-2",fs:"0-2",esp:"1-1",yh:"1-1",t:"1-1",e:"0-2",cup:"1-1",ch:"FS1"},
-{id:72,gr:"J",d:"Sab 27/6",t:"22:00",a:"Jordan",b:"Argentina",c:"0-3",g:"0-3",f:"0-3",fs:"0-3",esp:"0-3",yh:"0-4",t:"0-4",e:"0-3",cup:"0-3",ch:"FOX"}
+{id:1,gr:"A",d:"Jue 11/6",t:"15:00",a:"Mexico",b:"South Africa",c:"2-0",g:"2-0",f:"2-0",fs:"2-0",esp:"2-0",yh:"2-1",t:"2-0",e:"2-0",cup:"2-1",pm:"1-0",ch:"FOX / Tubi"},
+{id:2,gr:"A",d:"Jue 11/6",t:"23:00",a:"South Korea",b:"Czechia",c:"2-1",g:"1-1",f:"1-1",fs:"1-1",esp:"1-1",yh:"1-0",t:"0-1",e:"1-1",cup:"2-1",pm:"1-1",ch:"FS1"},
+{id:3,gr:"B",d:"Vie 12/6",t:"16:00",a:"Canada",b:"Bosnia and Herzegovina",c:"2-0",g:"2-1",f:"1-0",fs:"2-0",esp:"2-1",yh:"1-0",t:"2-0",e:"2-0",cup:"2-1",pm:"1-1",ch:"FOX"},
+{id:4,gr:"D",d:"Vie 12/6",t:"22:00",a:"USA",b:"Paraguay",c:"2-1",g:"2-0",f:"2-0",fs:"2-1",esp:"2-0",yh:"2-0",t:"0-1",e:"2-1",cup:"2-1",pm:"1-0",ch:"FOX / Tubi"},
+{id:5,gr:"B",d:"Sab 13/6",t:"16:00",a:"Qatar",b:"Switzerland",c:"0-2",g:"0-2",f:"0-2",fs:"0-2",esp:"0-2",yh:"0-2",t:"0-2",e:"0-2",cup:"1-2",pm:"1-1",ch:"FOX"},
+{id:6,gr:"C",d:"Sab 13/6",t:"19:00",a:"Brazil",b:"Morocco",c:"2-0",g:"0-1",f:"2-1",fs:"2-0",esp:"0-1",yh:"0-0",t:"0-0",e:"2-1",cup:"2-1",pm:"0-2",ch:"FOX"},
+{id:7,gr:"C",d:"Sab 13/6",t:"22:00",a:"Haiti",b:"Scotland",c:"0-2",g:"1-2",f:"0-2",fs:"0-2",esp:"1-2",yh:"1-3",t:"0-2",e:"0-2",cup:"1-2",pm:"1-0",ch:"FOX"},
+{id:8,gr:"D",d:"Dom 14/6",t:"01:00",a:"Australia",b:"Turkiye",c:"0-2",g:"1-1",f:"1-1",fs:"0-2",esp:"1-1",yh:"0-2",t:"0-2",e:"0-2",cup:"1-1",pm:"2-0",ch:"FOX"},
+{id:9,gr:"E",d:"Dom 14/6",t:"14:00",a:"Germany",b:"Curacao",c:"4-0",g:"5-0",f:"3-0",fs:"4-0",esp:"5-0",yh:"3-0",t:"2-0",e:"4-0",cup:"3-0",pm:"1-1",ch:"FOX"},
+{id:10,gr:"F",d:"Dom 14/6",t:"17:00",a:"Netherlands",b:"Japan",c:"2-1",g:"2-1",f:"2-1",fs:"2-1",esp:"2-1",yh:"1-2",t:"1-2",e:"2-1",cup:"2-1",pm:"1-0",ch:"FOX"},
+{id:11,gr:"E",d:"Dom 14/6",t:"20:00",a:"Ivory Coast",b:"Ecuador",c:"1-2",g:"0-1",f:"0-2",fs:"1-2",esp:"0-1",yh:"0-1",t:"0-2",e:"1-2",cup:"1-2",pm:"0-2",ch:"FS1"},
+{id:12,gr:"F",d:"Dom 14/6",t:"23:00",a:"Sweden",b:"Tunisia",c:"2-0",g:"2-1",f:"2-0",fs:"2-0",esp:"2-1",yh:"2-1",t:"2-0",e:"2-0",cup:"2-0",pm:"3-0",ch:"FS1"},
+{id:13,gr:"H",d:"Lun 15/6",t:"13:00",a:"Spain",b:"Cape Verde",c:"3-0",g:"5-0",f:"3-0",fs:"3-0",esp:"5-0",yh:"5-0",t:"5-0",e:"3-0",cup:"3-0",pm:"1-0",ch:"FOX"},
+{id:14,gr:"G",d:"Lun 15/6",t:"19:00",a:"Belgium",b:"Egypt",c:"2-1",g:"2-1",f:"2-0",fs:"2-1",esp:"2-1",yh:"3-0",t:"3-0",e:"2-1",cup:"2-1",pm:"0-1",ch:"FOX"},
+{id:15,gr:"H",d:"Lun 15/6",t:"19:00",a:"Saudi Arabia",b:"Uruguay",c:"0-2",g:"0-2",f:"0-2",fs:"0-2",esp:"0-2",yh:"0-2",t:"0-2",e:"0-2",cup:"1-2",pm:"1-0",ch:"FS1"},
+{id:16,gr:"G",d:"Lun 15/6",t:"22:00",a:"Iran",b:"New Zealand",c:"2-0",g:"1-1",f:"2-0",fs:"2-0",esp:"1-1",yh:"1-0",t:"1-0",e:"2-0",cup:"2-1",pm:"1-1",ch:"FS1"},
+{id:17,gr:"I",d:"Mar 16/6",t:"16:00",a:"France",b:"Senegal",c:"3-1",g:"2-1",f:"2-0",fs:"3-1",esp:"2-1",yh:"4-1",t:"2-1",e:"3-1",cup:"2-1",pm:"3-0",ch:"FOX"},
+{id:18,gr:"I",d:"Mar 16/6",t:"19:00",a:"Iraq",b:"Norway",c:"0-3",g:"0-2",f:"0-2",fs:"0-3",esp:"0-2",yh:"0-5",t:"0-5",e:"0-3",cup:"1-2",pm:"1-1",ch:"FOX"},
+{id:19,gr:"J",d:"Mar 16/6",t:"22:00",a:"Argentina",b:"Algeria",c:"2-0",g:"1-0",f:"2-0",fs:"2-0",esp:"1-0",yh:"1-0",t:"1-0",e:"2-0",cup:"2-0",pm:"1-0",ch:"FOX"},
+{id:20,gr:"J",d:"Mie 17/6",t:"01:00",a:"Austria",b:"Jordan",c:"3-0",g:"3-1",f:"2-0",fs:"3-0",esp:"3-1",yh:"1-0",t:"1-0",e:"3-0",cup:"2-1",pm:"1-1",ch:"FS1"},
+{id:21,gr:"K",d:"Mie 17/6",t:"14:00",a:"Portugal",b:"DR Congo",c:"3-0",g:"1-2",f:"3-0",fs:"3-0",esp:"1-2",yh:"3-1",t:"3-1",e:"2-0",cup:"2-0",pm:"1-1",ch:"FOX"},
+{id:22,gr:"L",d:"Mie 17/6",t:"17:00",a:"England",b:"Croatia",c:"2-1",g:"1-1",f:"1-0",fs:"2-1",esp:"1-1",yh:"1-1",t:"1-1",e:"2-1",cup:"0-2",pm:"0-1",ch:"FOX"},
+{id:23,gr:"L",d:"Mie 17/6",t:"20:00",a:"Ghana",b:"Panama",c:"2-1",g:"1-2",f:"2-0",fs:"2-1",esp:"1-2",yh:"1-2",t:"1-2",e:"2-1",cup:"2-1",pm:"1-0",ch:"FS1"},
+{id:24,gr:"K",d:"Mie 17/6",t:"23:00",a:"Uzbekistan",b:"Colombia",c:"0-2",g:"1-2",f:"0-2",fs:"0-2",esp:"1-2",yh:"1-1",t:"1-1",e:"0-2",cup:"1-1",pm:"1-1",ch:"FS1"},
+{id:25,gr:"A",d:"Jue 18/6",t:"13:00",a:"Czechia",b:"South Africa",c:"2-0",g:"1-0",f:"2-0",fs:"2-0",esp:"1-0",yh:"1-1",t:"1-0",e:"2-0",cup:"1-1",pm:"0-1",ch:"FOX"},
+{id:26,gr:"B",d:"Jue 18/6",t:"16:00",a:"Switzerland",b:"Bosnia and Herzegovina",c:"2-0",g:"2-1",f:"2-0",fs:"2-0",esp:"2-1",yh:"1-0",t:"1-0",e:"2-0",cup:"2-1",pm:"3-0",ch:"FOX"},
+{id:27,gr:"B",d:"Jue 18/6",t:"19:00",a:"Canada",b:"Qatar",c:"2-0",g:"1-0",f:"2-0",fs:"2-0",esp:"1-0",yh:"2-0",t:"2-0",e:"2-0",cup:"2-1",pm:"0-2",ch:"FS1"},
+{id:28,gr:"A",d:"Jue 18/6",t:"22:00",a:"Mexico",b:"South Korea",c:"1-1",g:"1-1",f:"1-1",fs:"1-1",esp:"1-1",yh:"2-1",t:"2-0",e:"2-1",cup:"2-1",pm:"4-1",ch:"FOX"},
+{id:29,gr:"D",d:"Vie 19/6",t:"16:00",a:"USA",b:"Australia",c:"2-0",g:"1-1",f:"2-1",fs:"2-0",esp:"1-1",yh:"2-1",t:"2-0",e:"2-0",cup:"1-1",pm:"2-0",ch:"FOX"},
+{id:30,gr:"C",d:"Vie 19/6",t:"19:00",a:"Scotland",b:"Morocco",c:"0-2",g:"0-0",f:"0-1",fs:"0-2",esp:"0-0",yh:"1-2",t:"1-0",e:"0-2",cup:"1-2",pm:"0-2",ch:"FOX"},
+{id:31,gr:"C",d:"Vie 19/6",t:"22:00",a:"Brazil",b:"Haiti",c:"3-0",g:"3-0",f:"4-0",fs:"3-0",esp:"3-0",yh:"5-1",t:"5-1",e:"3-0",cup:"3-0",pm:"3-0",ch:"FOX"},
+{id:32,gr:"D",d:"Sab 20/6",t:"01:00",a:"Turkiye",b:"Paraguay",c:"2-1",g:"1-2",f:"1-0",fs:"2-1",esp:"1-2",yh:"2-0",t:"2-0",e:"2-1",cup:"2-1",pm:"2-0",ch:"FS1"},
+{id:33,gr:"F",d:"Sab 20/6",t:"14:00",a:"Netherlands",b:"Sweden",c:"2-1",g:"2-0",f:"1-1",fs:"2-1",esp:"2-0",yh:"1-2",t:"1-2",e:"2-1",cup:"2-1",pm:"2-0",ch:"FOX"},
+{id:34,gr:"E",d:"Sab 20/6",t:"17:00",a:"Germany",b:"Ivory Coast",c:"2-1",g:"3-1",f:"2-0",fs:"2-1",esp:"3-1",yh:"2-1",t:"2-1",e:"2-1",cup:"2-1",pm:"2-0",ch:"FOX"},
+{id:35,gr:"E",d:"Sab 20/6",t:"20:00",a:"Ecuador",b:"Curacao",c:"3-0",g:"2-0",f:"2-0",fs:"3-0",esp:"2-0",yh:"2-0",t:"2-0",e:"3-0",cup:"1-1",pm:"0-2",ch:"FS1"},
+{id:36,gr:"F",d:"Dom 21/6",t:"01:00",a:"Tunisia",b:"Japan",c:"0-2",g:"0-1",f:"0-1",fs:"0-2",esp:"0-1",yh:"0-1",t:"0-1",e:"0-2",cup:"1-2",pm:"1-1",ch:"FS1"},
+{id:37,gr:"H",d:"Dom 21/6",t:"13:00",a:"Spain",b:"Saudi Arabia",c:"3-0",g:"3-0",f:"3-0",fs:"3-0",esp:"3-0",yh:"4-0",t:"4-0",e:"3-0",cup:"2-0",pm:"1-1",ch:"FOX"},
+{id:38,gr:"G",d:"Dom 21/6",t:"16:00",a:"Belgium",b:"Iran",c:"2-0",g:"1-1",f:"2-1",fs:"2-0",esp:"1-1",yh:"2-1",t:"2-1",e:"2-0",cup:"2-1",pm:"1-0",ch:"FS1"},
+{id:39,gr:"H",d:"Dom 21/6",t:"19:00",a:"Uruguay",b:"Cape Verde",c:"2-0",g:"3-0",f:"3-0",fs:"2-0",esp:"3-0",yh:"2-1",t:"2-1",e:"2-0",cup:"2-1",pm:"1-1",ch:"FS1"},
+{id:40,gr:"G",d:"Dom 21/6",t:"22:00",a:"New Zealand",b:"Egypt",c:"0-2",g:"2-1",f:"0-1",fs:"0-2",esp:"2-1",yh:"2-2",t:"2-2",e:"0-2",cup:"1-2",pm:"1-1",ch:"FS1"},
+{id:41,gr:"J",d:"Lun 22/6",t:"14:00",a:"Argentina",b:"Austria",c:"2-0",g:"2-2",f:"2-1",fs:"2-0",esp:"2-2",yh:"2-0",t:"2-0",e:"2-0",cup:"2-0",pm:"1-0",ch:"FOX"},
+{id:42,gr:"I",d:"Lun 22/6",t:"18:00",a:"France",b:"Iraq",c:"4-0",g:"3-0",f:"3-0",fs:"4-0",esp:"3-0",yh:"6-0",t:"6-0",e:"4-0",cup:"3-0",pm:"1-1",ch:"FOX"},
+{id:43,gr:"I",d:"Lun 22/6",t:"21:00",a:"Norway",b:"Senegal",c:"2-1",g:"1-1",f:"1-1",fs:"2-1",esp:"1-1",yh:"3-2",t:"3-2",e:"2-1",cup:"1-2",pm:"0-2",ch:"FOX"},
+{id:44,gr:"J",d:"Mar 23/6",t:"00:00",a:"Jordan",b:"Algeria",c:"0-2",g:"1-1",f:"0-1",fs:"0-2",esp:"1-1",yh:"1-2",t:"1-2",e:"0-2",cup:"1-2",pm:"1-0",ch:"FS1"},
+{id:45,gr:"K",d:"Mar 23/6",t:"14:00",a:"Portugal",b:"Uzbekistan",c:"3-0",g:"2-1",f:"3-0",fs:"3-0",esp:"2-1",yh:"1-1",t:"1-1",e:"3-0",cup:"2-0",pm:"2-0",ch:"FOX"},
+{id:46,gr:"L",d:"Mar 23/6",t:"17:00",a:"England",b:"Ghana",c:"3-1",g:"3-0",f:"2-0",fs:"3-1",esp:"3-0",yh:"3-0",t:"3-0",e:"3-1",cup:"2-0",pm:"1-1",ch:"FOX"},
+{id:47,gr:"L",d:"Mar 23/6",t:"20:00",a:"Panama",b:"Croatia",c:"1-2",g:"1-2",f:"0-2",fs:"1-2",esp:"1-2",yh:"2-0",t:"2-0",e:"1-2",cup:"1-2",pm:"1-0",ch:"FS1"},
+{id:48,gr:"K",d:"Mar 23/6",t:"23:00",a:"Colombia",b:"DR Congo",c:"2-0",g:"1-0",f:"2-0",fs:"2-0",esp:"1-0",yh:"4-0",t:"4-0",e:"2-0",cup:"2-1",pm:"0-2",ch:"FS1"},
+{id:49,gr:"B",d:"Mie 24/6",t:"16:00",a:"Switzerland",b:"Canada",c:"2-1",g:"1-1",f:"1-1",fs:"2-1",esp:"1-1",yh:"2-1",t:"2-1",e:"2-1",cup:"1-2",pm:"3-0",ch:"FOX"},
+{id:50,gr:"B",d:"Mie 24/6",t:"16:00",a:"Bosnia and Herzegovina",b:"Qatar",c:"2-0",g:"0-1",f:"1-0",fs:"2-0",esp:"0-1",yh:"2-1",t:"2-0",e:"2-0",cup:"1-2",pm:"1-0",ch:"FS1"},
+{id:51,gr:"C",d:"Mie 24/6",t:"19:00",a:"Scotland",b:"Brazil",c:"0-3",g:"0-1",f:"0-2",fs:"0-3",esp:"0-1",yh:"2-1",t:"0-3",e:"0-3",cup:"1-1",pm:"0-1",ch:"FOX"},
+{id:52,gr:"C",d:"Mie 24/6",t:"19:00",a:"Morocco",b:"Haiti",c:"2-0",g:"2-0",f:"3-0",fs:"2-0",esp:"2-0",yh:"2-0",t:"2-0",e:"2-0",cup:"1-2",pm:"1-0",ch:"FS1"},
+{id:53,gr:"A",d:"Mie 24/6",t:"22:00",a:"Czechia",b:"Mexico",c:"1-2",g:"1-2",f:"0-1",fs:"1-2",esp:"1-2",yh:"1-1",t:"0-1",e:"1-2",cup:"2-1",pm:"1-1",ch:"FOX"},
+{id:54,gr:"A",d:"Mie 24/6",t:"22:00",a:"South Africa",b:"South Korea",c:"0-2",g:"1-2",f:"0-2",fs:"0-2",esp:"1-2",yh:"1-3",t:"1-0",e:"0-2",cup:"1-2",pm:"3-0",ch:"FS1"},
+{id:55,gr:"E",d:"Jue 25/6",t:"17:00",a:"Ecuador",b:"Germany",c:"1-2",g:"1-1",f:"1-2",fs:"1-2",esp:"1-1",yh:"0-0",t:"1-0",e:"1-2",cup:"1-1",pm:"1-1",ch:"FOX"},
+{id:56,gr:"E",d:"Jue 25/6",t:"17:00",a:"Curacao",b:"Ivory Coast",c:"0-2",g:"1-3",f:"0-2",fs:"0-2",esp:"1-3",yh:"1-2",t:"1-1",e:"0-2",cup:"1-2",pm:"1-0",ch:"FS1"},
+{id:57,gr:"F",d:"Jue 25/6",t:"19:00",a:"Japan",b:"Sweden",c:"2-1",g:"1-1",f:"1-1",fs:"2-1",esp:"1-1",yh:"0-1",t:"0-1",e:"2-1",cup:"2-0",pm:"1-1",ch:"FS1"},
+{id:58,gr:"F",d:"Jue 25/6",t:"19:00",a:"Tunisia",b:"Netherlands",c:"0-3",g:"0-3",f:"0-2",fs:"0-3",esp:"0-3",yh:"4-2",t:"4-2",e:"0-3",cup:"2-0",pm:"1-1",ch:"FOX"},
+{id:59,gr:"D",d:"Jue 25/6",t:"22:00",a:"Turkiye",b:"USA",c:"1-2",g:"2-1",f:"1-1",fs:"1-2",esp:"2-1",yh:"2-2",t:"1-0",e:"1-2",cup:"2-1",pm:"0-1",ch:"FOX"},
+{id:60,gr:"D",d:"Jue 25/6",t:"22:00",a:"Paraguay",b:"Australia",c:"2-0",g:"1-1",f:"0-1",fs:"2-0",esp:"1-1",yh:"1-1",t:"1-0",e:"2-0",cup:"1-1",pm:"1-0",ch:"FS1"},
+{id:61,gr:"I",d:"Vie 26/6",t:"16:00",a:"Norway",b:"France",c:"0-2",g:"1-1",f:"0-2",fs:"0-2",esp:"1-1",yh:"3-2",t:"3-2",e:"0-2",cup:"1-2",pm:"1-1",ch:"FOX"},
+{id:62,gr:"I",d:"Vie 26/6",t:"16:00",a:"Senegal",b:"Iraq",c:"2-0",g:"3-1",f:"2-0",fs:"2-0",esp:"3-1",yh:"3-0",t:"3-0",e:"2-0",cup:"1-2",pm:"0-1",ch:"FS1"},
+{id:63,gr:"H",d:"Vie 26/6",t:"20:00",a:"Cape Verde",b:"Saudi Arabia",c:"1-0",g:"2-1",f:"1-1",fs:"1-0",esp:"2-1",yh:"1-1",t:"1-1",e:"1-0",cup:"1-1",pm:"3-0",ch:"FS1"},
+{id:64,gr:"H",d:"Vie 26/6",t:"21:00",a:"Uruguay",b:"Spain",c:"1-2",g:"1-2",f:"1-1",fs:"1-2",esp:"1-2",yh:"1-3",t:"1-3",e:"1-2",cup:"2-1",pm:"0-2",ch:"FOX"},
+{id:65,gr:"G",d:"Vie 26/6",t:"23:00",a:"Egypt",b:"Iran",c:"1-0",g:"0-0",f:"0-0",fs:"1-0",esp:"0-0",yh:"1-0",t:"1-0",e:"1-0",cup:"1-2",pm:"4-1",ch:"FS1"},
+{id:66,gr:"G",d:"Vie 26/6",t:"23:00",a:"New Zealand",b:"Belgium",c:"0-3",g:"1-2",f:"0-3",fs:"0-3",esp:"1-2",yh:"1-3",t:"1-3",e:"0-3",cup:"2-1",pm:"2-0",ch:"FOX"},
+{id:67,gr:"L",d:"Sab 27/6",t:"18:00",a:"Panama",b:"England",c:"0-3",g:"0-2",f:"0-3",fs:"0-3",esp:"0-2",yh:"1-2",t:"1-2",e:"0-3",cup:"0-2",pm:"0-2",ch:"FOX"},
+{id:68,gr:"L",d:"Sab 27/6",t:"18:00",a:"Croatia",b:"Ghana",c:"2-1",g:"2-0",f:"2-1",fs:"2-1",esp:"2-0",yh:"1-2",t:"1-2",e:"2-1",cup:"2-1",pm:"3-0",ch:"FS1"},
+{id:69,gr:"K",d:"Sab 27/6",t:"20:30",a:"Colombia",b:"Portugal",c:"1-2",g:"2-0",f:"1-2",fs:"1-2",esp:"2-0",yh:"3-3",t:"3-3",e:"1-2",cup:"1-1",pm:"2-0",ch:"FOX"},
+{id:70,gr:"K",d:"Sab 27/6",t:"20:30",a:"DR Congo",b:"Uzbekistan",c:"2-0",g:"1-2",f:"1-0",fs:"2-0",esp:"1-2",yh:"0-1",t:"0-1",e:"2-0",cup:"2-1",pm:"2-0",ch:"FS1"},
+{id:71,gr:"J",d:"Sab 27/6",t:"22:00",a:"Algeria",b:"Austria",c:"0-2",g:"1-1",f:"0-2",fs:"0-2",esp:"1-1",yh:"1-1",t:"1-1",e:"0-2",cup:"1-1",pm:"2-0",ch:"FS1"},
+{id:72,gr:"J",d:"Sab 27/6",t:"22:00",a:"Jordan",b:"Argentina",c:"0-3",g:"0-3",f:"0-3",fs:"0-3",esp:"0-3",yh:"0-4",t:"0-4",e:"0-3",cup:"0-3",pm:"0-2",ch:"FOX"}
 );
 
 function init(){
