@@ -1,9 +1,52 @@
 {
-  "last_updated": null,
+  "last_updated": "2026-06-11",
   "results": {},
+  "seasons": {
+    "accuracy_tracking": {
+      "current_season": 1,
+      "seasons": [
+        {
+          "id": 1,
+          "name": "2026 World Cup",
+          "match_count": 72,
+          "knockout_match_count": 32,
+          "predicted_accuracy": null,
+          "actual_accuracy": null,
+          "matches_played": 0,
+          "correct_picks": 0,
+          "correct_exact_scores": 0
+        }
+      ]
+    }
+  },
+  "freeze_status": {
+    "description": "Freeze locks prevent prediction changes after match start",
+    "automatic_lock_on_start": true,
+    "manual_overrides": {}
+  },
   "frozen_matches": {},
   "news_adjustments": {},
-  "notes": [
-    "Runtime state for played results, freeze locks, and confirmed news adjustments."
-  ]
+  "schema": {
+    "result_entry": {
+      "score": "home_goals-away_goals",
+      "scorers": {
+        "home": ["player_name, ..."],
+        "away": ["player_name, ..."]
+      },
+      "status": "scheduled | live | finished",
+      "minute": null,
+      "lock_version": 1
+    },
+    "tracking_row": {
+      "match_id": 1,
+      "prediction": "2-1",
+      "best_pick": "2-1",
+      "confidence": "high",
+      "outcome": "home",
+      "home_goals": 2,
+      "away_goals": 1,
+      "points_exact": 3,
+      "points_outcome": 1
+    }
+  }
 }
