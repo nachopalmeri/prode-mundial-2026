@@ -698,7 +698,9 @@ def main() -> None:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     output = build_predictions()
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"Wrote {OUTPUT_PATH} with {len(output['matches'])} matches")
+    ko = len(output.get("knockout_predictions", []))
+    total = len(output["matches"]) + ko
+    print(f"Wrote {OUTPUT_PATH} with {len(output['matches'])} group + {ko} knockout = {total} total matches")
 
 
 if __name__ == "__main__":
