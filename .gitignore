@@ -12,3 +12,5 @@ data/raw/*.json
 
 .vercel
 .env*.local
+
+.vercel
