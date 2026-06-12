@@ -15,7 +15,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
-from prode_core import SOURCE_KEYS, _DEFAULT_WEIGHTS, load_matches, parse_score, outcome, WEIGHTS_PATH
+from prode_core import SOURCE_KEYS, _DEFAULT_WEIGHTS, load_matches, parse_score, outcome, WEIGHTS_PATH, consensus_score, SOURCE_WEIGHTS
 
 RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
 HTML_PATH = PROJECT_ROOT / "prode-mundial-2026.html"
@@ -89,7 +89,7 @@ def validate() -> dict | None:
         actual_winner = outcome(actual_score)
 
         preds = match.predictions
-        consensus = _compute_consensus(preds, weights)
+        consensus = consensus_score(preds).replace(" ", "")
         consensus_total += 1
         if consensus == actual_score:
             consensus_correct_exact += 1
@@ -169,17 +169,6 @@ def validate() -> dict | None:
     }
 
     return report
-
-
-def _compute_consensus(predictions: dict[str, str], weights: dict[str, float]) -> str:
-    total_weight = sum(weights.values())
-    score_weights: dict[str, float] = {}
-    for key, score in predictions.items():
-        w = weights.get(key, 1.0)
-        score_weights[score] = score_weights.get(score, 0.0) + w
-
-    best_score = max(score_weights, key=score_weights.get)
-    return best_score
 
 
 def main() -> None:

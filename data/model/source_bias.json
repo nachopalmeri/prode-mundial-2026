@@ -1,0 +1,72 @@
+{
+  "c": {
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  },
+  "g": {
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  },
+  "f": {
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  },
+  "fs": {
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  },
+  "esp": {
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  },
+  "yh": {
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 1.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  },
+  "tips": {
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  },
+  "e": {
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  },
+  "cup": {
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 1.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  },
+  "pm": {
+    "goal_bias_home": -1.0,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 0.0,
+    "actual_draw_frequency": 0.0,
+    "samples": 1
+  }
+}

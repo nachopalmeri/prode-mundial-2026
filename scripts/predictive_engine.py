@@ -27,13 +27,26 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TEAM_STRENGTHS_PATH = PROJECT_ROOT / "data" / "config" / "team_strengths.json"
 RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
 OUTPUT_PATH = PROJECT_ROOT / "data" / "model" / "latest_predictions.json"
-MODEL_VERSION = "dynamic-prode-v1"
+BIAS_PATH = PROJECT_ROOT / "data" / "model" / "source_bias.json"
+MODEL_VERSION = "dynamic-prode-v2"
 
 
 def load_json(path: Path, default: Any) -> Any:
     if not path.exists():
         return default
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_bias() -> dict[str, dict]:
+    return load_json(BIAS_PATH, {})
+
+
+def dynamic_blend_ratio(results_count: int) -> float:
+    """Return source blend ratio based on how many results are available.
+    Early: trust the statistical model more.
+    After ~20 results: trust sources more.
+    """
+    return max(0.35, min(0.75, 0.35 + results_count * 0.02))
 
 
 def poisson_probability(mean_goals: float, goals: int) -> float:
@@ -190,10 +203,35 @@ def motivation_profile(match: Match, standings: dict[str, dict[str, dict[str, in
     }
 
 
-def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[str, Any]) -> tuple[float, float]:
+def correct_source_goals(match: Match, biases: dict[str, dict]) -> tuple[float, float]:
+    """Apply bias correction per source before computing weighted goals."""
+    home_goals = 0.0
+    away_goals = 0.0
+    for key, score in match.predictions.items():
+        home, away = parse_score(score)
+        weight = SOURCE_WEIGHTS[key]
+        b = biases.get(key, {})
+        home_corrected = home - b.get("goal_bias_home", 0.0)
+        away_corrected = away - b.get("goal_bias_away", 0.0)
+        home_corrected = max(0, home_corrected)
+        away_corrected = max(0, away_corrected)
+        home_goals += home_corrected * weight
+        away_goals += away_corrected * weight
+    return home_goals / TOTAL_WEIGHT, away_goals / TOTAL_WEIGHT
+
+
+def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[str, Any],
+                         runtime: dict[str, Any]) -> tuple[float, float]:
     home = team_prior(match.home, priors)
     away = team_prior(match.away, priors)
-    source_home, source_away = weighted_source_goals(match)
+    biases = load_bias()
+
+    # Bias-corrected source goals
+    source_home, source_away = correct_source_goals(match, biases)
+
+    # Dynamic blend ratio based on results available
+    results_count = len(runtime.get("results", {}))
+    blend = dynamic_blend_ratio(results_count)
 
     elo_delta = (home["elo"] - away["elo"]) / 400.0
     market_delta = math.log((home["market_value_m"] + 40.0) / (away["market_value_m"] + 40.0))
@@ -213,8 +251,8 @@ def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[
     model_home = 1.32 * tempo * home_attack / max(0.72, away_defense) * math.exp(strength_delta * 0.34)
     model_away = 1.12 * tempo * away_attack / max(0.72, home_defense) * math.exp(-strength_delta * 0.34)
 
-    blended_home = 0.62 * source_home + 0.38 * model_home
-    blended_away = 0.62 * source_away + 0.38 * model_away
+    blended_home = blend * source_home + (1 - blend) * model_home
+    blended_away = blend * source_away + (1 - blend) * model_away
 
     return max(0.12, min(4.8, blended_home)), max(0.12, min(4.8, blended_away))
 
@@ -222,6 +260,11 @@ def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[
 def score_matrix(home_mean: float, away_mean: float, match: Match) -> list[dict[str, Any]]:
     source_score = consensus_score(match.predictions).replace(" ", "")
     rows: list[dict[str, Any]] = []
+
+    # Draw inflation: in close matches, draw is more likely than naive Poisson suggests
+    total_outcome = home_mean + away_mean
+    draw_inflation = 1.0 + 0.12 * math.exp(-total_outcome * 0.3)
+
     for home_goals in range(7):
         for away_goals in range(7):
             score = f"{home_goals}-{away_goals}"
@@ -231,7 +274,7 @@ def score_matrix(home_mean: float, away_mean: float, match: Match) -> list[dict[
             elif score in match.predictions.values():
                 probability *= 1.06
             if home_goals == away_goals:
-                probability *= 1.06
+                probability *= draw_inflation
             rows.append({"score": score, "probability": probability})
 
     total = sum(row["probability"] for row in rows)
@@ -333,7 +376,7 @@ def build_match_prediction(
     results = runtime.get("results", {})
     played_result = results.get(str(match.id))
     motivation = motivation_profile(match, standings)
-    home_mean, away_mean = prior_adjusted_goals(match, priors, motivation)
+    home_mean, away_mean = prior_adjusted_goals(match, priors, motivation, runtime)
     matrix = score_matrix(home_mean, away_mean, match)
     top_three = [
         {
@@ -415,9 +458,11 @@ def build_predictions() -> dict[str, Any]:
             "match_count": len(predictions),
             "knockout_match_count": len(knockout["knockout_predictions"]),
             "source_count": len(SOURCE_KEYS),
-            "strategy": "dynamic_top3_market_rating_consensus",
+            "strategy": "dynamic_blend_bias_corrected_v2",
             "runtime_results_count": len(runtime.get("results", {})),
             "dynamic_context": "group_standings_and_round_motivation",
+            "bias_correction": True,
+            "draw_inflation": True,
         },
         "standings": standings,
         "matches": predictions,
@@ -572,11 +617,54 @@ def _get_knockout_round_name(match_id: int) -> str:
     return "3P"
 
 
+def source_implied_strength_delta(
+    home: str, away: str, matches: list[dict[str, Any]]
+) -> float:
+    """Compute strength delta from source consensus across all group matches
+    involving these teams. Positive = home is stronger according to sources.
+    """
+    home_source_goals = 0.0
+    home_source_against = 0.0
+    home_count = 0
+    away_source_goals = 0.0
+    away_source_against = 0.0
+    away_count = 0
+
+    for mp in matches:
+        if mp["home"] == home:
+            home_source_goals += mp["expected_goals"]["home"]
+            home_source_against += mp["expected_goals"]["away"]
+            home_count += 1
+        elif mp["away"] == home:
+            home_source_goals += mp["expected_goals"]["away"]
+            home_source_against += mp["expected_goals"]["home"]
+            home_count += 1
+        if mp["home"] == away:
+            away_source_goals += mp["expected_goals"]["home"]
+            away_source_against += mp["expected_goals"]["away"]
+            away_count += 1
+        elif mp["away"] == away:
+            away_source_goals += mp["expected_goals"]["away"]
+            away_source_against += mp["expected_goals"]["home"]
+            away_count += 1
+
+    if home_count == 0 or away_count == 0:
+        return 0.0
+
+    home_gf_avg = home_source_goals / home_count
+    home_ga_avg = home_source_against / home_count
+    away_gf_avg = away_source_goals / away_count
+    away_ga_avg = away_source_against / away_count
+
+    return (home_gf_avg - home_ga_avg) - (away_gf_avg - away_ga_avg)
+
+
 def knockout_match_prediction(
     match_id: int,
     home: str,
     away: str,
     priors: dict[str, Any],
+    matches: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     h = team_prior(home, priors)
     a = team_prior(away, priors)
@@ -585,7 +673,11 @@ def knockout_match_prediction(
     rd = (a["fifa_rank"] - h["fifa_rank"]) / 48.0
     cd = h["home_boost"] - a["home_boost"] + h["form"] - a["form"] + h["h2h_bonus"] - a["h2h_bonus"]
     nd = a["injury_penalty"] - h["injury_penalty"]
-    sd = 0.34 * ed + 0.14 * md + 0.12 * rd + 0.16 * cd + 0.18 * nd
+
+    # Add source-implied strength delta from group stage
+    source_delta = source_implied_strength_delta(home, away, matches or [])
+
+    sd = 0.34 * ed + 0.14 * md + 0.12 * rd + 0.16 * cd + 0.18 * nd + 0.08 * source_delta
     tempo = max(0.78, min(1.25, (h["style_tempo"] + a["style_tempo"]) / 2.0))
     ha = max(0.45, h["attack"])
     aa = max(0.45, a["attack"])
@@ -632,6 +724,7 @@ def knockout_match_prediction(
         },
         "extra_time_probability": round(etp * 100, 1),
         "penalties_probability": round(pp * 100, 1),
+        "source_strength_delta": round(source_delta, 3),
     }
 
 
@@ -658,14 +751,14 @@ def generate_knockout_bracket(
         ht = _get_bracket_team(home_spec, groups, best_third, assigned_third)
         at = _get_bracket_team(away_spec, groups, best_third, assigned_third)
         if ht and at:
-            r32_matches[mid] = knockout_match_prediction(mid, ht, at, priors)
+            r32_matches[mid] = knockout_match_prediction(mid, ht, at, priors, predictions)
 
     def propagate_round(parents: list[tuple[int, int, int]], prev: dict[int, dict[str, Any]]) -> dict[int, dict[str, Any]]:
         result: dict[int, dict[str, Any]] = {}
         for mid, p1, p2 in parents:
             ht, at = _resolve_bracket_match(mid, p1, p2, prev)
             if ht != "TBD" and at != "TBD":
-                result[mid] = knockout_match_prediction(mid, ht, at, priors)
+                result[mid] = knockout_match_prediction(mid, ht, at, priors, predictions)
         return result
 
     r16_matches = propagate_round(R16_PARENTS, r32_matches)

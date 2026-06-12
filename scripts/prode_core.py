@@ -112,9 +112,7 @@ def consensus_score(predictions: dict[str, str]) -> str:
         score_weights[score] = score_weights.get(score, 0.0) + SOURCE_WEIGHTS[key]
 
     best_score, best_weight = max(score_weights.items(), key=lambda item: item[1])
-    if best_weight >= TOTAL_WEIGHT * 0.38:
-        return best_score
-    if best_weight >= TOTAL_WEIGHT * 0.22:
+    if best_weight >= TOTAL_WEIGHT * 0.28:
         return best_score
 
     weighted_home = 0.0

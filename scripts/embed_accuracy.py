@@ -37,6 +37,18 @@ def main() -> None:
         if isinstance(src, dict):
             src["current_weight"] = float(weights.get(key, 1.0))
 
+    sources = accuracy.get("sources", {})
+    active = [s for s in sources.values() if isinstance(s, dict) and s.get("samples", 0) > 0]
+    if active:
+        global_exact = sum(s["exact_hits"] for s in active) / sum(s["samples"] for s in active) * 100
+        global_winner = sum(s["winner_hits"] for s in active) / sum(s["samples"] for s in active) * 100
+    else:
+        global_exact = global_winner = 0.0
+    accuracy["global_winrate"] = {
+        "exact_accuracy": round(global_exact, 1),
+        "winner_accuracy": round(global_winner, 1),
+    }
+
     embed_data = json.dumps(accuracy, ensure_ascii=False)
 
     html = HTML_PATH.read_text(encoding="utf-8")

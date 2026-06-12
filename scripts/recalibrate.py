@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """
 Recalibrar pesos del consenso basado en accuracy historica.
-Lee resultados reales de data/runtime/results.json.
-Compara cada fuente vs el resultado real.
-Calcula confidence_index por fuente.
-Guarda weights_latest.json para que prode_core.py lo cargue.
+Incluye:
+- sample_factor progresivo (full confidence en 5 muestras)
+- Ajuste agresivo de pesos (ci >= 20 → +0.15, ci <= 5 → -0.10)
+- Bias tracking por fuente (sobrestima/infrasubestima goles)
+- Time decay (resultados recientes pesan mas)
 """
 
 from __future__ import annotations
 
 import json
 import sys
+from collections import OrderedDict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -23,12 +25,15 @@ RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
 MODEL_DIR = PROJECT_ROOT / "data" / "model"
 HTML_PATH = PROJECT_ROOT / "prode-mundial-2026.html"
 REPORT_DIR = PROJECT_ROOT / "data" / "reports"
+BIAS_PATH = PROJECT_ROOT / "data" / "model" / "source_bias.json"
 
 SOURCE_LABELS = {
     "c": "Cup26", "g": "Gamble", "f": "Futbolist",
     "fs": "F Score", "esp": "ESPN", "yh": "Yahoo",
     "tips": "1960 Tips", "e": "Elo", "cup": "Cup Predictor", "pm": "Polymarket",
 }
+
+RESULTS_LIST_PATH = PROJECT_ROOT / "data" / "runtime" / "results_order.json"
 
 
 def load_runtime(path: Path) -> dict:
@@ -38,7 +43,6 @@ def load_runtime(path: Path) -> dict:
 
 
 def get_all_predictions(matches) -> dict[int, dict[str, str]]:
-    """Build {match_id: {source: score}} from HTML match data."""
     preds = {}
     for match in matches:
         if match.id <= 72:
@@ -46,14 +50,51 @@ def get_all_predictions(matches) -> dict[int, dict[str, str]]:
     return preds
 
 
+def load_results_order() -> list[str]:
+    """Load chronological order of results for time decay."""
+    if RESULTS_LIST_PATH.exists():
+        return json.loads(RESULTS_LIST_PATH.read_text(encoding="utf-8"))
+    return []
+
+
+def save_results_order(order: list[str]) -> None:
+    RESULTS_LIST_PATH.parent.mkdir(parents=True, exist_ok=True)
+    RESULTS_LIST_PATH.write_text(json.dumps(order, indent=2) + "\n", encoding="utf-8")
+
+
+def time_decay_weights(results: dict[str, str], order: list[str]) -> dict[str, float]:
+    """Assign higher weight to more recent results.
+    Most recent result gets weight 1.0, oldest gets 0.5.
+    Linear decay across the sequence.
+    """
+    if len(order) <= 1:
+        return {mid: 1.0 for mid in results}
+
+    decay = {}
+    for i, mid in enumerate(order):
+        if mid in results:
+            decay[mid] = 0.5 + 0.5 * (i / (len(order) - 1))
+    return decay
+
+
 def calculate_source_accuracy(
     predictions: dict[int, dict[str, str]],
     results: dict[str, str],
-) -> dict[str, dict]:
+) -> tuple[dict[str, dict], int, dict[str, dict]]:
     matched = 0
     source_data: dict[str, dict] = {
-        k: {"exact": 0, "winner": 0, "total": 0, "samples": 0} for k in SOURCE_KEYS
+        k: {"exact": 0, "winner": 0, "total": 0, "samples": 0,
+            "exact_weighted": 0.0, "winner_weighted": 0.0, "total_weighted": 0.0}
+        for k in SOURCE_KEYS
     }
+    bias_data: dict[str, dict] = {
+        k: {"goal_diff_home": 0.0, "goal_diff_away": 0.0, "draw_predicted": 0,
+            "draw_actual": 0, "count": 0}
+        for k in SOURCE_KEYS
+    }
+
+    order = load_results_order()
+    decay = time_decay_weights(results, order)
 
     for match_id_str, actual_score in results.items():
         match_id = int(match_id_str)
@@ -61,21 +102,38 @@ def calculate_source_accuracy(
         if not pred:
             continue
 
+        w = decay.get(match_id_str, 1.0)
         actual_winner = outcome(actual_score)
+        actual_home, actual_away = parse_score(actual_score)
+
         for source_key in SOURCE_KEYS:
             predicted_score = pred.get(source_key)
             if not predicted_score:
                 continue
+
             source_data[source_key]["total"] += 1
             source_data[source_key]["samples"] += 1
+            source_data[source_key]["total_weighted"] += w
+
+            pred_home, pred_away = parse_score(predicted_score)
+            bias_data[source_key]["goal_diff_home"] += pred_home - actual_home
+            bias_data[source_key]["goal_diff_away"] += pred_away - actual_away
+            bias_data[source_key]["count"] += 1
+            if pred_home == pred_away:
+                bias_data[source_key]["draw_predicted"] += 1
+            if actual_home == actual_away:
+                bias_data[source_key]["draw_actual"] += 1
 
             if predicted_score == actual_score:
                 source_data[source_key]["exact"] += 1
                 source_data[source_key]["winner"] += 1
+                source_data[source_key]["exact_weighted"] += w
+                source_data[source_key]["winner_weighted"] += w
             elif outcome(predicted_score) == actual_winner:
                 source_data[source_key]["winner"] += 1
+                source_data[source_key]["winner_weighted"] += w
 
-    return source_data, matched
+    return source_data, matched, bias_data
 
 
 def build_accuracy_report(
@@ -101,14 +159,20 @@ def build_accuracy_report(
         exact_acc = sd["exact"] / total * 100
         winner_acc = sd["winner"] / total * 100
 
-        sample_factor = min(1.0, total / 20)
+        sample_factor = min(1.0, total / 5)
         confidence_index = round((0.3 * exact_acc + 0.7 * winner_acc) * sample_factor, 1)
+
+        tw = sd["total_weighted"]
+        exact_weighted_pct = (sd["exact_weighted"] / tw * 100) if tw > 0 else 0.0
+        winner_weighted_pct = (sd["winner_weighted"] / tw * 100) if tw > 0 else 0.0
+        confidence_weighted = round((0.3 * exact_weighted_pct + 0.7 * winner_weighted_pct) * sample_factor, 1)
 
         report[key] = {
             "label": SOURCE_LABELS.get(key, key),
             "exact_accuracy": round(exact_acc, 1),
             "winner_accuracy": round(winner_acc, 1),
             "confidence_index": confidence_index,
+            "confidence_weighted": confidence_weighted,
             "samples": total,
             "exact_hits": sd["exact"],
             "winner_hits": sd["winner"],
@@ -117,43 +181,75 @@ def build_accuracy_report(
     return report
 
 
+def build_bias_report(
+    bias_data: dict[str, dict],
+) -> dict[str, dict]:
+    report = {}
+    for key in SOURCE_KEYS:
+        bd = bias_data[key]
+        count = bd["count"]
+        if count == 0:
+            report[key] = {"goal_bias_home": 0.0, "goal_bias_away": 0.0,
+                           "draw_frequency": 0.0, "actual_draw_frequency": 0.0, "samples": 0}
+            continue
+        report[key] = {
+            "goal_bias_home": round(bd["goal_diff_home"] / count, 2),
+            "goal_bias_away": round(bd["goal_diff_away"] / count, 2),
+            "draw_frequency": round(bd["draw_predicted"] / count * 100, 1),
+            "actual_draw_frequency": round(bd["draw_actual"] / count * 100, 1),
+            "samples": count,
+        }
+    return report
+
+
 def adjust_weights(
     report: dict[str, dict],
     current_weights: dict[str, float],
+    bias_report: dict[str, dict],
 ) -> dict[str, float]:
     new_weights = {}
     for key in SOURCE_KEYS:
         r = report[key]
         weight = current_weights.get(key, 1.0)
-        ci = r["confidence_index"]
+        ci = r.get("confidence_weighted", r["confidence_index"])
         samples = r["samples"]
 
         if samples == 0:
             new_weights[key] = weight
             continue
 
-        if ci >= 40:
-            weight = min(2.0, round(weight + 0.20, 2))
-        elif ci >= 25:
-            weight = min(2.0, round(weight + 0.10, 2))
-        elif ci >= 15:
-            weight = round(weight + 0.02, 2)
-        elif ci <= 5 and samples >= 5:
-            weight = max(0.4, round(weight - 0.15, 2))
-        elif ci <= 10 and samples >= 3:
+        # Penalizar sesgo sistematico: si una fuente sobrestima goles consistentemente
+        bias = bias_report.get(key, {})
+        goal_bias = abs(bias.get("goal_bias_home", 0)) + abs(bias.get("goal_bias_away", 0))
+
+        if ci >= 20:
+            weight = min(2.0, round(weight + 0.15, 2))
+        elif ci >= 12:
+            weight = min(2.0, round(weight + 0.08, 2))
+        elif ci >= 6:
+            weight = min(1.8, round(weight + 0.03, 2))
+        elif ci <= 3 and samples >= 3:
+            penalty = 0.15 if goal_bias > 0.5 else 0.10
+            weight = max(0.3, round(weight - penalty, 2))
+        elif ci <= 6 and samples >= 5:
             weight = max(0.4, round(weight - 0.05, 2))
+
+        # Extra penalty por sesgo sistematico severo
+        if goal_bias > 1.0 and weight > 0.5:
+            weight = max(0.3, round(weight - 0.05, 2))
 
         new_weights[key] = weight
 
     return new_weights
 
 
-def save_weights(weights: dict, accuracies: dict, timestamp: str) -> Path:
+def save_weights(weights: dict, accuracies: dict, biases: dict, timestamp: str) -> Path:
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
     payload = {
         "weights": weights,
         "accuracies": accuracies,
+        "biases": biases,
         "timestamp": timestamp,
         "generated_by": "recalibrate.py",
     }
@@ -167,6 +263,16 @@ def save_weights(weights: dict, accuracies: dict, timestamp: str) -> Path:
     return latest
 
 
+def save_bias(biases: dict, timestamp: str) -> Path:
+    MODEL_DIR.mkdir(parents=True, exist_ok=True)
+    path = MODEL_DIR / f"bias_{timestamp}.json"
+    path.write_text(json.dumps(biases, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    latest = BIAS_PATH
+    latest.write_text(json.dumps(biases, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return path
+
+
 def save_report(report: dict, timestamp: str) -> Path:
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     path = REPORT_DIR / f"accuracy_{timestamp}.json"
@@ -178,7 +284,7 @@ def save_report(report: dict, timestamp: str) -> Path:
 
 
 def main() -> None:
-    print("=== Recalibrando Pesos (Accuracy Tracking) ===")
+    print("=== Recalibrando Pesos (v2 — Bias + Time Decay) ===")
 
     runtime = load_runtime(RUNTIME_PATH)
     results = runtime.get("results", {})
@@ -193,7 +299,7 @@ def main() -> None:
     matches = load_matches(HTML_PATH)
     predictions = get_all_predictions(matches)
 
-    source_data, _ = calculate_source_accuracy(predictions, results)
+    source_data, matched, bias_data = calculate_source_accuracy(predictions, results)
     current_weights = _DEFAULT_WEIGHTS
     weights_path = WEIGHTS_PATH
     if weights_path.exists():
@@ -205,18 +311,21 @@ def main() -> None:
             pass
 
     report = build_accuracy_report(source_data, current_weights)
+    bias_report = build_bias_report(bias_data)
 
     print(f"\n  Partidos con resultado: {len(results)}")
     print(f"  Fuentes evaluadas: {len(SOURCE_KEYS)}")
     print()
-    print(f"  {'Fuente':<20s} {'Exacta':>7s} {'Ganador':>8s} {'Confianza':>9s} {'Muestras':>8s} {'Peso':>6s}")
-    print(f"  {'-'*58}")
+    print(f"  {'Fuente':<20s} {'Exacta':>7s} {'Ganador':>8s} {'Confianza':>9s} {'Sesgo gol':>10s} {'Muestras':>8s} {'Peso':>6s}")
+    print(f"  {'-'*71}")
     for key in SOURCE_KEYS:
         r = report[key]
+        b = bias_report[key]
+        gb = f"{b['goal_bias_home']:+.1f}/{b['goal_bias_away']:+.1f}"
         print(f"  {r['label']:<20s} {r['exact_accuracy']:>6.1f}% {r['winner_accuracy']:>7.1f}% "
-              f"{r['confidence_index']:>8.1f}  {r['samples']:>4d}/{len(results):<3d} {r['current_weight']:>5.2f}")
+              f"{r['confidence_index']:>8.1f}  {gb:>10s} {r['samples']:>4d}/{len(results):<3d} {r['current_weight']:>5.2f}")
 
-    new_weights = adjust_weights(report, current_weights)
+    new_weights = adjust_weights(report, current_weights, bias_report)
 
     print(f"\n  Ajuste de pesos:")
     has_changes = False
@@ -225,23 +334,38 @@ def main() -> None:
         new_w = new_weights[key]
         if abs(new_w - old_w) > 0.01:
             diff = new_w - old_w
-            print(f"    {report[key]['label']:<20s} {old_w:.2f} -> {new_w:.2f} ({diff:+.2f})")
+            reason = ""
+            b = bias_report[key]
+            if abs(b.get("goal_bias_home", 0)) + abs(b.get("goal_bias_away", 0)) > 1.0:
+                reason = " (sesgo severo)"
+            print(f"    {report[key]['label']:<20s} {old_w:.2f} -> {new_w:.2f} ({diff:+.2f}){reason}")
             has_changes = True
     if not has_changes:
         print("    (sin cambios significativos)")
 
+    print(f"\n  Sesgo por fuente (gol local/visitante):")
+    for key in SOURCE_KEYS:
+        b = bias_report[key]
+        if b["samples"] > 0:
+            print(f"    {report[key]['label']:<20s}  local={b['goal_bias_home']:+.2f}  "
+                  f"visit={b['goal_bias_away']:+.2f}  "
+                  f"draw_pred={b['draw_frequency']:.0f}%  draw_real={b['actual_draw_frequency']:.0f}%")
+
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    save_weights(new_weights, report, timestamp)
+    save_weights(new_weights, report, bias_report, timestamp)
+    save_bias(bias_report, timestamp)
     save_report({
         "timestamp": timestamp,
         "matches_analyzed": len(results),
         "sources": report,
+        "biases": bias_report,
         "weights_before": current_weights,
         "weights_after": new_weights,
     }, timestamp)
 
     print(f"\n  Pesos guardados: data/model/weights_latest.json")
-    print("  Recalibracion: OK")
+    print(f"  Bias guardados: data/model/source_bias.json")
+    print("  Recalibracion v2: OK")
 
 
 if __name__ == "__main__":

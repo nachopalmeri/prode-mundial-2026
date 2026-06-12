@@ -30,3 +30,7 @@ data/reports/validation_*.json
 # But keep the latest copies
 !data/model/weights_latest.json
 !data/reports/accuracy_latest.json
+
+data/model/bias_*.json
+!data/model/source_bias.json
+data/runtime/results_order.json
