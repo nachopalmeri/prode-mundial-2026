@@ -34,3 +34,4 @@ data/reports/validation_*.json
 data/model/bias_*.json
 !data/model/source_bias.json
 data/runtime/results_order.json
+data/runtime/results.json

@@ -179,14 +179,53 @@ def show_all_results() -> None:
             print(f"  #{mid} [{match['group']}] {match['home']:25s} {score:5s} {match['away']:25s}")
 
 
+def run_pipeline() -> None:
+    """Ejecutar el pipeline completo y hacer git commit+push."""
+    print("\n=== Ejecutando pipeline ===")
+    result = subprocess.run(
+        [sys.executable, str(Path(__file__).resolve().parent / "pipeline.py")],
+        capture_output=True, text=True,
+        cwd=str(Path(__file__).resolve().parents[1])
+    )
+    print(result.stdout)
+    if result.stderr:
+        print(result.stderr)
+    if result.returncode == 0:
+        # Auto commit + push
+        ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        subprocess.run(["git", "add", "-A"], cwd=str(Path(__file__).resolve().parents[1]))
+        proc = subprocess.run(
+            ["git", "commit", "-m", f"Auto pipeline {ts}"],
+            capture_output=True, text=True,
+            cwd=str(Path(__file__).resolve().parents[1])
+        )
+        if "nothing to commit" in proc.stdout or "nothing to commit" in proc.stderr:
+            print("  Sin cambios nuevos.")
+        else:
+            print(proc.stdout)
+            push = subprocess.run(["git", "push"], capture_output=True, text=True,
+                                  cwd=str(Path(__file__).resolve().parents[1]))
+            if push.returncode == 0:
+                print("  Push OK")
+            else:
+                print(f"  Push falló: {push.stderr}")
+    else:
+        print("  Pipeline falló — cambios no commiteados.")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Ingresar resultados del Mundial 2026")
     parser.add_argument("--match", "-m", nargs=2, action="append", metavar=("ID", "SCORE"),
                         help="ID SCORE (ej: -m 1 2-0 -m 2 1-1)")
     parser.add_argument("--list", "-l", action="store_true", help="Mostrar resultados guardados")
     parser.add_argument("--today", "-t", action="store_true", help="Mostrar partidos de hoy")
+    parser.add_argument("--pipeline", "-p", action="store_true", help="Solo correr pipeline sin pedir resultados")
 
     args = parser.parse_args()
+
+    if args.pipeline:
+        run_pipeline()
+        return
 
     if args.list:
         show_all_results()
@@ -200,9 +239,14 @@ def main() -> None:
 
     if args.match:
         batch_mode(args.match)
+        if input("\nCorrer pipeline ahora? (s/N): ").strip().lower() == "s":
+            run_pipeline()
         return
 
     interactive_mode()
+    # Despues de modo interactivo, preguntar si correr pipeline
+    if input("\nCorrer pipeline ahora? (s/N): ").strip().lower() == "s":
+        run_pipeline()
 
 
 if __name__ == "__main__":
