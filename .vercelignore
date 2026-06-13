@@ -1,0 +1,13 @@
+scripts/
+data/
+__pycache__/
+*.py
+*.md
+.git
+.github/
+.gitignore
+.gitattributes
+.vercel/
+.DS_Store
+*.log
+node_modules/
