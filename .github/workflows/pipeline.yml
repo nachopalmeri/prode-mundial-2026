@@ -1,0 +1,37 @@
+name: Pipeline diario
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Motivo del trigger manual"
+        required: false
+        default: "manual"
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt 2>/dev/null || true
+
+      - name: Fetch sources
+        run: python scripts/pipeline.py
+
+      - name: Commit y push
+        run: |
+          git config user.name "Auto Pipeline"
+          git config user.email "bot@pisculichi.labs"
+          git add -A
+          git diff --cached --quiet || git commit -m "Auto pipeline $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push

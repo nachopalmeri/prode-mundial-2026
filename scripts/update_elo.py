@@ -7,11 +7,11 @@ import json
 import re
 
 # Leer predicciones del modelo ELO
-with open('predictions_elo_model.json', 'r') as f:
+with open('../predictions_elo_model.json', 'r') as f:
     predictions_elo = json.load(f)
 
 # Leer el HTML actual
-with open('prode-mundial-2026.html', 'r', encoding='utf-8') as f:
+with open('../prode-mundial-2026.html', 'r', encoding='utf-8') as f:
     html = f.read()
 
 # Actualizar los datos de los partidos para incluir ELO (campo 'e')
@@ -121,7 +121,7 @@ html = html.replace(
 )
 
 # Guardar HTML actualizado
-with open('prode-mundial-2026.html', 'w', encoding='utf-8') as f:
+with open('../prode-mundial-2026.html', 'w', encoding='utf-8') as f:
     f.write(html)
 
 print("HTML actualizado con ELO Model como fuente #8")

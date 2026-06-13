@@ -23,30 +23,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests beautifulsoup4 lxml
-          npm install -g vercel
       
       - name: Web Search Agents
         run: python scripts/run_web_search.py || echo "Partial results - continuing"
         continue-on-error: true
       
-      - name: Run Agent: Modelo
-        run: |
-          echo "=== Agente Modelo ==="
-          python scripts/recalibrate.py || echo "Using existing weights"
-        continue-on-error: true
-      
-      - name: Run Agent: Valida
-        run: |
-          echo "=== Agente Valida ==="
-          python scripts/validate.py || echo "No results to validate yet"
-        continue-on-error: true
-      
-      - name: Run Agent: UI-UX
-        run: |
-          echo "=== Agente UI-UX ==="
-          python scripts/update_html.py || echo "HTML up to date"
-        continue-on-error: true
-
       - name: Run Fixture-Aware Source Agents
         run: |
           echo "=== Agentes de Fuentes Fixture-Aware ==="
@@ -63,6 +44,26 @@ jobs:
           python scripts/predictive_engine.py
           python scripts/update_dynamic_dashboard.py
       
+      - name: Recalibrate Weights (accuracy tracking)
+        run: |
+          echo "=== Recalibrando Pesos ==="
+          python scripts/recalibrate.py || echo "No results yet - keeping defaults"
+        continue-on-error: true
+      
+      - name: Validate Predictions
+        run: |
+          echo "=== Validando Predicciones ==="
+          python scripts/validate.py || echo "No results to validate yet"
+        continue-on-error: true
+      
+      - name: Update HTML Dashboard
+        run: |
+          echo "=== Actualizando Dashboard ==="
+          python scripts/update_html.py || echo "HTML up to date"
+          python scripts/embed_results.py || echo "No results to embed"
+          python scripts/embed_accuracy.py || echo "No accuracy data to embed"
+        continue-on-error: true
+      
       - name: Validate HTML
         run: python scripts/validate_html.py
       
@@ -78,16 +79,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Deploy to Vercel
-        run: vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      
       - name: Report Status
         run: |
-          echo "=== Deploy Status ==="
+          echo "=== Run Complete ==="
           echo "URL: https://pisculabs.vercel.app/prode-mundial-2026.html"
           echo "Time: $(date -u)"
-          echo "Status: OK"
+          echo "Status: OK - Vercel will auto-deploy on push"
