@@ -16,5 +16,36 @@ data/raw/*.json
 .vercel
 
 .zed/
+/add_*.py
+/ai_*.py
+/analyze_*.py
+/calculate_*.py
+/enter_*.py
+/integrate_*.py
+/predict_*.py
+*.log.cutree
 scripts/generate_source_predictions.py
 scripts/_debug_*.py
+scripts/add_*.py
+scripts/ai_*.py
+scripts/analyze_*.py
+scripts/calculate_*.py
+scripts/enter_*.py
+scripts/integrate_*.py
+scripts/predict_*.py
+
+# Reportes generados
+*.report.md
+DIAGNOSTIC_REPORT.md
+FECHA1_RESULTADOS.md
+PREDICCIONES_FECHA1_COMPLETAS.md
+SISTEMA_ACTUALIZADO.md
+UPDATE_SPECIFICATION.md
+IMPROVEMENT_GUIDE.md
+ACTION_REQUIRED.md
+context_report.md
+analysis_report.html
+results_example.json
+
+# Datos runtime (regenerados)
+data/runtime/

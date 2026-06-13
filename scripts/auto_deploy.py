@@ -30,7 +30,7 @@ def validate_html():
         ("<html", "HTML tag missing"),
         ("</html>", "HTML closing tag missing"),
         ("<script", "Script tag missing"),
-        ("matches.push", "Matches data missing"),
+        ("const matches = [", "Matches data missing"),
         ("function getConsensus", "getConsensus missing"),
     ]
     

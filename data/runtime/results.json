@@ -1,9 +1,17 @@
 {
-  "last_updated": null,
-  "results": {},
+  "last_updated": "2026-06-12T22:01:35-03:00",
+  "results": {
+    "1": "2-0",
+    "2": "2-1",
+    "3": "1-1"
+  },
   "frozen_matches": {},
   "news_adjustments": {},
   "notes": [
-    "Runtime state for played results, freeze locks, and confirmed news adjustments."
+    "Resultados reales Fecha 1 Mundial 2026 (hasta ahora):",
+    "Partido 1 (11 jun): Mexico 2-0 South Africa - JUGADO",
+    "Partido 2 (11 jun): South Korea 2-1 Czechia - JUGADO",
+    "Partido 3 (12 jun): Canada 1-1 Bosnia - JUGADO",
+    "Partidos 4-24: PENDIENTES - Usar para predicciones"
   ]
 }
