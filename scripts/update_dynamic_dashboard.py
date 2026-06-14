@@ -60,7 +60,7 @@ def _add_variation(best_pick: str, source_key: str) -> str:
 
 def generate_matches_js(matches: list[dict]) -> str:
     lines = ["const matches = ["]
-    for m in matches:
+    for index, m in enumerate(matches):
         mid = m["id"]
         group = m.get("group", chr(64 + ((mid - 1) // 4) + 1))
         date = m.get("date", "TBD")
@@ -70,7 +70,8 @@ def generate_matches_js(matches: list[dict]) -> str:
         best = m.get("best_pick", "0-0")
         sources = {k: _add_variation(best, k) for k in SOURCE_KEYS}
         src_str = ",".join(f'{k}:"{sources[k]}"' for k in SOURCE_KEYS)
-        lines.append(f'  {{id:{mid},gr:"{group}",d:"{date}",h:"{time}",a:"{home}",b:"{away}",{src_str},ch:"FOX"}}')
+        suffix = "," if index < len(matches) - 1 else ""
+        lines.append(f'  {{id:{mid},gr:"{group}",d:"{date}",h:"{time}",a:"{home}",b:"{away}",{src_str},ch:"FOX"}}{suffix}')
     lines.append("];")
     return "\n".join(lines)
 
@@ -187,11 +188,8 @@ def inject_source_predictions(html: str, predictions: dict) -> str:
     if not matches_data:
         return html
     matches_js = generate_matches_js(matches_data)
-    html = re.sub(
-        r"const matches\s*=\s*\[\s*\];",
-        matches_js,
-        html,
-    )
+    if re.search(r"const matches\s*=\s*\[.*?\];", html, re.S):
+        return re.sub(r"const matches\s*=\s*\[.*?\];", matches_js, html, count=1, flags=re.S)
     return html
 
 

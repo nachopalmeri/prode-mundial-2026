@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import sys
 import json
+import re
 from pathlib import Path
 
 from prode_core import (
@@ -19,6 +20,30 @@ from prode_core import (
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = PROJECT_ROOT / "prode-mundial-2026.html"
 PREDICTIONS_PATH = PROJECT_ROOT / "data" / "model" / "latest_predictions.json"
+
+
+def validate_matches_block_syntax(html: str) -> list[str]:
+    match = re.search(r"const\s+matches\s*=\s*\[(.*?)\];", html, re.S)
+    if not match:
+        return ["Matches array block missing"]
+
+    object_lines = [
+        line.strip()
+        for line in match.group(1).splitlines()
+        if line.strip().startswith("{id:")
+    ]
+    errors: list[str] = []
+    if len(object_lines) != 72:
+        errors.append(f"Expected 72 match object lines, found {len(object_lines)}")
+
+    for index, line in enumerate(object_lines, start=1):
+        is_last = index == len(object_lines)
+        if not is_last and not line.endswith(","):
+            errors.append(f"Match object line {index} is missing trailing comma")
+        if is_last and line.endswith(","):
+            errors.append("Last match object line must not have trailing comma")
+
+    return errors
 
 
 def validate() -> None:
@@ -43,6 +68,7 @@ def validate() -> None:
             errors.append(message)
 
     raw_matches = extract_raw_match_objects(html)
+    errors.extend(validate_matches_block_syntax(html))
     for index, raw_match in enumerate(raw_matches, start=1):
         keys = [key for key, _ in extract_key_values(raw_match)]
         duplicate_keys = sorted({key for key in keys if keys.count(key) > 1})

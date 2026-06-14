@@ -1,0 +1,117 @@
+{
+  "validation_date": "2026-06-14T00:35:14.580956+00:00",
+  "matches_evaluated": 6,
+  "total_matches": 72,
+  "group_standings_updated": false,
+  "sources": {
+    "c": {
+      "label": "Cup26",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "g": {
+      "label": "Gamble",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "f": {
+      "label": "Futbolist",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "fs": {
+      "label": "F Score",
+      "exact_accuracy": 33.3,
+      "winner_accuracy": 33.3,
+      "exact_hits": 2,
+      "winner_hits": 2,
+      "total": 6
+    },
+    "esp": {
+      "label": "ESPN",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "yh": {
+      "label": "Yahoo",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "tips": {
+      "label": "1960 Tips",
+      "exact_accuracy": 0.0,
+      "winner_accuracy": 50.0,
+      "exact_hits": 0,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "e": {
+      "label": "Elo",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "cup": {
+      "label": "Cup Predictor",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "pm": {
+      "label": "Polymarket",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    }
+  },
+  "overall": {
+    "avg_exact_accuracy": 16.7,
+    "avg_winner_accuracy": 48.3,
+    "active_sources": 10,
+    "total_predictions_evaluated": 60
+  },
+  "consensus": {
+    "exact_accuracy": 16.7,
+    "winner_accuracy": 50.0,
+    "exact_hits": 1,
+    "winner_hits": 3,
+    "total": 6
+  },
+  "recommendations": [
+    "Mejor fuente: Cup26 (50.0% ganador)",
+    "Fuente debil: F Score (33.3% ganador) - considerar reducir peso"
+  ],
+  "weights": {
+    "c": 1.6,
+    "g": 1.65,
+    "f": 1.65,
+    "fs": 1.47,
+    "esp": 1.95,
+    "yh": 1.19,
+    "tips": 1.95,
+    "e": 1.95,
+    "cup": 1.79,
+    "pm": 1.95
+  }
+}

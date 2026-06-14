@@ -1,0 +1,117 @@
+{
+  "validation_date": "2026-06-14T01:41:31.250597+00:00",
+  "matches_evaluated": 6,
+  "total_matches": 72,
+  "group_standings_updated": false,
+  "sources": {
+    "c": {
+      "label": "Cup26",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "g": {
+      "label": "Gamble",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "f": {
+      "label": "Futbolist",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "fs": {
+      "label": "F Score",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "esp": {
+      "label": "ESPN",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "yh": {
+      "label": "Yahoo",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 66.7,
+      "exact_hits": 1,
+      "winner_hits": 4,
+      "total": 6
+    },
+    "tips": {
+      "label": "1960 Tips",
+      "exact_accuracy": 0.0,
+      "winner_accuracy": 50.0,
+      "exact_hits": 0,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "e": {
+      "label": "Elo",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "cup": {
+      "label": "Cup Predictor",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    },
+    "pm": {
+      "label": "Polymarket",
+      "exact_accuracy": 16.7,
+      "winner_accuracy": 50.0,
+      "exact_hits": 1,
+      "winner_hits": 3,
+      "total": 6
+    }
+  },
+  "overall": {
+    "avg_exact_accuracy": 15.0,
+    "avg_winner_accuracy": 51.7,
+    "active_sources": 10,
+    "total_predictions_evaluated": 60
+  },
+  "consensus": {
+    "exact_accuracy": 16.7,
+    "winner_accuracy": 50.0,
+    "exact_hits": 1,
+    "winner_hits": 3,
+    "total": 6
+  },
+  "recommendations": [
+    "Mejor fuente: Yahoo (66.7% ganador)",
+    "Alguna(s) fuente(s) superan al consenso individualmente - revisar pesos"
+  ],
+  "weights": {
+    "c": 1.6,
+    "g": 1.65,
+    "f": 1.65,
+    "fs": 1.47,
+    "esp": 1.95,
+    "yh": 1.19,
+    "tips": 1.95,
+    "e": 1.95,
+    "cup": 1.79,
+    "pm": 1.95
+  }
+}
