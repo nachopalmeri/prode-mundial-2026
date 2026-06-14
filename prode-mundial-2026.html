@@ -153,6 +153,39 @@ tr:hover td{background:var(--card2)}
 .pred-oloraculo{background:color-mix(in oklch,oklch(.6 .25 310) 15%,transparent);color:oklch(.6 .25 310)}
 .pred-engine{background:color-mix(in oklch,oklch(.65 .2 40) 15%,transparent);color:oklch(.65 .2 40)}
 .pred-consensus{background:linear-gradient(135deg,var(--gold),oklch(.6 .2 80));color:#fff;box-shadow:0 2px 6px oklch(from var(--gold) l c h/.35);font-weight:800}
+/* Prediction state colors */
+.pred-exact{background:color-mix(in oklch,oklch(.55 .22 145) 20%,transparent)!important;color:oklch(.55 .22 145)!important;position:relative}
+.pred-winner{background:color-mix(in oklch,oklch(.6 .2 80) 20%,transparent)!important;color:oklch(.6 .2 80)!important;position:relative}
+.pred-wrong{background:color-mix(in oklch,oklch(.55 .22 30) 20%,transparent)!important;color:oklch(.55 .22 30)!important;opacity:.7}
+/* Real score badge */
+.real-score{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:800;padding:4px 10px;border-radius:8px;font-size:.85rem;min-width:60px;letter-spacing:.03em}
+.real-score.played{background:oklch(.55 .22 145)}
+.real-score-badge{display:inline-flex;align-items:center;justify-content:center;background:oklch(.55 .22 145);color:#fff;font-weight:800;font-size:.78rem;padding:2px 8px;border-radius:6px;min-width:44px}
+.real-score-mobile{text-align:center;padding:6px 0 0}
+.real-badge{display:inline-flex;align-items:center;justify-content:center;background:oklch(.55 .22 145);color:#fff;font-weight:700;font-size:.75rem;padding:3px 12px;border-radius:6px}
+.state-icon{font-size:.6rem;opacity:.8;margin-left:2px}
+.source-exact{background:color-mix(in oklch,oklch(.55 .22 145) 12%,transparent)!important}
+.source-winner{background:color-mix(in oklch,oklch(.6 .2 80) 12%,transparent)!important}
+.source-wrong{background:color-mix(in oklch,oklch(.55 .22 30) 8%,transparent)!important;opacity:.7}
+/* Resultados tab */
+.resultado-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:14px;overflow:hidden}
+.resultado-hero{padding:16px;text-align:center;border-bottom:1px solid var(--border)}
+.resultado-score{font-size:2rem;font-weight:900;letter-spacing:.06em;margin:8px 0;color:var(--text)}
+.resultado-teams{font-size:1.1rem;font-weight:700;margin:4px 0;display:flex;justify-content:center;gap:16px;align-items:center}
+.resultado-teams .vs{color:var(--text3);font-weight:400;font-size:.8rem}
+.resultado-info{font-size:.72rem;color:var(--text3);margin-top:4px}
+.resultado-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:4px;padding:10px 16px}
+.resultado-source{display:flex;justify-content:space-between;align-items:center;padding:5px 10px;border-radius:6px;font-size:.78rem;background:var(--card2)}
+.resultado-source .rs-name{font-weight:600;color:var(--text2);font-size:.72rem}
+.resultado-source .rs-score{font-weight:700}
+.resultado-source.exact{background:color-mix(in oklch,oklch(.55 .22 145) 12%,transparent)}
+.resultado-source.winner{background:color-mix(in oklch,oklch(.6 .2 80) 12%,transparent)}
+.resultado-source.wrong{background:color-mix(in oklch,oklch(.55 .22 30) 8%,transparent);opacity:.7}
+.resultado-rank{display:flex;flex-wrap:wrap;gap:6px;padding:8px 16px 16px;justify-content:center}
+.resultado-rank-item{display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;font-size:.75rem;background:var(--card2)}
+.resultado-rank-item .rank-pts{font-weight:800;font-size:.9rem}
+.resultado-rank-item .rank-label{color:var(--text2)}
+
 
 /* Inputs */
 .input-real{width:52px;padding:4px 6px;border:1.5px solid var(--border);border-radius:6px;text-align:center;font-weight:700;font-size:.82rem;color:var(--text);background:transparent;transition:all .2s}
@@ -161,6 +194,8 @@ tr:hover td{background:var(--card2)}
 .input-real.correct-winner{background:var(--yellow-bg);border-color:var(--yellow);color:var(--yellow)}
 .input-real.wrong{background:var(--red-bg);border-color:var(--red);color:var(--red)}
 
+th.blank-th{background:var(--card2)}
+.match-cell .vs{color:var(--text3);font-weight:400}
 /* Points badges */
 .pts{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-weight:800;font-size:.7rem}
 .pts-exact{background:var(--green-bg);color:var(--green)}
@@ -306,6 +341,7 @@ tr:hover td{background:var(--card2)}
 <button class="tab-btn" onclick="showTab('prode')">Mi Prode</button>
 <button class="tab-btn" onclick="showTab('noticias')">Noticias y Lesiones</button>
 <button class="tab-btn" onclick="showTab('accuracy');renderAccuracy()">Accuracy IA</button>
+<button class="tab-btn" onclick="showTab('resultados')">Resultados</button>
 </div>
 
 <!-- TAB: DINAMICO -->
@@ -336,23 +372,19 @@ tr:hover td{background:var(--card2)}
 <button class="date-filter-btn" onclick="filterFecha(3,this)">Fecha 3 (24)</button>
 </div>
 
-<!-- Desktop table -->
+<!-- Desktop table - unified -->
 <div class="card desktop-only">
-<div class="card-header"><div><div class="card-title">Todas las Predicciones</div><div class="card-sub">12 fuentes · Pasá el mouse para ver detalle · Ingresá el resultado real para calcular puntos</div></div></div>
+<div class="card-header"><div><div class="card-title">Todas las Predicciones</div><div class="card-sub">12 fuentes · Pasá el mouse para ver detalle · Partidos jugados: predicción coloreada</div></div></div>
 <div class="table-wrap">
-<table>
+<table id="table-comparativa" style="min-width:2100px">
 <thead>
 <tr>
-<th class="sticky-col">#</th><th class="sticky-col-2">Grupo</th><th>Fecha</th><th>Hora</th><th style="min-width:200px">Partido</th>
-<th style="text-align:center">Cascade</th><th style="text-align:center">ChatGPT</th><th style="text-align:center">Gemini</th><th style="text-align:center">Fansided</th><th style="text-align:center">ESPN</th><th style="text-align:center">Yahoo</th></tr></thead><tbody id="tbody-comparativa-header"></tbody></table></div></div>
-
-<div class="card desktop-only">
-<div class="table-wrap"><table><thead><tr>
-<th style="text-align:center">1960Tips</th><th style="text-align:center">ELO</th><th style="text-align:center">Cup26</th><th style="text-align:center">Polym.</th>
-<th style="text-align:center">Oloráculo</th><th style="text-align:center">Engine</th>
-<th style="text-align:center">Consenso</th><th style="text-align:center">Conf.</th><th style="text-align:center">Acuerdo</th><th style="text-align:center">Real</th>
-<th style="text-align:center">Cas</th><th style="text-align:center">GPT</th><th style="text-align:center">Gem</th><th style="text-align:center">Fan</th><th style="text-align:center">Esp</th><th style="text-align:center">Yah</th><th style="text-align:center">60</th><th style="text-align:center">ELO</th><th style="text-align:center">C26</th><th style="text-align:center">Pol</th><th style="text-align:center">Olo</th><th style="text-align:center">Eng</th><th style="text-align:center">Con</th>
-</tr></thead>
+<th class="sticky-col">#</th><th class="sticky-col-2" style="left:0">Grupo</th><th>Fecha</th><th>Hora</th><th style="min-width:170px">Partido</th>
+<th style="text-align:center">Cas</th><th style="text-align:center">GPT</th><th style="text-align:center">Gem</th><th style="text-align:center">Fan</th><th style="text-align:center">Esp</th><th style="text-align:center">Yah</th>
+<th style="text-align:center">60</th><th style="text-align:center">ELO</th><th style="text-align:center">C26</th><th style="text-align:center">Pol</th><th style="text-align:center">Olo</th><th style="text-align:center">Eng</th>
+<th style="text-align:center">Cons.</th><th style="text-align:center">Conf.</th><th style="text-align:center">Acu.</th><th style="text-align:center">Real</th>
+</tr>
+</thead>
 <tbody id="tbody-comparativa"></tbody>
 </table>
 </div>
@@ -432,6 +464,13 @@ tr:hover td{background:var(--card2)}
 
 </div>
 
+<!-- TAB: RESULTADOS -->
+<div id="tab-resultados" class="section">
+<div id="resultados-container">
+<div class="card" style="text-align:center;padding:30px;color:var(--text3);font-size:.9rem">Aun no hay partidos jugados. Los resultados apareceran automaticamente aqui.</div>
+</div>
+</div>
+
 <!-- TAB: ACCURACY -->
 <div id="tab-accuracy" class="section">
 <div class="card">
@@ -440,7 +479,7 @@ tr:hover td{background:var(--card2)}
 <table>
 <thead>
 <tr>
-<th>Fuente</th><th style="text-align:center">Exacta</th><th style="text-align:center">Ganador</th><th style="text-align:center">Confianza</th><th style="text-align:center">Muestras</th><th style="text-align:center">Peso Actual</th><th style="text-align:center">Estado</th>
+<th>Fuente</th><th style="text-align:center">Exacta</th><th style="text-align:center">Acierto</th><th style="text-align:center">Barra</th><th style="text-align:center">Conf.</th><th style="text-align:center">Muestras</th><th style="text-align:center">Peso</th><th style="text-align:center">Estado</th><th style="text-align:center">Partido</th>
 </tr>
 </thead>
 <tbody id="accuracy-tbody">
@@ -571,16 +610,56 @@ function renderAccuracy(){
   const consensusEl = document.getElementById('accuracy-consensus');
 
   if(!ACCURACY_DATA || !ACCURACY_DATA.sources){
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text3)">Aún no hay datos de accuracy. Ingresá resultados con <code>python scripts/fetch_results.py</code> y corré <code>python scripts/recalibrate.py</code>.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text3)">Aún no hay datos de accuracy.</td></tr>';
     return;
   }
 
+  // Calculate per-source stats from real scores
+  const realScores=typeof EMBEDDED_REAL_SCORES!=='undefined'?EMBEDDED_REAL_SCORES:{};
+  const playedIds=Object.keys(realScores).map(Number);
+  const sourceKeys=['c','g','f','fs','esp','yh','tips','e','cup','pm','ol','en'];
+  const getScore=(m,k)=>{
+    if(k==='ol') return OLORACULO_PREDS[m.id]||'-';
+    if(k==='en') return ENGINE_PREDS[m.id]||'-';
+    return m[k]||'-';
+  };
+  // Compute live accuracy from real scores
+  const liveStats={};
+  sourceKeys.forEach(k=>{liveStats[k]={exact:0,winner:0,wrong:0,total:0}});
+  playedIds.forEach(id=>{
+    const m=matches.find(x=>x.id===id);
+    if(!m)return;
+    const r=realScores[id];
+    sourceKeys.forEach(k=>{
+      const s=getScore(m,k);
+      const e=evaluate(r,s);
+      if(e==='exact') liveStats[k].exact++;
+      else if(e==='winner') liveStats[k].winner++;
+      else liveStats[k].wrong++;
+      liveStats[k].total++;
+    });
+  });
+
   const src = ACCURACY_DATA.sources;
   let html = '';
-  for(const key of SOURCE_KEYS){
+  // Sort sources by exact accuracy descending
+  const sorted=sourceKeys.slice().sort((a,b)=>{
+    const la=liveStats[a],lb=liveStats[b];
+    const ea=la.total>0?la.exact/la.total:0;
+    const eb=lb.total>0?lb.exact/lb.total:0;
+    if(ea!==eb)return eb-ea;
+    const wa=la.total>0?(la.exact+la.winner)/la.total:0;
+    const wb=lb.total>0?(lb.exact+lb.winner)/lb.total:0;
+    return wb-wa;
+  });
+  for(const key of sorted){
     const s = src[key];
-    if(!s || s.samples === 0){
-      html += `<tr><td>${SOURCE_LABELS[key]||key}</td><td colspan="6" style="text-align:center;color:var(--text3)">Sin datos</td></tr>`;
+    const ls=liveStats[key];
+    const total=ls?ls.total:0;
+    const exactPct=total>0?Math.round(ls.exact/total*1000)/10:0;
+    const winPct=total>0?Math.round((ls.exact+ls.winner)/total*1000)/10:0;
+    if(!s||total===0){
+      html += `<tr><td><strong>${SOURCE_LABELS[key]||key}</strong></td><td colspan="6" style="text-align:center;color:var(--text3)">Sin datos</td></tr>`;
       continue;
     }
     const ci = s.confidence_index || 0;
@@ -588,14 +667,38 @@ function renderAccuracy(){
     if(ci >= 30){ status = 'Buena'; statusClass = 'conf-high'; }
     else if(ci >= 15){ status = 'Media'; statusClass = 'conf-medium'; }
     else { status = 'Baja'; statusClass = 'conf-badge'; }
+    // Visual bar
+    const exactBar=Math.max(4,exactPct*1.2);
+    const winnerOnlyBar=Math.max(2,(winPct-exactPct)*1.2);
+    const wrongBar=Math.max(2,(100-winPct)*1.2);
+    const barHtml=`<span style="display:inline-flex;gap:2px;align-items:center;height:16px"><span style="display:inline-block;width:${exactBar}px;height:10px;background:oklch(.55 .22 145);border-radius:3px" title="Exacto ${exactPct}%"></span><span style="display:inline-block;width:${winnerOnlyBar}px;height:10px;background:oklch(.6 .2 80);border-radius:3px" title="Ganador ${(winPct-exactPct).toFixed(1)}%"></span><span style="display:inline-block;width:${wrongBar}px;height:10px;background:oklch(.55 .22 30);border-radius:3px;opacity:.2" title="Error ${(100-winPct).toFixed(1)}%"></span></span>`;
+    // Per-match breakdown
+    let matchDetail='';
+    if(playedIds.length>0){
+      matchDetail='<div style="font-size:.65rem;margin-top:4px;display:flex;flex-wrap:wrap;gap:3px;max-width:200px">';
+      playedIds.forEach(id=>{
+        const m=matches.find(x=>x.id===id);
+        if(!m)return;
+        const score=getScore(m,key);
+        const r=realScores[id];
+        const e=evaluate(r,score);
+        let cls='pts-wrong';
+        if(e==='exact') cls='pts-exact';
+        else if(e==='winner') cls='pts-winner';
+        matchDetail+=`<span title="#${id} ${m.a}vs${m.b}: pred ${score} real ${r}" class="${cls}" style="padding:1px 4px;border-radius:3px;font-size:.6rem;cursor:default">${id}</span>`;
+      });
+      matchDetail+='</div>';
+    }
     html += `<tr>
       <td><strong>${s.label || SOURCE_LABELS[key]}</strong></td>
-      <td style="text-align:center">${s.exact_accuracy.toFixed(1)}%</td>
-      <td style="text-align:center">${s.winner_accuracy.toFixed(1)}%</td>
-      <td style="text-align:center">${ci.toFixed(1)}</td>
-      <td style="text-align:center">${s.samples}</td>
+      <td style="text-align:center;font-weight:700;color:oklch(.55 .22 145)">${exactPct}%</td>
+      <td style="text-align:center;font-weight:600;color:oklch(.6 .2 80)">${winPct}%</td>
+      <td style="text-align:center">${barHtml}</td>
+      <td style="text-align:center">${ci.toFixed(0)}</td>
+      <td style="text-align:center">${total}</td>
       <td style="text-align:center">${(s.current_weight||1.0).toFixed(2)}</td>
       <td style="text-align:center"><span class="conf-badge ${statusClass}">${status}</span></td>
+      <td>${matchDetail}</td>
     </tr>`;
   }
   tbody.innerHTML = html;
@@ -610,15 +713,32 @@ function renderAccuracy(){
       <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center">
         <div><span class="conf-badge ${winnerClass}" style="font-size:1.4rem;padding:8px 16px">${g.winner_accuracy}%</span><br><span style="font-size:.75rem;color:var(--text3)">Ganador global</span></div>
         <div><span class="conf-badge ${exactClass}" style="font-size:1rem;padding:6px 12px">${g.exact_accuracy}%</span><br><span style="font-size:.75rem;color:var(--text3)">Exacto global</span></div>
-        <div style="font-size:.8rem;color:var(--text2)">${ACCURACY_DATA.matches_analyzed} partido(s) analizados · ${new Date(ACCURACY_DATA.timestamp).toLocaleString()}</div>
+        <div style="font-size:.8rem;color:var(--text2)">${ACCURACY_DATA.matches_analyzed} partido(s) analizados</div>
       </div>`;
   }
 
-  // Consensus comparison (if available from validation report)
-  if(ACCURACY_DATA.consensus){
+  // Consensus from live data
+  if(playedIds.length>0){
+    let cExact=0,cWinner=0,cWrong=0;
+    playedIds.forEach(id=>{
+      const m=matches.find(x=>x.id===id);
+      if(!m)return;
+      const con=getSmartConsensus(id);
+      const e=evaluate(realScores[id],con.score);
+      if(e==='exact') cExact++;
+      else if(e==='winner') cWinner++;
+      else cWrong++;
+    });
+    const cTotal=cExact+cWinner+cWrong;
+    const cExactPct=cTotal>0?Math.round(cExact/cTotal*1000)/10:0;
+    const cWinPct=cTotal>0?Math.round((cExact+cWinner)/cTotal*1000)/10:0;
     consensusCard.style.display = 'block';
     consensusEl.innerHTML = `
-      <p>Exacto: <strong>${ACCURACY_DATA.consensus.exact_accuracy}%</strong> · Ganador: <strong>${ACCURACY_DATA.consensus.winner_accuracy}%</strong></p>`;
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <span>Exacto: <strong style="color:oklch(.55 .22 145)">${cExactPct}%</strong> (${cExact}/${cTotal})</span>
+        <span>Ganador: <strong style="color:oklch(.6 .2 80)">${cWinPct}%</strong> (${cExact+cWinner}/${cTotal})</span>
+        <span>Puntos: <strong>${cExact*3+cWinner*1}</strong></span>
+      </div>`;
   }
 }
 
@@ -647,13 +767,15 @@ function loadTheme(){
 }
 
 function showTab(id){
-  const map={dinamico:'top 3',comparativa:'comparativa',dashboard:'dashboard',final:'final',prode:'prode',noticias:'noticias'};
+  const map={dinamico:'top 3',comparativa:'comparativa',dashboard:'dashboard',final:'final',prode:'prode',noticias:'noticias',accuracy:'accuracy ia',resultados:'resultados'};
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase().includes(map[id])));
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   const tab=document.getElementById('tab-'+id);
   tab.classList.add('active');
   // Trigger charts if dashboard
   if(id==='dashboard'&&!window._chartsDrawn){drawDashboard();window._chartsDrawn=true}
+  // Trigger resultados
+  if(id==='resultados'){renderResultados()}
 }
 function parseScore(s){const p=s.split('-').map(x=>parseInt(x.trim()));return{ga:p[0],gb:p[1]}}
 function outcome(ga,gb){return ga>gb?'A':ga<gb?'B':'D'}
@@ -867,7 +989,7 @@ function getConsensus(matchId){
 }
 
 function getMatchPoints(id,source){
-  const real=document.getElementById('real-'+id)?.value;
+  const real=getRealScore(id);
   if(!real)return 0;
   const m=matches.find(x=>x.id===id);
   if(!m)return 0;
@@ -876,40 +998,35 @@ function getMatchPoints(id,source){
   return e==='exact'?3:e==='winner'?1:0;
 }
 
+function getRealScore(id){
+  const ls=JSON.parse(localStorage.getItem('prode2026_real')||'{}');
+  if(ls[id]) return ls[id];
+  if(typeof EMBEDDED_REAL_SCORES!=='undefined'&&EMBEDDED_REAL_SCORES[id]) return EMBEDDED_REAL_SCORES[id];
+  return null;
+}
 function updateScores(){
   let c=0,g=0,m=0,fs=0,esp=0,yh=0,t=0,e=0,cup=0,pm=0,ol=0,en=0,f=0,played=0;
   matches.forEach(x=>{
-    const real=document.getElementById('real-'+x.id)?.value;
+    const real=getRealScore(x.id);
     if(real){played++;
-      const pc=getMatchPoints(x.id,'c'),pg=getMatchPoints(x.id,'g'),pmatch=getMatchPoints(x.id,'m'),pfs=getMatchPoints(x.id,'fs'),pesp=getMatchPoints(x.id,'esp'),pyh=getMatchPoints(x.id,'yh'),pt=getMatchPoints(x.id,'t'),pe=getMatchPoints(x.id,'e'),pcup=getMatchPoints(x.id,'cup'),ppm=getMatchPoints(x.id,'pm'),pol=getMatchPoints(x.id,'ol'),pen=getMatchPoints(x.id,'en'),pf=getMatchPoints(x.id,'f');
-      c+=pc;g+=pg;m+=pmatch;fs+=pfs;esp+=pesp;yh+=pyh;t+=pt;e+=pe;cup+=pcup;pm+=ppm;ol+=pol;en+=pen;f+=pf;
-      const setPts=(id,v)=>{const el=document.getElementById(id);if(!el)return;el.innerHTML=v===3?'<span class="pts pts-exact">3</span>':v===1?'<span class="pts pts-winner">1</span>':'<span class="pts pts-wrong">0</span>'};
-      setPts('pts-c-'+x.id,pc);setPts('pts-g-'+x.id,pg);setPts('pts-m-'+x.id,pmatch);setPts('pts-fs-'+x.id,pfs);setPts('pts-esp-'+x.id,pesp);setPts('pts-yh-'+x.id,pyh);setPts('pts-t-'+x.id,pt);setPts('pts-e-'+x.id,pe);setPts('pts-cup-'+x.id,pcup);setPts('pts-pm-'+x.id,ppm);setPts('pts-ol-'+x.id,pol);setPts('pts-en-'+x.id,pen);setPts('pts-f-'+x.id,pf);
+      const gp=(source)=>{const pred=source==='c'?x.c:source==='g'?x.g:source==='m'?x.f:source==='fs'?x.fs:source==='esp'?x.esp:source==='yh'?x.yh:source==='t'?x.tips:source==='e'?x.e:source==='cup'?x.cup:source==='pm'?x.pm:source==='ol'?OLORACULO_PREDS[x.id]:source==='en'?ENGINE_PREDS[x.id]:getSmartConsensus(x.id).score;const e=evaluate(real,pred);return e==='exact'?3:e==='winner'?1:0};
+      c+=gp('c');g+=gp('g');m+=gp('m');fs+=gp('fs');esp+=gp('esp');yh+=gp('yh');t+=gp('t');e+=gp('e');cup+=gp('cup');pm+=gp('pm');ol+=gp('ol');en+=gp('en');f+=gp('f');
     }
   });
-  document.getElementById('pts-cascade').textContent=c;
-  document.getElementById('pts-chatgpt').textContent=g;
-  document.getElementById('pts-gemini').textContent=m;
-  document.getElementById('pts-fansided').textContent=fs;
-  document.getElementById('pts-espn').textContent=esp;
-  document.getElementById('pts-yahoo').textContent=yh;
-  document.getElementById('pts-1960tips').textContent=t;
-  document.getElementById('pts-elo').textContent=e;
-  document.getElementById('pts-cup26').textContent=cup;
-  document.getElementById('pts-polymarket').textContent=pm;
-  document.getElementById('pts-oloraculo').textContent=ol;
-  document.getElementById('pts-engine').textContent=en;
-  document.getElementById('pts-consensus').textContent=f;
-  document.getElementById('pts-played').textContent=played+'/72';
-  saveRealScores();
+  const setT=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
+  setT('pts-cascade',c);setT('pts-chatgpt',g);setT('pts-gemini',m);setT('pts-fansided',fs);
+  setT('pts-espn',esp);setT('pts-yahoo',yh);setT('pts-1960tips',t);setT('pts-elo',e);
+  setT('pts-cup26',cup);setT('pts-polymarket',pm);setT('pts-oloraculo',ol);setT('pts-engine',en);
+  setT('pts-consensus',f);setT('pts-played',played+'/72');
 }
 
 function saveResultsToServer(){
   const btn=document.getElementById('btn-save');
   const fb=document.getElementById('save-feedback');
   btn.disabled=true;fb.textContent='';fb.className='save-feedback';
-  const results={};
-  matches.forEach(x=>{const el=document.getElementById('real-'+x.id);if(el&&el.value)results[x.id]=el.value});
+  const ls=JSON.parse(localStorage.getItem('prode2026_real')||'{}');
+  const embedded=typeof EMBEDDED_REAL_SCORES!=='undefined'?EMBEDDED_REAL_SCORES:{};
+  const results=Object.assign({},embedded,ls);
   if(Object.keys(results).length===0){fb.textContent='Sin resultados';fb.className='save-feedback error';btn.disabled=false;btn.textContent='Guardar';return}
   const json=JSON.stringify(results);
   const title='Resultados';
@@ -920,13 +1037,14 @@ function saveResultsToServer(){
 function syncMobileScore(el){
   const id=parseInt(el.dataset.match);
   if(!id)return;
-  const desktop=document.getElementById('real-'+id);
-  if(desktop)desktop.value=el.value;
-  updateInputStyle(desktop||el,id);
+  const ls=JSON.parse(localStorage.getItem('prode2026_real')||'{}');
+  if(el.value) ls[id]=el.value;
+  else delete ls[id];
+  localStorage.setItem('prode2026_real',JSON.stringify(ls));
   updateScores();
 }
-function saveRealScores(){const d={};matches.forEach(x=>{const v=document.getElementById('real-'+x.id)?.value;if(v)d[x.id]=v});localStorage.setItem('prode2026_real',JSON.stringify(d))}
-function loadRealScores(){try{let d=JSON.parse(localStorage.getItem('prode2026_real')||'{}');if(Object.keys(d).length===0&&typeof EMBEDDED_REAL_SCORES!=='undefined'){d=Object.assign({},EMBEDDED_REAL_SCORES);localStorage.setItem('prode2026_real',JSON.stringify(d))}Object.keys(d).forEach(id=>{const el=document.getElementById('real-'+id);if(el){el.value=d[id];updateInputStyle(el,id)}const mc=document.querySelector('[data-match="'+id+'"]');if(mc)mc.value=d[id]});updateScores()}catch(e){}}
+function saveRealScores(){const ls=JSON.parse(localStorage.getItem('prode2026_real')||'{}');matches.forEach(x=>{const mc=document.querySelector('[data-match="'+x.id+'"]');if(mc&&mc.value)ls[x.id]=mc.value});localStorage.setItem('prode2026_real',JSON.stringify(ls))}
+function loadRealScores(){try{let d=JSON.parse(localStorage.getItem('prode2026_real')||'{}');if(Object.keys(d).length===0&&typeof EMBEDDED_REAL_SCORES!=='undefined'){d=Object.assign({},EMBEDDED_REAL_SCORES);localStorage.setItem('prode2026_real',JSON.stringify(d))}Object.keys(d).forEach(id=>{const mc=document.querySelector('[data-match="'+id+'"]');if(mc)mc.value=d[id]});updateScores()}catch(e){}}
 function updateInputStyle(el,id){
   const m=matches.find(x=>x.id===id);
   if(!m||!el.value)return;
@@ -955,62 +1073,65 @@ function toggleMatchCard(id){
 
 function renderComparativa(){
   const tb=document.getElementById('tbody-comparativa');
-  const tbh=document.getElementById('tbody-comparativa-header');
-  // Header part (group, date, match)
+  const realScores=typeof EMBEDDED_REAL_SCORES!=='undefined'?EMBEDDED_REAL_SCORES:{};
+  const getPred=(x,k)=>{
+    if(k==='ol') return OLORACULO_PREDS[x.id]||'-';
+    if(k==='en') return ENGINE_PREDS[x.id]||'-';
+    return x[k]||'-';
+  };
+  const getPredState=(pred,realScoreKey)=>{
+    if(!realScores[realScoreKey]||pred==='-'||!pred) return '';
+    const e=evaluate(realScores[realScoreKey],pred);
+    if(e==='exact') return 'pred-exact';
+    if(e==='winner') return 'pred-winner';
+    return 'pred-wrong';
+  };
+  const sourceKeys=['c','g','f','fs','esp','yh','tips','e','cup','pm','ol','en'];
   matches.forEach(x=>{
     const con=getSmartConsensus(x.id);
     const fechaNum=getFecha(x.id);
-    const trh=document.createElement('tr');trh.id='row-'+x.id;trh.className=getFechaClass(x.id);
-    trh.innerHTML=`<td class="sticky-col">${x.id}</td><td class="sticky-col-2"><span class="group-badge">${x.gr}</span></td><td class="date-cell">${x.d}<span class="date-badge date-badge-${fechaNum}">F${fechaNum}</span></td><td class="date-cell">${x.h}</td><td style="min-width:200px" class="match-cell">${x.a} <span class="vs" style="color:var(--text3);font-weight:400">vs</span> ${x.b}</td>
-    <td style="text-align:center"><span class="pred pred-cascade">${x.c}</span></td>
-    <td style="text-align:center"><span class="pred pred-chatgpt">${x.g}</span></td>
-    <td style="text-align:center"><span class="pred pred-gemini">${x.f}</span></td>
-    <td style="text-align:center"><span class="pred pred-fansided">${x.fs}</span></td>
-    <td style="text-align:center"><span class="pred pred-espn">${x.esp}</span></td>
-    <td style="text-align:center"><span class="pred pred-yahoo">${x.yh}</span></td>`;
-    tbh.appendChild(trh);
-
-    const tr=document.createElement('tr');tr.className=getFechaClass(x.id);
+    const tr=document.createElement('tr');tr.id='row-'+x.id;tr.className=getFechaClass(x.id);
+    const realScoreKey=String(x.id);
+    const predsHTML=sourceKeys.map(k=>{
+      const pred=getPred(x,k);
+      const st=getPredState(pred,realScoreKey);
+      if(!st) return `<td style="text-align:center"><span class="pred">${pred}</span></td>`;
+      const e=evaluate(realScores[realScoreKey],pred);
+      const icon=e==='exact'?'&#10003;':e==='winner'?'&#8764;':'&#10007;';
+      return `<td style="text-align:center"><span class="pred ${st}">${pred} ${icon}</span></td>`;
+    }).join('');
+    const realVal=realScores[realScoreKey]||'';
     tr.innerHTML=
-    `<td style="text-align:center"><span class="pred pred-1960tips">${x.tips}</span></td>
-    <td style="text-align:center"><span class="pred pred-elo">${x.e}</span></td>
-    <td style="text-align:center"><span class="pred pred-cup26">${x.cup}</span></td>
-    <td style="text-align:center"><span class="pred pred-polymarket">${x.pm}</span></td>
-    <td style="text-align:center"><span class="pred pred-oloraculo">${OLORACULO_PREDS[x.id]||'-'}</span></td>
-    <td style="text-align:center"><span class="pred pred-engine">${ENGINE_PREDS[x.id]||'-'}</span></td>
-    <td style="text-align:center"><span class="pred pred-consensus" style="font-size:.85rem">${con.score}</span></td>
-    <td style="text-align:center"><span class="conf-badge conf-${con.confidence}">${con.confidence==='high'?'Alta':con.confidence==='medium'?'Media':'Baja'}</span></td>
-    <td style="text-align:center" class="${con.agree>=7?'agree-3':con.agree>=4?'agree-2':'agree-1'}">${con.agree}/10</td>
-    <td style="text-align:center"><input type="text" class="input-real" id="real-${x.id}" placeholder="X-Y" maxlength="5" oninput="updateInputStyle(this,${x.id});updateScores()"></td>
-    <td style="text-align:center" id="pts-c-${x.id}"></td>
-    <td style="text-align:center" id="pts-g-${x.id}"></td>
-    <td style="text-align:center" id="pts-m-${x.id}"></td>
-    <td style="text-align:center" id="pts-fs-${x.id}"></td>
-    <td style="text-align:center" id="pts-esp-${x.id}"></td>
-    <td style="text-align:center" id="pts-yh-${x.id}"></td>
-    <td style="text-align:center" id="pts-t-${x.id}"></td>
-    <td style="text-align:center" id="pts-e-${x.id}"></td>
-    <td style="text-align:center" id="pts-cup-${x.id}"></td>
-    <td style="text-align:center" id="pts-pm-${x.id}"></td>
-    <td style="text-align:center" id="pts-ol-${x.id}"></td>
-    <td style="text-align:center" id="pts-en-${x.id}"></td>
-    <td style="text-align:center" id="pts-f-${x.id}"></td>`;
+      `<td class="sticky-col">${x.id}</td><td class="sticky-col-2" style="left:30px"><span class="group-badge">${x.gr}</span></td>
+      <td class="date-cell">${x.d}<span class="date-badge date-badge-${fechaNum}">F${fechaNum}</span></td>
+      <td class="date-cell">${x.h}</td>
+      <td style="min-width:200px" class="match-cell">${x.a} <span class="vs">vs</span> ${x.b}</td>
+      ${predsHTML}
+      <td style="text-align:center"><span class="pred" style="font-size:.85rem">${con.score}</span></td>
+      <td style="text-align:center"><span class="conf-badge conf-${con.confidence}">${con.confidence==='high'?'Alta':con.confidence==='medium'?'Media':'Baja'}</span></td>
+      <td style="text-align:center" class="${con.agree>=7?'agree-3':con.agree>=4?'agree-2':'agree-1'}">${con.agree}/10</td>
+      <td style="text-align:center"><span class="real-score-badge">${realVal||''}</span></td>`;
     tb.appendChild(tr);
   });
 
   // Mobile cards
   const mc=document.getElementById('mobile-cards');
+  mc.innerHTML='';
   matches.forEach(x=>{
     const con=getSmartConsensus(x.id);
     const fechaNum=getFecha(x.id);
-    const sourceKeys=['c','g','f','fs','esp','yh','tips','e','cup','pm','ol','en'];
+    const realScoreKey=String(x.id);
     const sourceGrid=sourceKeys.map(k=>{
-      let val;
-      if(k==='ol') val=OLORACULO_PREDS[x.id]||'-';
-      else if(k==='en') val=ENGINE_PREDS[x.id]||'-';
-      else val=x[k];
-      return `<div class="source-item"><span class="source-name">${SOURCE_LABELS[k]}</span><span class="source-score" style="color:var(--accent)">${val}</span></div>`;
+      const pred=getPred(x,k);
+      const st=getPredState(pred,realScoreKey);
+      let cls='source-item';
+      if(st) cls+=' source-'+st.replace('pred-','');
+      const iconSpan=st?` <span class="state-icon">${st==='pred-exact'?'&#10003;':st==='pred-winner'?'&#8764;':'&#10007;'}</span>`:'';
+      return `<div class="${cls}"><span class="source-name">${SOURCE_LABELS[k]}</span><span class="source-score">${pred}${iconSpan}</span></div>`;
     }).join('');
+    const realVal=realScores[realScoreKey]||'';
+    const realHTML=realVal?`<div class="real-score-mobile"><span class="real-badge">Real: ${realVal}</span></div>`:
+      `<div class="real-input-wrap"><label>Resultado real:</label><input type="text" class="input-real" data-match="${x.id}" placeholder="X-Y" maxlength="5" oninput="syncMobileScore(this)"></div>`;
 
     const card=document.createElement('div');card.className='match-card';card.id='mcard-'+x.id;
     card.innerHTML=
@@ -1019,20 +1140,82 @@ function renderComparativa(){
       <span class="date-badge date-badge-${fechaNum}" style="font-size:.6rem">F${fechaNum}</span>
       <span class="match-teams">${x.a} vs ${x.b}</span>
       <span class="consensus-badge">${con.score}</span>
-      <span class="expand-icon">▼</span>
+      <span class="expand-icon">&#9660;</span>
     </div>
     <div class="match-card-body">
       <div class="match-detail"><span>${x.d} · ${x.h} · ${x.ch}</span><span style="font-size:.7rem;color:var(--text3)">${con.agree}/10 acuerdan</span></div>
       <div class="source-grid">${sourceGrid}</div>
-      <div class="real-input-wrap">
-        <label>Resultado real:</label>
-        <input type="text" class="input-real" data-match="${x.id}" placeholder="X-Y" maxlength="5" oninput="syncMobileScore(this)">
-      </div>
+      ${realHTML}
     </div>`;
     mc.appendChild(card);
   });
 }
 
+function renderResultados(){
+  const container=document.getElementById('resultados-container');
+  const realScores=typeof EMBEDDED_REAL_SCORES!=='undefined'?EMBEDDED_REAL_SCORES:{};
+  const playedIds=Object.keys(realScores).map(Number).sort((a,b)=>a-b);
+  if(playedIds.length===0){
+    container.innerHTML='<div class="card" style="text-align:center;padding:30px;color:var(--text3);font-size:.9rem">Aun no hay partidos jugados. Los resultados apareceran automaticamente aqui.</div>';
+    return;
+  }
+  const sourceKeys=['c','g','f','fs','esp','yh','tips','e','cup','pm','ol','en'];
+  const getScore=(m,k)=>{
+    if(k==='ol') return OLORACULO_PREDS[m.id]||'-';
+    if(k==='en') return ENGINE_PREDS[m.id]||'-';
+    return m[k]||'-';
+  };
+  // Per-source running totals
+  const totals={};
+  sourceKeys.forEach(k=>{totals[k]={exact:0,winner:0,wrong:0,total:0}});
+  let consensusExact=0,consensusWinner=0,consensusWrong=0;
+  let html='';
+  playedIds.forEach(id=>{
+    const m=matches.find(x=>x.id===id);
+    if(!m)return;
+    const con=getSmartConsensus(m.id);
+    const realStr=realScores[id];
+    const fechaNum=getFecha(m.id);
+    // Evaluate consensus
+    const ce=evaluate(realStr,con.score);
+    if(ce==='exact') consensusExact++;
+    else if(ce==='winner') consensusWinner++;
+    else consensusWrong++;
+    // Per-source
+    let sourceRows='';
+    sourceKeys.forEach(k=>{
+      const score=getScore(m,k);
+      const e=evaluate(realStr,score);
+      let state='wrong',pts=0;
+      if(e==='exact'){state='exact';pts=3;totals[k].exact++}
+      else if(e==='winner'){state='winner';pts=1;totals[k].winner++}
+      else totals[k].wrong++;
+      totals[k].total+=pts;
+      sourceRows+=`<div class="resultado-source ${state}"><span class="rs-name">${SOURCE_LABELS[k]}</span><span class="rs-score">${score} <span style="font-size:.65rem;opacity:.6">+${pts}</span></span></div>`;
+    });
+    html+=`<div class="resultado-card">
+      <div class="resultado-hero">
+        <div style="font-size:.75rem;color:var(--text2);font-weight:600">${m.gr} &middot; ${m.d} &middot; ${m.h}</div>
+        <div class="resultado-teams"><span>${m.a}</span> <span class="vs">vs</span> <span>${m.b}</span></div>
+        <div class="resultado-score">${realStr}</div>
+        <div style="font-size:.72rem;color:var(--text3)">Consenso: ${con.score} <span class="conf-badge conf-${con.confidence}" style="font-size:.6rem;margin-left:4px">${con.confidence==='high'?'Alta':con.confidence==='medium'?'Media':'Baja'}</span></div>
+      </div>
+      <div class="resultado-grid">${sourceRows}</div>
+    </div>`;
+  });
+  // Ranking
+  const sorted=sourceKeys.map(k=>({key:k,label:SOURCE_LABELS[k],pts:totals[k].total,exact:totals[k].exact,winner:totals[k].winner,wrong:totals[k].wrong})).sort((a,b)=>b.pts-a.pts);
+  let rankHtml='<div class="card"><div class="card-header"><div><div class="card-title">Ranking de Fuentes</div><div class="card-sub">Puntos acumulados en partidos jugados</div></div></div><div class="resultado-rank">';
+  // Consensus
+  const cPts=consensusExact*3+consensusWinner*1;
+  rankHtml+=`<div class="resultado-rank-item" style="background:color-mix(in oklch,var(--gold) 12%,transparent)"><span class="rank-pts" style="color:var(--gold)">${cPts}</span><span class="rank-label"><strong>Consenso</strong></span><span style="font-size:.6rem;color:var(--text3)">${consensusExact}E ${consensusWinner}G ${consensusWrong}M</span></div>`;
+  sorted.forEach(s=>{
+    const bar=`<span style="display:inline-flex;gap:2px;margin-left:4px"><span style="display:inline-block;width:${Math.max(4,s.exact*4)}px;height:4px;background:oklch(.55 .22 145);border-radius:2px"></span><span style="display:inline-block;width:${Math.max(4,s.winner*4)}px;height:4px;background:oklch(.6 .2 80);border-radius:2px"></span><span style="display:inline-block;width:${Math.max(4,s.wrong*4)}px;height:4px;background:oklch(.55 .22 30);border-radius:2px;opacity:.3"></span></span>`;
+    rankHtml+=`<div class="resultado-rank-item"><span class="rank-pts">${s.pts}</span><span class="rank-label">${s.label}</span>${bar}</div>`;
+  });
+  rankHtml+='</div></div>';
+  container.innerHTML=html+rankHtml;
+}
 /* BEGIN_DYNAMIC_TOP3_JS */
 function dynamicFecha(id){return id<=24?1:id<=48?2:3}
 function formatDynamicScore(score){return score.replace('-',' - ')}
