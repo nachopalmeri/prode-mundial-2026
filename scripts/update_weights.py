@@ -17,7 +17,7 @@ acc = {
     'e':  {'label':'ELO','exact_accuracy':16.7,'winner_accuracy':50.0,'confidence_index':40.0,'confidence_weighted':40.0,'samples':12,'exact_hits':2,'winner_hits':6,'current_weight':1.3},
     'cup':{'label':'Cup26','exact_accuracy':8.3,'winner_accuracy':41.7,'confidence_index':31.7,'confidence_weighted':31.7,'samples':12,'exact_hits':1,'winner_hits':5,'current_weight':1.13},
     'pm': {'label':'Polymarket','exact_accuracy':16.7,'winner_accuracy':50.0,'confidence_index':40.0,'confidence_weighted':40.0,'samples':12,'exact_hits':2,'winner_hits':6,'current_weight':1.3},
-    'ol': {'label':'Oloraculo','exact_accuracy':0.0,'winner_accuracy':0.0,'confidence_index':0.0,'confidence_weighted':0.0,'samples':12,'exact_hits':0,'winner_hits':0,'current_weight':0.5},
+    'ol': {'label':'Oloraculo','exact_accuracy':8.3,'winner_accuracy':33.3,'confidence_index':25.8,'confidence_weighted':25.8,'samples':12,'exact_hits':1,'winner_hits':4,'current_weight':1.02},
     'en': {'label':'Engine','exact_accuracy':8.3,'winner_accuracy':41.7,'confidence_index':31.7,'confidence_weighted':31.7,'samples':12,'exact_hits':1,'winner_hits':5,'current_weight':1.13}
 }
 

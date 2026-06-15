@@ -57,6 +57,16 @@ def update_results_json():
     print(f"  [OK] results.json actualizado con {len(REAL_RESULTS)} resultados reales")
 
 # ===== 2. FUNCIONES DE EVALUACION =====
+def parse_js_object(text):
+    result = {}
+    if not text: return result
+    text = text.strip().strip('{}').strip()
+    if not text: return result
+    for pair in re.findall(r'(\d+)\s*:\s*"([^"]*)"', text):
+        result[int(pair[0])] = pair[1]
+    return result
+
+
 def parse_score(s):
     if not s or s == '-' or '-' not in str(s):
         return None
@@ -126,10 +136,7 @@ def update_html():
     engine_preds = {}
     
     if ol_match:
-        try:
-            oloraculo_preds = json.loads(ol_match.group(1))
-        except:
-            oloraculo_preds = {}
+        oloraculo_preds = parse_js_object(ol_match.group(1))
     
     if en_match:
         try:
@@ -269,14 +276,19 @@ def update_html():
     }
     accuracy_json = json.dumps(accuracy_data, ensure_ascii=False)
     
-    # Reemplazar ACCURACY_DATA
-    html = re.sub(
-        r'const ACCURACY_DATA\s*=\s*\{.*?"sources"\s*:\s*\{.*?\}\s*\}',
-        f'const ACCURACY_DATA = {accuracy_json}',
-        html,
-        flags=re.DOTALL
-    )
-    print(f"  [OK] ACCURACY_DATA actualizado")
+    # Reemplazar ACCURACY_DATA (buscar declaracion completa hasta el ;)
+    acc_start = html.find('const ACCURACY_DATA = ')
+    if acc_start >= 0:
+        semi_pos = html.find(';', acc_start)
+        if semi_pos > 0:
+            old_text = html[acc_start:semi_pos+1]
+            new_text = f'const ACCURACY_DATA = {accuracy_json};'
+            html = html.replace(old_text, new_text)
+            print(f"  [OK] ACCURACY_DATA actualizado ({len(old_text)} chars -> {len(new_text)} chars)")
+        else:
+            print("  [WARN] No se encontro ';' para ACCURACY_DATA")
+    else:
+        print("  [WARN] No se encontro 'const ACCURACY_DATA'")
     
     # ===== ACTUALIZAR SOURCE_WEIGHTS =====
     weight_entries = []

@@ -33,6 +33,8 @@ scripts/calculate_*.py
 scripts/enter_*.py
 scripts/integrate_*.py
 scripts/predict_*.py
+scripts/polymarket_local.py
+scripts/scrape_polymarket*.py
 
 # Reportes generados
 *.report.md
