@@ -1,12 +1,18 @@
 {
-  "last_updated": "2026-06-14",
+  "last_updated": "2026-06-15",
   "results": {
     "1": "2-0",
     "2": "2-1",
     "3": "1-1",
     "4": "4-1",
     "5": "1-1",
-    "6": "1-1"
+    "6": "1-1",
+    "7": "0-1",
+    "8": "2-0",
+    "9": "7-1",
+    "10": "2-2",
+    "11": "1-0",
+    "12": "5-1"
   },
   "frozen_matches": {
     "1": true,
@@ -14,7 +20,13 @@
     "3": true,
     "4": true,
     "5": true,
-    "6": true
+    "6": true,
+    "7": true,
+    "8": true,
+    "9": true,
+    "10": true,
+    "11": true,
+    "12": true
   },
   "news_adjustments": {
     "Neymar_OUT": {
@@ -54,17 +66,12 @@
     }
   },
   "notes": [
-    "Resultados reales Fecha 1 Mundial 2026:",
-    "Partido 1 (11 jun): Mexico 2-0 South Africa - JUGADO",
-    "Partido 2 (11 jun): South Korea 2-1 Czechia - JUGADO",
-    "Partido 3 (12 jun): Canada 1-1 Bosnia - JUGADO",
-    "Partido 4 (12 jun): USA 4-1 Paraguay - JUGADO",
-    "Partido 5 (13 jun): Qatar 1-1 Switzerland - JUGADO",
-    "Partido 6 (13 jun): Brazil 1-1 Morocco - JUGADO",
-    "Partidos 7-72: PENDIENTES",
-    "13 Jun 2026 - Neymar OUT confirmado para Brazil vs Morocco",
-    "13 Jun 2026 - Morocco pierde Aguerd y Abde para fase de grupos",
-    "13 Jun 2026 - Canada sin Alphonso Davies para fecha 1 (concluida)",
-    "13 Jun 2026 - Actualizacion de pesos por accuracy real (6 partidos)"
+    "Resultados REALES Fecha 1 Mundial 2026 (verificados web: FIFA, Olympics.com, MARCA):",
+    "11 Jun: Mexico 2-0 South Africa ✅ | South Korea 2-1 Czechia ✅",
+    "12 Jun: Canada 1-1 Bosnia ✅ | USA 4-1 Paraguay ✅",
+    "13 Jun: Qatar 1-1 Switzerland ✅ | Brazil 1-1 Morocco ✅ | Haiti 0-1 Scotland ✅ | Australia 2-0 Turkiye ✅",
+    "14 Jun: Germany 7-1 Curacao ✅ | Netherlands 2-2 Japan ✅ | Ivory Coast 1-0 Ecuador ✅ | Sweden 5-1 Tunisia ✅",
+    "NOTA: FECHA1_RESULTADOS.md tenia 10/12 resultados inventados. Corregido con datos reales.",
+    "Partidos 13-72: PENDIENTES (proximos dias)"
   ]
 }

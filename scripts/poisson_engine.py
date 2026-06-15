@@ -20,7 +20,7 @@ HTML_PATH = PROJECT_ROOT / "prode-mundial-2026.html"
 OUTPUT_PATH = PROJECT_ROOT / "data" / "runtime" / "engine_predictions.json"
 
 DIXON_COLES_RHO = -0.03
-MAX_GOALS = 8
+MAX_GOALS = 10
 EM_ITERATIONS = 8
 SHRINK_PRIOR = 2.0
 CLAMP_MIN = 0.45
@@ -275,8 +275,8 @@ def compute_goal_model(attack, defense, avg_goals_per_team, matches, team_streng
         away_att = attack.get(away, 1.0)
         away_def = defense.get(away, 1.0)
 
-        lam_h = avg_goals_per_team * home_att * away_def * 1.10
-        lam_a = avg_goals_per_team * away_att * home_def * 1.10
+        lam_h = avg_goals_per_team * home_att * away_def
+        lam_a = avg_goals_per_team * away_att * home_def
 
         home_boost = team_strengths.get(home, {}).get("home_boost", 0)
         is_neutral = (home_boost <= 0)
