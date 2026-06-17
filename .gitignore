@@ -51,3 +51,13 @@ results_example.json
 
 # Datos runtime (regenerados)
 data/runtime/
+
+# Timestamped pipeline artifacts
+data/model/bias_*.json
+data/model/weights_2026*.json
+data/reports/accuracy_2026*.json
+data/reports/validation_2026*.json
+
+# Temp analysis files
+prode_script_check.js
+prode_script_checked.js

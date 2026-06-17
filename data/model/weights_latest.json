@@ -1,224 +1,200 @@
 {
   "weights": {
-    "c": 1.3,
-    "g": 1.3,
-    "f": 1.25,
-    "fs": 1.3,
-    "esp": 1.3,
-    "yh": 1.42,
-    "tips": 1.13,
-    "e": 1.3,
-    "cup": 1.13,
-    "pm": 1.3,
-    "ol": 1.02,
-    "en": 1.13
+    "c": 1.95,
+    "g": 1.95,
+    "f": 1.95,
+    "fs": 1.95,
+    "esp": 1.95,
+    "yh": 1.95,
+    "tips": 1.83,
+    "e": 1.95,
+    "cup": 1.83,
+    "pm": 1.95
   },
   "accuracies": {
     "c": {
-      "label": "Cascade",
-      "exact_accuracy": 16.7,
-      "winner_accuracy": 50.0,
-      "confidence_index": 40.0,
-      "confidence_weighted": 40.0,
-      "samples": 12,
+      "label": "Cup26",
+      "exact_accuracy": 12.5,
+      "winner_accuracy": 37.5,
+      "confidence_index": 30.0,
+      "confidence_weighted": 30.0,
+      "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.3
+      "current_weight": 1.9
     },
     "g": {
-      "label": "ChatGPT",
-      "exact_accuracy": 16.7,
-      "winner_accuracy": 50.0,
-      "confidence_index": 40.0,
-      "confidence_weighted": 40.0,
-      "samples": 12,
+      "label": "Gamble",
+      "exact_accuracy": 12.5,
+      "winner_accuracy": 37.5,
+      "confidence_index": 30.0,
+      "confidence_weighted": 30.0,
+      "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.3
+      "current_weight": 1.9
     },
     "f": {
-      "label": "Gemini",
-      "exact_accuracy": 8.3,
-      "winner_accuracy": 50.0,
-      "confidence_index": 37.5,
-      "confidence_weighted": 37.5,
-      "samples": 12,
+      "label": "Futbolist",
+      "exact_accuracy": 6.2,
+      "winner_accuracy": 37.5,
+      "confidence_index": 28.1,
+      "confidence_weighted": 28.1,
+      "samples": 16,
       "exact_hits": 1,
       "winner_hits": 6,
-      "current_weight": 1.25
+      "current_weight": 1.85
     },
     "fs": {
-      "label": "Fansided",
-      "exact_accuracy": 16.7,
-      "winner_accuracy": 50.0,
-      "confidence_index": 40.0,
-      "confidence_weighted": 40.0,
-      "samples": 12,
+      "label": "F Score",
+      "exact_accuracy": 12.5,
+      "winner_accuracy": 43.8,
+      "confidence_index": 34.4,
+      "confidence_weighted": 34.4,
+      "samples": 16,
       "exact_hits": 2,
-      "winner_hits": 6,
-      "current_weight": 1.3
+      "winner_hits": 7,
+      "current_weight": 1.9
     },
     "esp": {
       "label": "ESPN",
-      "exact_accuracy": 16.7,
-      "winner_accuracy": 50.0,
-      "confidence_index": 40.0,
-      "confidence_weighted": 40.0,
-      "samples": 12,
+      "exact_accuracy": 12.5,
+      "winner_accuracy": 37.5,
+      "confidence_index": 30.0,
+      "confidence_weighted": 30.0,
+      "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.3
+      "current_weight": 1.9
     },
     "yh": {
       "label": "Yahoo",
-      "exact_accuracy": 16.7,
-      "winner_accuracy": 58.3,
-      "confidence_index": 45.8,
-      "confidence_weighted": 45.8,
-      "samples": 12,
+      "exact_accuracy": 12.5,
+      "winner_accuracy": 43.8,
+      "confidence_index": 34.4,
+      "confidence_weighted": 34.4,
+      "samples": 16,
       "exact_hits": 2,
       "winner_hits": 7,
-      "current_weight": 1.42
+      "current_weight": 1.95
     },
     "tips": {
-      "label": "1960Tips",
-      "exact_accuracy": 8.3,
-      "winner_accuracy": 41.7,
-      "confidence_index": 31.7,
-      "confidence_weighted": 31.7,
-      "samples": 12,
+      "label": "1960 Tips",
+      "exact_accuracy": 6.2,
+      "winner_accuracy": 31.2,
+      "confidence_index": 23.8,
+      "confidence_weighted": 23.8,
+      "samples": 16,
       "exact_hits": 1,
       "winner_hits": 5,
-      "current_weight": 1.13
+      "current_weight": 1.73
     },
     "e": {
-      "label": "ELO",
-      "exact_accuracy": 16.7,
-      "winner_accuracy": 50.0,
-      "confidence_index": 40.0,
-      "confidence_weighted": 40.0,
-      "samples": 12,
+      "label": "Elo",
+      "exact_accuracy": 12.5,
+      "winner_accuracy": 37.5,
+      "confidence_index": 30.0,
+      "confidence_weighted": 30.0,
+      "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.3
+      "current_weight": 1.9
     },
     "cup": {
-      "label": "Cup26",
-      "exact_accuracy": 8.3,
-      "winner_accuracy": 41.7,
-      "confidence_index": 31.7,
-      "confidence_weighted": 31.7,
-      "samples": 12,
+      "label": "Cup Predictor",
+      "exact_accuracy": 6.2,
+      "winner_accuracy": 31.2,
+      "confidence_index": 23.8,
+      "confidence_weighted": 23.8,
+      "samples": 16,
       "exact_hits": 1,
       "winner_hits": 5,
-      "current_weight": 1.13
+      "current_weight": 1.73
     },
     "pm": {
       "label": "Polymarket",
-      "exact_accuracy": 16.7,
-      "winner_accuracy": 50.0,
-      "confidence_index": 40.0,
-      "confidence_weighted": 40.0,
-      "samples": 12,
+      "exact_accuracy": 12.5,
+      "winner_accuracy": 37.5,
+      "confidence_index": 30.0,
+      "confidence_weighted": 30.0,
+      "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.3
-    },
-    "ol": {
-      "label": "Oloraculo",
-      "exact_accuracy": 8.3,
-      "winner_accuracy": 33.3,
-      "confidence_index": 25.8,
-      "confidence_weighted": 25.8,
-      "samples": 12,
-      "exact_hits": 1,
-      "winner_hits": 4,
-      "current_weight": 1.02
-    },
-    "en": {
-      "label": "Engine",
-      "exact_accuracy": 8.3,
-      "winner_accuracy": 41.7,
-      "confidence_index": 31.7,
-      "confidence_weighted": 31.7,
-      "samples": 12,
-      "exact_hits": 1,
-      "winner_hits": 5,
-      "current_weight": 1.13
+      "current_weight": 1.9
     }
   },
   "biases": {
     "c": {
-      "goal_bias_home": -1.17,
+      "goal_bias_home": -0.81,
       "goal_bias_away": -0.5,
-      "draw_frequency": 33.3,
+      "draw_frequency": 6.2,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     },
     "g": {
-      "goal_bias_home": -1.0,
-      "goal_bias_away": -0.5,
-      "draw_frequency": 33.3,
+      "goal_bias_home": -0.88,
+      "goal_bias_away": -0.44,
+      "draw_frequency": 0.0,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     },
     "f": {
-      "goal_bias_home": -1.17,
-      "goal_bias_away": -0.5,
-      "draw_frequency": 33.3,
+      "goal_bias_home": -0.88,
+      "goal_bias_away": -0.31,
+      "draw_frequency": 0.0,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     },
     "fs": {
-      "goal_bias_home": -1.0,
-      "goal_bias_away": -0.17,
-      "draw_frequency": 50.0,
+      "goal_bias_home": -0.88,
+      "goal_bias_away": -0.31,
+      "draw_frequency": 6.2,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     },
     "esp": {
-      "goal_bias_home": -1.17,
-      "goal_bias_away": -0.5,
-      "draw_frequency": 33.3,
+      "goal_bias_home": -0.88,
+      "goal_bias_away": -0.44,
+      "draw_frequency": 0.0,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     },
     "yh": {
-      "goal_bias_home": -1.17,
-      "goal_bias_away": -0.5,
-      "draw_frequency": 33.3,
+      "goal_bias_home": -0.94,
+      "goal_bias_away": -0.44,
+      "draw_frequency": 6.2,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     },
     "tips": {
       "goal_bias_home": -1.0,
-      "goal_bias_away": -0.5,
-      "draw_frequency": 0.0,
+      "goal_bias_away": -0.38,
+      "draw_frequency": 6.2,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     },
     "e": {
-      "goal_bias_home": -1.17,
-      "goal_bias_away": -0.5,
-      "draw_frequency": 33.3,
+      "goal_bias_home": -0.88,
+      "goal_bias_away": -0.44,
+      "draw_frequency": 0.0,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     },
     "cup": {
-      "goal_bias_home": -1.17,
-      "goal_bias_away": -0.5,
-      "draw_frequency": 33.3,
+      "goal_bias_home": -1.0,
+      "goal_bias_away": -0.12,
+      "draw_frequency": 0.0,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     },
     "pm": {
-      "goal_bias_home": -1.17,
-      "goal_bias_away": -0.5,
-      "draw_frequency": 33.3,
+      "goal_bias_home": -0.81,
+      "goal_bias_away": -0.38,
+      "draw_frequency": 0.0,
       "actual_draw_frequency": 50.0,
-      "samples": 12
+      "samples": 16
     }
   },
-  "timestamp": "20260615_190000",
-  "generated_by": "update_real_results.py"
+  "timestamp": "20260616_163905",
+  "generated_by": "recalibrate.py"
 }

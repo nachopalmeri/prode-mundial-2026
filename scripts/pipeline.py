@@ -18,6 +18,7 @@ STEPS = [
     ("embed_accuracy",        ["embed_accuracy.py"],          False),
     ("update_dashboard",      ["update_dynamic_dashboard.py"], False),
     ("embed_results",         ["embed_results.py"],           False),
+    ("auto_update",           ["auto_update.py"],             False),
     ("validate_html",         ["validate_html.py"],           True),
 ]
 

@@ -1,5 +1,4 @@
 {
-  "last_updated": "2026-06-15",
   "results": {
     "1": "2-0",
     "2": "2-1",
@@ -12,66 +11,10 @@
     "9": "7-1",
     "10": "2-2",
     "11": "1-0",
-    "12": "5-1"
-  },
-  "frozen_matches": {
-    "1": true,
-    "2": true,
-    "3": true,
-    "4": true,
-    "5": true,
-    "6": true,
-    "7": true,
-    "8": true,
-    "9": true,
-    "10": true,
-    "11": true,
-    "12": true
-  },
-  "news_adjustments": {
-    "Neymar_OUT": {
-      "team": "Brazil",
-      "impact": 0.15,
-      "confirmed": true
-    },
-    "Aguerd_OUT": {
-      "team": "Morocco",
-      "impact": 0.15,
-      "confirmed": true
-    },
-    "Abde_OUT": {
-      "team": "Morocco",
-      "impact": 0.1,
-      "confirmed": true
-    },
-    "Davies_OUT": {
-      "team": "Canada",
-      "impact": 0.15,
-      "confirmed": true
-    },
-    "Simons_OUT": {
-      "team": "Netherlands",
-      "impact": 0.12,
-      "confirmed": true
-    },
-    "Pedri_OUT": {
-      "team": "Spain",
-      "impact": 0.12,
-      "confirmed": true
-    },
-    "Rodrygo_OUT": {
-      "team": "Brazil",
-      "impact": 0.2,
-      "confirmed": true
-    }
-  },
-  "notes": [
-    "Resultados REALES Fecha 1 Mundial 2026 (verificados web: FIFA, Olympics.com, MARCA):",
-    "11 Jun: Mexico 2-0 South Africa ✅ | South Korea 2-1 Czechia ✅",
-    "12 Jun: Canada 1-1 Bosnia ✅ | USA 4-1 Paraguay ✅",
-    "13 Jun: Qatar 1-1 Switzerland ✅ | Brazil 1-1 Morocco ✅ | Haiti 0-1 Scotland ✅ | Australia 2-0 Turkiye ✅",
-    "14 Jun: Germany 7-1 Curacao ✅ | Netherlands 2-2 Japan ✅ | Ivory Coast 1-0 Ecuador ✅ | Sweden 5-1 Tunisia ✅",
-    "NOTA: FECHA1_RESULTADOS.md tenia 10/12 resultados inventados. Corregido con datos reales.",
-    "Partidos 13-72: PENDIENTES (proximos dias)"
-  ]
+    "12": "5-1",
+    "13": "0-0",
+    "14": "1-1",
+    "15": "1-1",
+    "16": "2-2"
+  }
 }

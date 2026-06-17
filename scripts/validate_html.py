@@ -78,13 +78,15 @@ def validate() -> None:
     matches = load_matches(HTML_PATH)
     errors.extend(validate_matches(matches))
 
-    expected_sources = len(SOURCE_KEYS)
+    # Detect frontend source count from the HTML SOURCE_KEYS constant
+    html_sources = re.findall(r"'(\w+)'", html.split("const SOURCE_KEYS")[1].split(";")[0]) if "const SOURCE_KEYS" in html else SOURCE_KEYS
+    expected_sources = max(len(SOURCE_KEYS), len(html_sources))
     if f"Comparativa {expected_sources} IA" not in html:
-        errors.append(f"Comparativa tab must show {expected_sources} IA")
+        errors.append(f"Comparativa tab must show {expected_sources} IA (found {len(html_sources)} frontend sources)")
     if f'id="stat-sources">{expected_sources}</div>' not in html:
         errors.append(f"Dashboard source count must be {expected_sources}")
-    if "${x.cup}" not in html or "${x.pm}" not in html:
-        errors.append("Comparative renderer must include Cup26 and Polymarket source cells")
+    if "sourceKeys.map(k=>" not in html:
+        errors.append("Comparative renderer must use dynamic sourceKeys iteration")
     if "x.t</span>" in html or "m.t:" in html:
         errors.append("1960Tips must use the tips key; t caused a time-field collision")
     if "function renderDynamicTop3" not in html:

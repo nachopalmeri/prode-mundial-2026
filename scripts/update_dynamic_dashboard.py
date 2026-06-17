@@ -202,10 +202,12 @@ def inject_dynamic_dashboard(html: str, predictions: dict) -> str:
 
     if "onclick=\"showTab('dinamico')\"" not in html:
         html = html.replace(
-            '<button class="tab-btn active" onclick="showTab(\'comparativa\')">Comparativa 10 IA</button>',
-            '<button class="tab-btn active" onclick="showTab(\'dinamico\')">Top 3 Dinámico</button>\n<button class="tab-btn" onclick="showTab(\'comparativa\')">Comparativa 10 IA</button>',
+            '<button class="tab-btn active" onclick="showTab(\'comparativa\')">Comparativa 13 IA</button>',
+            '<button class="tab-btn active" onclick="showTab(\'dinamico\')">Top 3 Dinámico</button>\n<button class="tab-btn" onclick="showTab(\'comparativa\')">Comparativa 13 IA</button>',
         )
         html = html.replace('<div id="tab-comparativa" class="section active">', '<div id="tab-comparativa" class="section">')
+    html = html.replace('Comparativa 12 IA', 'Comparativa 13 IA')
+    html = html.replace('id="stat-sources">12<', 'id="stat-sources">13<')
 
     if "<!-- TAB: DINAMICO -->" not in html:
         html = html.replace("<!-- TAB: COMPARATIVA -->", DYNAMIC_SECTION.strip() + "\n\n<!-- TAB: COMPARATIVA -->")
