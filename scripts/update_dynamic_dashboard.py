@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import random
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 from sports_source import (
@@ -13,12 +14,31 @@ from sports_source import (
     fetch_group_standings,
     fetch_polymarket_winner_odds,
     generate_real_source_predictions,
+    persist_elo_from_results,
 )
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = PROJECT_ROOT / "prode-mundial-2026.html"
 PREDICTIONS_PATH = PROJECT_ROOT / "data" / "model" / "latest_predictions.json"
+TEAM_STRENGTHS_PATH = PROJECT_ROOT / "data" / "model" / "team_strengths.json"
+RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
+RESULTS_ORDER_PATH = PROJECT_ROOT / "data" / "runtime" / "results_order.json"
+ACCURACY_REPORT_PATH = PROJECT_ROOT / "data" / "reports" / "accuracy_latest.json"
+
+
+def _embed_js_var(html: str, var_name: str, data: dict | list) -> str:
+    payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    tag = f'<script id="emb-{var_name}" type="application/json">{payload}</script>'
+    if f"emb-{var_name}" in html:
+        return re.sub(
+            rf'<script id="emb-{var_name}".*?</script>',
+            tag,
+            html,
+            count=1,
+            flags=re.S,
+        )
+    return html.replace("</head>", f"{tag}\n</head>") if "</head>" in html else html + tag
 
 SOURCE_KEYS = ["c", "g", "f", "fs", "esp", "yh", "tips", "e", "cup", "pm"]
 SOURCE_ACCURACY: dict[str, float] = {
@@ -266,11 +286,55 @@ def main() -> None:
     predictions = json.loads(PREDICTIONS_PATH.read_text(encoding="utf-8"))
     # Fetch real data and inject into predictions
     predictions = inject_real_results_into_predictions(predictions)
+    # Persist real results so recalibrate.py can use them
+    persisted = {}
+    for m in predictions.get("matches", []):
+        if m.get("played") and m.get("played_result"):
+            persisted[str(m["id"])] = m["played_result"]
+    if persisted:
+        RUNTIME_PATH.parent.mkdir(parents=True, exist_ok=True)
+        RUNTIME_PATH.write_text(
+            json.dumps({"results": persisted, "updated_at": str(datetime.now(timezone.utc))}, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        # Update results order for time decay
+        existing_order = []
+        if RESULTS_ORDER_PATH.exists():
+            existing_order = json.loads(RESULTS_ORDER_PATH.read_text(encoding="utf-8"))
+        for mid in persisted:
+            if mid not in existing_order:
+                existing_order.append(mid)
+        RESULTS_ORDER_PATH.write_text(json.dumps(existing_order, indent=2) + "\n", encoding="utf-8")
+        print(f"  Persisted {len(persisted)} real results to runtime/results.json")
+    # Update Elo ratings from real results (affects future predictions)
+    persist_elo_from_results(predictions, TEAM_STRENGTHS_PATH)
     standings = fetch_group_standings()
     pm_odds = fetch_polymarket_winner_odds()
     html = HTML_PATH.read_text(encoding="utf-8")
     html = inject_source_predictions(html, predictions, standings, pm_odds)
     html = inject_dynamic_dashboard(html, predictions, standings, pm_odds)
+    # Embed accuracy report for the Accuracy tab
+    accuracy = {}
+    if ACCURACY_REPORT_PATH.exists():
+        try:
+            accuracy = json.loads(ACCURACY_REPORT_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    html = _embed_js_var(html, "ACCURACY_DATA", accuracy)
+    # Embed full standings data for UI
+    standings_clean = {}
+    if isinstance(standings, dict) and "_error" not in standings:
+        for gname, teams in sorted(standings.items()):
+            if gname.startswith("_"):
+                continue
+            standings_clean[gname] = [
+                {"pos": t.get("position", 0), "team": t.get("team", ""),
+                 "p": t.get("played", 0), "pts": t.get("points", 0),
+                 "gd": t.get("goal_difference", 0), "gf": t.get("goals_for", 0),
+                 "gc": t.get("goals_against", 0)}
+                for t in sorted(teams, key=lambda x: x.get("position", 99))
+            ]
+    html = _embed_js_var(html, "STANDINGS_DATA", standings_clean)
     HTML_PATH.write_text(html, encoding="utf-8")
     match_count = len(predictions.get("matches", []))
     has_standings = isinstance(standings, dict) and "_error" not in standings

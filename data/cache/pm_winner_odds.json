@@ -3,7 +3,7 @@
     "Spain": 0.1365,
     "New Zealand": 0.0005,
     "Switzerland": 0.0085,
-    "England": 0.1075,
+    "England": 0.1155,
     "France": 0.1845,
     "South Korea": 0.0035,
     "Haiti": 0.0005,
@@ -14,7 +14,7 @@
     "Germany": 0.0565,
     "Colombia": 0.0145,
     "Iran": 0.0005,
-    "Portugal": 0.0835,
+    "Portugal": 0.0845,
     "Ghana": 0.0015,
     "Netherlands": 0.0405,
     "Algeria": 0.0015,
@@ -49,5 +49,5 @@
     "Egypt": 0.0025,
     "Sweden": 0.0055
   },
-  "fetched_at": "2026-06-17T21:15:27.466852+00:00"
+  "fetched_at": "2026-06-17T21:32:49.094506+00:00"
 }

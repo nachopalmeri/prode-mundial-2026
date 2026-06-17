@@ -30,7 +30,26 @@ H2H_PATH = PROJECT_ROOT / "data" / "config" / "h2h_matches.json"
 RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
 OUTPUT_PATH = PROJECT_ROOT / "data" / "model" / "latest_predictions.json"
 BIAS_PATH = PROJECT_ROOT / "data" / "model" / "source_bias.json"
+DRAW_INFLATION_PATH = PROJECT_ROOT / "data" / "model" / "draw_inflation.json"
 MODEL_VERSION = "dynamic-prode-v2"
+
+_DRAW_INFLATION_CACHE: float | None = None
+
+
+def load_draw_inflation() -> float:
+    global _DRAW_INFLATION_CACHE
+    if _DRAW_INFLATION_CACHE is not None:
+        return _DRAW_INFLATION_CACHE
+    if DRAW_INFLATION_PATH.exists():
+        try:
+            data = json.loads(DRAW_INFLATION_PATH.read_text(encoding="utf-8"))
+            base = float(data.get("base_inflation", 0.55))
+            _DRAW_INFLATION_CACHE = base
+            return base
+        except (json.JSONDecodeError, ValueError, TypeError):
+            pass
+    _DRAW_INFLATION_CACHE = 0.55
+    return 0.55
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -340,15 +359,16 @@ def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[
     return max(0.12, min(4.8, blended_home)), max(0.12, min(4.8, blended_away))
 
 
-def score_matrix(home_mean: float, away_mean: float, match: Match) -> list[dict[str, Any]]:
+def score_matrix(home_mean: float, away_mean: float, match: Match, draw_inflation_base: float = 0.55) -> list[dict[str, Any]]:
     source_score = consensus_score(match.predictions).replace(" ", "")
     rows: list[dict[str, Any]] = []
 
-    # Draw inflation: post-Poisson-fix, base draw rate for equal teams is ~24%.
-    # Actual WC 2026 rate is 42% (8/19). Closeness factor amplifies for near-equal teams.
+    # Draw inflation: dynamically calibrated base_inflation from real results.
+    # Observed WC 2026 draw rate is ~42% (8/19). Calibration picks the base that
+    # minimises Brier score against real outcomes.
     total_outcome = home_mean + away_mean
     closeness = 1.0 - abs(home_mean - away_mean) / max(total_outcome, 0.5)
-    draw_inflation = 1.0 + 0.55 * math.exp(-total_outcome * 0.20) * (0.5 + 0.5 * closeness)
+    draw_inflation = 1.0 + draw_inflation_base * math.exp(-total_outcome * 0.20) * (0.5 + 0.5 * closeness)
 
     for home_goals in range(7):
         for away_goals in range(7):
@@ -454,6 +474,63 @@ def freeze_status(match_id: int, runtime: dict[str, Any]) -> dict[str, Any]:
     return {"frozen": True, "reason": "manual_lock"}
 
 
+def value_ranked_picks(
+    matrix: list[dict[str, Any]],
+    one_x_two: dict[str, float],
+    pool_size: int = 13,
+    default_consensus: float = 0.5,
+) -> dict[str, Any]:
+    """Rank score predictions by expected value for a prode pool of N people.
+    
+    V(pick) = [P(exacto) * 3 + P(ganador) * 1] * (1 - consensus * (1 - 1/pool_size))
+    
+    Returns best_value_pick, consensus_pick, and a differentiation strategy label.
+    """
+    pool_adjust = 1.0 / max(pool_size, 2)
+    
+    scored = []
+    for item in matrix:
+        score = item["score"]
+        prob = item["probability"]
+        hg, ag = parse_score(score)
+        if hg > ag:
+            winner_prob = prob + (one_x_two["home"] - prob)
+        elif ag > hg:
+            winner_prob = prob + (one_x_two["away"] - prob)
+        else:
+            winner_prob = prob + (one_x_two["draw"] - prob)
+        
+        expected_pts = prob * 3.0 + (winner_prob - prob) * 1.0
+        consensus = default_consensus
+        diff_factor = 1.0 - consensus * (1.0 - pool_adjust)
+        value = expected_pts * max(diff_factor, 0.05)
+        scored.append({"score": score, "prob": prob, "value": value})
+    
+    scored.sort(key=lambda x: x["value"], reverse=True)
+    best_value = scored[0]["score"] if scored else "0-0"
+    scored_by_prob = sorted(scored, key=lambda x: x["prob"], reverse=True)
+    consensus_pick = scored_by_prob[0]["score"] if scored_by_prob else "0-0"
+    
+    # Determine strategy
+    max_prob = scored_by_prob[0]["prob"] if scored_by_prob else 0
+    value_diff = scored[0]["value"] - scored_by_prob[0]["value"] if scored and scored_by_prob else 0
+    
+    if max_prob > 0.72:
+        strategy = "safe"
+    elif max_prob > 0.60:
+        strategy = "semi-value" if value_diff > 0.01 else "safe"
+    else:
+        strategy = "value"
+    
+    return {
+        "best_value_pick": best_value,
+        "consensus_pick": consensus_pick,
+        "strategy": strategy,
+        "value_diff": round(value_diff, 3),
+        "top_value_scores": scored[:3] if scored else [],
+    }
+
+
 def build_match_prediction(
     match: Match,
     priors: dict[str, Any],
@@ -462,6 +539,7 @@ def build_match_prediction(
     biases: dict[str, dict] | None = None,
     wc_data: dict[str, Any] | None = None,
     h2h_data: dict[str, Any] | None = None,
+    draw_inflation_base: float | None = None,
 ) -> dict[str, Any]:
     results = runtime.get("results", {})
     played_result = results.get(str(match.id))
@@ -470,7 +548,8 @@ def build_match_prediction(
     wc_data = load_wc_history() if wc_data is None else wc_data
     h2h_data = load_h2h() if h2h_data is None else h2h_data
     h2h_delta = compute_h2h_score(match.home, match.away, h2h_data)
-    matrix = score_matrix(home_mean, away_mean, match)
+    dib = draw_inflation_base if draw_inflation_base is not None else load_draw_inflation()
+    matrix = score_matrix(home_mean, away_mean, match, dib)
     top_three = [
         {
             "score": item["score"],
@@ -497,6 +576,9 @@ def build_match_prediction(
         for key in one_x_two
     }
 
+    # Value optimization for prode pools
+    value_info = value_ranked_picks(matrix, one_x_two, pool_size=13, default_consensus=0.5)
+
     return {
         "id": match.id,
         "group": match.group,
@@ -510,6 +592,10 @@ def build_match_prediction(
         },
         "h2h_advantage": round(h2h_delta, 3),
         "best_pick": top_three[0]["score"],
+        "best_value_pick": value_info["best_value_pick"],
+        "strategy": value_info["strategy"],
+        "value_diff": value_info["value_diff"],
+        "consensus_pick": value_info["consensus_pick"],
         "top_scores": top_three,
         "one_x_two": blended_outcomes,
         "expected_goals": {"home": round(home_mean, 2), "away": round(away_mean, 2)},
@@ -549,7 +635,8 @@ def build_predictions() -> dict[str, Any]:
     wc_data = load_wc_history()
     h2h_data = load_h2h()
     standings = calculate_standings(matches, runtime)
-    predictions = [build_match_prediction(match, priors, runtime, standings, biases, wc_data, h2h_data) for match in matches]
+    dib = load_draw_inflation()
+    predictions = [build_match_prediction(match, priors, runtime, standings, biases, wc_data, h2h_data, dib) for match in matches]
     knockout = generate_knockout_bracket(predictions, priors, wc_data, h2h_data)
 
     return {
@@ -564,6 +651,7 @@ def build_predictions() -> dict[str, Any]:
             "dynamic_context": "group_standings_and_round_motivation",
             "bias_correction": True,
             "draw_inflation": True,
+            "draw_inflation_base": dib,
         },
         "standings": standings,
         "matches": predictions,
@@ -623,6 +711,7 @@ FINAL_PARENTS = [
 
 
 def _simulate_group_standings(predictions: list[dict[str, Any]]) -> dict[str, dict[str, dict[str, float]]]:
+    """Deterministic group standings using most likely outcome per match (for bracket propagation)."""
     groups: dict[str, dict[str, dict[str, float]]] = {}
     for p in predictions:
         g = p["group"]
@@ -654,6 +743,113 @@ def _simulate_group_standings(predictions: list[dict[str, Any]]) -> dict[str, di
         groups[g][p["home"]]["gd"] = groups[g][p["home"]]["gf"] - groups[g][p["home"]]["ga"]
         groups[g][p["away"]]["gd"] = groups[g][p["away"]]["gf"] - groups[g][p["away"]]["ga"]
     return groups
+
+
+def sequential_monte_carlo(
+    predictions: list[dict[str, Any]],
+    n_simulations: int = 10000,
+    seed: int = 42,
+) -> dict[str, Any]:
+    """Run n_simulations of full group stage, return qualification probabilities per team.
+    
+    For each simulation: for each match, sample Poisson(home_xG) vs Poisson(away_xG),
+    compute standings (PTS/GD/GF), determine qualified teams.
+    Aggregate across all simulations.
+    """
+    import random as _random
+    rng = _random.Random(seed)
+    # Group matches by group
+    group_matches: dict[str, list[dict]] = {}
+    for p in predictions:
+        g = p["group"]
+        group_matches.setdefault(g, [])
+        group_matches[g].append(p)
+    
+    # {group: {team: {"winner": count, "runner_up": count, "third": count, "total": count}}}
+    team_probs: dict[str, dict[str, dict[str, float]]] = {}
+    all_teams: set[str] = set()
+    
+    for g, matches in group_matches.items():
+        team_probs[g] = {}
+        for m in matches:
+            team_probs[g].setdefault(m["home"], {"winner": 0, "runner_up": 0, "third": 0, "total": 0})
+            team_probs[g].setdefault(m["away"], {"winner": 0, "runner_up": 0, "third": 0, "total": 0})
+            all_teams.add(m["home"])
+            all_teams.add(m["away"])
+    
+    for _ in range(n_simulations):
+        for g, matches in group_matches.items():
+            # Simulate all matches in this group
+            standings: dict[str, dict[str, float]] = {}
+            for m in matches:
+                h = m["home"]
+                a = m["away"]
+                standings.setdefault(h, {"points": 0, "gd": 0, "gf": 0})
+                standings.setdefault(a, {"points": 0, "gd": 0, "gf": 0})
+                # Sample goals from Poisson
+                eh, ea = m["expected_goals"]["home"], m["expected_goals"]["away"]
+                # Handle played matches - use real result
+                if m.get("played") and m.get("played_result"):
+                    parts = m["played_result"].split("-")
+                    if len(parts) == 2:
+                        hg, ag = int(parts[0]), int(parts[1])
+                    else:
+                        hg = _poisson_sample(eh, rng)
+                        ag = _poisson_sample(ea, rng)
+                else:
+                    hg = _poisson_sample(eh, rng)
+                    ag = _poisson_sample(ea, rng)
+                
+                standings[h]["gf"] += hg
+                standings[h]["gd"] += hg - ag
+                standings[a]["gf"] += ag
+                standings[a]["gd"] += ag - hg
+                if hg > ag:
+                    standings[h]["points"] += 3
+                elif ag > hg:
+                    standings[a]["points"] += 3
+                else:
+                    standings[h]["points"] += 1
+                    standings[a]["points"] += 1
+            
+            # Sort by points, GD, GF
+            sorted_teams = sorted(standings.items(), key=lambda x: (-x[1]["points"], -x[1]["gd"], -x[1]["gf"]))
+            for idx, (team, _) in enumerate(sorted_teams):
+                if idx == 0:
+                    team_probs[g][team]["winner"] += 1
+                elif idx == 1:
+                    team_probs[g][team]["runner_up"] += 1
+                elif idx == 2:
+                    team_probs[g][team]["third"] += 1
+                team_probs[g][team]["total"] += 1
+    
+    # Convert to percentages
+    result: dict[str, dict[str, dict[str, float]]] = {}
+    for g, teams in team_probs.items():
+        result[g] = {}
+        for team, counts in teams.items():
+            n = counts["total"]
+            result[g][team] = {
+                "winner_pct": round(counts["winner"] / n * 100, 1),
+                "runner_up_pct": round(counts["runner_up"] / n * 100, 1),
+                "third_pct": round(counts["third"] / n * 100, 1),
+                "qualify_pct": round((counts["winner"] + counts["runner_up"]) / n * 100, 1),
+            }
+    
+    return result
+
+
+def _poisson_sample(lam: float, rng) -> int:
+    """Sample from Poisson distribution using Knuth's algorithm."""
+    if lam <= 0:
+        return 0
+    L = math.exp(-lam)
+    k = 0
+    p = 1.0
+    while p > L:
+        k += 1
+        p *= rng.random()
+    return k - 1
 
 
 def _get_qualified_teams(
@@ -884,8 +1080,12 @@ def generate_knockout_bracket(
     for d in (r32_matches, r16_matches, qf_matches, sf_matches, final_matches):
         all_knockout.extend(sorted(d.values(), key=lambda x: x["id"]))
 
+    # Run Monte Carlo for group qualification probabilities
+    mc_probs = sequential_monte_carlo(predictions, n_simulations=10000)
+
     return {
         "knockout_predictions": all_knockout,
+        "knockout_probs": mc_probs,
         "knockout_standings": {
             "groups": {gn: {"winner": v["winner"], "runner_up": v["runner_up"]} for gn, v in groups.items()},
             "best_third_place": dict(list(best_third.items())[:8]),

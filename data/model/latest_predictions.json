@@ -1,7 +1,7 @@
 {
   "metadata": {
     "model_version": "dynamic-prode-v2",
-    "generated_at": "2026-06-17T21:15:25.113371+00:00",
+    "generated_at": "2026-06-17T21:47:17.268562+00:00",
     "match_count": 72,
     "knockout_match_count": 32,
     "source_count": 10,
@@ -9,7 +9,8 @@
     "runtime_results_count": 20,
     "dynamic_context": "group_standings_and_round_motivation",
     "bias_correction": true,
-    "draw_inflation": true
+    "draw_inflation": true,
+    "draw_inflation_base": 0.55
   },
   "standings": {
     "A": {
@@ -409,6 +410,10 @@
       },
       "h2h_advantage": 0.284,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -470,37 +475,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 79.8,
-        "draw_pct": 13.8,
-        "away_win_pct": 6.4,
+        "home_win_pct": 80.6,
+        "draw_pct": 13.3,
+        "away_win_pct": 6.1,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 13.8
+            "probability": 14.0
           },
           {
             "score": "3-0",
-            "probability": 12.0
+            "probability": 11.7
           },
           {
             "score": "1-0",
-            "probability": 11.2
+            "probability": 11.0
           },
           {
             "score": "2-1",
-            "probability": 8.0
+            "probability": 8.2
           },
           {
             "score": "4-0",
-            "probability": 7.9
+            "probability": 7.7
           }
         ],
         "expected_goals": {
-          "home": 2.57,
+          "home": 2.6,
           "away": 0.58
         },
-        "over_under_2_5": 60.9,
-        "both_teams_score": 40.1
+        "over_under_2_5": 61.0,
+        "both_teams_score": 41.8
       },
       "movement": {
         "direction": "flat",
@@ -546,6 +551,10 @@
       },
       "h2h_advantage": 0.0,
       "best_pick": "2-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-1",
       "top_scores": [
         {
           "score": "2-1",
@@ -607,13 +616,13 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 62.7,
-        "draw_pct": 18.6,
-        "away_win_pct": 18.6,
+        "home_win_pct": 63.2,
+        "draw_pct": 18.2,
+        "away_win_pct": 18.7,
         "most_likely_scores": [
           {
             "score": "2-1",
-            "probability": 9.3
+            "probability": 9.2
           },
           {
             "score": "3-1",
@@ -621,7 +630,7 @@
           },
           {
             "score": "1-1",
-            "probability": 7.5
+            "probability": 7.4
           },
           {
             "score": "2-0",
@@ -629,15 +638,15 @@
           },
           {
             "score": "1-0",
-            "probability": 6.3
+            "probability": 6.1
           }
         ],
         "expected_goals": {
           "home": 2.41,
           "away": 1.27
         },
-        "over_under_2_5": 71.3,
-        "both_teams_score": 65.5
+        "over_under_2_5": 70.8,
+        "both_teams_score": 65.2
       },
       "movement": {
         "direction": "flat",
@@ -683,6 +692,10 @@
       },
       "h2h_advantage": 0.134,
       "best_pick": "1-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.068,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -744,37 +757,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 51.9,
-        "draw_pct": 22.0,
-        "away_win_pct": 26.1,
+        "home_win_pct": 51.3,
+        "draw_pct": 22.5,
+        "away_win_pct": 26.2,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.1
+            "probability": 9.6
           },
           {
             "score": "2-1",
-            "probability": 9.9
+            "probability": 9.1
           },
           {
             "score": "1-0",
             "probability": 7.2
           },
           {
-            "score": "2-0",
-            "probability": 6.8
+            "score": "2-2",
+            "probability": 6.7
           },
           {
-            "score": "1-2",
-            "probability": 6.5
+            "score": "2-0",
+            "probability": 6.7
           }
         ],
         "expected_goals": {
-          "home": 1.96,
-          "away": 1.34
+          "home": 1.95,
+          "away": 1.35
         },
-        "over_under_2_5": 64.5,
-        "both_teams_score": 64.1
+        "over_under_2_5": 63.9,
+        "both_teams_score": 63.7
       },
       "movement": {
         "direction": "flat",
@@ -820,6 +833,10 @@
       },
       "h2h_advantage": -0.174,
       "best_pick": "4-1",
+      "best_value_pick": "4-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "4-1",
       "top_scores": [
         {
           "score": "4-1",
@@ -881,25 +898,25 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 81.3,
+        "home_win_pct": 81.4,
         "draw_pct": 10.4,
-        "away_win_pct": 8.3,
+        "away_win_pct": 8.2,
         "most_likely_scores": [
           {
             "score": "3-1",
-            "probability": 7.5
+            "probability": 7.7
           },
           {
             "score": "4-1",
-            "probability": 7.4
+            "probability": 6.9
           },
           {
             "score": "2-1",
-            "probability": 6.1
+            "probability": 5.9
           },
           {
             "score": "3-0",
-            "probability": 5.7
+            "probability": 5.5
           },
           {
             "score": "4-0",
@@ -907,11 +924,11 @@
           }
         ],
         "expected_goals": {
-          "home": 3.71,
-          "away": 1.28
+          "home": 3.73,
+          "away": 1.27
         },
-        "over_under_2_5": 87.7,
-        "both_teams_score": 70.5
+        "over_under_2_5": 87.5,
+        "both_teams_score": 70.4
       },
       "movement": {
         "direction": "flat",
@@ -957,6 +974,10 @@
       },
       "h2h_advantage": -0.268,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -1018,37 +1039,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 36.8,
-        "draw_pct": 23.5,
-        "away_win_pct": 39.7,
+        "home_win_pct": 37.8,
+        "draw_pct": 23.3,
+        "away_win_pct": 38.9,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.7
-          },
-          {
-            "score": "1-2",
-            "probability": 9.0
+            "probability": 10.2
           },
           {
             "score": "2-1",
+            "probability": 8.5
+          },
+          {
+            "score": "1-2",
             "probability": 8.4
+          },
+          {
+            "score": "2-2",
+            "probability": 7.0
           },
           {
             "score": "0-1",
             "probability": 6.7
-          },
-          {
-            "score": "2-2",
-            "probability": 6.6
           }
         ],
         "expected_goals": {
-          "home": 1.54,
+          "home": 1.59,
           "away": 1.61
         },
-        "over_under_2_5": 61.3,
-        "both_teams_score": 63.1
+        "over_under_2_5": 62.3,
+        "both_teams_score": 63.7
       },
       "movement": {
         "direction": "flat",
@@ -1094,6 +1115,10 @@
       },
       "h2h_advantage": 0.192,
       "best_pick": "1-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.055,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -1155,37 +1180,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 52.7,
-        "draw_pct": 21.4,
+        "home_win_pct": 52.0,
+        "draw_pct": 22.1,
         "away_win_pct": 25.9,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 9.8
+            "probability": 9.9
           },
           {
             "score": "2-1",
-            "probability": 9.7
-          },
-          {
-            "score": "2-0",
-            "probability": 7.7
+            "probability": 9.6
           },
           {
             "score": "1-0",
             "probability": 7.6
           },
           {
-            "score": "3-1",
-            "probability": 6.0
+            "score": "2-0",
+            "probability": 7.3
+          },
+          {
+            "score": "1-2",
+            "probability": 6.9
           }
         ],
         "expected_goals": {
-          "home": 1.94,
-          "away": 1.28
+          "home": 1.92,
+          "away": 1.3
         },
-        "over_under_2_5": 62.1,
-        "both_teams_score": 61.3
+        "over_under_2_5": 62.8,
+        "both_teams_score": 62.3
       },
       "movement": {
         "direction": "flat",
@@ -1231,6 +1256,10 @@
       },
       "h2h_advantage": -0.146,
       "best_pick": "1-1",
+      "best_value_pick": "0-1",
+      "strategy": "value",
+      "value_diff": 0.079,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -1292,37 +1321,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 23.5,
-        "draw_pct": 25.9,
-        "away_win_pct": 50.6,
+        "home_win_pct": 22.9,
+        "draw_pct": 26.8,
+        "away_win_pct": 50.3,
         "most_likely_scores": [
           {
             "score": "0-1",
-            "probability": 13.6
+            "probability": 12.8
           },
           {
             "score": "1-1",
-            "probability": 12.2
+            "probability": 12.1
           },
           {
             "score": "0-2",
-            "probability": 10.0
+            "probability": 9.9
           },
           {
             "score": "0-0",
-            "probability": 8.8
+            "probability": 9.6
           },
           {
             "score": "1-2",
-            "probability": 8.8
+            "probability": 9.5
           }
         ],
         "expected_goals": {
-          "home": 0.9,
+          "home": 0.91,
           "away": 1.49
         },
-        "over_under_2_5": 42.7,
-        "both_teams_score": 46.2
+        "over_under_2_5": 43.7,
+        "both_teams_score": 46.8
       },
       "movement": {
         "direction": "flat",
@@ -1368,6 +1397,10 @@
       },
       "h2h_advantage": -0.076,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -1429,21 +1462,21 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 72.9,
+        "home_win_pct": 72.5,
         "draw_pct": 16.6,
-        "away_win_pct": 10.5,
+        "away_win_pct": 11.0,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 12.2
+            "probability": 11.9
           },
           {
             "score": "1-0",
-            "probability": 10.0
+            "probability": 9.3
           },
           {
             "score": "3-0",
-            "probability": 9.7
+            "probability": 9.2
           },
           {
             "score": "2-1",
@@ -1451,15 +1484,15 @@
           },
           {
             "score": "1-1",
-            "probability": 7.9
+            "probability": 7.8
           }
         ],
         "expected_goals": {
-          "home": 2.4,
-          "away": 0.79
+          "home": 2.41,
+          "away": 0.81
         },
-        "over_under_2_5": 61.5,
-        "both_teams_score": 49.6
+        "over_under_2_5": 62.3,
+        "both_teams_score": 50.3
       },
       "movement": {
         "direction": "flat",
@@ -1505,6 +1538,10 @@
       },
       "h2h_advantage": 0.268,
       "best_pick": "4-1",
+      "best_value_pick": "4-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "4-1",
       "top_scores": [
         {
           "score": "4-1",
@@ -1566,37 +1603,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 90.3,
-        "draw_pct": 6.0,
-        "away_win_pct": 3.6,
+        "home_win_pct": 90.8,
+        "draw_pct": 5.7,
+        "away_win_pct": 3.5,
         "most_likely_scores": [
           {
             "score": "4-1",
-            "probability": 6.5
+            "probability": 6.7
           },
           {
             "score": "5-1",
-            "probability": 5.9
-          },
-          {
-            "score": "4-0",
-            "probability": 5.9
+            "probability": 6.7
           },
           {
             "score": "3-1",
-            "probability": 5.4
+            "probability": 5.6
           },
           {
-            "score": "5-0",
+            "score": "4-0",
+            "probability": 5.5
+          },
+          {
+            "score": "6-1",
             "probability": 5.3
           }
         ],
         "expected_goals": {
-          "home": 4.76,
+          "home": 4.83,
           "away": 1.19
         },
-        "over_under_2_5": 93.5,
-        "both_teams_score": 68.8
+        "over_under_2_5": 94.0,
+        "both_teams_score": 69.4
       },
       "movement": {
         "direction": "flat",
@@ -1642,6 +1679,10 @@
       },
       "h2h_advantage": 0.0,
       "best_pick": "2-2",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.08,
+      "consensus_pick": "2-2",
       "top_scores": [
         {
           "score": "2-2",
@@ -1703,37 +1744,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 47.8,
-        "draw_pct": 19.9,
+        "home_win_pct": 48.2,
+        "draw_pct": 19.5,
         "away_win_pct": 32.3,
         "most_likely_scores": [
           {
-            "score": "2-2",
-            "probability": 7.2
+            "score": "2-1",
+            "probability": 7.4
           },
           {
-            "score": "2-1",
-            "probability": 7.1
+            "score": "2-2",
+            "probability": 7.4
+          },
+          {
+            "score": "3-1",
+            "probability": 6.3
+          },
+          {
+            "score": "1-2",
+            "probability": 6.3
           },
           {
             "score": "1-1",
             "probability": 6.2
-          },
-          {
-            "score": "1-2",
-            "probability": 6.0
-          },
-          {
-            "score": "3-2",
-            "probability": 5.9
           }
         ],
         "expected_goals": {
-          "home": 2.34,
-          "away": 1.91
+          "home": 2.32,
+          "away": 1.89
         },
-        "over_under_2_5": 79.7,
-        "both_teams_score": 76.7
+        "over_under_2_5": 79.3,
+        "both_teams_score": 76.5
       },
       "movement": {
         "direction": "flat",
@@ -1779,6 +1820,10 @@
       },
       "h2h_advantage": -0.256,
       "best_pick": "1-1",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.143,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -1840,13 +1885,13 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 57.1,
-        "draw_pct": 23.1,
-        "away_win_pct": 19.7,
+        "home_win_pct": 58.4,
+        "draw_pct": 23.4,
+        "away_win_pct": 18.3,
         "most_likely_scores": [
           {
             "score": "1-0",
-            "probability": 12.5
+            "probability": 12.8
           },
           {
             "score": "1-1",
@@ -1854,11 +1899,11 @@
           },
           {
             "score": "2-0",
-            "probability": 10.8
+            "probability": 10.7
           },
           {
             "score": "2-1",
-            "probability": 9.6
+            "probability": 9.8
           },
           {
             "score": "0-0",
@@ -1866,10 +1911,10 @@
           }
         ],
         "expected_goals": {
-          "home": 1.73,
-          "away": 0.91
+          "home": 1.77,
+          "away": 0.89
         },
-        "over_under_2_5": 49.4,
+        "over_under_2_5": 49.5,
         "both_teams_score": 49.1
       },
       "movement": {
@@ -1916,6 +1961,10 @@
       },
       "h2h_advantage": 0.122,
       "best_pick": "4-1",
+      "best_value_pick": "4-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "4-1",
       "top_scores": [
         {
           "score": "4-1",
@@ -1977,37 +2026,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 80.5,
-        "draw_pct": 10.0,
-        "away_win_pct": 9.5,
+        "home_win_pct": 80.6,
+        "draw_pct": 10.2,
+        "away_win_pct": 9.3,
         "most_likely_scores": [
           {
             "score": "4-1",
-            "probability": 6.4
+            "probability": 6.2
           },
           {
             "score": "3-1",
-            "probability": 6.3
-          },
-          {
-            "score": "4-2",
-            "probability": 5.3
-          },
-          {
-            "score": "3-2",
-            "probability": 4.9
+            "probability": 5.9
           },
           {
             "score": "5-1",
-            "probability": 4.7
+            "probability": 5.2
+          },
+          {
+            "score": "3-2",
+            "probability": 5.2
+          },
+          {
+            "score": "4-2",
+            "probability": 5.1
           }
         ],
         "expected_goals": {
           "home": 4.06,
-          "away": 1.56
+          "away": 1.57
         },
-        "over_under_2_5": 92.0,
-        "both_teams_score": 77.2
+        "over_under_2_5": 91.5,
+        "both_teams_score": 77.7
       },
       "movement": {
         "direction": "flat",
@@ -2053,6 +2102,10 @@
       },
       "h2h_advantage": 0.268,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -2114,37 +2167,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 67.3,
-        "draw_pct": 20.7,
-        "away_win_pct": 12.0,
+        "home_win_pct": 66.1,
+        "draw_pct": 21.5,
+        "away_win_pct": 12.4,
         "most_likely_scores": [
           {
             "score": "1-0",
-            "probability": 14.1
+            "probability": 14.6
           },
           {
             "score": "2-0",
-            "probability": 14.0
-          },
-          {
-            "score": "3-0",
-            "probability": 9.7
+            "probability": 14.3
           },
           {
             "score": "1-1",
-            "probability": 9.6
+            "probability": 10.0
           },
           {
             "score": "2-1",
-            "probability": 9.2
+            "probability": 9.0
+          },
+          {
+            "score": "3-0",
+            "probability": 8.6
           }
         ],
         "expected_goals": {
-          "home": 1.91,
+          "home": 1.87,
           "away": 0.66
         },
-        "over_under_2_5": 47.8,
-        "both_teams_score": 40.8
+        "over_under_2_5": 45.8,
+        "both_teams_score": 40.6
       },
       "movement": {
         "direction": "flat",
@@ -2190,6 +2243,10 @@
       },
       "h2h_advantage": 0.244,
       "best_pick": "1-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.059,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -2257,31 +2314,31 @@
         "most_likely_scores": [
           {
             "score": "2-1",
-            "probability": 9.4
+            "probability": 9.5
           },
           {
             "score": "1-1",
-            "probability": 9.2
-          },
-          {
-            "score": "2-0",
-            "probability": 6.6
+            "probability": 8.8
           },
           {
             "score": "2-2",
-            "probability": 6.6
+            "probability": 6.9
           },
           {
             "score": "1-0",
-            "probability": 6.5
+            "probability": 6.7
+          },
+          {
+            "score": "2-0",
+            "probability": 6.2
           }
         ],
         "expected_goals": {
-          "home": 1.98,
-          "away": 1.43
+          "home": 2.0,
+          "away": 1.45
         },
-        "over_under_2_5": 66.3,
-        "both_teams_score": 65.5
+        "over_under_2_5": 66.8,
+        "both_teams_score": 66.0
       },
       "movement": {
         "direction": "flat",
@@ -2327,6 +2384,10 @@
       },
       "h2h_advantage": -0.204,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -2388,9 +2449,9 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 34.3,
-        "draw_pct": 23.8,
-        "away_win_pct": 41.9,
+        "home_win_pct": 35.0,
+        "draw_pct": 23.2,
+        "away_win_pct": 41.7,
         "most_likely_scores": [
           {
             "score": "1-1",
@@ -2398,27 +2459,27 @@
           },
           {
             "score": "1-2",
-            "probability": 8.7
+            "probability": 8.6
           },
           {
             "score": "2-1",
-            "probability": 7.3
+            "probability": 7.8
           },
           {
             "score": "2-2",
-            "probability": 7.1
+            "probability": 6.7
           },
           {
             "score": "0-1",
-            "probability": 6.1
+            "probability": 6.2
           }
         ],
         "expected_goals": {
-          "home": 1.56,
+          "home": 1.57,
           "away": 1.73
         },
         "over_under_2_5": 63.7,
-        "both_teams_score": 65.1
+        "both_teams_score": 65.3
       },
       "movement": {
         "direction": "flat",
@@ -2464,6 +2525,10 @@
       },
       "h2h_advantage": 0.244,
       "best_pick": "2-2",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.093,
+      "consensus_pick": "2-2",
       "top_scores": [
         {
           "score": "2-2",
@@ -2525,37 +2590,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 50.3,
-        "draw_pct": 19.2,
-        "away_win_pct": 30.5,
+        "home_win_pct": 49.8,
+        "draw_pct": 20.1,
+        "away_win_pct": 30.1,
         "most_likely_scores": [
           {
-            "score": "2-1",
-            "probability": 7.7
-          },
-          {
             "score": "2-2",
-            "probability": 7.0
+            "probability": 7.4
           },
           {
-            "score": "3-1",
-            "probability": 6.5
-          },
-          {
-            "score": "1-2",
-            "probability": 6.3
+            "score": "2-1",
+            "probability": 7.3
           },
           {
             "score": "1-1",
-            "probability": 6.2
+            "probability": 6.6
+          },
+          {
+            "score": "3-1",
+            "probability": 5.9
+          },
+          {
+            "score": "1-2",
+            "probability": 5.6
           }
         ],
         "expected_goals": {
-          "home": 2.39,
-          "away": 1.86
+          "home": 2.4,
+          "away": 1.87
         },
-        "over_under_2_5": 80.0,
-        "both_teams_score": 77.3
+        "over_under_2_5": 79.3,
+        "both_teams_score": 76.6
       },
       "movement": {
         "direction": "flat",
@@ -2601,6 +2666,10 @@
       },
       "h2h_advantage": 0.244,
       "best_pick": "3-1",
+      "best_value_pick": "3-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "3-1",
       "top_scores": [
         {
           "score": "3-1",
@@ -2662,37 +2731,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 79.0,
-        "draw_pct": 11.3,
-        "away_win_pct": 9.7,
+        "home_win_pct": 79.2,
+        "draw_pct": 10.9,
+        "away_win_pct": 9.8,
         "most_likely_scores": [
           {
             "score": "3-1",
-            "probability": 7.7
+            "probability": 7.1
           },
           {
             "score": "4-1",
-            "probability": 6.9
+            "probability": 7.0
           },
           {
             "score": "2-1",
-            "probability": 6.3
+            "probability": 6.4
           },
           {
             "score": "3-0",
-            "probability": 5.5
+            "probability": 5.8
           },
           {
-            "score": "5-1",
-            "probability": 5.1
+            "score": "4-0",
+            "probability": 5.4
           }
         ],
         "expected_goals": {
-          "home": 3.57,
+          "home": 3.55,
           "away": 1.3
         },
-        "over_under_2_5": 86.7,
-        "both_teams_score": 70.9
+        "over_under_2_5": 85.9,
+        "both_teams_score": 70.0
       },
       "movement": {
         "direction": "flat",
@@ -2738,6 +2807,10 @@
       },
       "h2h_advantage": -0.198,
       "best_pick": "1-4",
+      "best_value_pick": "1-4",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-4",
       "top_scores": [
         {
           "score": "1-4",
@@ -2799,37 +2872,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 11.8,
+        "home_win_pct": 11.9,
         "draw_pct": 11.9,
-        "away_win_pct": 76.3,
+        "away_win_pct": 76.1,
         "most_likely_scores": [
           {
             "score": "1-3",
-            "probability": 7.1
+            "probability": 7.3
           },
           {
             "score": "1-4",
-            "probability": 6.7
+            "probability": 6.2
           },
           {
             "score": "1-2",
-            "probability": 5.5
-          },
-          {
-            "score": "1-5",
-            "probability": 5.3
+            "probability": 5.7
           },
           {
             "score": "2-3",
-            "probability": 5.1
+            "probability": 4.9
+          },
+          {
+            "score": "1-5",
+            "probability": 4.7
           }
         ],
         "expected_goals": {
           "home": 1.54,
-          "away": 3.69
+          "away": 3.68
         },
-        "over_under_2_5": 89.2,
-        "both_teams_score": 76.9
+        "over_under_2_5": 88.8,
+        "both_teams_score": 76.2
       },
       "movement": {
         "direction": "flat",
@@ -2875,6 +2948,10 @@
       },
       "h2h_advantage": 0.21,
       "best_pick": "3-0",
+      "best_value_pick": "3-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "3-0",
       "top_scores": [
         {
           "score": "3-0",
@@ -2936,37 +3013,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 90.5,
-        "draw_pct": 6.8,
-        "away_win_pct": 2.8,
+        "home_win_pct": 90.7,
+        "draw_pct": 6.6,
+        "away_win_pct": 2.7,
         "most_likely_scores": [
           {
             "score": "3-0",
-            "probability": 11.6
+            "probability": 12.4
           },
           {
             "score": "4-0",
-            "probability": 10.7
+            "probability": 11.6
           },
           {
             "score": "2-0",
-            "probability": 10.1
+            "probability": 10.5
           },
           {
             "score": "5-0",
-            "probability": 8.3
+            "probability": 7.8
           },
           {
             "score": "3-1",
-            "probability": 7.0
+            "probability": 7.1
           }
         ],
         "expected_goals": {
-          "home": 3.6,
-          "away": 0.56
+          "home": 3.55,
+          "away": 0.54
         },
-        "over_under_2_5": 78.2,
-        "both_teams_score": 41.9
+        "over_under_2_5": 77.8,
+        "both_teams_score": 40.4
       },
       "movement": {
         "direction": "flat",
@@ -3012,6 +3089,10 @@
       },
       "h2h_advantage": 0.192,
       "best_pick": "3-1",
+      "best_value_pick": "3-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "3-1",
       "top_scores": [
         {
           "score": "3-1",
@@ -3073,37 +3154,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 77.0,
-        "draw_pct": 12.6,
-        "away_win_pct": 10.4,
+        "home_win_pct": 76.2,
+        "draw_pct": 13.2,
+        "away_win_pct": 10.6,
         "most_likely_scores": [
           {
-            "score": "3-1",
-            "probability": 8.2
+            "score": "2-1",
+            "probability": 8.3
           },
           {
-            "score": "2-1",
-            "probability": 7.5
+            "score": "3-1",
+            "probability": 7.7
           },
           {
             "score": "3-0",
-            "probability": 7.4
-          },
-          {
-            "score": "4-1",
-            "probability": 6.6
+            "probability": 7.0
           },
           {
             "score": "2-0",
-            "probability": 6.6
+            "probability": 6.9
+          },
+          {
+            "score": "4-1",
+            "probability": 6.4
           }
         ],
         "expected_goals": {
-          "home": 3.17,
-          "away": 1.16
+          "home": 3.14,
+          "away": 1.17
         },
-        "over_under_2_5": 81.2,
-        "both_teams_score": 65.4
+        "over_under_2_5": 80.5,
+        "both_teams_score": 66.3
       },
       "movement": {
         "direction": "flat",
@@ -3149,6 +3230,10 @@
       },
       "h2h_advantage": 0.204,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -3210,37 +3295,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 78.8,
-        "draw_pct": 13.5,
+        "home_win_pct": 79.4,
+        "draw_pct": 12.9,
         "away_win_pct": 7.7,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 10.9
+            "probability": 10.7
           },
           {
             "score": "3-0",
-            "probability": 10.0
+            "probability": 10.1
           },
           {
             "score": "2-1",
-            "probability": 8.5
-          },
-          {
-            "score": "1-0",
-            "probability": 8.2
+            "probability": 8.8
           },
           {
             "score": "3-1",
-            "probability": 7.6
+            "probability": 8.2
+          },
+          {
+            "score": "1-0",
+            "probability": 7.5
           }
         ],
         "expected_goals": {
-          "home": 2.79,
-          "away": 0.8
+          "home": 2.82,
+          "away": 0.79
         },
-        "over_under_2_5": 69.1,
-        "both_teams_score": 51.3
+        "over_under_2_5": 69.9,
+        "both_teams_score": 51.1
       },
       "movement": {
         "direction": "flat",
@@ -3286,38 +3371,42 @@
       },
       "h2h_advantage": 0.064,
       "best_pick": "2-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-1",
       "top_scores": [
         {
           "score": "2-1",
           "home_goals": 2,
           "away_goals": 1,
-          "probability": 10.1
+          "probability": 10.0
         },
         {
           "score": "1-1",
           "home_goals": 1,
           "away_goals": 1,
-          "probability": 8.5
+          "probability": 8.1
         },
         {
           "score": "3-1",
           "home_goals": 3,
           "away_goals": 1,
-          "probability": 7.4
+          "probability": 7.5
         }
       ],
       "one_x_two": {
-        "home": 67.3,
-        "draw": 20.6,
-        "away": 12.0
+        "home": 71.1,
+        "draw": 17.3,
+        "away": 11.5
       },
       "expected_goals": {
-        "home": 2.59,
+        "home": 2.66,
         "away": 1.3
       },
       "confidence": "high",
       "source_consensus": "2-1",
-      "source_agreement": 79.7,
+      "source_agreement": 89.8,
       "freeze": {
         "frozen": false,
         "reason": "open_until_match_lock"
@@ -3347,36 +3436,36 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 65.5,
-        "draw_pct": 17.6,
-        "away_win_pct": 16.8,
+        "home_win_pct": 67.0,
+        "draw_pct": 16.6,
+        "away_win_pct": 16.3,
         "most_likely_scores": [
           {
             "score": "2-1",
-            "probability": 8.7
+            "probability": 9.0
           },
           {
             "score": "3-1",
             "probability": 7.6
           },
           {
-            "score": "2-0",
-            "probability": 7.2
+            "score": "1-1",
+            "probability": 6.5
           },
           {
-            "score": "1-1",
-            "probability": 6.7
+            "score": "2-0",
+            "probability": 6.5
           },
           {
             "score": "3-0",
-            "probability": 5.9
+            "probability": 6.3
           }
         ],
         "expected_goals": {
-          "home": 2.61,
+          "home": 2.67,
           "away": 1.29
         },
-        "over_under_2_5": 74.4,
+        "over_under_2_5": 76.1,
         "both_teams_score": 67.1
       },
       "movement": {
@@ -3384,7 +3473,7 @@
         "delta": 0.0
       },
       "signals": {
-        "market_source_proxy": 79.7,
+        "market_source_proxy": 89.8,
         "model_version": "dynamic-prode-v2"
       }
     },
@@ -3423,6 +3512,10 @@
       },
       "h2h_advantage": -0.146,
       "best_pick": "1-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.025,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -3484,13 +3577,13 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 49.0,
-        "draw_pct": 23.4,
-        "away_win_pct": 27.6,
+        "home_win_pct": 49.6,
+        "draw_pct": 22.9,
+        "away_win_pct": 27.5,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.4
+            "probability": 10.8
           },
           {
             "score": "2-1",
@@ -3498,23 +3591,23 @@
           },
           {
             "score": "1-0",
-            "probability": 7.5
+            "probability": 8.0
           },
           {
             "score": "2-0",
-            "probability": 7.3
+            "probability": 6.8
           },
           {
             "score": "1-2",
-            "probability": 6.9
+            "probability": 6.7
           }
         ],
         "expected_goals": {
           "home": 1.81,
-          "away": 1.3
+          "away": 1.31
         },
-        "over_under_2_5": 60.7,
-        "both_teams_score": 61.2
+        "over_under_2_5": 60.4,
+        "both_teams_score": 61.3
       },
       "movement": {
         "direction": "flat",
@@ -3560,6 +3653,10 @@
       },
       "h2h_advantage": -0.262,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -3621,13 +3718,13 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 35.7,
-        "draw_pct": 23.9,
-        "away_win_pct": 40.4,
+        "home_win_pct": 35.6,
+        "draw_pct": 23.8,
+        "away_win_pct": 40.5,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 11.0
+            "probability": 10.9
           },
           {
             "score": "1-2",
@@ -3635,23 +3732,23 @@
           },
           {
             "score": "2-1",
-            "probability": 8.0
+            "probability": 8.1
           },
           {
             "score": "0-1",
-            "probability": 7.1
+            "probability": 7.3
           },
           {
             "score": "1-0",
-            "probability": 6.6
+            "probability": 6.7
           }
         ],
         "expected_goals": {
-          "home": 1.51,
-          "away": 1.61
+          "home": 1.49,
+          "away": 1.6
         },
-        "over_under_2_5": 60.0,
-        "both_teams_score": 61.9
+        "over_under_2_5": 59.6,
+        "both_teams_score": 61.5
       },
       "movement": {
         "direction": "flat",
@@ -3697,6 +3794,10 @@
       },
       "h2h_advantage": 0.256,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -3758,37 +3859,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 64.8,
-        "draw_pct": 22.3,
-        "away_win_pct": 12.9,
+        "home_win_pct": 65.4,
+        "draw_pct": 21.0,
+        "away_win_pct": 13.6,
         "most_likely_scores": [
           {
             "score": "1-0",
-            "probability": 13.8
+            "probability": 14.0
           },
           {
             "score": "2-0",
-            "probability": 13.6
+            "probability": 13.1
           },
           {
             "score": "1-1",
-            "probability": 10.1
+            "probability": 9.8
           },
           {
             "score": "2-1",
-            "probability": 9.2
+            "probability": 9.8
           },
           {
             "score": "3-0",
-            "probability": 8.6
+            "probability": 8.4
           }
         ],
         "expected_goals": {
-          "home": 1.86,
-          "away": 0.7
+          "home": 1.87,
+          "away": 0.71
         },
-        "over_under_2_5": 47.4,
-        "both_teams_score": 42.9
+        "over_under_2_5": 48.0,
+        "both_teams_score": 42.8
       },
       "movement": {
         "direction": "flat",
@@ -3834,6 +3935,10 @@
       },
       "h2h_advantage": 0.158,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -3895,37 +4000,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 79.3,
-        "draw_pct": 13.8,
-        "away_win_pct": 7.0,
+        "home_win_pct": 78.9,
+        "draw_pct": 14.2,
+        "away_win_pct": 6.9,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 12.5
+            "probability": 13.0
           },
           {
             "score": "3-0",
-            "probability": 11.3
+            "probability": 11.1
           },
           {
             "score": "1-0",
-            "probability": 9.9
+            "probability": 9.3
           },
           {
             "score": "2-1",
-            "probability": 8.5
+            "probability": 8.8
           },
           {
             "score": "4-0",
-            "probability": 7.5
+            "probability": 7.7
           }
         ],
         "expected_goals": {
-          "home": 2.62,
+          "home": 2.64,
           "away": 0.66
         },
-        "over_under_2_5": 63.7,
-        "both_teams_score": 44.9
+        "over_under_2_5": 64.0,
+        "both_teams_score": 44.8
       },
       "movement": {
         "direction": "flat",
@@ -3971,6 +4076,10 @@
       },
       "h2h_advantage": 0.296,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -4032,37 +4141,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 78.7,
+        "home_win_pct": 78.8,
         "draw_pct": 14.2,
-        "away_win_pct": 7.1,
+        "away_win_pct": 7.0,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 13.3
+            "probability": 13.6
           },
           {
             "score": "3-0",
-            "probability": 11.1
+            "probability": 11.4
           },
           {
             "score": "1-0",
-            "probability": 9.7
+            "probability": 10.6
           },
           {
             "score": "2-1",
-            "probability": 8.7
+            "probability": 9.0
           },
           {
             "score": "3-1",
-            "probability": 7.6
+            "probability": 7.3
           }
         ],
         "expected_goals": {
-          "home": 2.58,
-          "away": 0.66
+          "home": 2.52,
+          "away": 0.64
         },
-        "over_under_2_5": 62.5,
-        "both_teams_score": 44.9
+        "over_under_2_5": 61.7,
+        "both_teams_score": 43.7
       },
       "movement": {
         "direction": "flat",
@@ -4108,6 +4217,10 @@
       },
       "h2h_advantage": 0.134,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -4169,37 +4282,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 60.5,
-        "draw_pct": 24.0,
-        "away_win_pct": 15.5,
+        "home_win_pct": 60.7,
+        "draw_pct": 23.6,
+        "away_win_pct": 15.7,
         "most_likely_scores": [
           {
             "score": "1-0",
-            "probability": 15.1
+            "probability": 14.7
           },
           {
             "score": "2-0",
-            "probability": 12.8
+            "probability": 12.6
           },
           {
             "score": "1-1",
-            "probability": 10.9
-          },
-          {
-            "score": "0-0",
-            "probability": 9.1
+            "probability": 10.7
           },
           {
             "score": "2-1",
+            "probability": 9.5
+          },
+          {
+            "score": "0-0",
             "probability": 8.8
           }
         ],
         "expected_goals": {
-          "home": 1.7,
-          "away": 0.73
+          "home": 1.71,
+          "away": 0.74
         },
-        "over_under_2_5": 43.4,
-        "both_teams_score": 42.2
+        "over_under_2_5": 44.6,
+        "both_teams_score": 43.2
       },
       "movement": {
         "direction": "flat",
@@ -4245,6 +4358,10 @@
       },
       "h2h_advantage": -0.11,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -4306,25 +4423,25 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 62.5,
-        "draw_pct": 22.8,
-        "away_win_pct": 14.7,
+        "home_win_pct": 62.9,
+        "draw_pct": 22.0,
+        "away_win_pct": 15.1,
         "most_likely_scores": [
           {
             "score": "1-0",
-            "probability": 14.0
+            "probability": 14.6
           },
           {
             "score": "2-0",
-            "probability": 13.1
+            "probability": 12.4
           },
           {
             "score": "1-1",
-            "probability": 10.7
+            "probability": 10.2
           },
           {
             "score": "2-1",
-            "probability": 9.0
+            "probability": 9.9
           },
           {
             "score": "0-0",
@@ -4333,10 +4450,10 @@
         ],
         "expected_goals": {
           "home": 1.8,
-          "away": 0.75
+          "away": 0.74
         },
-        "over_under_2_5": 46.8,
-        "both_teams_score": 43.8
+        "over_under_2_5": 47.2,
+        "both_teams_score": 43.9
       },
       "movement": {
         "direction": "flat",
@@ -4382,6 +4499,10 @@
       },
       "h2h_advantage": -0.11,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -4443,37 +4564,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 43.6,
-        "draw_pct": 24.5,
-        "away_win_pct": 31.9,
+        "home_win_pct": 44.0,
+        "draw_pct": 23.5,
+        "away_win_pct": 32.5,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 11.2
+            "probability": 10.8
           },
           {
             "score": "2-1",
-            "probability": 9.1
+            "probability": 9.2
           },
           {
             "score": "1-0",
-            "probability": 7.9
+            "probability": 8.1
           },
           {
             "score": "1-2",
-            "probability": 7.3
+            "probability": 7.8
           },
           {
             "score": "0-1",
-            "probability": 6.7
+            "probability": 7.0
           }
         ],
         "expected_goals": {
           "home": 1.65,
           "away": 1.39
         },
-        "over_under_2_5": 58.1,
-        "both_teams_score": 60.8
+        "over_under_2_5": 58.7,
+        "both_teams_score": 60.6
       },
       "movement": {
         "direction": "flat",
@@ -4519,6 +4640,10 @@
       },
       "h2h_advantage": 0.296,
       "best_pick": "3-0",
+      "best_value_pick": "3-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "3-0",
       "top_scores": [
         {
           "score": "3-0",
@@ -4580,37 +4705,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 90.2,
-        "draw_pct": 7.0,
-        "away_win_pct": 2.8,
+        "home_win_pct": 90.1,
+        "draw_pct": 6.8,
+        "away_win_pct": 3.1,
         "most_likely_scores": [
           {
-            "score": "3-0",
-            "probability": 10.9
+            "score": "4-0",
+            "probability": 10.1
           },
           {
-            "score": "4-0",
-            "probability": 9.8
+            "score": "3-0",
+            "probability": 10.0
           },
           {
             "score": "2-0",
-            "probability": 8.3
-          },
-          {
-            "score": "3-1",
-            "probability": 7.4
+            "probability": 8.1
           },
           {
             "score": "5-0",
-            "probability": 7.4
+            "probability": 7.6
+          },
+          {
+            "score": "3-1",
+            "probability": 7.2
           }
         ],
         "expected_goals": {
-          "home": 3.76,
-          "away": 0.67
+          "home": 3.79,
+          "away": 0.68
         },
-        "over_under_2_5": 82.2,
-        "both_teams_score": 48.0
+        "over_under_2_5": 82.3,
+        "both_teams_score": 48.4
       },
       "movement": {
         "direction": "flat",
@@ -4656,6 +4781,10 @@
       },
       "h2h_advantage": 0.012,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -4717,37 +4846,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 67.9,
-        "draw_pct": 19.8,
-        "away_win_pct": 12.3,
+        "home_win_pct": 67.6,
+        "draw_pct": 20.6,
+        "away_win_pct": 11.8,
         "most_likely_scores": [
           {
             "score": "1-0",
-            "probability": 13.0
+            "probability": 13.2
           },
           {
             "score": "2-0",
-            "probability": 12.8
+            "probability": 12.9
           },
           {
             "score": "2-1",
-            "probability": 9.4
+            "probability": 9.5
           },
           {
             "score": "1-1",
-            "probability": 9.4
+            "probability": 9.5
           },
           {
             "score": "3-0",
-            "probability": 8.9
+            "probability": 8.7
           }
         ],
         "expected_goals": {
-          "home": 2.03,
-          "away": 0.72
+          "home": 2.02,
+          "away": 0.71
         },
-        "over_under_2_5": 51.9,
-        "both_teams_score": 44.0
+        "over_under_2_5": 51.5,
+        "both_teams_score": 44.5
       },
       "movement": {
         "direction": "flat",
@@ -4793,6 +4922,10 @@
       },
       "h2h_advantage": 0.256,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -4856,35 +4989,35 @@
         "n_simulations": 10000,
         "home_win_pct": 69.2,
         "draw_pct": 18.6,
-        "away_win_pct": 12.3,
+        "away_win_pct": 12.2,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 12.5
+            "probability": 12.2
           },
           {
             "score": "1-0",
-            "probability": 10.9
+            "probability": 11.3
           },
           {
             "score": "2-1",
-            "probability": 9.5
-          },
-          {
-            "score": "1-1",
             "probability": 9.0
           },
           {
             "score": "3-0",
-            "probability": 8.7
+            "probability": 8.9
+          },
+          {
+            "score": "1-1",
+            "probability": 8.3
           }
         ],
         "expected_goals": {
-          "home": 2.18,
+          "home": 2.19,
           "away": 0.79
         },
-        "over_under_2_5": 56.9,
-        "both_teams_score": 48.3
+        "over_under_2_5": 57.2,
+        "both_teams_score": 48.1
       },
       "movement": {
         "direction": "flat",
@@ -4930,6 +5063,10 @@
       },
       "h2h_advantage": 0.256,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -4991,37 +5128,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 76.8,
-        "draw_pct": 14.5,
-        "away_win_pct": 8.7,
+        "home_win_pct": 76.4,
+        "draw_pct": 14.6,
+        "away_win_pct": 9.0,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 10.8
+            "probability": 11.3
           },
           {
             "score": "3-0",
-            "probability": 10.6
+            "probability": 9.5
           },
           {
             "score": "2-1",
-            "probability": 8.8
+            "probability": 8.6
           },
           {
             "score": "1-0",
-            "probability": 8.3
+            "probability": 8.4
           },
           {
             "score": "3-1",
-            "probability": 7.3
+            "probability": 8.1
           }
         ],
         "expected_goals": {
-          "home": 2.66,
-          "away": 0.79
+          "home": 2.64,
+          "away": 0.8
         },
-        "over_under_2_5": 67.3,
-        "both_teams_score": 50.4
+        "over_under_2_5": 66.5,
+        "both_teams_score": 51.3
       },
       "movement": {
         "direction": "flat",
@@ -5067,6 +5204,10 @@
       },
       "h2h_advantage": 0.268,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -5128,37 +5269,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 81.4,
-        "draw_pct": 12.2,
-        "away_win_pct": 6.4,
+        "home_win_pct": 81.1,
+        "draw_pct": 12.7,
+        "away_win_pct": 6.2,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 12.9
+            "probability": 13.0
           },
           {
             "score": "3-0",
-            "probability": 11.9
+            "probability": 11.5
           },
           {
             "score": "1-0",
-            "probability": 9.2
+            "probability": 9.3
           },
           {
-            "score": "4-0",
-            "probability": 8.2
+            "score": "3-1",
+            "probability": 8.3
           },
           {
             "score": "2-1",
-            "probability": 8.1
+            "probability": 8.2
           }
         ],
         "expected_goals": {
-          "home": 2.76,
-          "away": 0.62
+          "home": 2.72,
+          "away": 0.65
         },
         "over_under_2_5": 65.5,
-        "both_teams_score": 43.2
+        "both_teams_score": 45.0
       },
       "movement": {
         "direction": "flat",
@@ -5204,6 +5345,10 @@
       },
       "h2h_advantage": -0.268,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -5265,8 +5410,8 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 38.3,
-        "draw_pct": 22.6,
+        "home_win_pct": 37.8,
+        "draw_pct": 23.2,
         "away_win_pct": 39.1,
         "most_likely_scores": [
           {
@@ -5275,27 +5420,27 @@
           },
           {
             "score": "1-2",
-            "probability": 8.4
+            "probability": 8.7
           },
           {
             "score": "2-1",
-            "probability": 7.9
+            "probability": 8.2
           },
           {
             "score": "2-2",
-            "probability": 6.5
+            "probability": 6.6
           },
           {
             "score": "0-1",
-            "probability": 6.5
+            "probability": 6.3
           }
         ],
         "expected_goals": {
-          "home": 1.61,
-          "away": 1.64
+          "home": 1.62,
+          "away": 1.63
         },
-        "over_under_2_5": 62.8,
-        "both_teams_score": 63.3
+        "over_under_2_5": 63.3,
+        "both_teams_score": 64.2
       },
       "movement": {
         "direction": "flat",
@@ -5341,6 +5486,10 @@
       },
       "h2h_advantage": 0.268,
       "best_pick": "3-0",
+      "best_value_pick": "3-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "3-0",
       "top_scores": [
         {
           "score": "3-0",
@@ -5402,25 +5551,25 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 90.2,
-        "draw_pct": 6.9,
+        "home_win_pct": 90.4,
+        "draw_pct": 6.7,
         "away_win_pct": 2.9,
         "most_likely_scores": [
           {
             "score": "3-0",
-            "probability": 12.1
+            "probability": 11.8
           },
           {
             "score": "4-0",
-            "probability": 10.3
+            "probability": 10.6
           },
           {
             "score": "2-0",
-            "probability": 9.1
+            "probability": 9.4
           },
           {
             "score": "5-0",
-            "probability": 7.4
+            "probability": 7.7
           },
           {
             "score": "3-1",
@@ -5429,10 +5578,10 @@
         ],
         "expected_goals": {
           "home": 3.6,
-          "away": 0.6
+          "away": 0.59
         },
-        "over_under_2_5": 79.4,
-        "both_teams_score": 43.7
+        "over_under_2_5": 79.3,
+        "both_teams_score": 43.8
       },
       "movement": {
         "direction": "flat",
@@ -5478,6 +5627,10 @@
       },
       "h2h_advantage": 0.18,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -5539,13 +5692,13 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 78.9,
-        "draw_pct": 13.5,
-        "away_win_pct": 7.6,
+        "home_win_pct": 77.9,
+        "draw_pct": 14.4,
+        "away_win_pct": 7.8,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 13.3
+            "probability": 13.1
           },
           {
             "score": "3-0",
@@ -5553,23 +5706,23 @@
           },
           {
             "score": "1-0",
-            "probability": 10.6
+            "probability": 10.3
           },
           {
             "score": "2-1",
-            "probability": 8.9
+            "probability": 8.8
           },
           {
             "score": "3-1",
-            "probability": 7.1
+            "probability": 7.5
           }
         ],
         "expected_goals": {
-          "home": 2.56,
+          "home": 2.52,
           "away": 0.67
         },
-        "over_under_2_5": 62.1,
-        "both_teams_score": 45.1
+        "over_under_2_5": 61.9,
+        "both_teams_score": 45.2
       },
       "movement": {
         "direction": "flat",
@@ -5615,6 +5768,10 @@
       },
       "h2h_advantage": 0.198,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -5676,37 +5833,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 77.1,
-        "draw_pct": 14.5,
-        "away_win_pct": 8.4,
+        "home_win_pct": 77.8,
+        "draw_pct": 14.1,
+        "away_win_pct": 8.1,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 11.1
+            "probability": 11.4
           },
           {
             "score": "3-0",
-            "probability": 9.7
+            "probability": 10.3
           },
           {
             "score": "2-1",
-            "probability": 8.8
+            "probability": 8.7
           },
           {
             "score": "1-0",
-            "probability": 8.6
+            "probability": 8.2
           },
           {
             "score": "3-1",
-            "probability": 7.7
+            "probability": 7.5
           }
         ],
         "expected_goals": {
-          "home": 2.69,
-          "away": 0.78
+          "home": 2.72,
+          "away": 0.77
         },
-        "over_under_2_5": 67.2,
-        "both_teams_score": 50.4
+        "over_under_2_5": 67.3,
+        "both_teams_score": 50.1
       },
       "movement": {
         "direction": "flat",
@@ -5752,6 +5909,10 @@
       },
       "h2h_advantage": -0.186,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -5813,37 +5974,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 43.4,
-        "draw_pct": 23.3,
-        "away_win_pct": 33.3,
+        "home_win_pct": 43.3,
+        "draw_pct": 22.7,
+        "away_win_pct": 34.0,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.5
+            "probability": 10.0
           },
           {
             "score": "2-1",
-            "probability": 9.1
+            "probability": 9.2
           },
           {
             "score": "1-2",
             "probability": 7.9
           },
           {
-            "score": "2-2",
-            "probability": 6.7
+            "score": "1-0",
+            "probability": 7.1
           },
           {
-            "score": "1-0",
-            "probability": 6.6
+            "score": "2-2",
+            "probability": 6.5
           }
         ],
         "expected_goals": {
-          "home": 1.73,
+          "home": 1.71,
           "away": 1.5
         },
-        "over_under_2_5": 62.7,
-        "both_teams_score": 64.2
+        "over_under_2_5": 62.5,
+        "both_teams_score": 63.8
       },
       "movement": {
         "direction": "flat",
@@ -5889,6 +6050,10 @@
       },
       "h2h_advantage": 0.268,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -5950,37 +6115,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 78.3,
-        "draw_pct": 14.0,
-        "away_win_pct": 7.7,
+        "home_win_pct": 78.7,
+        "draw_pct": 14.3,
+        "away_win_pct": 6.9,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 13.1
+            "probability": 12.9
           },
           {
             "score": "3-0",
-            "probability": 11.4
+            "probability": 11.2
           },
           {
             "score": "1-0",
-            "probability": 10.3
+            "probability": 10.1
           },
           {
             "score": "2-1",
-            "probability": 8.0
+            "probability": 8.5
           },
           {
-            "score": "3-1",
-            "probability": 7.2
+            "score": "4-0",
+            "probability": 7.6
           }
         ],
         "expected_goals": {
           "home": 2.58,
-          "away": 0.66
+          "away": 0.65
         },
-        "over_under_2_5": 62.5,
-        "both_teams_score": 44.0
+        "over_under_2_5": 63.0,
+        "both_teams_score": 45.0
       },
       "movement": {
         "direction": "flat",
@@ -6026,6 +6191,10 @@
       },
       "h2h_advantage": 0.296,
       "best_pick": "3-0",
+      "best_value_pick": "3-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "3-0",
       "top_scores": [
         {
           "score": "3-0",
@@ -6088,36 +6257,36 @@
       "monte_carlo": {
         "n_simulations": 10000,
         "home_win_pct": 92.3,
-        "draw_pct": 5.5,
-        "away_win_pct": 2.2,
+        "draw_pct": 5.7,
+        "away_win_pct": 2.0,
         "most_likely_scores": [
           {
             "score": "3-0",
-            "probability": 10.7
+            "probability": 10.8
           },
           {
             "score": "4-0",
-            "probability": 10.5
+            "probability": 10.7
           },
           {
             "score": "5-0",
-            "probability": 8.4
+            "probability": 8.1
           },
           {
             "score": "2-0",
-            "probability": 8.3
+            "probability": 7.9
           },
           {
             "score": "3-1",
-            "probability": 6.4
+            "probability": 6.8
           }
         ],
         "expected_goals": {
           "home": 3.97,
-          "away": 0.59
+          "away": 0.6
         },
-        "over_under_2_5": 82.8,
-        "both_teams_score": 43.7
+        "over_under_2_5": 83.6,
+        "both_teams_score": 45.1
       },
       "movement": {
         "direction": "flat",
@@ -6163,6 +6332,10 @@
       },
       "h2h_advantage": 0.116,
       "best_pick": "1-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.076,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -6224,24 +6397,24 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 53.7,
-        "draw_pct": 20.7,
-        "away_win_pct": 25.6,
+        "home_win_pct": 52.9,
+        "draw_pct": 21.0,
+        "away_win_pct": 26.1,
         "most_likely_scores": [
           {
-            "score": "2-1",
-            "probability": 9.9
+            "score": "1-1",
+            "probability": 9.3
           },
           {
-            "score": "1-1",
-            "probability": 8.9
+            "score": "2-1",
+            "probability": 9.2
           },
           {
             "score": "2-0",
-            "probability": 7.1
+            "probability": 7.0
           },
           {
-            "score": "1-2",
+            "score": "1-0",
             "probability": 6.8
           },
           {
@@ -6250,11 +6423,11 @@
           }
         ],
         "expected_goals": {
-          "home": 2.05,
-          "away": 1.36
+          "home": 2.03,
+          "away": 1.37
         },
-        "over_under_2_5": 66.6,
-        "both_teams_score": 65.0
+        "over_under_2_5": 65.9,
+        "both_teams_score": 64.4
       },
       "movement": {
         "direction": "flat",
@@ -6300,6 +6473,10 @@
       },
       "h2h_advantage": -0.134,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -6361,37 +6538,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 40.9,
-        "draw_pct": 23.4,
-        "away_win_pct": 35.6,
+        "home_win_pct": 40.2,
+        "draw_pct": 23.9,
+        "away_win_pct": 35.9,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.6
+            "probability": 10.9
           },
           {
             "score": "2-1",
-            "probability": 8.5
+            "probability": 8.9
           },
           {
             "score": "1-2",
-            "probability": 7.9
+            "probability": 8.6
           },
           {
             "score": "1-0",
-            "probability": 7.6
+            "probability": 7.5
           },
           {
             "score": "0-1",
-            "probability": 6.8
+            "probability": 6.6
           }
         ],
         "expected_goals": {
-          "home": 1.6,
-          "away": 1.49
+          "home": 1.58,
+          "away": 1.5
         },
-        "over_under_2_5": 59.4,
-        "both_teams_score": 61.5
+        "over_under_2_5": 59.7,
+        "both_teams_score": 62.0
       },
       "movement": {
         "direction": "flat",
@@ -6437,6 +6614,10 @@
       },
       "h2h_advantage": 0.268,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -6498,25 +6679,25 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 80.8,
-        "draw_pct": 12.3,
-        "away_win_pct": 6.9,
+        "home_win_pct": 81.5,
+        "draw_pct": 11.8,
+        "away_win_pct": 6.7,
         "most_likely_scores": [
           {
-            "score": "3-0",
-            "probability": 10.8
+            "score": "2-0",
+            "probability": 10.9
           },
           {
-            "score": "2-0",
-            "probability": 10.7
+            "score": "3-0",
+            "probability": 10.3
           },
           {
             "score": "3-1",
-            "probability": 8.2
+            "probability": 8.5
           },
           {
             "score": "4-0",
-            "probability": 8.1
+            "probability": 8.0
           },
           {
             "score": "2-1",
@@ -6524,11 +6705,11 @@
           }
         ],
         "expected_goals": {
-          "home": 2.9,
-          "away": 0.76
+          "home": 2.93,
+          "away": 0.75
         },
-        "over_under_2_5": 71.2,
-        "both_teams_score": 50.0
+        "over_under_2_5": 71.0,
+        "both_teams_score": 50.1
       },
       "movement": {
         "direction": "flat",
@@ -6574,6 +6755,10 @@
       },
       "h2h_advantage": 0.3,
       "best_pick": "3-0",
+      "best_value_pick": "3-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "3-0",
       "top_scores": [
         {
           "score": "3-0",
@@ -6635,37 +6820,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 89.8,
-        "draw_pct": 7.1,
-        "away_win_pct": 3.1,
+        "home_win_pct": 90.1,
+        "draw_pct": 6.7,
+        "away_win_pct": 3.2,
         "most_likely_scores": [
           {
             "score": "3-0",
-            "probability": 9.9
+            "probability": 10.0
           },
           {
             "score": "4-0",
-            "probability": 9.5
+            "probability": 10.0
           },
           {
             "score": "2-0",
-            "probability": 7.8
+            "probability": 8.4
           },
           {
             "score": "5-0",
-            "probability": 7.4
+            "probability": 7.2
           },
           {
             "score": "3-1",
-            "probability": 6.9
+            "probability": 7.0
           }
         ],
         "expected_goals": {
-          "home": 3.77,
+          "home": 3.78,
           "away": 0.7
         },
-        "over_under_2_5": 82.2,
-        "both_teams_score": 49.6
+        "over_under_2_5": 82.1,
+        "both_teams_score": 49.2
       },
       "movement": {
         "direction": "flat",
@@ -6711,6 +6896,10 @@
       },
       "h2h_advantage": -0.204,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -6772,37 +6961,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 36.1,
-        "draw_pct": 22.7,
-        "away_win_pct": 41.1,
+        "home_win_pct": 37.6,
+        "draw_pct": 22.6,
+        "away_win_pct": 39.8,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.0
-          },
-          {
-            "score": "1-2",
-            "probability": 8.8
+            "probability": 9.8
           },
           {
             "score": "2-1",
-            "probability": 8.0
+            "probability": 8.6
+          },
+          {
+            "score": "1-2",
+            "probability": 8.1
           },
           {
             "score": "2-2",
-            "probability": 6.9
+            "probability": 6.8
           },
           {
-            "score": "0-1",
-            "probability": 6.4
+            "score": "1-0",
+            "probability": 6.5
           }
         ],
         "expected_goals": {
-          "home": 1.59,
-          "away": 1.71
+          "home": 1.6,
+          "away": 1.68
         },
-        "over_under_2_5": 64.3,
-        "both_teams_score": 65.1
+        "over_under_2_5": 63.8,
+        "both_teams_score": 64.8
       },
       "movement": {
         "direction": "flat",
@@ -6848,6 +7037,10 @@
       },
       "h2h_advantage": 0.278,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -6909,37 +7102,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 79.0,
-        "draw_pct": 13.6,
-        "away_win_pct": 7.4,
+        "home_win_pct": 78.6,
+        "draw_pct": 13.8,
+        "away_win_pct": 7.6,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 12.9
+            "probability": 13.3
           },
           {
             "score": "3-0",
-            "probability": 10.5
+            "probability": 11.3
           },
           {
             "score": "1-0",
-            "probability": 9.8
+            "probability": 9.5
           },
           {
             "score": "2-1",
-            "probability": 9.1
+            "probability": 8.7
           },
           {
-            "score": "4-0",
-            "probability": 7.5
+            "score": "3-1",
+            "probability": 7.2
           }
         ],
         "expected_goals": {
           "home": 2.6,
           "away": 0.67
         },
-        "over_under_2_5": 63.6,
-        "both_teams_score": 45.5
+        "over_under_2_5": 63.3,
+        "both_teams_score": 44.7
       },
       "movement": {
         "direction": "flat",
@@ -6985,6 +7178,10 @@
       },
       "h2h_advantage": 0.024,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -7046,37 +7243,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 65.5,
-        "draw_pct": 20.4,
-        "away_win_pct": 14.1,
+        "home_win_pct": 64.2,
+        "draw_pct": 20.8,
+        "away_win_pct": 15.0,
         "most_likely_scores": [
           {
-            "score": "2-0",
-            "probability": 12.6
+            "score": "1-0",
+            "probability": 12.7
           },
           {
-            "score": "1-0",
-            "probability": 12.2
+            "score": "2-0",
+            "probability": 11.6
           },
           {
             "score": "1-1",
-            "probability": 9.5
+            "probability": 10.0
           },
           {
             "score": "2-1",
-            "probability": 9.2
+            "probability": 9.6
           },
           {
             "score": "3-0",
-            "probability": 8.2
+            "probability": 7.8
           }
         ],
         "expected_goals": {
-          "home": 1.99,
-          "away": 0.8
+          "home": 1.96,
+          "away": 0.82
         },
-        "over_under_2_5": 52.8,
-        "both_teams_score": 47.2
+        "over_under_2_5": 52.6,
+        "both_teams_score": 47.9
       },
       "movement": {
         "direction": "flat",
@@ -7122,6 +7319,10 @@
       },
       "h2h_advantage": 0.256,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -7183,17 +7384,17 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 61.3,
-        "draw_pct": 21.7,
-        "away_win_pct": 17.0,
+        "home_win_pct": 61.1,
+        "draw_pct": 22.2,
+        "away_win_pct": 16.6,
         "most_likely_scores": [
           {
             "score": "1-0",
-            "probability": 11.7
+            "probability": 13.0
           },
           {
             "score": "2-0",
-            "probability": 11.5
+            "probability": 11.3
           },
           {
             "score": "1-1",
@@ -7201,19 +7402,19 @@
           },
           {
             "score": "2-1",
-            "probability": 10.3
+            "probability": 9.4
           },
           {
             "score": "3-0",
-            "probability": 7.2
+            "probability": 6.9
           }
         ],
         "expected_goals": {
-          "home": 1.88,
+          "home": 1.87,
           "away": 0.86
         },
-        "over_under_2_5": 51.6,
-        "both_teams_score": 49.2
+        "over_under_2_5": 51.1,
+        "both_teams_score": 49.0
       },
       "movement": {
         "direction": "flat",
@@ -7259,6 +7460,10 @@
       },
       "h2h_advantage": -0.244,
       "best_pick": "0-2",
+      "best_value_pick": "0-2",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "0-2",
       "top_scores": [
         {
           "score": "0-2",
@@ -7320,37 +7525,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 13.3,
+        "home_win_pct": 13.6,
         "draw_pct": 16.7,
-        "away_win_pct": 70.0,
+        "away_win_pct": 69.8,
         "most_likely_scores": [
           {
             "score": "1-2",
-            "probability": 9.3
-          },
-          {
-            "score": "0-2",
-            "probability": 8.9
+            "probability": 9.1
           },
           {
             "score": "1-3",
-            "probability": 7.9
+            "probability": 8.5
           },
           {
-            "score": "1-1",
-            "probability": 7.6
+            "score": "0-2",
+            "probability": 8.2
           },
           {
             "score": "0-3",
-            "probability": 7.2
+            "probability": 7.3
+          },
+          {
+            "score": "0-1",
+            "probability": 6.9
           }
         ],
         "expected_goals": {
-          "home": 1.06,
-          "away": 2.57
+          "home": 1.08,
+          "away": 2.59
         },
-        "over_under_2_5": 69.9,
-        "both_teams_score": 60.7
+        "over_under_2_5": 71.5,
+        "both_teams_score": 61.2
       },
       "movement": {
         "direction": "flat",
@@ -7396,6 +7601,10 @@
       },
       "h2h_advantage": 0.158,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -7457,37 +7666,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 81.4,
-        "draw_pct": 12.4,
-        "away_win_pct": 6.1,
+        "home_win_pct": 81.7,
+        "draw_pct": 11.7,
+        "away_win_pct": 6.6,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 12.0
+            "probability": 12.2
           },
           {
             "score": "3-0",
-            "probability": 10.8
+            "probability": 11.4
+          },
+          {
+            "score": "2-1",
+            "probability": 8.3
           },
           {
             "score": "4-0",
-            "probability": 8.0
+            "probability": 7.9
           },
           {
             "score": "1-0",
-            "probability": 8.0
-          },
-          {
-            "score": "3-1",
-            "probability": 7.9
+            "probability": 7.8
           }
         ],
         "expected_goals": {
-          "home": 2.88,
+          "home": 2.86,
           "away": 0.71
         },
-        "over_under_2_5": 69.0,
-        "both_teams_score": 47.5
+        "over_under_2_5": 69.3,
+        "both_teams_score": 47.8
       },
       "movement": {
         "direction": "flat",
@@ -7533,6 +7742,10 @@
       },
       "h2h_advantage": -0.076,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -7594,37 +7807,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 39.2,
-        "draw_pct": 23.1,
-        "away_win_pct": 37.7,
+        "home_win_pct": 38.2,
+        "draw_pct": 23.5,
+        "away_win_pct": 38.3,
         "most_likely_scores": [
           {
             "score": "1-1",
             "probability": 10.4
           },
           {
-            "score": "2-1",
-            "probability": 8.2
+            "score": "1-2",
+            "probability": 8.0
           },
           {
-            "score": "1-2",
-            "probability": 8.2
+            "score": "2-1",
+            "probability": 7.9
+          },
+          {
+            "score": "0-1",
+            "probability": 6.8
           },
           {
             "score": "2-2",
             "probability": 6.6
-          },
-          {
-            "score": "0-1",
-            "probability": 6.3
           }
         ],
         "expected_goals": {
-          "home": 1.64,
-          "away": 1.6
+          "home": 1.61,
+          "away": 1.61
         },
-        "over_under_2_5": 62.4,
-        "both_teams_score": 64.0
+        "over_under_2_5": 62.1,
+        "both_teams_score": 63.2
       },
       "movement": {
         "direction": "flat",
@@ -7670,6 +7883,10 @@
       },
       "h2h_advantage": -0.152,
       "best_pick": "1-1",
+      "best_value_pick": "1-2",
+      "strategy": "value",
+      "value_diff": 0.011,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -7731,36 +7948,36 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 35.5,
-        "draw_pct": 22.6,
-        "away_win_pct": 41.9,
+        "home_win_pct": 33.9,
+        "draw_pct": 22.3,
+        "away_win_pct": 43.7,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 9.3
+            "probability": 9.8
           },
           {
             "score": "1-2",
-            "probability": 8.4
+            "probability": 8.2
           },
           {
             "score": "2-1",
-            "probability": 7.5
+            "probability": 7.7
           },
           {
             "score": "2-2",
-            "probability": 6.8
+            "probability": 6.7
           },
           {
             "score": "0-1",
-            "probability": 5.8
+            "probability": 6.1
           }
         ],
         "expected_goals": {
-          "home": 1.64,
-          "away": 1.8
+          "home": 1.59,
+          "away": 1.82
         },
-        "over_under_2_5": 66.5,
+        "over_under_2_5": 66.0,
         "both_teams_score": 66.9
       },
       "movement": {
@@ -7807,6 +8024,10 @@
       },
       "h2h_advantage": 0.058,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -7868,37 +8089,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 35.9,
-        "draw_pct": 21.4,
-        "away_win_pct": 42.7,
+        "home_win_pct": 35.7,
+        "draw_pct": 22.6,
+        "away_win_pct": 41.7,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 9.3
+            "probability": 9.6
           },
           {
             "score": "1-2",
-            "probability": 8.6
+            "probability": 8.7
           },
           {
             "score": "2-1",
-            "probability": 8.1
+            "probability": 7.6
           },
           {
             "score": "2-2",
-            "probability": 6.2
+            "probability": 7.0
           },
           {
-            "score": "0-1",
+            "score": "1-0",
             "probability": 5.7
           }
         ],
         "expected_goals": {
-          "home": 1.64,
-          "away": 1.8
+          "home": 1.62,
+          "away": 1.77
         },
-        "over_under_2_5": 66.6,
-        "both_teams_score": 67.4
+        "over_under_2_5": 65.4,
+        "both_teams_score": 66.4
       },
       "movement": {
         "direction": "flat",
@@ -7944,6 +8165,10 @@
       },
       "h2h_advantage": -0.21,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -8005,37 +8230,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 35.6,
-        "draw_pct": 22.3,
-        "away_win_pct": 42.0,
+        "home_win_pct": 34.6,
+        "draw_pct": 23.1,
+        "away_win_pct": 42.4,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 9.7
+            "probability": 10.1
           },
           {
             "score": "1-2",
-            "probability": 8.4
+            "probability": 8.6
           },
           {
             "score": "2-1",
-            "probability": 8.4
-          },
-          {
-            "score": "2-2",
-            "probability": 6.8
+            "probability": 7.6
           },
           {
             "score": "0-1",
-            "probability": 6.4
+            "probability": 6.8
+          },
+          {
+            "score": "2-2",
+            "probability": 6.6
           }
         ],
         "expected_goals": {
-          "home": 1.57,
+          "home": 1.55,
           "away": 1.73
         },
-        "over_under_2_5": 64.4,
-        "both_teams_score": 65.3
+        "over_under_2_5": 63.7,
+        "both_teams_score": 65.0
       },
       "movement": {
         "direction": "flat",
@@ -8081,6 +8306,10 @@
       },
       "h2h_advantage": 0.244,
       "best_pick": "1-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.012,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -8142,37 +8371,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 45.0,
-        "draw_pct": 22.9,
-        "away_win_pct": 32.0,
+        "home_win_pct": 46.4,
+        "draw_pct": 22.6,
+        "away_win_pct": 31.1,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.6
+            "probability": 10.5
           },
           {
             "score": "2-1",
-            "probability": 9.2
+            "probability": 9.0
           },
           {
             "score": "1-2",
-            "probability": 7.6
+            "probability": 7.3
           },
           {
             "score": "1-0",
-            "probability": 6.5
+            "probability": 6.8
           },
           {
-            "score": "2-2",
-            "probability": 6.5
+            "score": "2-0",
+            "probability": 6.3
           }
         ],
         "expected_goals": {
-          "home": 1.8,
-          "away": 1.48
+          "home": 1.82,
+          "away": 1.47
         },
-        "over_under_2_5": 63.4,
-        "both_teams_score": 64.8
+        "over_under_2_5": 63.5,
+        "both_teams_score": 64.5
       },
       "movement": {
         "direction": "flat",
@@ -8218,6 +8447,10 @@
       },
       "h2h_advantage": -0.278,
       "best_pick": "1-2",
+      "best_value_pick": "1-2",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-2",
       "top_scores": [
         {
           "score": "1-2",
@@ -8280,24 +8513,24 @@
       "monte_carlo": {
         "n_simulations": 10000,
         "home_win_pct": 22.0,
-        "draw_pct": 18.1,
-        "away_win_pct": 59.9,
+        "draw_pct": 17.9,
+        "away_win_pct": 60.1,
         "most_likely_scores": [
           {
             "score": "1-2",
-            "probability": 8.3
+            "probability": 7.9
           },
           {
             "score": "1-3",
-            "probability": 6.9
+            "probability": 7.2
           },
           {
             "score": "2-2",
-            "probability": 6.3
+            "probability": 6.7
           },
           {
             "score": "1-1",
-            "probability": 6.0
+            "probability": 5.6
           },
           {
             "score": "2-3",
@@ -8305,10 +8538,10 @@
           }
         ],
         "expected_goals": {
-          "home": 1.64,
+          "home": 1.62,
           "away": 2.69
         },
-        "over_under_2_5": 80.5,
+        "over_under_2_5": 80.7,
         "both_teams_score": 75.0
       },
       "movement": {
@@ -8355,6 +8588,10 @@
       },
       "h2h_advantage": 0.204,
       "best_pick": "1-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.012,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -8416,37 +8653,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 45.8,
-        "draw_pct": 23.0,
-        "away_win_pct": 31.3,
+        "home_win_pct": 44.7,
+        "draw_pct": 23.9,
+        "away_win_pct": 31.4,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.1
+            "probability": 10.5
           },
           {
             "score": "2-1",
             "probability": 8.8
           },
           {
+            "score": "2-2",
+            "probability": 7.1
+          },
+          {
             "score": "1-2",
-            "probability": 7.4
+            "probability": 6.7
           },
           {
             "score": "1-0",
-            "probability": 7.2
-          },
-          {
-            "score": "2-2",
-            "probability": 6.6
+            "probability": 6.5
           }
         ],
         "expected_goals": {
-          "home": 1.82,
-          "away": 1.48
+          "home": 1.8,
+          "away": 1.49
         },
-        "over_under_2_5": 63.9,
-        "both_teams_score": 65.1
+        "over_under_2_5": 63.7,
+        "both_teams_score": 64.7
       },
       "movement": {
         "direction": "flat",
@@ -8492,6 +8729,10 @@
       },
       "h2h_advantage": 0.012,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -8553,37 +8794,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 43.1,
-        "draw_pct": 23.8,
-        "away_win_pct": 33.1,
+        "home_win_pct": 43.7,
+        "draw_pct": 23.5,
+        "away_win_pct": 32.9,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.8
+            "probability": 10.6
           },
           {
             "score": "2-1",
-            "probability": 8.5
+            "probability": 9.1
           },
           {
             "score": "1-2",
-            "probability": 7.8
+            "probability": 7.6
           },
           {
             "score": "1-0",
-            "probability": 7.4
+            "probability": 7.0
           },
           {
             "score": "2-2",
-            "probability": 6.8
+            "probability": 6.6
           }
         ],
         "expected_goals": {
-          "home": 1.7,
-          "away": 1.46
+          "home": 1.71,
+          "away": 1.47
         },
-        "over_under_2_5": 60.7,
-        "both_teams_score": 63.0
+        "over_under_2_5": 61.6,
+        "both_teams_score": 63.1
       },
       "movement": {
         "direction": "flat",
@@ -8629,6 +8870,10 @@
       },
       "h2h_advantage": -0.192,
       "best_pick": "1-2",
+      "best_value_pick": "1-2",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-2",
       "top_scores": [
         {
           "score": "1-2",
@@ -8690,37 +8935,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 26.0,
-        "draw_pct": 18.4,
-        "away_win_pct": 55.6,
+        "home_win_pct": 24.6,
+        "draw_pct": 19.0,
+        "away_win_pct": 56.3,
         "most_likely_scores": [
           {
             "score": "1-2",
-            "probability": 7.7
+            "probability": 8.2
           },
           {
             "score": "2-2",
-            "probability": 6.8
+            "probability": 7.2
           },
           {
             "score": "1-3",
-            "probability": 6.6
+            "probability": 7.0
           },
           {
             "score": "1-1",
-            "probability": 6.1
+            "probability": 6.0
           },
           {
             "score": "2-3",
-            "probability": 5.8
+            "probability": 5.6
           }
         ],
         "expected_goals": {
-          "home": 1.73,
+          "home": 1.72,
           "away": 2.55
         },
-        "over_under_2_5": 80.2,
-        "both_teams_score": 75.8
+        "over_under_2_5": 80.3,
+        "both_teams_score": 76.1
       },
       "movement": {
         "direction": "flat",
@@ -8766,6 +9011,10 @@
       },
       "h2h_advantage": 0.146,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -8827,37 +9076,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 75.1,
-        "draw_pct": 14.7,
-        "away_win_pct": 10.2,
+        "home_win_pct": 74.9,
+        "draw_pct": 15.9,
+        "away_win_pct": 9.3,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 9.9
-          },
-          {
-            "score": "3-0",
-            "probability": 9.5
+            "probability": 10.6
           },
           {
             "score": "2-1",
+            "probability": 9.0
+          },
+          {
+            "score": "3-0",
             "probability": 8.5
           },
           {
             "score": "3-1",
-            "probability": 7.9
+            "probability": 8.3
           },
           {
             "score": "1-0",
-            "probability": 7.8
+            "probability": 7.2
           }
         ],
         "expected_goals": {
-          "home": 2.69,
+          "home": 2.68,
           "away": 0.89
         },
-        "over_under_2_5": 69.2,
-        "both_teams_score": 54.7
+        "over_under_2_5": 68.6,
+        "both_teams_score": 55.3
       },
       "movement": {
         "direction": "flat",
@@ -8903,6 +9152,10 @@
       },
       "h2h_advantage": 0.058,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -8964,37 +9217,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 60.2,
-        "draw_pct": 23.3,
-        "away_win_pct": 16.5,
+        "home_win_pct": 60.7,
+        "draw_pct": 22.6,
+        "away_win_pct": 16.6,
         "most_likely_scores": [
           {
             "score": "1-0",
-            "probability": 12.1
+            "probability": 12.3
           },
           {
             "score": "2-0",
-            "probability": 11.8
+            "probability": 11.5
           },
           {
             "score": "1-1",
-            "probability": 11.4
+            "probability": 10.6
           },
           {
             "score": "2-1",
-            "probability": 9.5
+            "probability": 9.7
           },
           {
             "score": "3-0",
-            "probability": 7.0
+            "probability": 7.3
           }
         ],
         "expected_goals": {
-          "home": 1.84,
+          "home": 1.86,
           "away": 0.85
         },
-        "over_under_2_5": 50.0,
-        "both_teams_score": 48.7
+        "over_under_2_5": 51.0,
+        "both_teams_score": 48.2
       },
       "movement": {
         "direction": "flat",
@@ -9040,6 +9293,10 @@
       },
       "h2h_advantage": -0.262,
       "best_pick": "1-2",
+      "best_value_pick": "1-2",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-2",
       "top_scores": [
         {
           "score": "1-2",
@@ -9101,9 +9358,9 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 28.2,
-        "draw_pct": 19.5,
-        "away_win_pct": 52.3,
+        "home_win_pct": 26.8,
+        "draw_pct": 19.4,
+        "away_win_pct": 53.8,
         "most_likely_scores": [
           {
             "score": "1-2",
@@ -9114,24 +9371,24 @@
             "probability": 7.0
           },
           {
-            "score": "1-1",
-            "probability": 6.6
+            "score": "1-3",
+            "probability": 6.8
           },
           {
-            "score": "1-3",
-            "probability": 6.5
+            "score": "1-1",
+            "probability": 6.7
           },
           {
             "score": "2-1",
-            "probability": 6.0
+            "probability": 5.9
           }
         ],
         "expected_goals": {
-          "home": 1.73,
-          "away": 2.39
+          "home": 1.71,
+          "away": 2.42
         },
-        "over_under_2_5": 77.9,
-        "both_teams_score": 74.7
+        "over_under_2_5": 78.0,
+        "both_teams_score": 74.4
       },
       "movement": {
         "direction": "flat",
@@ -9177,6 +9434,10 @@
       },
       "h2h_advantage": -0.012,
       "best_pick": "1-1",
+      "best_value_pick": "2-1",
+      "strategy": "value",
+      "value_diff": 0.012,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -9238,37 +9499,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 45.9,
-        "draw_pct": 22.8,
-        "away_win_pct": 31.3,
+        "home_win_pct": 47.4,
+        "draw_pct": 22.9,
+        "away_win_pct": 29.7,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 9.8
+            "probability": 10.5
           },
           {
             "score": "2-1",
-            "probability": 9.3
-          },
-          {
-            "score": "1-2",
-            "probability": 7.5
+            "probability": 8.6
           },
           {
             "score": "1-0",
-            "probability": 7.0
+            "probability": 7.3
+          },
+          {
+            "score": "1-2",
+            "probability": 7.1
           },
           {
             "score": "2-0",
-            "probability": 6.7
+            "probability": 7.0
           }
         ],
         "expected_goals": {
-          "home": 1.78,
-          "away": 1.41
+          "home": 1.81,
+          "away": 1.39
         },
-        "over_under_2_5": 62.0,
-        "both_teams_score": 62.6
+        "over_under_2_5": 61.4,
+        "both_teams_score": 62.4
       },
       "movement": {
         "direction": "flat",
@@ -9314,6 +9575,10 @@
       },
       "h2h_advantage": -0.278,
       "best_pick": "0-2",
+      "best_value_pick": "0-2",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "0-2",
       "top_scores": [
         {
           "score": "0-2",
@@ -9375,37 +9640,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 12.2,
-        "draw_pct": 16.2,
-        "away_win_pct": 71.7,
+        "home_win_pct": 12.7,
+        "draw_pct": 15.4,
+        "away_win_pct": 71.9,
         "most_likely_scores": [
           {
             "score": "1-2",
-            "probability": 9.5
+            "probability": 9.4
           },
           {
             "score": "0-2",
-            "probability": 8.8
-          },
-          {
-            "score": "0-3",
-            "probability": 8.3
+            "probability": 8.7
           },
           {
             "score": "1-3",
-            "probability": 7.9
+            "probability": 8.3
+          },
+          {
+            "score": "0-3",
+            "probability": 7.6
           },
           {
             "score": "0-1",
-            "probability": 7.2
+            "probability": 7.0
           }
         ],
         "expected_goals": {
-          "home": 1.01,
-          "away": 2.61
+          "home": 1.03,
+          "away": 2.62
         },
-        "over_under_2_5": 70.2,
-        "both_teams_score": 58.9
+        "over_under_2_5": 70.7,
+        "both_teams_score": 59.6
       },
       "movement": {
         "direction": "flat",
@@ -9451,6 +9716,10 @@
       },
       "h2h_advantage": -0.268,
       "best_pick": "0-2",
+      "best_value_pick": "0-2",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "0-2",
       "top_scores": [
         {
           "score": "0-2",
@@ -9512,37 +9781,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 10.7,
-        "draw_pct": 14.1,
-        "away_win_pct": 75.3,
+        "home_win_pct": 10.5,
+        "draw_pct": 15.3,
+        "away_win_pct": 74.2,
         "most_likely_scores": [
           {
             "score": "0-2",
-            "probability": 9.5
-          },
-          {
-            "score": "1-2",
-            "probability": 8.7
+            "probability": 9.1
           },
           {
             "score": "0-3",
-            "probability": 8.6
+            "probability": 8.9
           },
           {
             "score": "1-3",
-            "probability": 7.9
+            "probability": 8.2
           },
           {
-            "score": "0-1",
+            "score": "1-2",
+            "probability": 8.2
+          },
+          {
+            "score": "1-1",
             "probability": 6.6
           }
         ],
         "expected_goals": {
           "home": 0.96,
-          "away": 2.77
+          "away": 2.76
         },
-        "over_under_2_5": 71.8,
-        "both_teams_score": 57.3
+        "over_under_2_5": 71.9,
+        "both_teams_score": 57.8
       },
       "movement": {
         "direction": "flat",
@@ -9588,6 +9857,10 @@
       },
       "h2h_advantage": 0.29,
       "best_pick": "2-0",
+      "best_value_pick": "2-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "2-0",
       "top_scores": [
         {
           "score": "2-0",
@@ -9649,37 +9922,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 76.2,
-        "draw_pct": 15.4,
-        "away_win_pct": 8.3,
+        "home_win_pct": 77.4,
+        "draw_pct": 14.9,
+        "away_win_pct": 7.7,
         "most_likely_scores": [
           {
             "score": "2-0",
-            "probability": 11.8
+            "probability": 11.6
           },
           {
             "score": "3-0",
-            "probability": 9.8
+            "probability": 10.4
           },
           {
             "score": "2-1",
-            "probability": 8.9
+            "probability": 9.4
           },
           {
             "score": "1-0",
-            "probability": 8.5
+            "probability": 9.3
           },
           {
             "score": "3-1",
-            "probability": 8.0
+            "probability": 7.8
           }
         ],
         "expected_goals": {
-          "home": 2.59,
-          "away": 0.76
+          "home": 2.6,
+          "away": 0.74
         },
-        "over_under_2_5": 65.1,
-        "both_teams_score": 49.9
+        "over_under_2_5": 65.2,
+        "both_teams_score": 49.1
       },
       "movement": {
         "direction": "flat",
@@ -9725,6 +9998,10 @@
       },
       "h2h_advantage": 0.052,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -9786,37 +10063,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 41.1,
-        "draw_pct": 22.7,
-        "away_win_pct": 36.1,
+        "home_win_pct": 40.9,
+        "draw_pct": 22.9,
+        "away_win_pct": 36.2,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.0
+            "probability": 10.3
           },
           {
             "score": "2-1",
-            "probability": 8.9
+            "probability": 8.3
           },
           {
             "score": "1-2",
             "probability": 8.0
           },
           {
-            "score": "2-2",
-            "probability": 6.7
+            "score": "1-0",
+            "probability": 6.8
           },
           {
-            "score": "1-0",
-            "probability": 6.6
+            "score": "2-2",
+            "probability": 6.5
           }
         ],
         "expected_goals": {
-          "home": 1.69,
-          "away": 1.6
+          "home": 1.7,
+          "away": 1.59
         },
-        "over_under_2_5": 64.1,
-        "both_teams_score": 65.6
+        "over_under_2_5": 63.1,
+        "both_teams_score": 64.8
       },
       "movement": {
         "direction": "flat",
@@ -9862,6 +10139,10 @@
       },
       "h2h_advantage": -0.012,
       "best_pick": "1-0",
+      "best_value_pick": "1-0",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-0",
       "top_scores": [
         {
           "score": "1-0",
@@ -9923,37 +10204,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 61.4,
-        "draw_pct": 22.7,
-        "away_win_pct": 16.0,
+        "home_win_pct": 62.1,
+        "draw_pct": 22.2,
+        "away_win_pct": 15.7,
         "most_likely_scores": [
           {
             "score": "1-0",
-            "probability": 13.7
+            "probability": 13.1
           },
           {
             "score": "2-0",
-            "probability": 12.0
+            "probability": 12.6
           },
           {
             "score": "1-1",
-            "probability": 10.3
+            "probability": 10.4
           },
           {
             "score": "2-1",
-            "probability": 9.5
+            "probability": 9.4
           },
           {
-            "score": "0-0",
+            "score": "3-0",
             "probability": 7.7
           }
         ],
         "expected_goals": {
-          "home": 1.79,
+          "home": 1.82,
           "away": 0.78
         },
-        "over_under_2_5": 47.7,
-        "both_teams_score": 45.0
+        "over_under_2_5": 48.5,
+        "both_teams_score": 45.3
       },
       "movement": {
         "direction": "flat",
@@ -9999,6 +10280,10 @@
       },
       "h2h_advantage": -0.012,
       "best_pick": "1-1",
+      "best_value_pick": "1-1",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "1-1",
       "top_scores": [
         {
           "score": "1-1",
@@ -10060,37 +10345,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 37.8,
-        "draw_pct": 22.7,
-        "away_win_pct": 39.5,
+        "home_win_pct": 37.0,
+        "draw_pct": 23.0,
+        "away_win_pct": 40.0,
         "most_likely_scores": [
           {
             "score": "1-1",
-            "probability": 10.0
+            "probability": 10.1
+          },
+          {
+            "score": "2-1",
+            "probability": 8.3
           },
           {
             "score": "1-2",
             "probability": 8.1
           },
           {
-            "score": "2-1",
-            "probability": 7.9
+            "score": "0-1",
+            "probability": 6.5
           },
           {
             "score": "2-2",
             "probability": 6.5
-          },
-          {
-            "score": "0-1",
-            "probability": 6.2
           }
         ],
         "expected_goals": {
-          "home": 1.65,
+          "home": 1.62,
           "away": 1.69
         },
-        "over_under_2_5": 64.5,
-        "both_teams_score": 65.9
+        "over_under_2_5": 64.1,
+        "both_teams_score": 65.7
       },
       "movement": {
         "direction": "flat",
@@ -10136,6 +10421,10 @@
       },
       "h2h_advantage": -0.29,
       "best_pick": "0-3",
+      "best_value_pick": "0-3",
+      "strategy": "value",
+      "value_diff": 0.0,
+      "consensus_pick": "0-3",
       "top_scores": [
         {
           "score": "0-3",
@@ -10197,37 +10486,37 @@
       },
       "monte_carlo": {
         "n_simulations": 10000,
-        "home_win_pct": 6.1,
-        "draw_pct": 10.0,
-        "away_win_pct": 83.9,
+        "home_win_pct": 6.5,
+        "draw_pct": 9.7,
+        "away_win_pct": 83.7,
         "most_likely_scores": [
           {
-            "score": "0-2",
-            "probability": 8.7
-          },
-          {
             "score": "0-3",
-            "probability": 8.6
+            "probability": 9.2
           },
           {
             "score": "1-3",
-            "probability": 7.9
+            "probability": 8.2
           },
           {
             "score": "1-2",
-            "probability": 7.7
+            "probability": 7.6
+          },
+          {
+            "score": "0-2",
+            "probability": 7.6
           },
           {
             "score": "0-4",
-            "probability": 7.7
+            "probability": 7.6
           }
         ],
         "expected_goals": {
-          "home": 0.88,
-          "away": 3.35
+          "home": 0.89,
+          "away": 3.36
         },
-        "over_under_2_5": 78.9,
-        "both_teams_score": 56.4
+        "over_under_2_5": 80.2,
+        "both_teams_score": 57.4
       },
       "movement": {
         "direction": "flat",
@@ -10622,7 +10911,7 @@
       },
       "extra_time_probability": 2.6,
       "penalties_probability": 1.9,
-      "source_strength_delta": 2.77
+      "source_strength_delta": 2.793
     },
     {
       "id": 81,
@@ -10753,20 +11042,20 @@
       },
       "h2h_advantage": 0.122,
       "predicted_winner": "Colombia",
-      "winner_confidence": 10.5,
+      "winner_confidence": 10.6,
       "best_pick": "1-1",
       "expected_goals": {
         "home": 1.25,
         "away": 1.04
       },
       "win_probabilities": {
-        "home": 41.1,
+        "home": 41.2,
         "draw": 28.2,
         "away": 30.6
       },
       "extra_time_probability": 48.0,
       "penalties_probability": 33.6,
-      "source_strength_delta": 0.507
+      "source_strength_delta": 0.53
     },
     {
       "id": 84,
@@ -11290,11 +11579,11 @@
       "win_probabilities": {
         "home": 13.1,
         "draw": 19.6,
-        "away": 67.2
+        "away": 67.3
       },
-      "extra_time_probability": 31.2,
+      "extra_time_probability": 31.1,
       "penalties_probability": 21.8,
-      "source_strength_delta": -1.08
+      "source_strength_delta": -1.103
     },
     {
       "id": 95,
@@ -11480,13 +11769,13 @@
         "away": 1.32
       },
       "win_probabilities": {
-        "home": 39.3,
+        "home": 39.2,
         "draw": 25.6,
-        "away": 35.1
+        "away": 35.2
       },
       "extra_time_probability": 48.0,
       "penalties_probability": 33.6,
-      "source_strength_delta": -0.3
+      "source_strength_delta": -0.323
     },
     {
       "id": 99,
@@ -11777,6 +12066,320 @@
       "source_strength_delta": 0.503
     }
   ],
+  "knockout_probs": {
+    "A": {
+      "Mexico": {
+        "winner_pct": 63.4,
+        "runner_up_pct": 22.1,
+        "third_pct": 13.4,
+        "qualify_pct": 85.4
+      },
+      "South Africa": {
+        "winner_pct": 1.3,
+        "runner_up_pct": 9.8,
+        "third_pct": 19.1,
+        "qualify_pct": 11.1
+      },
+      "South Korea": {
+        "winner_pct": 22.0,
+        "runner_up_pct": 41.0,
+        "third_pct": 26.8,
+        "qualify_pct": 63.0
+      },
+      "Czechia": {
+        "winner_pct": 13.2,
+        "runner_up_pct": 27.2,
+        "third_pct": 40.7,
+        "qualify_pct": 40.4
+      }
+    },
+    "B": {
+      "Canada": {
+        "winner_pct": 22.5,
+        "runner_up_pct": 44.0,
+        "third_pct": 24.6,
+        "qualify_pct": 66.5
+      },
+      "Bosnia and Herzegovina": {
+        "winner_pct": 9.1,
+        "runner_up_pct": 24.1,
+        "third_pct": 42.9,
+        "qualify_pct": 33.1
+      },
+      "Qatar": {
+        "winner_pct": 1.8,
+        "runner_up_pct": 10.7,
+        "third_pct": 22.2,
+        "qualify_pct": 12.5
+      },
+      "Switzerland": {
+        "winner_pct": 66.6,
+        "runner_up_pct": 21.3,
+        "third_pct": 10.4,
+        "qualify_pct": 87.8
+      }
+    },
+    "D": {
+      "USA": {
+        "winner_pct": 68.1,
+        "runner_up_pct": 18.6,
+        "third_pct": 12.4,
+        "qualify_pct": 86.7
+      },
+      "Paraguay": {
+        "winner_pct": 1.1,
+        "runner_up_pct": 9.6,
+        "third_pct": 18.0,
+        "qualify_pct": 10.7
+      },
+      "Australia": {
+        "winner_pct": 19.9,
+        "runner_up_pct": 41.8,
+        "third_pct": 29.7,
+        "qualify_pct": 61.7
+      },
+      "Turkiye": {
+        "winner_pct": 10.9,
+        "runner_up_pct": 30.1,
+        "third_pct": 39.9,
+        "qualify_pct": 41.0
+      }
+    },
+    "C": {
+      "Brazil": {
+        "winner_pct": 62.5,
+        "runner_up_pct": 26.9,
+        "third_pct": 9.8,
+        "qualify_pct": 89.4
+      },
+      "Morocco": {
+        "winner_pct": 16.0,
+        "runner_up_pct": 37.3,
+        "third_pct": 41.8,
+        "qualify_pct": 53.3
+      },
+      "Haiti": {
+        "winner_pct": 0.2,
+        "runner_up_pct": 0.4,
+        "third_pct": 6.4,
+        "qualify_pct": 0.6
+      },
+      "Scotland": {
+        "winner_pct": 21.3,
+        "runner_up_pct": 35.5,
+        "third_pct": 42.0,
+        "qualify_pct": 56.8
+      }
+    },
+    "E": {
+      "Germany": {
+        "winner_pct": 83.9,
+        "runner_up_pct": 10.4,
+        "third_pct": 5.5,
+        "qualify_pct": 94.3
+      },
+      "Curacao": {
+        "winner_pct": 0.1,
+        "runner_up_pct": 4.3,
+        "third_pct": 9.1,
+        "qualify_pct": 4.5
+      },
+      "Ivory Coast": {
+        "winner_pct": 10.6,
+        "runner_up_pct": 43.1,
+        "third_pct": 41.5,
+        "qualify_pct": 53.7
+      },
+      "Ecuador": {
+        "winner_pct": 5.4,
+        "runner_up_pct": 42.2,
+        "third_pct": 43.9,
+        "qualify_pct": 47.6
+      }
+    },
+    "F": {
+      "Netherlands": {
+        "winner_pct": 47.4,
+        "runner_up_pct": 30.9,
+        "third_pct": 15.3,
+        "qualify_pct": 78.4
+      },
+      "Japan": {
+        "winner_pct": 18.1,
+        "runner_up_pct": 33.4,
+        "third_pct": 26.3,
+        "qualify_pct": 51.5
+      },
+      "Sweden": {
+        "winner_pct": 29.3,
+        "runner_up_pct": 29.5,
+        "third_pct": 34.4,
+        "qualify_pct": 58.8
+      },
+      "Tunisia": {
+        "winner_pct": 5.2,
+        "runner_up_pct": 6.1,
+        "third_pct": 24.0,
+        "qualify_pct": 11.3
+      }
+    },
+    "H": {
+      "Spain": {
+        "winner_pct": 61.5,
+        "runner_up_pct": 28.2,
+        "third_pct": 8.5,
+        "qualify_pct": 89.7
+      },
+      "Cape Verde": {
+        "winner_pct": 5.5,
+        "runner_up_pct": 25.4,
+        "third_pct": 45.4,
+        "qualify_pct": 31.0
+      },
+      "Saudi Arabia": {
+        "winner_pct": 1.3,
+        "runner_up_pct": 5.9,
+        "third_pct": 22.6,
+        "qualify_pct": 7.1
+      },
+      "Uruguay": {
+        "winner_pct": 31.7,
+        "runner_up_pct": 40.5,
+        "third_pct": 23.5,
+        "qualify_pct": 72.2
+      }
+    },
+    "G": {
+      "Belgium": {
+        "winner_pct": 68.8,
+        "runner_up_pct": 20.8,
+        "third_pct": 7.8,
+        "qualify_pct": 89.5
+      },
+      "Egypt": {
+        "winner_pct": 14.1,
+        "runner_up_pct": 40.3,
+        "third_pct": 23.6,
+        "qualify_pct": 54.5
+      },
+      "Iran": {
+        "winner_pct": 5.6,
+        "runner_up_pct": 15.5,
+        "third_pct": 32.9,
+        "qualify_pct": 21.1
+      },
+      "New Zealand": {
+        "winner_pct": 11.5,
+        "runner_up_pct": 23.4,
+        "third_pct": 35.7,
+        "qualify_pct": 34.9
+      }
+    },
+    "I": {
+      "France": {
+        "winner_pct": 73.6,
+        "runner_up_pct": 24.8,
+        "third_pct": 1.6,
+        "qualify_pct": 98.4
+      },
+      "Senegal": {
+        "winner_pct": 1.0,
+        "runner_up_pct": 22.8,
+        "third_pct": 66.6,
+        "qualify_pct": 23.8
+      },
+      "Iraq": {
+        "winner_pct": 0.0,
+        "runner_up_pct": 0.4,
+        "third_pct": 9.4,
+        "qualify_pct": 0.4
+      },
+      "Norway": {
+        "winner_pct": 25.4,
+        "runner_up_pct": 52.0,
+        "third_pct": 22.5,
+        "qualify_pct": 77.4
+      }
+    },
+    "J": {
+      "Argentina": {
+        "winner_pct": 92.3,
+        "runner_up_pct": 6.8,
+        "third_pct": 0.9,
+        "qualify_pct": 99.1
+      },
+      "Algeria": {
+        "winner_pct": 0.4,
+        "runner_up_pct": 24.1,
+        "third_pct": 35.3,
+        "qualify_pct": 24.5
+      },
+      "Austria": {
+        "winner_pct": 6.8,
+        "runner_up_pct": 62.8,
+        "third_pct": 26.9,
+        "qualify_pct": 69.7
+      },
+      "Jordan": {
+        "winner_pct": 0.5,
+        "runner_up_pct": 6.3,
+        "third_pct": 36.9,
+        "qualify_pct": 6.8
+      }
+    },
+    "K": {
+      "Portugal": {
+        "winner_pct": 57.6,
+        "runner_up_pct": 30.9,
+        "third_pct": 9.0,
+        "qualify_pct": 88.5
+      },
+      "DR Congo": {
+        "winner_pct": 3.8,
+        "runner_up_pct": 14.3,
+        "third_pct": 45.4,
+        "qualify_pct": 18.0
+      },
+      "Uzbekistan": {
+        "winner_pct": 3.2,
+        "runner_up_pct": 13.9,
+        "third_pct": 29.0,
+        "qualify_pct": 17.0
+      },
+      "Colombia": {
+        "winner_pct": 35.5,
+        "runner_up_pct": 41.0,
+        "third_pct": 16.5,
+        "qualify_pct": 76.5
+      }
+    },
+    "L": {
+      "England": {
+        "winner_pct": 77.8,
+        "runner_up_pct": 17.4,
+        "third_pct": 4.0,
+        "qualify_pct": 95.2
+      },
+      "Croatia": {
+        "winner_pct": 15.8,
+        "runner_up_pct": 49.1,
+        "third_pct": 24.9,
+        "qualify_pct": 65.0
+      },
+      "Ghana": {
+        "winner_pct": 1.6,
+        "runner_up_pct": 11.5,
+        "third_pct": 36.3,
+        "qualify_pct": 13.1
+      },
+      "Panama": {
+        "winner_pct": 4.7,
+        "runner_up_pct": 22.0,
+        "third_pct": 34.8,
+        "qualify_pct": 26.8
+      }
+    }
+  },
   "knockout_standings": {
     "groups": {
       "A": {

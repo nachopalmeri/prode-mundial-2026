@@ -377,6 +377,74 @@ def inject_real_results_into_predictions(predictions: dict) -> dict:
     return predictions
 
 
+def update_elo_from_result(
+    home_team: str, away_team: str,
+    home_goals: int, away_goals: int,
+    priors: dict,
+) -> tuple[float, float]:
+    """Update Elo ratings based on match result. Returns (new_home_elo, new_away_elo)."""
+    teams = priors.get("teams", {})
+    home_elo = float(teams.get(home_team, {}).get("elo", 1500))
+    away_elo = float(teams.get(away_team, {}).get("elo", 1500))
+
+    expected_home = 1.0 / (1.0 + 10.0 ** ((away_elo - home_elo) / 400.0))
+    expected_away = 1.0 - expected_home
+
+    if home_goals > away_goals:
+        actual_home, actual_away = 1.0, 0.0
+    elif away_goals > home_goals:
+        actual_home, actual_away = 0.0, 1.0
+    else:
+        actual_home, actual_away = 0.5, 0.5
+
+    K = 30.0
+    new_home = home_elo + K * (actual_home - expected_home)
+    new_away = away_elo + K * (actual_away - expected_away)
+    return round(new_home, 1), round(new_away, 1)
+
+
+def persist_elo_from_results(predictions: dict, priors_path: Path) -> dict:
+    """Update team strengths with post-match Elo adjustments."""
+    teams_path = priors_path
+    if not teams_path.exists():
+        return predictions
+
+    priors = json.loads(teams_path.read_text(encoding="utf-8"))
+    teams = priors.get("teams", {})
+    changed = 0
+
+    for m in predictions.get("matches", []):
+        if not m.get("played") or not m.get("played_result"):
+            continue
+        home = m.get("home", "")
+        away = m.get("away", "")
+        result = m["played_result"]
+        parts = result.split("-")
+        if len(parts) != 2:
+            continue
+        hg, ag = int(parts[0]), int(parts[1])
+        new_home, new_away = update_elo_from_result(home, away, hg, ag, priors)
+
+        if home in teams:
+            old = teams[home].get("elo", 1500)
+            if abs(new_home - old) > 0.1:
+                teams[home]["elo"] = new_home
+                teams[home]["elo_updated"] = datetime.now(timezone.utc).isoformat()
+                changed += 1
+        if away in teams:
+            old = teams[away].get("elo", 1500)
+            if abs(new_away - old) > 0.1:
+                teams[away]["elo"] = new_away
+                teams[away]["elo_updated"] = datetime.now(timezone.utc).isoformat()
+                changed += 1
+
+    if changed:
+        teams_path.write_text(json.dumps(priors, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"  Updated Elo for {changed} teams from real results")
+
+    return predictions
+
+
 if __name__ == "__main__":
     # Quick test
     import sys

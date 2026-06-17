@@ -34,6 +34,8 @@ SOURCE_LABELS = {
 }
 
 RESULTS_LIST_PATH = PROJECT_ROOT / "data" / "runtime" / "results_order.json"
+LATEST_PREDICTIONS_PATH = PROJECT_ROOT / "data" / "model" / "latest_predictions.json"
+DRAW_INFLATION_PATH = PROJECT_ROOT / "data" / "model" / "draw_inflation.json"
 
 
 def load_runtime(path: Path) -> dict:
@@ -386,6 +388,81 @@ def main() -> None:
     print(f"\n  Pesos guardados: data/model/weights_latest.json")
     print(f"  Bias guardados: data/model/source_bias.json")
     print("  Recalibracion v2: OK")
+
+    # --- Draw inflation calibration ---
+    calibrate_draw_inflation(results, timestamp)
+
+
+def calibrate_draw_inflation(results: dict[str, str], timestamp: str) -> None:
+    """Calibrate draw_inflation base by comparing predicted vs actual draw rates."""
+    print("\n=== Calibrando Draw Inflation ===")
+
+    if not LATEST_PREDICTIONS_PATH.exists():
+        print("  No hay latest_predictions.json. Se salta calibracion.")
+        return
+
+    model_data = json.loads(LATEST_PREDICTIONS_PATH.read_text(encoding="utf-8"))
+    model_matches = {m["id"]: m for m in model_data.get("matches", [])}
+    current_base = model_data.get("metadata", {}).get("draw_inflation_base", 0.55)
+
+    predicted_draws: list[float] = []
+    actual_draws: list[int] = []
+
+    for match_id_str, actual_score in results.items():
+        mid = int(match_id_str)
+        mm = model_matches.get(mid)
+        if not mm:
+            continue
+        draw_pct = mm.get("one_x_two", {}).get("draw")
+        if draw_pct is None:
+            continue
+        h, a = parse_score(actual_score)
+        predicted_draws.append(draw_pct / 100.0)
+        actual_draws.append(1 if h == a else 0)
+
+    if len(predicted_draws) < 3:
+        print(f"  Solo {len(predicted_draws)} partidos con datos. Minimo 3.")
+        return
+
+    actual_rate = sum(actual_draws) / len(actual_draws)
+    mean_predicted = sum(predicted_draws) / len(predicted_draws)
+    brier_current = sum((p - o) ** 2 for p, o in zip(predicted_draws, actual_draws)) / len(predicted_draws)
+
+    print(f"  Partidos: {len(predicted_draws)} | Draws reales: {sum(actual_draws)}/{len(actual_draws)} ({actual_rate*100:.1f}%)")
+    print(f"  Draw predicho promedio: {mean_predicted*100:.1f}% | Base actual: {current_base:.2f} | Brier: {brier_current:.4f}")
+
+    best_base = current_base
+    best_brier = brier_current
+    candidates = [round(0.30 + i * 0.05, 2) for i in range(15)]
+
+    for candidate in candidates:
+        adjusted = [min(0.95, max(0.01, p * candidate / max(current_base, 0.01))) for p in predicted_draws]
+        brier = sum((a - o) ** 2 for a, o in zip(adjusted, actual_draws)) / len(adjusted)
+        if brier < best_brier:
+            best_brier = brier
+            best_base = candidate
+
+    learning_rate = min(1.0, len(predicted_draws) / 15.0)
+    smoothed_base = round(max(0.30, min(1.00, current_base + (best_base - current_base) * learning_rate)), 2)
+
+    payload = {
+        "base_inflation": smoothed_base,
+        "current_base_used": current_base,
+        "grid_best_base": best_base,
+        "brier_before": round(brier_current, 4),
+        "brier_after": round(best_brier, 4),
+        "draws_analyzed": len(predicted_draws),
+        "actual_draw_rate": round(actual_rate, 4),
+        "mean_predicted_draw_rate": round(mean_predicted, 4),
+        "learning_rate": round(learning_rate, 2),
+        "timestamp": timestamp,
+    }
+    DRAW_INFLATION_PATH.parent.mkdir(parents=True, exist_ok=True)
+    DRAW_INFLATION_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+    print(f"  Mejor base: {best_base:.2f} (Brier: {best_brier:.4f})")
+    print(f"  Base suavizada (lr={learning_rate:.2f}): {smoothed_base:.2f}")
+    print(f"  Guardado: {DRAW_INFLATION_PATH}")
 
 
 if __name__ == "__main__":

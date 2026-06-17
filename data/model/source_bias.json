@@ -1,71 +1,71 @@
 {
   "c": {
-    "goal_bias_home": -0.85,
-    "goal_bias_away": -0.6,
-    "draw_frequency": 5.0,
+    "goal_bias_home": -0.05,
+    "goal_bias_away": 0.05,
+    "draw_frequency": 45.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   },
   "g": {
-    "goal_bias_home": -0.95,
-    "goal_bias_away": -0.5,
-    "draw_frequency": 0.0,
+    "goal_bias_home": -0.05,
+    "goal_bias_away": 0.1,
+    "draw_frequency": 50.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   },
   "f": {
-    "goal_bias_home": -0.95,
-    "goal_bias_away": -0.4,
-    "draw_frequency": 0.0,
+    "goal_bias_home": -0.15,
+    "goal_bias_away": 0.25,
+    "draw_frequency": 40.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   },
   "fs": {
-    "goal_bias_home": -0.9,
-    "goal_bias_away": -0.45,
-    "draw_frequency": 5.0,
+    "goal_bias_home": 0.05,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 30.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   },
   "esp": {
-    "goal_bias_home": -0.95,
-    "goal_bias_away": -0.55,
-    "draw_frequency": 0.0,
+    "goal_bias_home": -0.7,
+    "goal_bias_away": -0.35,
+    "draw_frequency": 40.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   },
   "yh": {
-    "goal_bias_home": -0.9,
-    "goal_bias_away": -0.55,
-    "draw_frequency": 5.0,
+    "goal_bias_home": -0.1,
+    "goal_bias_away": 0.1,
+    "draw_frequency": 30.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   },
   "tips": {
-    "goal_bias_home": -1.05,
-    "goal_bias_away": -0.5,
-    "draw_frequency": 10.0,
+    "goal_bias_home": 0.0,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 40.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   },
   "e": {
-    "goal_bias_home": -0.9,
-    "goal_bias_away": -0.55,
-    "draw_frequency": 0.0,
+    "goal_bias_home": -0.05,
+    "goal_bias_away": 0.1,
+    "draw_frequency": 30.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   },
   "cup": {
-    "goal_bias_home": -1.0,
-    "goal_bias_away": -0.3,
-    "draw_frequency": 0.0,
+    "goal_bias_home": 0.05,
+    "goal_bias_away": 0.1,
+    "draw_frequency": 35.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   },
   "pm": {
-    "goal_bias_home": -0.8,
-    "goal_bias_away": -0.55,
-    "draw_frequency": 0.0,
+    "goal_bias_home": -0.95,
+    "goal_bias_away": 0.0,
+    "draw_frequency": 85.0,
     "actual_draw_frequency": 40.0,
     "samples": 20
   }
