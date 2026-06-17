@@ -1,0 +1,70 @@
+{
+  "events": [
+    {
+      "id": "760421",
+      "event_id": "760421",
+      "home": "Australia",
+      "home_team_id": "628",
+      "away": "Türkiye",
+      "away_team_id": "465",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-14T04:00Z"
+    },
+    {
+      "id": "760422",
+      "event_id": "760422",
+      "home": "Germany",
+      "home_team_id": "481",
+      "away": "Curaçao",
+      "away_team_id": "11678",
+      "home_score": 7,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-14T17:00Z"
+    },
+    {
+      "id": "760425",
+      "event_id": "760425",
+      "home": "Netherlands",
+      "home_team_id": "449",
+      "away": "Japan",
+      "away_team_id": "627",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-14T20:00Z"
+    },
+    {
+      "id": "760423",
+      "event_id": "760423",
+      "home": "Ivory Coast",
+      "home_team_id": "4789",
+      "away": "Ecuador",
+      "away_team_id": "209",
+      "home_score": 1,
+      "away_score": 0,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-14T23:00Z"
+    },
+    {
+      "id": "760424",
+      "event_id": "760424",
+      "home": "Sweden",
+      "home_team_id": "466",
+      "away": "Tunisia",
+      "away_team_id": "659",
+      "home_score": 5,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-15T02:00Z"
+    }
+  ],
+  "fetched_at": "2026-06-17T21:16:43.947280+00:00"
+}

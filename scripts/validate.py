@@ -15,7 +15,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
-from prode_core import SOURCE_KEYS, _DEFAULT_WEIGHTS, load_matches, parse_score, outcome, WEIGHTS_PATH, consensus_score, SOURCE_WEIGHTS
+from prode_core import SOURCE_KEYS, _DEFAULT_WEIGHTS, load_matches, parse_score, outcome, WEIGHTS_PATH, consensus_score, get_source_weights
 
 RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
 HTML_PATH = PROJECT_ROOT / "prode-mundial-2026.html"

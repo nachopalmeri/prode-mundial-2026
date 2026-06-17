@@ -8,6 +8,13 @@ import random
 import re
 from pathlib import Path
 
+from sports_source import (
+    inject_real_results_into_predictions,
+    fetch_group_standings,
+    fetch_polymarket_winner_odds,
+    generate_real_source_predictions,
+)
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = PROJECT_ROOT / "prode-mundial-2026.html"
@@ -30,8 +37,13 @@ def replace_between(text: str, start: str, end: str, replacement: str) -> str:
     return text
 
 
-def dynamic_json_block(predictions: dict) -> str:
-    payload = json.dumps(predictions, ensure_ascii=False, separators=(",", ":"))
+def dynamic_json_block(predictions: dict, standings: dict | None = None, pm_odds: dict | None = None) -> str:
+    payload_dict = predictions.copy()
+    if standings:
+        payload_dict["_standings_groups"] = list(standings.keys())
+    if pm_odds and "_error" not in pm_odds:
+        payload_dict["_pm_odds_available"] = True
+    payload = json.dumps(payload_dict, ensure_ascii=False, separators=(",", ":"))
     return f"const DYNAMIC_PREDICTIONS={payload};"
 
 
@@ -58,8 +70,10 @@ def _add_variation(best_pick: str, source_key: str) -> str:
     return best_pick
 
 
-def generate_matches_js(matches: list[dict]) -> str:
+def generate_matches_js(matches: list[dict], standings: dict | None = None, pm_odds: dict | None = None) -> str:
     lines = ["const matches = ["]
+    # Preload real source predictions for efficiency
+    real_picks_cache: dict[int, dict[str, str]] = {}
     for index, m in enumerate(matches):
         mid = m["id"]
         group = m.get("group", chr(64 + ((mid - 1) // 4) + 1))
@@ -68,7 +82,14 @@ def generate_matches_js(matches: list[dict]) -> str:
         home = m["home"].replace('"', "")
         away = m["away"].replace('"', "")
         best = m.get("best_pick", "0-0")
-        sources = {k: _add_variation(best, k) for k in SOURCE_KEYS}
+        real_picks = generate_real_source_predictions(mid, home, away, best, standings, pm_odds)
+        real_picks_cache[mid] = real_picks
+        sources = {}
+        for k in SOURCE_KEYS:
+            if k in ("esp", "pm") and k in real_picks:
+                sources[k] = real_picks[k]
+            else:
+                sources[k] = _add_variation(best, k)
         src_str = ",".join(f'{k}:"{sources[k]}"' for k in SOURCE_KEYS)
         suffix = "," if index < len(matches) - 1 else ""
         lines.append(f'  {{id:{mid},gr:"{group}",d:"{date}",h:"{time}",a:"{home}",b:"{away}",{src_str},ch:"FOX"}}{suffix}')
@@ -183,17 +204,21 @@ function renderDynamicTop3(filter='all',btn=null){
 """
 
 
-def inject_source_predictions(html: str, predictions: dict) -> str:
+def inject_source_predictions(html: str, predictions: dict,
+                               standings: dict | None = None,
+                               pm_odds: dict | None = None) -> str:
     matches_data = predictions.get("matches", [])
     if not matches_data:
         return html
-    matches_js = generate_matches_js(matches_data)
+    matches_js = generate_matches_js(matches_data, standings, pm_odds)
     if re.search(r"const matches\s*=\s*\[.*?\];", html, re.S):
         return re.sub(r"const matches\s*=\s*\[.*?\];", matches_js, html, count=1, flags=re.S)
     return html
 
 
-def inject_dynamic_dashboard(html: str, predictions: dict) -> str:
+def inject_dynamic_dashboard(html: str, predictions: dict,
+                             standings: dict | None = None,
+                             pm_odds: dict | None = None) -> str:
     css_block = "/* BEGIN_DYNAMIC_TOP3_CSS */\n" + DYNAMIC_CSS.strip() + "\n/* END_DYNAMIC_TOP3_CSS */"
     if "/* BEGIN_DYNAMIC_TOP3_CSS */" in html:
         html = replace_between(html, "/* BEGIN_DYNAMIC_TOP3_CSS */", "/* END_DYNAMIC_TOP3_CSS */", DYNAMIC_CSS)
@@ -217,7 +242,7 @@ def inject_dynamic_dashboard(html: str, predictions: dict) -> str:
         "const map={dinamico:'top 3',comparativa:'comparativa',dashboard:'dashboard',final:'final',prode:'prode',noticias:'noticias'};",
     )
 
-    block = dynamic_json_block(predictions)
+    block = dynamic_json_block(predictions, standings, pm_odds)
     if "/* BEGIN_DYNAMIC_PREDICTIONS */" in html:
         html = replace_between(html, "/* BEGIN_DYNAMIC_PREDICTIONS */", "/* END_DYNAMIC_PREDICTIONS */", block)
     else:
@@ -239,12 +264,22 @@ def inject_dynamic_dashboard(html: str, predictions: dict) -> str:
 
 def main() -> None:
     predictions = json.loads(PREDICTIONS_PATH.read_text(encoding="utf-8"))
+    # Fetch real data and inject into predictions
+    predictions = inject_real_results_into_predictions(predictions)
+    standings = fetch_group_standings()
+    pm_odds = fetch_polymarket_winner_odds()
     html = HTML_PATH.read_text(encoding="utf-8")
-    html = inject_source_predictions(html, predictions)
-    html = inject_dynamic_dashboard(html, predictions)
+    html = inject_source_predictions(html, predictions, standings, pm_odds)
+    html = inject_dynamic_dashboard(html, predictions, standings, pm_odds)
     HTML_PATH.write_text(html, encoding="utf-8")
     match_count = len(predictions.get("matches", []))
+    has_standings = isinstance(standings, dict) and "_error" not in standings
+    has_pm = isinstance(pm_odds, dict) and "_error" not in pm_odds
     print(f"Injected {match_count} source predictions + dynamic dashboard into HTML")
+    print(f"  Real standings: {'YES' if has_standings else 'NO'}  Polymarket odds: {'YES' if has_pm else 'NO'}")
+    played = sum(1 for m in predictions.get("matches", []) if m.get("played"))
+    if played:
+        print(f"  Real results injected for {played} played matches")
 
 
 if __name__ == "__main__":

@@ -234,14 +234,19 @@ def adjust_weights(
         # Relative adjustment: compare to mean CI
         ci_ratio = ci / max(mean_ci, 1.0)
 
-        if ci_ratio >= 1.10 and samples >= 3:
-            weight = min(2.0, round(weight + 0.10, 2))
-        elif ci_ratio >= 1.0 and samples >= 5:
-            weight = min(2.0, round(weight + 0.05, 2))
-        elif ci_ratio <= 0.85 and samples >= 5:
-            weight = max(0.4, round(weight - 0.10, 2))
-        elif ci_ratio <= 0.90 and samples >= 3:
-            weight = max(0.5, round(weight - 0.05, 2))
+        # Linear interpolation: ci_ratio -> weight adjustment
+        # 0.85 -> -0.10, 1.00 -> 0, 1.10 -> +0.10, capped at ±0.15
+        if samples >= 3:
+            if ci_ratio <= 0.85:
+                adj = -0.10
+            elif ci_ratio >= 1.10:
+                adj = 0.10
+            elif 0.85 < ci_ratio <= 1.00:
+                adj = (ci_ratio - 0.85) / 0.15 * 0.10 - 0.10
+            else:  # 1.00 < ci_ratio < 1.10
+                adj = (ci_ratio - 1.00) / 0.10 * 0.10
+            adj = max(-0.15, min(0.15, adj))
+            weight = min(2.0, max(0.4, round(weight + adj, 2)))
 
         # Draw penalty: sources that severely under-predict draws lose weight
         actual_draw_rate = bias.get("actual_draw_frequency", 0)

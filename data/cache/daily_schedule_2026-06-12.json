@@ -1,0 +1,31 @@
+{
+  "events": [
+    {
+      "id": "760416",
+      "event_id": "760416",
+      "home": "Canada",
+      "home_team_id": "206",
+      "away": "Bosnia-Herzegovina",
+      "away_team_id": "452",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-12T19:00Z"
+    },
+    {
+      "id": "760417",
+      "event_id": "760417",
+      "home": "United States",
+      "home_team_id": "660",
+      "away": "Paraguay",
+      "away_team_id": "210",
+      "home_score": 4,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-13T01:00Z"
+    }
+  ],
+  "fetched_at": "2026-06-17T21:16:01.702527+00:00"
+}

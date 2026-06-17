@@ -41,6 +41,19 @@ def load_weights() -> dict[str, float]:
 
 SOURCE_WEIGHTS = load_weights()
 TOTAL_WEIGHT = sum(SOURCE_WEIGHTS.values())
+
+def get_source_weights() -> dict[str, float]:
+    global SOURCE_WEIGHTS, TOTAL_WEIGHT
+    new = load_weights()
+    if new != SOURCE_WEIGHTS:
+        SOURCE_WEIGHTS = new
+        TOTAL_WEIGHT = sum(SOURCE_WEIGHTS.values())
+    return SOURCE_WEIGHTS
+
+def get_total_weight() -> float:
+    get_source_weights()
+    return TOTAL_WEIGHT
+
 SCORE_RE = re.compile(r"^\d+\s*-\s*\d+$")
 
 
@@ -107,22 +120,24 @@ def load_teams(html_path: Path = HTML_PATH) -> list[str]:
 
 
 def consensus_score(predictions: dict[str, str]) -> str:
+    sw = get_source_weights()
+    tw = get_total_weight()
     score_weights: dict[str, float] = {}
     for key, score in predictions.items():
-        score_weights[score] = score_weights.get(score, 0.0) + SOURCE_WEIGHTS[key]
+        score_weights[score] = score_weights.get(score, 0.0) + sw[key]
 
     best_score, best_weight = max(score_weights.items(), key=lambda item: item[1])
-    if best_weight >= TOTAL_WEIGHT * 0.28:
+    if best_weight >= tw * 0.28:
         return best_score
 
     weighted_home = 0.0
     weighted_away = 0.0
     for key, score in predictions.items():
         home_goals, away_goals = parse_score(score)
-        weighted_home += home_goals * SOURCE_WEIGHTS[key]
-        weighted_away += away_goals * SOURCE_WEIGHTS[key]
+        weighted_home += home_goals * sw[key]
+        weighted_away += away_goals * sw[key]
 
-    return f"{round(weighted_home / TOTAL_WEIGHT)} - {round(weighted_away / TOTAL_WEIGHT)}"
+    return f"{round(weighted_home / tw)} - {round(weighted_away / tw)}"
 
 
 def validate_matches(matches: list[Match]) -> list[str]:

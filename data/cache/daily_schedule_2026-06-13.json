@@ -1,0 +1,44 @@
+{
+  "events": [
+    {
+      "id": "760420",
+      "event_id": "760420",
+      "home": "Qatar",
+      "home_team_id": "4398",
+      "away": "Switzerland",
+      "away_team_id": "475",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-13T19:00Z"
+    },
+    {
+      "id": "760419",
+      "event_id": "760419",
+      "home": "Brazil",
+      "home_team_id": "205",
+      "away": "Morocco",
+      "away_team_id": "2869",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-13T22:00Z"
+    },
+    {
+      "id": "760418",
+      "event_id": "760418",
+      "home": "Haiti",
+      "home_team_id": "2654",
+      "away": "Scotland",
+      "away_team_id": "580",
+      "home_score": 0,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-14T01:00Z"
+    }
+  ],
+  "fetched_at": "2026-06-17T21:16:19.910958+00:00"
+}

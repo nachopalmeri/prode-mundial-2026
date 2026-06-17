@@ -1,0 +1,57 @@
+{
+  "events": [
+    {
+      "id": "760428",
+      "event_id": "760428",
+      "home": "Spain",
+      "home_team_id": "164",
+      "away": "Cape Verde",
+      "away_team_id": "2597",
+      "home_score": 0,
+      "away_score": 0,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-15T16:00Z"
+    },
+    {
+      "id": "760426",
+      "event_id": "760426",
+      "home": "Belgium",
+      "home_team_id": "459",
+      "away": "Egypt",
+      "away_team_id": "2620",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-15T19:00Z"
+    },
+    {
+      "id": "760429",
+      "event_id": "760429",
+      "home": "Saudi Arabia",
+      "home_team_id": "655",
+      "away": "Uruguay",
+      "away_team_id": "212",
+      "home_score": 1,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-15T22:00Z"
+    },
+    {
+      "id": "760427",
+      "event_id": "760427",
+      "home": "Iran",
+      "home_team_id": "469",
+      "away": "New Zealand",
+      "away_team_id": "2666",
+      "home_score": 2,
+      "away_score": 2,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-16T01:00Z"
+    }
+  ],
+  "fetched_at": "2026-06-17T21:17:01.650672+00:00"
+}

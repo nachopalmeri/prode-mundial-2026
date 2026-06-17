@@ -1,0 +1,31 @@
+{
+  "events": [
+    {
+      "id": "760415",
+      "event_id": "760415",
+      "home": "Mexico",
+      "home_team_id": "203",
+      "away": "South Africa",
+      "away_team_id": "467",
+      "home_score": 2,
+      "away_score": 0,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-11T19:00Z"
+    },
+    {
+      "id": "760414",
+      "event_id": "760414",
+      "home": "South Korea",
+      "home_team_id": "451",
+      "away": "Czechia",
+      "away_team_id": "450",
+      "home_score": 2,
+      "away_score": 1,
+      "status": "closed",
+      "competition": "FIFA World Cup",
+      "start_time": "2026-06-12T02:00Z"
+    }
+  ],
+  "fetched_at": "2026-06-17T21:15:44.526835+00:00"
+}
