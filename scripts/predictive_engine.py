@@ -64,7 +64,7 @@ def compute_wc_history_score(team: str, wc_data: dict[str, Any]) -> float:
         score += 0.02
     elif best in ("Quarter-finals",):
         score += 0.01
-    return min(score, 0.5)
+    return min(score, 1.0)
 
 
 def load_h2h() -> dict[str, Any]:
@@ -337,8 +337,10 @@ def score_matrix(home_mean: float, away_mean: float, match: Match) -> list[dict[
     rows: list[dict[str, Any]] = []
 
     # Draw inflation: in close matches, draw is more likely than naive Poisson suggests
+    # Actual draw rate is ~40% but Poisson predicts ~17%. Stronger correction needed.
     total_outcome = home_mean + away_mean
-    draw_inflation = 1.0 + 0.12 * math.exp(-total_outcome * 0.3)
+    closeness = 1.0 - abs(home_mean - away_mean) / max(total_outcome, 0.5)
+    draw_inflation = 1.0 + 0.40 * math.exp(-total_outcome * 0.25) * (0.6 + 0.4 * closeness)
 
     for home_goals in range(7):
         for away_goals in range(7):

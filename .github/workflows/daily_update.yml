@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --quiet sports-sdk gql numpy
+          pip install --quiet -r requirements.txt
 
       - name: Run pipeline
         run: python scripts/pipeline.py

@@ -28,9 +28,9 @@ REPORT_DIR = PROJECT_ROOT / "data" / "reports"
 BIAS_PATH = PROJECT_ROOT / "data" / "model" / "source_bias.json"
 
 SOURCE_LABELS = {
-    "c": "Cup26", "g": "Gamble", "f": "Futbolist",
-    "fs": "F Score", "esp": "ESPN", "yh": "Yahoo",
-    "tips": "1960 Tips", "e": "Elo", "cup": "Cup Predictor", "pm": "Polymarket",
+    "c": "Cascade", "g": "ChatGPT", "f": "Gemini",
+    "fs": "Fansided", "esp": "ESPN", "yh": "Yahoo",
+    "tips": "1960Tips", "e": "ELO", "cup": "Cup26", "pm": "Polymarket",
 }
 
 RESULTS_LIST_PATH = PROJECT_ROOT / "data" / "runtime" / "results_order.json"
@@ -208,6 +208,15 @@ def adjust_weights(
     bias_report: dict[str, dict],
 ) -> dict[str, float]:
     new_weights = {}
+
+    # Compute mean CI for relative normalization
+    cis = []
+    for key in SOURCE_KEYS:
+        r = report[key]
+        if r["samples"] > 0:
+            cis.append(r.get("confidence_weighted", r["confidence_index"]))
+    mean_ci = sum(cis) / max(len(cis), 1) if cis else 30.0
+
     for key in SOURCE_KEYS:
         r = report[key]
         weight = current_weights.get(key, 1.0)
@@ -218,21 +227,27 @@ def adjust_weights(
             new_weights[key] = weight
             continue
 
-        # Penalizar sesgo sistematico: si una fuente sobrestima goles consistentemente
+        # Penalizar sesgo sistematico
         bias = bias_report.get(key, {})
         goal_bias = abs(bias.get("goal_bias_home", 0)) + abs(bias.get("goal_bias_away", 0))
 
-        if ci >= 20:
-            weight = min(2.0, round(weight + 0.15, 2))
-        elif ci >= 12:
-            weight = min(2.0, round(weight + 0.08, 2))
-        elif ci >= 6:
-            weight = min(1.8, round(weight + 0.03, 2))
-        elif ci <= 3 and samples >= 3:
-            penalty = 0.15 if goal_bias > 0.5 else 0.10
-            weight = max(0.3, round(weight - penalty, 2))
-        elif ci <= 6 and samples >= 5:
-            weight = max(0.4, round(weight - 0.05, 2))
+        # Relative adjustment: compare to mean CI
+        ci_ratio = ci / max(mean_ci, 1.0)
+
+        if ci_ratio >= 1.10 and samples >= 3:
+            weight = min(2.0, round(weight + 0.10, 2))
+        elif ci_ratio >= 1.0 and samples >= 5:
+            weight = min(2.0, round(weight + 0.05, 2))
+        elif ci_ratio <= 0.85 and samples >= 5:
+            weight = max(0.4, round(weight - 0.10, 2))
+        elif ci_ratio <= 0.90 and samples >= 3:
+            weight = max(0.5, round(weight - 0.05, 2))
+
+        # Draw penalty: sources that severely under-predict draws lose weight
+        actual_draw_rate = bias.get("actual_draw_frequency", 0)
+        pred_draw_rate = bias.get("draw_frequency", 0)
+        if samples >= 5 and (actual_draw_rate - pred_draw_rate) > 0.20:
+            weight = max(0.5, round(weight - 0.05, 2))
 
         # Extra penalty por sesgo sistematico severo
         if goal_bias > 1.0 and weight > 0.5:

@@ -1,19 +1,19 @@
 {
   "weights": {
-    "c": 1.95,
-    "g": 1.95,
-    "f": 1.95,
-    "fs": 1.95,
-    "esp": 1.95,
-    "yh": 1.95,
-    "tips": 1.95,
-    "e": 1.95,
-    "cup": 1.95,
-    "pm": 1.95
+    "c": 1.9,
+    "g": 1.9,
+    "f": 1.85,
+    "fs": 1.9,
+    "esp": 1.9,
+    "yh": 1.9,
+    "tips": 1.75,
+    "e": 1.9,
+    "cup": 1.8,
+    "pm": 1.9
   },
   "accuracies": {
     "c": {
-      "label": "Cup26",
+      "label": "Cascade",
       "exact_accuracy": 10.0,
       "winner_accuracy": 50.0,
       "confidence_index": 38.0,
@@ -24,7 +24,7 @@
       "current_weight": 1.95
     },
     "g": {
-      "label": "Gamble",
+      "label": "ChatGPT",
       "exact_accuracy": 10.0,
       "winner_accuracy": 50.0,
       "confidence_index": 38.0,
@@ -35,7 +35,7 @@
       "current_weight": 1.95
     },
     "f": {
-      "label": "Futbolist",
+      "label": "Gemini",
       "exact_accuracy": 5.0,
       "winner_accuracy": 50.0,
       "confidence_index": 36.5,
@@ -46,7 +46,7 @@
       "current_weight": 1.95
     },
     "fs": {
-      "label": "F Score",
+      "label": "Fansided",
       "exact_accuracy": 10.0,
       "winner_accuracy": 55.0,
       "confidence_index": 41.5,
@@ -79,7 +79,7 @@
       "current_weight": 1.95
     },
     "tips": {
-      "label": "1960 Tips",
+      "label": "1960Tips",
       "exact_accuracy": 5.0,
       "winner_accuracy": 40.0,
       "confidence_index": 29.5,
@@ -90,7 +90,7 @@
       "current_weight": 1.95
     },
     "e": {
-      "label": "Elo",
+      "label": "ELO",
       "exact_accuracy": 10.0,
       "winner_accuracy": 50.0,
       "confidence_index": 38.0,
@@ -101,7 +101,7 @@
       "current_weight": 1.95
     },
     "cup": {
-      "label": "Cup Predictor",
+      "label": "Cup26",
       "exact_accuracy": 5.0,
       "winner_accuracy": 45.0,
       "confidence_index": 33.0,
@@ -195,6 +195,6 @@
       "samples": 20
     }
   },
-  "timestamp": "20260617_181612",
+  "timestamp": "20260617_182427",
   "generated_by": "recalibrate.py"
 }
