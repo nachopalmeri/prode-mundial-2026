@@ -26,6 +26,7 @@ from prode_core import (
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TEAM_STRENGTHS_PATH = PROJECT_ROOT / "data" / "config" / "team_strengths.json"
 WC_HISTORY_PATH = PROJECT_ROOT / "data" / "config" / "wc_history.json"
+H2H_PATH = PROJECT_ROOT / "data" / "config" / "h2h_matches.json"
 RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
 OUTPUT_PATH = PROJECT_ROOT / "data" / "model" / "latest_predictions.json"
 BIAS_PATH = PROJECT_ROOT / "data" / "model" / "source_bias.json"
@@ -64,6 +65,50 @@ def compute_wc_history_score(team: str, wc_data: dict[str, Any]) -> float:
     elif best in ("Quarter-finals",):
         score += 0.01
     return min(score, 0.5)
+
+
+def load_h2h() -> dict[str, Any]:
+    return load_json(H2H_PATH, {})
+
+
+def compute_h2h_score(team1: str, team2: str, h2h_data: dict[str, Any]) -> float:
+    """Compute H2H advantage for team1 over team2.
+    Returns +0.3 if team1 dominates, -0.3 if team2 dominates, 0 if even or unknown."""
+    pair = f"{team1}__{team2}"
+    pair_rev = f"{team2}__{team1}"
+    entry = h2h_data.get(pair) or h2h_data.get(pair_rev)
+    if not entry:
+        return 0.0
+    mp = entry.get("matches_played", 0)
+    if mp == 0:
+        return 0.0
+    t1w = entry.get("team1_wins", 0)
+    t2w = entry.get("team2_wins", 0)
+    draws = entry.get("draws", 0)
+    t1g = entry.get("team1_goals", 0)
+    t2g = entry.get("team2_goals", 0)
+
+    # Use goal difference as the primary signal
+    total = t1w + draws + t2w
+    if total == 0:
+        return 0.0
+
+    # Win rate advantage (capped)
+    is_forward = pair in h2h_data
+    if is_forward:
+        win_rate = (t1w + 0.5 * draws) / total
+    else:
+        win_rate = (t2w + 0.5 * draws) / total
+
+    # Goal differential per match
+    if is_forward:
+        gd_per_match = (t1g - t2g) / max(mp, 1)
+    else:
+        gd_per_match = (t2g - t1g) / max(mp, 1)
+
+    # Combined score: win_rate (0-1) scaled + goal_diff contribution
+    score = (win_rate - 0.5) * 0.4 + gd_per_match * 0.06
+    return max(-0.3, min(0.3, score))
 
 
 def dynamic_blend_ratio(results_count: int) -> float:
@@ -251,6 +296,7 @@ def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[
     away = team_prior(match.away, priors)
     biases = load_bias()
     wc_data = load_wc_history()
+    h2h_data = load_h2h()
 
     # Bias-corrected source goals
     source_home, source_away = correct_source_goals(match, biases)
@@ -265,9 +311,10 @@ def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[
     context_delta = home["home_boost"] - away["home_boost"] + home["form"] - away["form"] + home["h2h_bonus"] - away["h2h_bonus"]
     injury_delta = away["injury_penalty"] - home["injury_penalty"]
     wc_delta = compute_wc_history_score(match.home, wc_data) - compute_wc_history_score(match.away, wc_data)
+    h2h_delta = compute_h2h_score(match.home, match.away, h2h_data)
 
-    strength_delta = (0.30 * elo_delta + 0.12 * market_delta + 0.10 * rank_delta
-                      + 0.14 * context_delta + 0.16 * injury_delta + 0.10 * wc_delta)
+    strength_delta = (0.27 * elo_delta + 0.12 * market_delta + 0.09 * rank_delta
+                      + 0.13 * context_delta + 0.15 * injury_delta + 0.10 * wc_delta + 0.08 * h2h_delta)
     tempo_delta = float(motivation["home"]["tempo"]) + float(motivation["away"]["tempo"])
     tempo = max(0.78, min(1.25, (home["style_tempo"] + away["style_tempo"]) / 2.0 + tempo_delta))
 
@@ -406,6 +453,8 @@ def build_match_prediction(
     motivation = motivation_profile(match, standings)
     home_mean, away_mean = prior_adjusted_goals(match, priors, motivation, runtime)
     wc_data = load_wc_history()
+    h2h_data = load_h2h()
+    h2h_delta = compute_h2h_score(match.home, match.away, h2h_data)
     matrix = score_matrix(home_mean, away_mean, match)
     top_three = [
         {
@@ -444,6 +493,7 @@ def build_match_prediction(
             "home": wc_data.get(match.home, {"appearances": 0, "titles": 0, "best_result": "Unknown"}),
             "away": wc_data.get(match.away, {"appearances": 0, "titles": 0, "best_result": "Unknown"}),
         },
+        "h2h_advantage": round(h2h_delta, 3),
         "best_pick": top_three[0]["score"],
         "top_scores": top_three,
         "one_x_two": blended_outcomes,
@@ -702,17 +752,19 @@ def knockout_match_prediction(
     h = team_prior(home, priors)
     a = team_prior(away, priors)
     wc_data = load_wc_history()
+    h2h_data = load_h2h()
     ed = (h["elo"] - a["elo"]) / 400.0
     md = math.log((h["market_value_m"] + 40.0) / (a["market_value_m"] + 40.0))
     rd = (a["fifa_rank"] - h["fifa_rank"]) / 48.0
     cd = h["home_boost"] - a["home_boost"] + h["form"] - a["form"] + h["h2h_bonus"] - a["h2h_bonus"]
     nd = a["injury_penalty"] - h["injury_penalty"]
     wcd = compute_wc_history_score(home, wc_data) - compute_wc_history_score(away, wc_data)
+    h2hd = compute_h2h_score(home, away, h2h_data)
 
     # Add source-implied strength delta from group stage
     source_delta = source_implied_strength_delta(home, away, matches or [])
 
-    sd = 0.30 * ed + 0.12 * md + 0.10 * rd + 0.14 * cd + 0.16 * nd + 0.10 * wcd + 0.08 * source_delta
+    sd = 0.27 * ed + 0.12 * md + 0.09 * rd + 0.13 * cd + 0.15 * nd + 0.10 * wcd + 0.08 * h2hd + 0.06 * source_delta
     tempo = max(0.78, min(1.25, (h["style_tempo"] + a["style_tempo"]) / 2.0))
     ha = max(0.45, h["attack"])
     aa = max(0.45, a["attack"])
@@ -752,6 +804,7 @@ def knockout_match_prediction(
             "home": wc_data.get(home, {"appearances": 0, "titles": 0, "best_result": "Unknown"}),
             "away": wc_data.get(away, {"appearances": 0, "titles": 0, "best_result": "Unknown"}),
         },
+        "h2h_advantage": round(h2hd, 3),
         "predicted_winner": pw,
         "winner_confidence": round(pc, 1),
         "best_pick": bp,
