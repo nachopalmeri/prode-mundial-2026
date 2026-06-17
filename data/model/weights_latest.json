@@ -6,9 +6,9 @@
     "fs": 1.95,
     "esp": 1.95,
     "yh": 1.95,
-    "tips": 1.83,
+    "tips": 1.95,
     "e": 1.95,
-    "cup": 1.83,
+    "cup": 1.95,
     "pm": 1.95
   },
   "accuracies": {
@@ -21,7 +21,7 @@
       "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.9
+      "current_weight": 1.95
     },
     "g": {
       "label": "Gamble",
@@ -32,7 +32,7 @@
       "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.9
+      "current_weight": 1.95
     },
     "f": {
       "label": "Futbolist",
@@ -43,7 +43,7 @@
       "samples": 16,
       "exact_hits": 1,
       "winner_hits": 6,
-      "current_weight": 1.85
+      "current_weight": 1.95
     },
     "fs": {
       "label": "F Score",
@@ -54,7 +54,7 @@
       "samples": 16,
       "exact_hits": 2,
       "winner_hits": 7,
-      "current_weight": 1.9
+      "current_weight": 1.95
     },
     "esp": {
       "label": "ESPN",
@@ -65,7 +65,7 @@
       "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.9
+      "current_weight": 1.95
     },
     "yh": {
       "label": "Yahoo",
@@ -87,7 +87,7 @@
       "samples": 16,
       "exact_hits": 1,
       "winner_hits": 5,
-      "current_weight": 1.73
+      "current_weight": 1.93
     },
     "e": {
       "label": "Elo",
@@ -98,7 +98,7 @@
       "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.9
+      "current_weight": 1.95
     },
     "cup": {
       "label": "Cup Predictor",
@@ -109,7 +109,7 @@
       "samples": 16,
       "exact_hits": 1,
       "winner_hits": 5,
-      "current_weight": 1.73
+      "current_weight": 1.93
     },
     "pm": {
       "label": "Polymarket",
@@ -120,7 +120,7 @@
       "samples": 16,
       "exact_hits": 2,
       "winner_hits": 6,
-      "current_weight": 1.9
+      "current_weight": 1.95
     }
   },
   "biases": {
@@ -195,6 +195,6 @@
       "samples": 16
     }
   },
-  "timestamp": "20260616_163905",
+  "timestamp": "20260617_174400",
   "generated_by": "recalibrate.py"
 }
