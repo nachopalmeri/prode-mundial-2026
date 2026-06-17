@@ -25,6 +25,7 @@ from prode_core import (
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TEAM_STRENGTHS_PATH = PROJECT_ROOT / "data" / "config" / "team_strengths.json"
+WC_HISTORY_PATH = PROJECT_ROOT / "data" / "config" / "wc_history.json"
 RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
 OUTPUT_PATH = PROJECT_ROOT / "data" / "model" / "latest_predictions.json"
 BIAS_PATH = PROJECT_ROOT / "data" / "model" / "source_bias.json"
@@ -39,6 +40,30 @@ def load_json(path: Path, default: Any) -> Any:
 
 def load_bias() -> dict[str, dict]:
     return load_json(BIAS_PATH, {})
+
+
+def load_wc_history() -> dict[str, Any]:
+    return load_json(WC_HISTORY_PATH, {})
+
+
+def compute_wc_history_score(team: str, wc_data: dict[str, Any]) -> float:
+    entry = wc_data.get(team, {})
+    titles = entry.get("titles", 0)
+    appearances = entry.get("appearances", 0)
+    best = entry.get("best_result", "Never qualified")
+
+    score = 0.0
+    score += titles * 0.15
+    score += min(appearances, 15) * 0.02
+    if best == "Champion":
+        score += 0.05
+    elif best in ("Runner-up",):
+        score += 0.03
+    elif best in ("Fourth place", "Semi-finals"):
+        score += 0.02
+    elif best in ("Quarter-finals",):
+        score += 0.01
+    return min(score, 0.5)
 
 
 def dynamic_blend_ratio(results_count: int) -> float:
@@ -225,6 +250,7 @@ def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[
     home = team_prior(match.home, priors)
     away = team_prior(match.away, priors)
     biases = load_bias()
+    wc_data = load_wc_history()
 
     # Bias-corrected source goals
     source_home, source_away = correct_source_goals(match, biases)
@@ -238,8 +264,10 @@ def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[
     rank_delta = (away["fifa_rank"] - home["fifa_rank"]) / 48.0
     context_delta = home["home_boost"] - away["home_boost"] + home["form"] - away["form"] + home["h2h_bonus"] - away["h2h_bonus"]
     injury_delta = away["injury_penalty"] - home["injury_penalty"]
+    wc_delta = compute_wc_history_score(match.home, wc_data) - compute_wc_history_score(match.away, wc_data)
 
-    strength_delta = 0.34 * elo_delta + 0.14 * market_delta + 0.12 * rank_delta + 0.16 * context_delta + 0.18 * injury_delta
+    strength_delta = (0.30 * elo_delta + 0.12 * market_delta + 0.10 * rank_delta
+                      + 0.14 * context_delta + 0.16 * injury_delta + 0.10 * wc_delta)
     tempo_delta = float(motivation["home"]["tempo"]) + float(motivation["away"]["tempo"])
     tempo = max(0.78, min(1.25, (home["style_tempo"] + away["style_tempo"]) / 2.0 + tempo_delta))
 
@@ -377,6 +405,7 @@ def build_match_prediction(
     played_result = results.get(str(match.id))
     motivation = motivation_profile(match, standings)
     home_mean, away_mean = prior_adjusted_goals(match, priors, motivation, runtime)
+    wc_data = load_wc_history()
     matrix = score_matrix(home_mean, away_mean, match)
     top_three = [
         {
@@ -411,6 +440,10 @@ def build_match_prediction(
         "time": match.time,
         "home": match.home,
         "away": match.away,
+        "wc_history": {
+            "home": wc_data.get(match.home, {"appearances": 0, "titles": 0, "best_result": "Unknown"}),
+            "away": wc_data.get(match.away, {"appearances": 0, "titles": 0, "best_result": "Unknown"}),
+        },
         "best_pick": top_three[0]["score"],
         "top_scores": top_three,
         "one_x_two": blended_outcomes,
@@ -668,16 +701,18 @@ def knockout_match_prediction(
 ) -> dict[str, Any]:
     h = team_prior(home, priors)
     a = team_prior(away, priors)
+    wc_data = load_wc_history()
     ed = (h["elo"] - a["elo"]) / 400.0
     md = math.log((h["market_value_m"] + 40.0) / (a["market_value_m"] + 40.0))
     rd = (a["fifa_rank"] - h["fifa_rank"]) / 48.0
     cd = h["home_boost"] - a["home_boost"] + h["form"] - a["form"] + h["h2h_bonus"] - a["h2h_bonus"]
     nd = a["injury_penalty"] - h["injury_penalty"]
+    wcd = compute_wc_history_score(home, wc_data) - compute_wc_history_score(away, wc_data)
 
     # Add source-implied strength delta from group stage
     source_delta = source_implied_strength_delta(home, away, matches or [])
 
-    sd = 0.34 * ed + 0.14 * md + 0.12 * rd + 0.16 * cd + 0.18 * nd + 0.08 * source_delta
+    sd = 0.30 * ed + 0.12 * md + 0.10 * rd + 0.14 * cd + 0.16 * nd + 0.10 * wcd + 0.08 * source_delta
     tempo = max(0.78, min(1.25, (h["style_tempo"] + a["style_tempo"]) / 2.0))
     ha = max(0.45, h["attack"])
     aa = max(0.45, a["attack"])
@@ -713,6 +748,10 @@ def knockout_match_prediction(
         "round": rn,
         "home": home,
         "away": away,
+        "wc_history": {
+            "home": wc_data.get(home, {"appearances": 0, "titles": 0, "best_result": "Unknown"}),
+            "away": wc_data.get(away, {"appearances": 0, "titles": 0, "best_result": "Unknown"}),
+        },
         "predicted_winner": pw,
         "winner_confidence": round(pc, 1),
         "best_pick": bp,

@@ -1,0 +1,37 @@
+name: Daily Pipeline Update
+
+on:
+  schedule:
+    # 9 AM Argentina (UTC-3) = 12 PM UTC
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install --quiet sports-sdk gql numpy
+
+      - name: Run pipeline
+        run: python scripts/pipeline.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "IA Prode"
+          git config user.email "bot@prode-mundial-2026.vercel.app"
+          git add -A
+          git diff --staged --quiet || git commit -m "feat: daily auto-update pipeline"
+          git push origin main
