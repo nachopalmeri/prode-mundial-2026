@@ -211,14 +211,6 @@ def adjust_weights(
 ) -> dict[str, float]:
     new_weights = {}
 
-    # Compute mean CI for relative normalization
-    cis = []
-    for key in SOURCE_KEYS:
-        r = report[key]
-        if r["samples"] > 0:
-            cis.append(r.get("confidence_weighted", r["confidence_index"]))
-    mean_ci = sum(cis) / max(len(cis), 1) if cis else 30.0
-
     for key in SOURCE_KEYS:
         r = report[key]
         weight = current_weights.get(key, 1.0)
@@ -229,38 +221,40 @@ def adjust_weights(
             new_weights[key] = weight
             continue
 
-        # Penalizar sesgo sistematico
         bias = bias_report.get(key, {})
         goal_bias = abs(bias.get("goal_bias_home", 0)) + abs(bias.get("goal_bias_away", 0))
 
-        # Relative adjustment: compare to mean CI
-        ci_ratio = ci / max(mean_ci, 1.0)
-
-        # Linear interpolation: ci_ratio -> weight adjustment
-        # 0.85 -> -0.10, 1.00 -> 0, 1.10 -> +0.10, capped at ±0.15
+        # Absolute CI-based adjustment (not relative to mean).
+        # CI is a 0-100 score combining exact + winner accuracy.
+        # CI >= 50 = strong, CI < 30 = weak.
+        adj = 0.0
         if samples >= 3:
-            if ci_ratio <= 0.85:
-                adj = -0.10
-            elif ci_ratio >= 1.10:
-                adj = 0.10
-            elif 0.85 < ci_ratio <= 1.00:
-                adj = (ci_ratio - 0.85) / 0.15 * 0.10 - 0.10
-            else:  # 1.00 < ci_ratio < 1.10
-                adj = (ci_ratio - 1.00) / 0.10 * 0.10
-            adj = max(-0.15, min(0.15, adj))
-            weight = min(2.0, max(0.4, round(weight + adj, 2)))
+            raw_adj = (ci - 40.0) / 100.0
+            # Decay the adjustment for small samples
+            lr = min(1.0, samples / 10.0)
+            adj = raw_adj * lr
+            weight = round(weight + adj, 2)
 
         # Draw penalty: sources that severely under-predict draws lose weight
         actual_draw_rate = bias.get("actual_draw_frequency", 0)
         pred_draw_rate = bias.get("draw_frequency", 0)
-        if samples >= 5 and (actual_draw_rate - pred_draw_rate) > 0.20:
-            weight = max(0.5, round(weight - 0.05, 2))
+        if samples >= 5 and abs(actual_draw_rate - pred_draw_rate) > 0.20:
+            weight = max(0.3, round(weight - 0.10, 2))
 
-        # Extra penalty por sesgo sistematico severo
-        if goal_bias > 1.0 and weight > 0.5:
-            weight = max(0.3, round(weight - 0.05, 2))
+        # Goal bias penalty
+        if goal_bias > 1.0:
+            weight = max(0.2, round(weight - 0.10 * min(1.0, goal_bias / 2.0), 2))
 
+        weight = min(2.5, max(0.2, weight))
         new_weights[key] = weight
+
+    # Normalize to prevent all weights hitting the upper cap.
+    # Scale so the maximum weight is at 2.0, preserving relative ordering.
+    max_w = max(new_weights.values())
+    if max_w > 2.0:
+        scale = 2.0 / max_w
+        for k in new_weights:
+            new_weights[k] = round(max(0.2, new_weights[k] * scale), 2)
 
     return new_weights
 
@@ -433,7 +427,7 @@ def calibrate_draw_inflation(results: dict[str, str], timestamp: str) -> None:
 
     best_base = current_base
     best_brier = brier_current
-    candidates = [round(0.30 + i * 0.05, 2) for i in range(15)]
+    candidates = [round(0.30 + i * 0.10, 2) for i in range(18)]
 
     for candidate in candidates:
         adjusted = [min(0.95, max(0.01, p * candidate / max(current_base, 0.01))) for p in predicted_draws]
@@ -443,7 +437,7 @@ def calibrate_draw_inflation(results: dict[str, str], timestamp: str) -> None:
             best_base = candidate
 
     learning_rate = min(1.0, len(predicted_draws) / 15.0)
-    smoothed_base = round(max(0.30, min(1.00, current_base + (best_base - current_base) * learning_rate)), 2)
+    smoothed_base = round(max(0.30, min(2.00, current_base + (best_base - current_base) * learning_rate)), 2)
 
     payload = {
         "base_inflation": smoothed_base,

@@ -36,6 +36,9 @@ MODEL_VERSION = "dynamic-prode-v2"
 
 _DRAW_INFLATION_CACHE: float | None = None
 _INJURY_CACHE: dict[str, Any] | None = None
+_INJURY_CACHE_MTIME: float = 0.0
+_INJURY_PATH: Path = DATA_DIR / "config" / "injuries.json"
+_INJURY_MISSING_WARNED: set[str] = set()
 
 
 def load_draw_inflation() -> float:
@@ -122,19 +125,20 @@ def load_h2h() -> dict[str, Any]:
 
 
 def load_injuries() -> dict[str, Any]:
-    global _INJURY_CACHE
-    if _INJURY_CACHE is not None:
+    global _INJURY_CACHE, _INJURY_CACHE_MTIME
+    current_mtime = _INJURY_PATH.stat().st_mtime if _INJURY_PATH.exists() else 0.0
+    if _INJURY_CACHE is not None and current_mtime <= _INJURY_CACHE_MTIME:
         return _INJURY_CACHE
-    path = DATA_DIR / "config" / "injuries.json"
-    _INJURY_CACHE = load_json(path, {})
+    _INJURY_CACHE = load_json(_INJURY_PATH, {})
+    _INJURY_CACHE_MTIME = current_mtime
     return _INJURY_CACHE
 
 
 def compute_h2h_score(team1: str, team2: str, h2h_data: dict[str, Any]) -> float:
     """Compute H2H advantage for team1 over team2.
     Returns +0.3 if team1 dominates, -0.3 if team2 dominates, 0 if even or unknown."""
-    pair = f"{team1}__{team2}"
-    pair_rev = f"{team2}__{team1}"
+    pair = f"{team1}|||{team2}"
+    pair_rev = f"{team2}|||{team1}"
     entry = h2h_data.get(pair) or h2h_data.get(pair_rev)
     if not entry:
         return 0.0
@@ -264,6 +268,11 @@ def team_prior(team: str, priors: dict[str, Any]) -> dict[str, float]:
         total = 0.15 * out_n + 0.05 * dbt_n + 0.15 * sus_n
         if total > 0:
             prior["injury_penalty"] += min(1.2, total)
+    else:
+        global _INJURY_MISSING_WARNED
+        if team not in _INJURY_MISSING_WARNED:
+            _INJURY_MISSING_WARNED.add(team)
+            print(f"[WARN] team '{team}' has no entry in injuries.json")
     return prior
 
 
@@ -385,7 +394,7 @@ def prior_adjusted_goals(match: Match, priors: dict[str, Any], motivation: dict[
     blend = dynamic_blend_ratio(results_count)
 
     elo_delta = (home["elo"] - away["elo"]) / 400.0
-    market_delta = math.log((home["market_value_m"] + 40.0) / (away["market_value_m"] + 40.0))
+    market_delta = math.log((max(1.0, home["market_value_m"]) + 40.0) / (max(1.0, away["market_value_m"]) + 40.0))
     rank_delta = (away["fifa_rank"] - home["fifa_rank"]) / 48.0
     context_delta = home["home_boost"] - away["home_boost"] + home["form"] - away["form"] + home["h2h_bonus"] - away["h2h_bonus"]
     injury_delta = away["injury_penalty"] - home["injury_penalty"]
@@ -1056,7 +1065,7 @@ def knockout_match_prediction(
     wc_data = load_wc_history() if wc_data is None else wc_data
     h2h_data = load_h2h() if h2h_data is None else h2h_data
     ed = (h["elo"] - a["elo"]) / 400.0
-    md = math.log((h["market_value_m"] + 40.0) / (a["market_value_m"] + 40.0))
+    md = math.log((max(1.0, h["market_value_m"]) + 40.0) / (max(1.0, a["market_value_m"]) + 40.0))
     rd = (a["fifa_rank"] - h["fifa_rank"]) / 48.0
     cd = h["home_boost"] - a["home_boost"] + h["form"] - a["form"] + h["h2h_bonus"] - a["h2h_bonus"]
     nd = a["injury_penalty"] - h["injury_penalty"]

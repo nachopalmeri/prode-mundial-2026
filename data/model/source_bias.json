@@ -1,72 +1,72 @@
 {
   "c": {
-    "goal_bias_home": -0.05,
-    "goal_bias_away": 0.05,
-    "draw_frequency": 45.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.25,
+    "goal_bias_away": -0.16,
+    "draw_frequency": 40.6,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   },
   "g": {
-    "goal_bias_home": -0.05,
-    "goal_bias_away": 0.1,
-    "draw_frequency": 50.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.28,
+    "goal_bias_away": -0.12,
+    "draw_frequency": 40.6,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   },
   "f": {
-    "goal_bias_home": -0.15,
-    "goal_bias_away": 0.25,
-    "draw_frequency": 40.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.34,
+    "goal_bias_away": -0.03,
+    "draw_frequency": 37.5,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   },
   "fs": {
-    "goal_bias_home": 0.05,
-    "goal_bias_away": 0.0,
-    "draw_frequency": 30.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.22,
+    "goal_bias_away": -0.12,
+    "draw_frequency": 34.4,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   },
   "esp": {
-    "goal_bias_home": -0.7,
-    "goal_bias_away": -0.35,
-    "draw_frequency": 40.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.75,
+    "goal_bias_away": -0.16,
+    "draw_frequency": 21.9,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   },
   "yh": {
-    "goal_bias_home": -0.1,
-    "goal_bias_away": 0.1,
-    "draw_frequency": 30.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.25,
+    "goal_bias_away": -0.16,
+    "draw_frequency": 28.1,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   },
   "tips": {
-    "goal_bias_home": 0.0,
-    "goal_bias_away": 0.0,
-    "draw_frequency": 40.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.25,
+    "goal_bias_away": -0.19,
+    "draw_frequency": 43.8,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   },
   "e": {
-    "goal_bias_home": -0.05,
-    "goal_bias_away": 0.1,
-    "draw_frequency": 30.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.25,
+    "goal_bias_away": -0.12,
+    "draw_frequency": 31.2,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   },
   "cup": {
-    "goal_bias_home": 0.05,
-    "goal_bias_away": 0.1,
-    "draw_frequency": 35.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.19,
+    "goal_bias_away": -0.12,
+    "draw_frequency": 34.4,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   },
   "pm": {
-    "goal_bias_home": -0.95,
-    "goal_bias_away": 0.0,
-    "draw_frequency": 85.0,
-    "actual_draw_frequency": 40.0,
-    "samples": 20
+    "goal_bias_home": -0.94,
+    "goal_bias_away": 0.06,
+    "draw_frequency": 87.5,
+    "actual_draw_frequency": 31.2,
+    "samples": 32
   }
 }

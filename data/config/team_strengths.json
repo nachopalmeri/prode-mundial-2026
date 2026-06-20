@@ -33,17 +33,17 @@
       "elo_updated": "2026-06-20T18:14:57.047855+00:00"
     },
     "Australia": {
-      "elo": 1816.4,
+      "elo": 1799.1,
       "fifa_rank": 27,
       "market_value_m": 180,
       "home_boost": 0.0,
-      "attack": 0.792,
-      "defense": 0.453,
+      "attack": 0.578,
+      "defense": 0.511,
       "form": 0.06,
       "style_tempo": 0.88,
       "injury_penalty": 0.01,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047716+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346530+00:00"
     },
     "Austria": {
       "elo": 1847.2,
@@ -72,43 +72,43 @@
       "elo_updated": "2026-06-20T18:14:57.047794+00:00"
     },
     "Bosnia and Herzegovina": {
-      "elo": 1609.7,
+      "elo": 1604.1,
       "fifa_rank": 33,
       "market_value_m": 120,
       "home_boost": 0.0,
-      "attack": 0.722,
-      "defense": 0.627,
+      "attack": 1.155,
+      "defense": 0.806,
       "form": 0.02,
       "style_tempo": 0.88,
       "injury_penalty": 0.03,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047656+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346471+00:00"
     },
     "Brazil": {
-      "elo": 1978.3,
+      "elo": 1980.5,
       "fifa_rank": 6,
       "market_value_m": 1000,
       "home_boost": 0.0,
       "attack": 1.435,
-      "defense": 1.721,
+      "defense": 1.256,
       "form": 0.25,
       "style_tempo": 1.05,
       "injury_penalty": 0.08,
       "h2h_bonus": 0.06,
-      "elo_updated": "2026-06-20T18:14:57.047691+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346561+00:00"
     },
     "Canada": {
-      "elo": 1773.3,
+      "elo": 1775.9,
       "fifa_rank": 30,
       "market_value_m": 200,
       "home_boost": 0.08,
-      "attack": 0.878,
-      "defense": 1.084,
+      "attack": 1.405,
+      "defense": 0.791,
       "form": 0.08,
       "style_tempo": 0.89,
       "injury_penalty": 0.02,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047650+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346483+00:00"
     },
     "Cape Verde": {
       "elo": 1605.8,
@@ -124,28 +124,30 @@
       "elo_updated": "2026-06-20T18:14:57.047787+00:00"
     },
     "Colombia": {
-      "elo": 1982,
+      "elo": 1987.3,
       "fifa_rank": 13,
       "market_value_m": 250,
       "home_boost": 0.0,
-      "attack": 1.15,
-      "defense": 1.2,
+      "attack": 1.62,
+      "defense": 1.264,
       "form": 0.12,
       "style_tempo": 1.0,
       "injury_penalty": 0.03,
-      "h2h_bonus": 0.01
+      "h2h_bonus": 0.01,
+      "elo_updated": "2026-06-20T19:09:15.346431+00:00"
     },
     "Croatia": {
-      "elo": 1912,
+      "elo": 1901.7,
       "fifa_rank": 11,
       "market_value_m": 380,
       "home_boost": 0.0,
-      "attack": 1.15,
-      "defense": 1.2,
+      "attack": 1.636,
+      "defense": 1.775,
       "form": 0.15,
       "style_tempo": 0.96,
       "injury_penalty": 0.03,
-      "h2h_bonus": 0.01
+      "h2h_bonus": 0.01,
+      "elo_updated": "2026-06-20T19:09:15.346385+00:00"
     },
     "Curacao": {
       "elo": 1318.2,
@@ -161,29 +163,30 @@
       "elo_updated": "2026-06-20T18:14:57.047734+00:00"
     },
     "Czechia": {
-      "elo": 1715.1,
+      "elo": 1707.2,
       "fifa_rank": 24,
       "market_value_m": 220,
       "home_boost": 0.0,
-      "attack": 0.936,
-      "defense": 1.046,
+      "attack": 0.862,
+      "defense": 1.674,
       "form": 0.07,
       "style_tempo": 0.88,
       "injury_penalty": 0.01,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047639+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346444+00:00"
     },
     "DR Congo": {
-      "elo": 1652,
+      "elo": 1663.2,
       "fifa_rank": 46,
       "market_value_m": 170,
       "home_boost": 0.0,
-      "attack": 0.7,
-      "defense": 0.75,
+      "attack": 1.015,
+      "defense": 0.625,
       "form": 0.02,
       "style_tempo": 0.94,
       "injury_penalty": 0.03,
-      "h2h_bonus": 0.0
+      "h2h_bonus": 0.0,
+      "elo_updated": "2026-06-20T19:09:15.346353+00:00"
     },
     "Ecuador": {
       "elo": 1891.3,
@@ -212,16 +215,17 @@
       "elo_updated": "2026-06-20T18:14:57.047799+00:00"
     },
     "England": {
-      "elo": 2024,
+      "elo": 2034.3,
       "fifa_rank": 4,
       "market_value_m": 1200,
       "home_boost": 0.0,
-      "attack": 1.75,
-      "defense": 1.7,
+      "attack": 2.2,
+      "defense": 2.2,
       "form": 0.32,
       "style_tempo": 1.1,
       "injury_penalty": 0.03,
-      "h2h_bonus": 0.02
+      "h2h_bonus": 0.02,
+      "elo_updated": "2026-06-20T19:09:15.346374+00:00"
     },
     "France": {
       "elo": 2076.8,
@@ -250,19 +254,20 @@
       "elo_updated": "2026-06-20T18:14:57.047729+00:00"
     },
     "Ghana": {
-      "elo": 1510,
+      "elo": 1533.4,
       "fifa_rank": 73,
       "market_value_m": 180,
       "home_boost": 0.0,
-      "attack": 0.8,
-      "defense": 0.75,
+      "attack": 0.745,
+      "defense": 0.547,
       "form": 0.03,
       "style_tempo": 1.1,
       "injury_penalty": 0.04,
-      "h2h_bonus": 0.0
+      "h2h_bonus": 0.0,
+      "elo_updated": "2026-06-20T19:09:15.346399+00:00"
     },
     "Haiti": {
-      "elo": 1536.0,
+      "elo": 1533.8,
       "fifa_rank": 47,
       "market_value_m": 30,
       "home_boost": 0.0,
@@ -272,7 +277,7 @@
       "style_tempo": 1.0,
       "injury_penalty": 0.0,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047704+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346569+00:00"
     },
     "Iran": {
       "elo": 1756.3,
@@ -340,30 +345,30 @@
       "elo_updated": "2026-06-20T18:14:57.047872+00:00"
     },
     "Mexico": {
-      "elo": 1887.5,
+      "elo": 1899.2,
       "fifa_rank": 15,
       "market_value_m": 320,
       "home_boost": 0.08,
-      "attack": 1.15,
-      "defense": 0.586,
+      "attack": 1.1,
+      "defense": 0.428,
       "form": 0.08,
       "style_tempo": 0.93,
       "injury_penalty": 0.02,
       "h2h_bonus": 0.01,
-      "elo_updated": "2026-06-20T18:14:57.047597+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346502+00:00"
     },
     "Morocco": {
-      "elo": 1839.7,
+      "elo": 1852.7,
       "fifa_rank": 8,
       "market_value_m": 350,
       "home_boost": 0.0,
-      "attack": 1.183,
-      "defense": 1.098,
+      "attack": 1.131,
+      "defense": 0.802,
       "form": 0.2,
       "style_tempo": 0.92,
       "injury_penalty": 0.02,
       "h2h_bonus": 0.04,
-      "elo_updated": "2026-06-20T18:14:57.047696+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346550+00:00"
     },
     "Netherlands": {
       "elo": 1944.5,
@@ -405,54 +410,56 @@
       "elo_updated": "2026-06-20T18:14:57.047848+00:00"
     },
     "Panama": {
-      "elo": 1730,
+      "elo": 1706.6,
       "fifa_rank": 36,
       "market_value_m": 80,
       "home_boost": 0.0,
-      "attack": 0.65,
-      "defense": 0.7,
+      "attack": 0.474,
+      "defense": 0.652,
       "form": 0.02,
       "style_tempo": 1.0,
       "injury_penalty": 0.01,
-      "h2h_bonus": 0.0
+      "h2h_bonus": 0.0,
+      "elo_updated": "2026-06-20T19:09:15.346410+00:00"
     },
     "Paraguay": {
-      "elo": 1796.6,
+      "elo": 1814.8,
       "fifa_rank": 40,
       "market_value_m": 180,
       "home_boost": 0.0,
-      "attack": 0.813,
-      "defense": 1.037,
+      "attack": 1.164,
+      "defense": 0.757,
       "form": 0.03,
       "style_tempo": 0.82,
       "injury_penalty": 0.01,
       "h2h_bonus": 0.01,
-      "elo_updated": "2026-06-20T18:14:57.047670+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346588+00:00"
     },
     "Portugal": {
-      "elo": 1989,
+      "elo": 1977.8,
       "fifa_rank": 5,
       "market_value_m": 800,
       "home_boost": 0.0,
-      "attack": 1.55,
-      "defense": 1.5,
+      "attack": 1.291,
+      "defense": 2.175,
       "form": 0.22,
       "style_tempo": 1.12,
       "injury_penalty": 0.03,
-      "h2h_bonus": 0.03
+      "h2h_bonus": 0.03,
+      "elo_updated": "2026-06-20T19:09:15.346328+00:00"
     },
     "Qatar": {
-      "elo": 1367.4,
+      "elo": 1364.8,
       "fifa_rank": 57,
       "market_value_m": 150,
       "home_boost": 0.0,
-      "attack": 0.6,
-      "defense": 0.586,
+      "attack": 0.438,
+      "defense": 0.938,
       "form": 0.01,
       "style_tempo": 0.88,
       "injury_penalty": 0.01,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047678+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346491+00:00"
     },
     "Saudi Arabia": {
       "elo": 1597.1,
@@ -468,17 +475,17 @@
       "elo_updated": "2026-06-20T18:14:57.047807+00:00"
     },
     "Scotland": {
-      "elo": 1794.0,
+      "elo": 1781.0,
       "fifa_rank": 31,
       "market_value_m": 150,
       "home_boost": 0.0,
-      "attack": 0.669,
-      "defense": 0.453,
+      "attack": 0.488,
+      "defense": 0.433,
       "form": 0.04,
       "style_tempo": 0.88,
       "injury_penalty": 0.02,
       "h2h_bonus": 0.01,
-      "elo_updated": "2026-06-20T18:14:57.047708+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346542+00:00"
     },
     "Senegal": {
       "elo": 1846.2,
@@ -494,30 +501,30 @@
       "elo_updated": "2026-06-20T18:14:57.047836+00:00"
     },
     "South Africa": {
-      "elo": 1510.5,
+      "elo": 1518.4,
       "fifa_rank": 39,
       "market_value_m": 150,
       "home_boost": 0.0,
-      "attack": 0.35,
-      "defense": 0.75,
+      "attack": 0.56,
+      "defense": 0.69,
       "form": 0.03,
       "style_tempo": 0.9,
       "injury_penalty": 0.02,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047616+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346452+00:00"
     },
     "South Korea": {
-      "elo": 1810.9,
+      "elo": 1799.2,
       "fifa_rank": 25,
       "market_value_m": 260,
       "home_boost": 0.0,
-      "attack": 0.993,
-      "defense": 1.1,
+      "attack": 0.725,
+      "defense": 1.052,
       "form": 0.08,
       "style_tempo": 0.94,
       "injury_penalty": 0.02,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047631+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346510+00:00"
     },
     "Spain": {
       "elo": 2129.2,
@@ -546,17 +553,17 @@
       "elo_updated": "2026-06-20T18:14:57.047768+00:00"
     },
     "Switzerland": {
-      "elo": 1863.6,
+      "elo": 1869.2,
       "fifa_rank": 19,
       "market_value_m": 280,
       "home_boost": 0.0,
-      "attack": 0.993,
-      "defense": 1.2,
+      "attack": 1.276,
+      "defense": 1.92,
       "form": 0.1,
       "style_tempo": 0.93,
       "injury_penalty": 0.02,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047683+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346463+00:00"
     },
     "Tunisia": {
       "elo": 1606.1,
@@ -572,30 +579,30 @@
       "elo_updated": "2026-06-20T18:14:57.047773+00:00"
     },
     "Turkiye": {
-      "elo": 1871.6,
+      "elo": 1853.4,
       "fifa_rank": 19,
       "market_value_m": 340,
       "home_boost": 0.0,
-      "attack": 0.586,
-      "defense": 1.163,
+      "attack": 0.428,
+      "defense": 1.665,
       "form": 0.1,
       "style_tempo": 0.91,
       "injury_penalty": 0.03,
       "h2h_bonus": 0.0,
-      "elo_updated": "2026-06-20T18:14:57.047722+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346579+00:00"
     },
     "USA": {
-      "elo": 1763.4,
+      "elo": 1780.7,
       "fifa_rank": 16,
       "market_value_m": 350,
       "home_boost": 0.08,
-      "attack": 1.384,
-      "defense": 1.354,
+      "attack": 1.562,
+      "defense": 0.988,
       "form": 0.1,
       "style_tempo": 1.05,
       "injury_penalty": 0.03,
       "h2h_bonus": 0.02,
-      "elo_updated": "2026-06-20T18:14:57.047664+00:00"
+      "elo_updated": "2026-06-20T19:09:15.346523+00:00"
     },
     "Uruguay": {
       "elo": 1870.9,
@@ -611,16 +618,17 @@
       "elo_updated": "2026-06-20T18:14:57.047811+00:00"
     },
     "Uzbekistan": {
-      "elo": 1714,
+      "elo": 1708.7,
       "fifa_rank": 50,
       "market_value_m": 80,
       "home_boost": 0.0,
-      "attack": 0.55,
-      "defense": 0.6,
+      "attack": 0.579,
+      "defense": 0.845,
       "form": 0.01,
       "style_tempo": 0.89,
       "injury_penalty": 0.01,
-      "h2h_bonus": 0.0
+      "h2h_bonus": 0.0,
+      "elo_updated": "2026-06-20T19:09:15.346422+00:00"
     }
   },
   "applied_elo_match_ids": [
@@ -643,6 +651,18 @@
     17,
     18,
     19,
-    20
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
   ]
 }

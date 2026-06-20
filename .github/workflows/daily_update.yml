@@ -26,8 +26,8 @@ jobs:
         run: |
           cd scripts
           python predictive_engine.py
-          python update_dynamic_dashboard.py
           python recalibrate.py
+          python update_dynamic_dashboard.py
       - name: Commit and push
         run: |
           git config user.name "github-actions"

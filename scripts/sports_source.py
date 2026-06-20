@@ -335,7 +335,7 @@ def inject_real_results_into_predictions(predictions: dict) -> dict:
             for r in results:
                 if r.get("error"):
                     continue
-                key = f"{r['home'].lower()}__{r['away'].lower()}"
+                key = f"{r['home'].lower()}|||{r['away'].lower()}"
                 hs, aw = r.get("home_score"), r.get("away_score")
                 if hs is not None and aw is not None:
                     all_real_results[key] = f"{hs}-{aw}"
@@ -346,7 +346,7 @@ def inject_real_results_into_predictions(predictions: dict) -> dict:
         mid = m.get("id", 0)
         home = m.get("home", "")
         away = m.get("away", "")
-        key = f"{home.lower()}__{away.lower()}"
+        key = f"{home.lower()}|||{away.lower()}"
 
         # Check for real result: runtime file first, then sports-skills
         result = runtime_results.get(str(mid))

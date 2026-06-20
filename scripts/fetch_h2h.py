@@ -275,8 +275,8 @@ def build_h2h_dataset() -> dict[str, dict]:
     # Try fetching real H2H from 11v11.com
     fetched_count = 0
     for i, (team1, team2) in enumerate(pairs):
-        pair_key = f"{team1}__{team2}"
-        pair_key_rev = f"{team2}__{team1}"
+        pair_key = f"{team1}|||{team2}"
+        pair_key_rev = f"{team2}|||{team1}"
 
         # Skip if already fetched
         if pair_key in h2h_data:
