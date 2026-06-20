@@ -1,14 +1,14 @@
 {
   "weights": {
-    "c": 2.0,
-    "g": 1.96,
-    "f": 1.94,
-    "fs": 1.85,
-    "esp": 1.76,
-    "yh": 1.9,
-    "tips": 1.85,
-    "e": 1.92,
-    "cup": 1.84,
+    "c": 2.5,
+    "g": 2.45,
+    "f": 2.45,
+    "fs": 2.19,
+    "esp": 2.04,
+    "yh": 2.28,
+    "tips": 2.45,
+    "e": 2.32,
+    "cup": 2.25,
     "pm": 1.8
   },
   "accuracies": {
@@ -21,7 +21,7 @@
       "samples": 20,
       "exact_hits": 19,
       "winner_hits": 19,
-      "current_weight": 1.9
+      "current_weight": 2.0
     },
     "g": {
       "label": "ChatGPT",
@@ -32,7 +32,7 @@
       "samples": 20,
       "exact_hits": 18,
       "winner_hits": 18,
-      "current_weight": 1.9
+      "current_weight": 1.96
     },
     "f": {
       "label": "Gemini",
@@ -43,7 +43,7 @@
       "samples": 20,
       "exact_hits": 17,
       "winner_hits": 19,
-      "current_weight": 1.85
+      "current_weight": 1.94
     },
     "fs": {
       "label": "Fansided",
@@ -54,7 +54,7 @@
       "samples": 20,
       "exact_hits": 15,
       "winner_hits": 18,
-      "current_weight": 1.9
+      "current_weight": 1.85
     },
     "esp": {
       "label": "ESPN",
@@ -65,7 +65,7 @@
       "samples": 20,
       "exact_hits": 6,
       "winner_hits": 18,
-      "current_weight": 1.9
+      "current_weight": 1.76
     },
     "yh": {
       "label": "Yahoo",
@@ -87,7 +87,7 @@
       "samples": 20,
       "exact_hits": 20,
       "winner_hits": 20,
-      "current_weight": 1.75
+      "current_weight": 1.85
     },
     "e": {
       "label": "ELO",
@@ -98,7 +98,7 @@
       "samples": 20,
       "exact_hits": 17,
       "winner_hits": 18,
-      "current_weight": 1.9
+      "current_weight": 1.92
     },
     "cup": {
       "label": "Cup26",
@@ -109,7 +109,7 @@
       "samples": 20,
       "exact_hits": 17,
       "winner_hits": 19,
-      "current_weight": 1.8
+      "current_weight": 1.84
     },
     "pm": {
       "label": "Polymarket",
@@ -120,7 +120,7 @@
       "samples": 20,
       "exact_hits": 5,
       "winner_hits": 9,
-      "current_weight": 1.9
+      "current_weight": 1.8
     }
   },
   "biases": {
@@ -195,6 +195,6 @@
       "samples": 20
     }
   },
-  "timestamp": "20260617_215320",
+  "timestamp": "20260620_174634",
   "generated_by": "recalibrate.py"
 }

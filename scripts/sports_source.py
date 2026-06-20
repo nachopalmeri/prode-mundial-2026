@@ -403,18 +403,39 @@ def update_elo_from_result(
     return round(new_home, 1), round(new_away, 1)
 
 
+def _update_team_strength(
+    team_data: dict, field: str,
+    actual_value: float, expected_value: float,
+    alpha: float = 0.30, min_val: float = 0.35, max_val: float = 2.20,
+) -> bool:
+    old = float(team_data.get(field, 1.0))
+    if expected_value < 0.01:
+        return False
+    ratio = max(0.1, min(3.0, actual_value / max(expected_value, 0.01)))
+    new = old * (1.0 - alpha) + old * ratio * alpha
+    new = max(min_val, min(max_val, new))
+    if abs(new - old) > 0.01:
+        team_data[field] = round(new, 3)
+        return True
+    return False
+
+
 def persist_elo_from_results(predictions: dict, priors_path: Path) -> dict:
-    """Update team strengths with post-match Elo adjustments."""
+    """Update team strengths with post-match Elo and attack/defense adjustments.
+    Idempotent: tracks applied match IDs to prevent compounding on re-runs."""
     teams_path = priors_path
     if not teams_path.exists():
         return predictions
 
     priors = json.loads(teams_path.read_text(encoding="utf-8"))
     teams = priors.get("teams", {})
-    changed = 0
+    applied_ids: list[int] = priors.get("applied_elo_match_ids", [])
+    elo_changed = 0
+    strength_changed = 0
 
     for m in predictions.get("matches", []):
-        if not m.get("played") or not m.get("played_result"):
+        mid = m.get("id")
+        if not mid or mid in applied_ids or not m.get("played") or not m.get("played_result"):
             continue
         home = m.get("home", "")
         away = m.get("away", "")
@@ -430,17 +451,35 @@ def persist_elo_from_results(predictions: dict, priors_path: Path) -> dict:
             if abs(new_home - old) > 0.1:
                 teams[home]["elo"] = new_home
                 teams[home]["elo_updated"] = datetime.now(timezone.utc).isoformat()
-                changed += 1
+                elo_changed += 1
+
+            eh = m.get("expected_goals", {}).get("home", 1.0)
+            if _update_team_strength(teams[home], "attack", hg, eh):
+                strength_changed += 1
+            if _update_team_strength(teams[home], "defense", ag, m.get("expected_goals", {}).get("away", 1.0)):
+                strength_changed += 1
+
         if away in teams:
             old = teams[away].get("elo", 1500)
             if abs(new_away - old) > 0.1:
                 teams[away]["elo"] = new_away
                 teams[away]["elo_updated"] = datetime.now(timezone.utc).isoformat()
-                changed += 1
+                elo_changed += 1
 
-    if changed:
+            ea = m.get("expected_goals", {}).get("away", 1.0)
+            if _update_team_strength(teams[away], "attack", ag, ea):
+                strength_changed += 1
+            if _update_team_strength(teams[away], "defense", hg, m.get("expected_goals", {}).get("home", 1.0)):
+                strength_changed += 1
+
+        applied_ids.append(mid)
+
+    priors["applied_elo_match_ids"] = applied_ids
+    if elo_changed or strength_changed:
         teams_path.write_text(json.dumps(priors, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        print(f"  Updated Elo for {changed} teams from real results")
+        print(f"  Actualizados: Elo {elo_changed} equipos, attack/defense {strength_changed} equipos")
+    else:
+        print(f"  ELO: sin cambios ({len(applied_ids)} partidos ya aplicados)")
 
     return predictions
 

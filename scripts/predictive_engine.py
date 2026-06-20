@@ -24,16 +24,18 @@ from prode_core import (
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-TEAM_STRENGTHS_PATH = PROJECT_ROOT / "data" / "config" / "team_strengths.json"
-WC_HISTORY_PATH = PROJECT_ROOT / "data" / "config" / "wc_history.json"
-H2H_PATH = PROJECT_ROOT / "data" / "config" / "h2h_matches.json"
-RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
-OUTPUT_PATH = PROJECT_ROOT / "data" / "model" / "latest_predictions.json"
-BIAS_PATH = PROJECT_ROOT / "data" / "model" / "source_bias.json"
-DRAW_INFLATION_PATH = PROJECT_ROOT / "data" / "model" / "draw_inflation.json"
+DATA_DIR = PROJECT_ROOT / "data"
+TEAM_STRENGTHS_PATH = DATA_DIR / "config" / "team_strengths.json"
+WC_HISTORY_PATH = DATA_DIR / "config" / "wc_history.json"
+H2H_PATH = DATA_DIR / "config" / "h2h_matches.json"
+RUNTIME_PATH = DATA_DIR / "runtime" / "results.json"
+OUTPUT_PATH = DATA_DIR / "model" / "latest_predictions.json"
+BIAS_PATH = DATA_DIR / "model" / "source_bias.json"
+DRAW_INFLATION_PATH = DATA_DIR / "model" / "draw_inflation.json"
 MODEL_VERSION = "dynamic-prode-v2"
 
 _DRAW_INFLATION_CACHE: float | None = None
+_INJURY_CACHE: dict[str, Any] | None = None
 
 
 def load_draw_inflation() -> float:
@@ -50,6 +52,35 @@ def load_draw_inflation() -> float:
             pass
     _DRAW_INFLATION_CACHE = 0.55
     return 0.55
+
+
+def dixon_coles_rho(home_mean: float, away_mean: float, rho: float = -0.13) -> dict[tuple[int, int], float]:
+    """Dixon-Coles low-score correlation adjustment factors.
+
+    Models the negative correlation between home and away goals in low-scoring
+    matches. Returns a dict mapping (hg, ag) to their correction factor τ(x,y).
+
+    τ(0,0) = 1 - λ·μ·ρ   (fewer scoreless draws than independent Poisson)
+    τ(0,1) = 1 + λ·ρ     (more 0-1 than independent)
+    τ(1,0) = 1 + μ·ρ     (more 1-0 than independent)
+    τ(1,1) = 1 - ρ       (fewer 1-1 than independent)
+    τ(x,y) = 1           (otherwise -- no correction for high scores)
+    """
+    rho = max(-0.40, min(-0.01, rho))
+    factors: dict[tuple[int, int], float] = {}
+    for x in range(9):
+        for y in range(9):
+            if x == 0 and y == 0:
+                factors[(x, y)] = 1.0 - home_mean * away_mean * rho
+            elif x == 0 and y == 1:
+                factors[(x, y)] = 1.0 + home_mean * rho
+            elif x == 1 and y == 0:
+                factors[(x, y)] = 1.0 + away_mean * rho
+            elif x == 1 and y == 1:
+                factors[(x, y)] = 1.0 - rho
+            else:
+                factors[(x, y)] = 1.0
+    return factors
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -88,6 +119,15 @@ def compute_wc_history_score(team: str, wc_data: dict[str, Any]) -> float:
 
 def load_h2h() -> dict[str, Any]:
     return load_json(H2H_PATH, {})
+
+
+def load_injuries() -> dict[str, Any]:
+    global _INJURY_CACHE
+    if _INJURY_CACHE is not None:
+        return _INJURY_CACHE
+    path = DATA_DIR / "config" / "injuries.json"
+    _INJURY_CACHE = load_json(path, {})
+    return _INJURY_CACHE
 
 
 def compute_h2h_score(team1: str, team2: str, h2h_data: dict[str, Any]) -> float:
@@ -188,7 +228,7 @@ def _form_to_float(form_val: Any) -> float:
 def team_prior(team: str, priors: dict[str, Any]) -> dict[str, float]:
     teams = priors.get("teams", {})
     if team not in teams:
-        return {
+        prior = {
             "elo": 1500.0,
             "fifa_rank": 48.0,
             "market_value_m": 150.0,
@@ -200,19 +240,31 @@ def team_prior(team: str, priors: dict[str, Any]) -> dict[str, float]:
             "injury_penalty": 0.0,
             "h2h_bonus": 0.0,
         }
-    raw = teams[team]
-    return {
-        "elo": float(raw.get("elo", 1500)),
-        "fifa_rank": float(raw.get("fifa_rank", 48)),
-        "market_value_m": float(raw.get("market_value_m", 150)),
-        "home_boost": float(raw.get("home_boost", 0.0)),
-        "attack": float(raw.get("attack", 1.0)),
-        "defense": float(raw.get("defense", 1.0)),
-        "form": _form_to_float(raw.get("form", 0.0)),
-        "style_tempo": float(raw.get("style_tempo", 1.0)),
-        "injury_penalty": float(raw.get("injury_penalty", 0.0)),
-        "h2h_bonus": float(raw.get("h2h_bonus", 0.0)),
-    }
+    else:
+        raw = teams[team]
+        prior = {
+            "elo": float(raw.get("elo", 1500)),
+            "fifa_rank": float(raw.get("fifa_rank", 48)),
+            "market_value_m": float(raw.get("market_value_m", 150)),
+            "home_boost": float(raw.get("home_boost", 0.0)),
+            "attack": float(raw.get("attack", 1.0)),
+            "defense": float(raw.get("defense", 1.0)),
+            "form": _form_to_float(raw.get("form", 0.0)),
+            "style_tempo": float(raw.get("style_tempo", 1.0)),
+            "injury_penalty": float(raw.get("injury_penalty", 0.0)),
+            "h2h_bonus": float(raw.get("h2h_bonus", 0.0)),
+        }
+    # Apply injury + suspension penalty from live data
+    injuries = load_injuries()
+    if team in injuries:
+        team_ij = injuries[team]
+        out_n = len(team_ij.get("out", []))
+        dbt_n = len(team_ij.get("doubtful", []))
+        sus_n = len(team_ij.get("suspended", []))
+        total = 0.15 * out_n + 0.05 * dbt_n + 0.15 * sus_n
+        if total > 0:
+            prior["injury_penalty"] += min(1.2, total)
+    return prior
 
 
 def get_match_round(match_id: int) -> int:
@@ -363,23 +415,21 @@ def score_matrix(home_mean: float, away_mean: float, match: Match, draw_inflatio
     source_score = consensus_score(match.predictions).replace(" ", "")
     rows: list[dict[str, Any]] = []
 
-    # Draw inflation: dynamically calibrated base_inflation from real results.
-    # Observed WC 2026 draw rate is ~42% (8/19). Calibration picks the base that
-    # minimises Brier score against real outcomes.
-    total_outcome = home_mean + away_mean
-    closeness = 1.0 - abs(home_mean - away_mean) / max(total_outcome, 0.5)
-    draw_inflation = 1.0 + draw_inflation_base * math.exp(-total_outcome * 0.20) * (0.5 + 0.5 * closeness)
+    # Dixon-Coles ρ correction: fixed reference (0.55 = neutral draw base).
+    # draw_inflation_base is now calibrated independently (0.30-2.00 range).
+    dc_rho = max(-0.40, min(-0.01, -0.13))
+    dc_factors = dixon_coles_rho(home_mean, away_mean, dc_rho)
 
-    for home_goals in range(7):
-        for away_goals in range(7):
+    for home_goals in range(9):
+        for away_goals in range(9):
             score = f"{home_goals}-{away_goals}"
             probability = poisson_probability(home_mean, home_goals) * poisson_probability(away_mean, away_goals)
             if score == source_score:
                 probability *= 1.18
             elif score in match.predictions.values():
                 probability *= 1.06
-            if home_goals == away_goals:
-                probability *= draw_inflation
+            # Dixon-Coles low-score correlation
+            probability *= dc_factors.get((home_goals, away_goals), 1.0)
             rows.append({"score": score, "probability": probability})
 
     total = sum(row["probability"] for row in rows)
@@ -389,7 +439,7 @@ def score_matrix(home_mean: float, away_mean: float, match: Match, draw_inflatio
     ]
 
 
-def monte_carlo_simulation(home_mean: float, away_mean: float, n_simulations: int = 10000) -> dict[str, Any]:
+def monte_carlo_simulation(home_mean: float, away_mean: float, n_simulations: int = 10000, dc_factors: dict[tuple[int, int], float] | None = None) -> dict[str, Any]:
     home_wins = 0
     draws = 0
     away_wins = 0
@@ -398,21 +448,24 @@ def monte_carlo_simulation(home_mean: float, away_mean: float, n_simulations: in
     over_2_5 = 0
     both_teams_score = 0
     score_counts: dict[tuple[int, int], int] = {}
+    rng = random.Random()
 
     for _ in range(n_simulations):
-        hg = 0
-        p = 1.0
-        while p > math.exp(-home_mean):
-            p *= random.random()
-            hg += 1
-        hg = max(0, hg - 1)
-
-        ag = 0
-        p = 1.0
-        while p > math.exp(-away_mean):
-            p *= random.random()
-            ag += 1
-        ag = max(0, ag - 1)
+        if dc_factors is not None:
+            hg, ag = _dc_poisson_sample(home_mean, away_mean, dc_factors, rng)
+        else:
+            hg = 0
+            p = 1.0
+            while p > math.exp(-home_mean):
+                p *= random.random()
+                hg += 1
+            hg = max(0, hg - 1)
+            ag = 0
+            p = 1.0
+            while p > math.exp(-away_mean):
+                p *= random.random()
+                ag += 1
+            ag = max(0, ag - 1)
 
         total_home_goals += hg
         total_away_goals += ag
@@ -614,7 +667,7 @@ def build_match_prediction(
             "home": motivation["home"]["standing"],
             "away": motivation["away"]["standing"],
         },
-        "monte_carlo": monte_carlo_simulation(home_mean, away_mean, 10000),
+        "monte_carlo": monte_carlo_simulation(home_mean, away_mean, 10000, dc_factors=dixon_coles_rho(home_mean, away_mean, max(-0.40, min(-0.01, -0.13)))),
         "movement": {"direction": "flat", "delta": 0.0},
         "signals": {
             "market_source_proxy": round(max(market_proxy.values()) * 100, 1),
@@ -706,6 +759,9 @@ SF_PARENTS = [
 
 FINAL_PARENTS = [
     (103, 101, 102),
+]
+
+THIRD_PLACE_PARENTS = [
     (104, 101, 102),
 ]
 
@@ -777,28 +833,42 @@ def sequential_monte_carlo(
             all_teams.add(m["home"])
             all_teams.add(m["away"])
     
+    # Precompute Dixon-Coles rho for MC sampling
+    mc_home_totals: dict[int, float] = {}
+    mc_away_totals: dict[int, float] = {}
+    mc_match_keys: dict[int, tuple[int, int]] = {}
+    mc_dc_factors: dict[int, dict[tuple[int, int], float]] = {}
+
+    for g, matches in group_matches.items():
+        for m in matches:
+            mid = m["id"]
+            eh, ea = m["expected_goals"]["home"], m["expected_goals"]["away"]
+            mc_home_totals[mid] = eh
+            mc_away_totals[mid] = ea
+            mc_match_keys[mid] = (eh, ea)
+            dc_rho = max(-0.40, min(-0.01, -0.13 * (load_draw_inflation() / 0.55)))
+            mc_dc_factors[mid] = dixon_coles_rho(eh, ea, dc_rho)
+
     for _ in range(n_simulations):
         for g, matches in group_matches.items():
-            # Simulate all matches in this group
             standings: dict[str, dict[str, float]] = {}
             for m in matches:
                 h = m["home"]
                 a = m["away"]
                 standings.setdefault(h, {"points": 0, "gd": 0, "gf": 0})
                 standings.setdefault(a, {"points": 0, "gd": 0, "gf": 0})
-                # Sample goals from Poisson
-                eh, ea = m["expected_goals"]["home"], m["expected_goals"]["away"]
-                # Handle played matches - use real result
+                mid = m["id"]
+                eh, ea = mc_home_totals[mid], mc_away_totals[mid]
+                dc_f = mc_dc_factors[mid]
+
                 if m.get("played") and m.get("played_result"):
                     parts = m["played_result"].split("-")
                     if len(parts) == 2:
                         hg, ag = int(parts[0]), int(parts[1])
                     else:
-                        hg = _poisson_sample(eh, rng)
-                        ag = _poisson_sample(ea, rng)
+                        hg, ag = _dc_poisson_sample(eh, ea, dc_f, rng)
                 else:
-                    hg = _poisson_sample(eh, rng)
-                    ag = _poisson_sample(ea, rng)
+                    hg, ag = _dc_poisson_sample(eh, ea, dc_f, rng)
                 
                 standings[h]["gf"] += hg
                 standings[h]["gd"] += hg - ag
@@ -850,6 +920,22 @@ def _poisson_sample(lam: float, rng) -> int:
         k += 1
         p *= rng.random()
     return k - 1
+
+
+def _dc_poisson_sample(
+    home_mean: float, away_mean: float,
+    dc_factors: dict[tuple[int, int], float],
+    rng,
+) -> tuple[int, int]:
+    """Sample from bivariate Poisson with Dixon-Coles correlation."""
+    max_tau = max(dc_factors.values()) if dc_factors else 1.0
+    for _attempt in range(50):
+        hg = _poisson_sample(home_mean, rng)
+        ag = _poisson_sample(away_mean, rng)
+        tau = dc_factors.get((hg, ag), 1.0)
+        if rng.random() < tau / max_tau:
+            return hg, ag
+    return _poisson_sample(home_mean, rng), _poisson_sample(away_mean, rng)
 
 
 def _get_qualified_teams(
@@ -988,28 +1074,29 @@ def knockout_match_prediction(
     ad = max(0.55, a["defense"])
     hm = max(0.12, min(4.8, 1.32 * tempo * ha / max(0.72, ad) * math.exp(sd * 0.34)))
     am = max(0.12, min(4.8, 1.12 * tempo * aa / max(0.72, hd) * math.exp(-sd * 0.34)))
+    dc_rho = max(-0.40, min(-0.01, -0.13))
+    dc_factors = dixon_coles_rho(hm, am, dc_rho)
     hw = dw = aw = 0.0
+    bp, bp_prob = "", 0.0
     for hg in range(15):
         for ag in range(15):
             p = poisson_probability(hm, hg) * poisson_probability(am, ag)
+            p *= dc_factors.get((hg, ag), 1.0)
             if hg > ag:
                 hw += p
             elif ag > hg:
                 aw += p
             else:
                 dw += p
-    dc = min(hw, aw) / max(hw, aw, 0.01)
-    etp = min(dw * (1.0 + 0.3 * dc) * 1.5, 0.48)
-    pp = etp * 0.7
-    pw = home if hw >= aw else away
-    pc = (max(hw, aw) - min(hw, aw)) * 100
-    bp, bp_prob = "", 0.0
-    for hg in range(7):
-        for ag in range(7):
-            p = poisson_probability(hm, hg) * poisson_probability(am, ag)
-            if p > bp_prob:
+            if hg < 9 and ag < 9 and p > bp_prob:
                 bp_prob = p
                 bp = f"{hg}-{ag}"
+    dc_ratio = min(hw, aw) / max(hw, aw, 0.01)
+    etp = min(dw * (1.0 + 0.3 * dc_ratio) * 1.5, 0.48)
+    pp = etp * 0.7
+    pw = home if hw >= aw else away
+    pl = away if pw == home else home
+    pc = (max(hw, aw) - min(hw, aw)) * 100
     rn = _get_knockout_round_name(match_id)
     return {
         "id": match_id,
@@ -1022,6 +1109,7 @@ def knockout_match_prediction(
         },
         "h2h_advantage": round(h2hd, 3),
         "predicted_winner": pw,
+        "predicted_loser": pl,
         "winner_confidence": round(pc, 1),
         "best_pick": bp,
         "expected_goals": {"home": round(hm, 2), "away": round(am, 2)},
@@ -1045,6 +1133,17 @@ def _resolve_bracket_match(
     p1 = round_matches.get(parent1_id, {})
     p2 = round_matches.get(parent2_id, {})
     return p1.get("predicted_winner", "TBD"), p2.get("predicted_winner", "TBD")
+
+
+def _resolve_bracket_losers(
+    mid: int,
+    parent1_id: int,
+    parent2_id: int,
+    round_matches: dict[int, dict[str, Any]],
+) -> tuple[str, str]:
+    p1 = round_matches.get(parent1_id, {})
+    p2 = round_matches.get(parent2_id, {})
+    return p1.get("predicted_loser", "TBD"), p2.get("predicted_loser", "TBD")
 
 
 def generate_knockout_bracket(
@@ -1076,8 +1175,14 @@ def generate_knockout_bracket(
     sf_matches = propagate_round(SF_PARENTS, qf_matches)
     final_matches = propagate_round(FINAL_PARENTS, sf_matches)
 
+    third_place: dict[int, dict[str, Any]] = {}
+    for mid, p1, p2 in THIRD_PLACE_PARENTS:
+        ht, at = _resolve_bracket_losers(mid, p1, p2, sf_matches)
+        if ht != "TBD" and at != "TBD":
+            third_place[mid] = knockout_match_prediction(mid, ht, at, priors, predictions, wc_data, h2h_data)
+
     all_knockout = []
-    for d in (r32_matches, r16_matches, qf_matches, sf_matches, final_matches):
+    for d in (r32_matches, r16_matches, qf_matches, sf_matches, final_matches, third_place):
         all_knockout.extend(sorted(d.values(), key=lambda x: x["id"]))
 
     # Run Monte Carlo for group qualification probabilities

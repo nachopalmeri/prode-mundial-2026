@@ -21,7 +21,7 @@ from sports_source import (
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 HTML_PATH = PROJECT_ROOT / "prode-mundial-2026.html"
 PREDICTIONS_PATH = PROJECT_ROOT / "data" / "model" / "latest_predictions.json"
-TEAM_STRENGTHS_PATH = PROJECT_ROOT / "data" / "model" / "team_strengths.json"
+TEAM_STRENGTHS_PATH = PROJECT_ROOT / "data" / "config" / "team_strengths.json"
 RUNTIME_PATH = PROJECT_ROOT / "data" / "runtime" / "results.json"
 RESULTS_ORDER_PATH = PROJECT_ROOT / "data" / "runtime" / "results_order.json"
 ACCURACY_REPORT_PATH = PROJECT_ROOT / "data" / "reports" / "accuracy_latest.json"

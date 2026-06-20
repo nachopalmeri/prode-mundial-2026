@@ -1,0 +1,128 @@
+{
+  "Brazil": {
+    "out": ["Rodrygo", "Eder Militao", "Estevao"],
+    "doubtful": ["Neymar", "Raphinha"],
+    "suspended": [],
+    "note": "Neymar grade 2 calf, expected return Jun 24; Raphinha hamstring subbed off vs Haiti"
+  },
+  "Argentina": {
+    "out": ["Juan Foyth"],
+    "doubtful": ["Cristian Romero"],
+    "suspended": [],
+    "note": "Romero knee, possible return"
+  },
+  "Germany": {
+    "out": ["Serge Gnabry", "Lennart Karl", "Marc-Andre ter Stegen"],
+    "doubtful": [],
+    "suspended": [],
+    "note": ""
+  },
+  "Netherlands": {
+    "out": ["Xavi Simons", "Jerdy Schouten", "Matthijs de Ligt"],
+    "doubtful": ["Jurrien Timber"],
+    "suspended": [],
+    "note": "Timber groin"
+  },
+  "France": {
+    "out": ["Hugo Ekitike"],
+    "doubtful": [],
+    "suspended": [],
+    "note": ""
+  },
+  "Spain": {
+    "out": ["Samu Aghehowa", "Fermin Lopez"],
+    "doubtful": ["Lamine Yamal"],
+    "suspended": [],
+    "note": "Yamal returned from hamstring as sub vs Cape Verde"
+  },
+  "Japan": {
+    "out": ["Takumi Minamino", "Kaoru Mitoma", "Wataru Endo"],
+    "doubtful": [],
+    "suspended": [],
+    "note": "Endo retired international duty"
+  },
+  "Ghana": {
+    "out": ["Mohammed Kudus", "Mohammed Salisu"],
+    "doubtful": [],
+    "suspended": [],
+    "note": ""
+  },
+  "Scotland": {
+    "out": ["Billy Gilmour"],
+    "doubtful": ["Scott McKenna"],
+    "suspended": [],
+    "note": ""
+  },
+  "England": {
+    "out": ["Tino Livramento"],
+    "doubtful": ["Declan Rice", "Bukayo Saka", "Harry Kane", "Marcus Rashford"],
+    "suspended": [],
+    "note": "Rice/Saka/Kane/Rashford minor knocks, Kane illness"
+  },
+  "USA": {
+    "out": ["Patrick Agyemang", "Johnny Cardoso"],
+    "doubtful": ["Christian Pulisic"],
+    "suspended": [],
+    "note": "Pulisic calf, missed Australia match, day-to-day"
+  },
+  "Australia": {
+    "out": ["Riley McGree"],
+    "doubtful": [],
+    "suspended": [],
+    "note": ""
+  },
+  "Mexico": {
+    "out": ["Luis Angel Malagon"],
+    "doubtful": [],
+    "suspended": ["Cesar Montes"],
+    "note": "Montes red card vs South Africa, suspended 1 match"
+  },
+  "Canada": {
+    "out": ["Ismael Kone", "Alphonso Davies"],
+    "doubtful": [],
+    "suspended": [],
+    "note": "Kone lower leg fracture vs Qatar; Davies injury"
+  },
+  "Paraguay": {
+    "out": [],
+    "doubtful": ["Gustavo Caballero", "Ramon Sosa"],
+    "suspended": ["Miguel Almiron"],
+    "note": "Almiron red card (mouth-cover rule) vs Turkiye, suspended 1 match"
+  },
+  "Portugal": {
+    "out": [],
+    "doubtful": ["Ruben Dias"],
+    "suspended": [],
+    "note": ""
+  },
+  "Sweden": {
+    "out": [],
+    "doubtful": ["Alexander Isak"],
+    "suspended": [],
+    "note": "Minor concern"
+  },
+  "Austria": {
+    "out": ["Christoph Baumgartner"],
+    "doubtful": [],
+    "suspended": [],
+    "note": "Baumgartner knee, ruled out of tournament"
+  },
+  "South Africa": {
+    "out": ["Yaya Sithole", "Themba Zwane"],
+    "doubtful": [],
+    "suspended": [],
+    "note": "Sithole (red card) and Zwane (red card) vs Mexico, suspended"
+  },
+  "Bosnia and Herzegovina": {
+    "out": [],
+    "doubtful": [],
+    "suspended": ["Tarik Muharemovic"],
+    "note": "Muharemovic red card vs Switzerland"
+  },
+  "Qatar": {
+    "out": [],
+    "doubtful": [],
+    "suspended": ["Homam Ahmed", "Assim Modibo"],
+    "note": "Ahmed and Modibo red cards vs Canada"
+  }
+}

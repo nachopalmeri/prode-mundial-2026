@@ -1,12 +1,12 @@
 {
   "base_inflation": 1.0,
-  "current_base_used": 0.55,
+  "current_base_used": 1.0,
   "grid_best_base": 1.0,
-  "brier_before": 0.1403,
-  "brier_after": 0.0701,
+  "brier_before": 0.1247,
+  "brier_after": 0.1247,
   "draws_analyzed": 20,
   "actual_draw_rate": 0.4,
-  "mean_predicted_draw_rate": 0.2706,
+  "mean_predicted_draw_rate": 0.2963,
   "learning_rate": 1.0,
-  "timestamp": "20260617_215320"
+  "timestamp": "20260620_174634"
 }
